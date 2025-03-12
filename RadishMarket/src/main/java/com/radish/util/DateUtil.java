@@ -17,11 +17,11 @@ public class DateUtil {
 		return instance;
 	}
 	
-	public static String getDateNow() {
+	public String getDateNow() {
 		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
-	public static String getCalcDateAgo(String date) {
+	public String getCalcDateAgo(String date) {
 		String nowDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		String saveDate = date.split(" ")[0];
 		int[] now = new int[3];

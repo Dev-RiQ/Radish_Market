@@ -9,7 +9,6 @@ public class User {
 	private String user_email;
 	private String user_nickname;
 	private String user_address;
-
 	private String user_img;
 	private String user_phone;
 	private String user_reg_datetime;
@@ -20,11 +19,10 @@ public class User {
 	private String user_dong;
 	private int user_deg;
 
-	public User(int user_no, String user_id, String user_pw, String user_name, int user_age, String user_email,
+	public User(String user_id, String user_pw, String user_name, int user_age, String user_email,
 			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
 			int user_dir_x, int user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
 		super();
-		this.user_no = user_no;
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 		this.user_name = user_name;

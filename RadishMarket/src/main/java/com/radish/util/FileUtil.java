@@ -13,7 +13,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 
 public class FileUtil {
-	public static String[] uploadFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	private FileUtil() {
+	}
+
+	private static FileUtil instance;
+
+	public static FileUtil getInstance() {
+		if (instance == null)
+			instance = new FileUtil();
+		return instance;
+	}
+	
+	public String[] uploadFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String sDirectory = request.getServletContext().getRealPath("/img");
 		createDirectoryIfNotExists(sDirectory);
 		response.setContentType("text/html; charset=UTF-8");
@@ -30,7 +42,7 @@ public class FileUtil {
 		return fileNames;
 	}
 	
-	public static void deleteFile(HttpServletRequest req, String filename) {
+	public void deleteFile(HttpServletRequest req, String filename) {
 		String sDirectory = req.getServletContext().getRealPath("/img");
 		Path filePath = Paths.get(sDirectory, filename);
 		try {
@@ -40,7 +52,7 @@ public class FileUtil {
 		}
 	}
 
-	private static void createDirectoryIfNotExists(String directory) {
+	private void createDirectoryIfNotExists(String directory) {
 		Path dirPath = Paths.get(directory);
 		if (Files.notExists(dirPath)) {
 			try {
@@ -51,13 +63,13 @@ public class FileUtil {
 		}
 	}
 	
-	private static String getOriginalFileName(Part part) {
+	private String getOriginalFileName(Part part) {
 		String partHeader = part.getHeader("content-disposition");
 		String originalFileName = partHeader.split("filename=")[1].trim().replace("\"", "");
 		return originalFileName;
 	}
 	
-	private static String setAndGetSaveFileName(String fileName) {
+	private String setAndGetSaveFileName(String fileName) {
 		return System.currentTimeMillis() + "_" + fileName;
 	}
 	

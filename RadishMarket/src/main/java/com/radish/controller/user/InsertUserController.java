@@ -2,7 +2,10 @@ package com.radish.controller.user;
 
 import java.io.IOException;
 
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +16,28 @@ public class InsertUserController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String user_id = request.getParameter("user_id");
+		String user_pw = request.getParameter("user_pw");
+		String user_name = request.getParameter("user_name");
+		int user_age = Integer.parseInt(request.getParameter("user_age"));
+		String user_email = request.getParameter("user_email");
+		String user_nickname = request.getParameter("user_nickname");
+		String user_address = request.getParameter("user_address");
+		String user_img = request.getParameter("user_img");
+		String user_phone = request.getParameter("user_phone");
+		String user_reg_datetime = request.getParameter("user_reg_datetime");
+		int user_dir_x = Integer.parseInt(request.getParameter("user_dir_x"));
+		int user_dir_y = Integer.parseInt(request.getParameter("user_dir_y"));
+		String user_user_city = request.getParameter("user_user_city");
+		String user_user_gu = request.getParameter("user_user_gu");
+		String user_user_dong = request.getParameter("user_user_dong");
+		int user_deg = Integer.parseInt(request.getParameter("user_deg"));
 		
+		User user = new User(user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_user_city, user_user_gu, user_user_dong, user_deg);
+		if(UserDAO.getInstance().userInsert(user))
+			AlertUtil.getInstance().goUrlWithAlert(response, request, user_nickname + "님 가입을 환영합니다 !\\n로그인 페이지로 이동합니다.", "userLogin.do");
+		else
+			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 가입에 실패했습니다.\\n다시 시도해주세요.");
 		return null;
 	}
 
