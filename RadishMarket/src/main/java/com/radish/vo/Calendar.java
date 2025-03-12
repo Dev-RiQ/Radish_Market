@@ -1,6 +1,6 @@
 package com.radish.vo;
 
-public class Calendars {
+public class Calendar {
 	private int calendar_no;
 	private int main_user_no;
 	private int sub_user_no;
@@ -12,7 +12,7 @@ public class Calendars {
 	private String calendar_title;
 	private String calendar_content;
 
-	public Calendars(int calendar_no, int main_user_no, int sub_user_no, int meet_no, String address,
+	public Calendar(int calendar_no, int main_user_no, int sub_user_no, int meet_no, String address,
 			int calendar_dir_x, int calendar_dir_y, String calendar_datetime, String calendar_title,
 			String calendar_content) {
 		super();

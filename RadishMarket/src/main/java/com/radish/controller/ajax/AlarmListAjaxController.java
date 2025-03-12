@@ -1,4 +1,4 @@
-package com.radish.controller.alram;
+package com.radish.controller.ajax;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class InsertAlramController implements Controller {
+public class AlarmListAjaxController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

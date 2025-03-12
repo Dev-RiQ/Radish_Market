@@ -1,4 +1,4 @@
-package com.radish.controller.admin;
+package com.radish.controller.alarm;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class AlramCategoryController implements Controller {
+public class DeleteAlarmController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

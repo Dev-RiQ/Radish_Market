@@ -16,7 +16,7 @@
   	<typeAlias type="com.radish.vo.Like" alias="Like"/>
   	<typeAlias type="com.radish.vo.MeetJoin" alias="MeetJoin"/>
   	<typeAlias type="com.radish.vo.MeetUser" alias="MeetUser"/>
-  	<typeAlias type="com.radish.vo.Alram" alias="Alram"/>
+  	<typeAlias type="com.radish.vo.Alarm" alias="Alarm"/>
   	<typeAlias type="com.radish.vo.Calendar" alias="Calendar"/>
   </typeAliases>
   <environments default="development">
@@ -39,7 +39,7 @@
     <mapper resource="com/radish/mybatis/commentMapper.xml"/>
     <mapper resource="com/radish/mybatis/letterMapper.xml"/>
     <mapper resource="com/radish/mybatis/meetJoinMapper.xml"/>
-    <mapper resource="com/radish/mybatis/alramMapper.xml"/>
+    <mapper resource="com/radish/mybatis/alarmMapper.xml"/>
     <mapper resource="com/radish/mybatis/calendarMapper.xml"/>
   </mappers>
 </configuration>
