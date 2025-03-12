@@ -12,16 +12,26 @@ public class User {
 	private String user_img;
 	private String user_phone;
 	private String user_reg_datetime;
-	private int user_dir_x;
-	private int user_dir_y;
+	private double user_dir_x;
+	private double user_dir_y;
 	private String user_city;
 	private String user_gu;
 	private String user_dong;
 	private int user_deg;
 
+	@Override
+	public String toString() {
+		return "User [user_no=" + user_no + ",\n user_id=" + user_id + ",\n user_pw=" + user_pw + ",\n user_name=" + user_name
+				+ ",\n user_age=" + user_age + ",\n user_email=" + user_email + ",\n user_nickname=" + user_nickname
+				+ ",\n user_address=" + user_address + ",\n user_img=" + user_img + ",\n user_phone=" + user_phone
+				+ ",\n user_reg_datetime=" + user_reg_datetime + ",\n user_dir_x=" + user_dir_x + ",\n user_dir_y="
+				+ user_dir_y + ",\n user_city=" + user_city + ",\n user_gu=" + user_gu + ",\n user_dong=" + user_dong
+				+ ",\n user_deg=" + user_deg + "]";
+	}
+
 	public User(String user_id, String user_pw, String user_name, int user_age, String user_email,
 			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
-			int user_dir_x, int user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
+			double user_dir_x, double user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -129,19 +139,19 @@ public class User {
 		this.user_reg_datetime = user_reg_datetime;
 	}
 
-	public int getUser_dir_x() {
+	public double getUser_dir_x() {
 		return user_dir_x;
 	}
 
-	public void setUser_dir_x(int user_dir_x) {
+	public void setUser_dir_x(double user_dir_x) {
 		this.user_dir_x = user_dir_x;
 	}
 
-	public int getUser_dir_y() {
+	public double getUser_dir_y() {
 		return user_dir_y;
 	}
 
-	public void setUser_dir_y(int user_dir_y) {
+	public void setUser_dir_y(double user_dir_y) {
 		this.user_dir_y = user_dir_y;
 	}
 

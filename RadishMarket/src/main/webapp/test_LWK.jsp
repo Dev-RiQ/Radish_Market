@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="${ctx}/insertUser.do" method="post">
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+</head>
+<body>
+<form action="/RadishMarket/insertUser.do" method="post">
 	<input type="text" name="user_id" id="user_id" placeholder="아이디"><br>
 	<input type="text" name="user_pw" id="user_pw" placeholder="비밀번호"><br>
 	<input type="text" name="user_name" id="user_name" placeholder="이름"><br>
@@ -18,6 +25,9 @@
 	<input type="hidden" name="user_dir_y" id="user_dir_y">
 	<button>가입</button>
 </form>
+
+</body>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="${ctx}/js/userInsertKakaoAddress.js"></script>
+<script src="./js/userInsertKakaoAddress.js"></script>
+</html>

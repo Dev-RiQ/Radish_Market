@@ -17,7 +17,7 @@ public class DateUtil {
 		return instance;
 	}
 	
-	public String getDateNow() {
+	public String getRegDatetime() {
 		return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 	}
 	
