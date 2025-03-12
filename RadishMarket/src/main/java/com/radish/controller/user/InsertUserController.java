@@ -40,7 +40,8 @@ public class InsertUserController implements Controller {
 //			AlertUtil.getInstance().goUrlWithAlert(response, request, user_nickname + "님 가입을 환영합니다 !\\n로그인 페이지로 이동합니다.", "userLogin.do");
 //		else
 //			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 가입에 실패했습니다.\\n다시 시도해주세요.");
-		return null;
+		request.setAttribute("user", user);
+		return "user/test_userInfo";
 	}
 
 }

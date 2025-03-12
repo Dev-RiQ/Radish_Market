@@ -31,8 +31,8 @@ public class FrontController extends HttpServlet {
 			if(nextPage.indexOf("redirect:") != -1)
 				response.sendRedirect(ctx + "/" + nextPage.split(":")[1] + ".do");
 			else {
-				request.setAttribute("section", ctx + ViewResolver.makeView(nextPage));
-				request.getRequestDispatcher(ctx + ViewResolver.makeView("main/main"))
+				request.setAttribute("section", ViewResolver.makeView(nextPage));
+				request.getRequestDispatcher(ViewResolver.makeView("main/main"))
 				.forward(request, response);
 			}
 		}
