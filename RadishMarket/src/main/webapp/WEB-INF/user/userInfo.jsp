@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../main/header.jsp" %>
+    
 <form action="/updateUser.do" method="post">
 	<input type="text" name="user_id" id="user_id" value="${ user.user_id }"  readonly><br>
 	<input type="text" name="user_pw" id="user_pw" value="${ user.user_pw }" ><br>
@@ -33,4 +35,6 @@
 </form>
 <button onclick="location.href='/userUpdate.do'">수정하기</button>
 <button onclick="deleteUserDoubleCheck()">탈퇴하기</button>
+
+<%@ include file="../main/footer.jsp" %>
 <script src="../../js/user.js"></script>

@@ -16,7 +16,7 @@ public class DeleteUserController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		if(UserDAO.getInstance().removeAUser(log))
+		if(UserDAO.getInstance().deleteAUser(log))
 			AlertUtil.getInstance().goHomeWithAlert(response, "회원 탈퇴 완료");
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "회원 탈퇴 실패");

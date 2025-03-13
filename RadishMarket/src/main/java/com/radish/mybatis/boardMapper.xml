@@ -3,4 +3,53 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.boardMapper">
+
+	<insert id="boardInsert" parameterType="Board">
+		INSERT INTO boards(user_no, board_category_no, meet_no, board_title, board_content, board_reg_datetime, board_update_datetime, board_img, board_hits)
+		VALUES(#{user_no}, #{board_category_no}, #{meet_no}, #{board_title}, #{board_content}, #{board_reg_datetime}, #{board_update_datetime}, #{board_img}, #{board_hits})
+	</insert>
+	
+	<update id="boardHitsUp" parameterType="int">
+		UPDATE boards
+		SET board_hits=#{board_hits}
+		WHERE board_no=#{board_no}
+	</update>
+	
+	<update id="boardUpdate" parameterType="Board">
+		UPDATE boards
+		SET board_category_no=#{board_category_no}, board_title=#{board_title}, board_content=#{board_content}, board_update_datetime=#{board_update_datetime}, board_img=#{board_img}
+		WHERE board_no=#{board_no}
+	</update>
+	
+	<delete id="deleteABoard" parameterType="int">
+		DELETE FROM boards
+		WHERE board_no=#{board_no}
+	</delete>	
+	
+	<select id="getBoardList" parameterType="int" resultType="Board">
+		SELECT *
+		FROM boards
+		ORDER BY board_no DESC
+		LIMIT #{limit},30
+	</select>
+	
+	<select id="getABoardByBoardNo" parameterType="int" resultType="Board">
+		SELECT *
+		FROM boards
+		WHERE board_no=#{board_no}
+	</select>
+	
+	<select id="getLastBoardNo" resultType="int">
+		SELECT board_no
+		FROM boards
+		ORDER BY board_no DESC
+		LIMIT 1
+	</select>
+	
+	<select id="getBoardHits" parameterType="int" resultType="int">
+		SELECT board_hits
+		FROM boards
+		WHERE board_no=#{board_no}
+	</select>
+	
 </mapper>

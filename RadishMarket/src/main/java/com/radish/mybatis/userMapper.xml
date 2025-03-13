@@ -15,7 +15,7 @@
 		WHERE user_no=#{user_no}
 	</update>
 	
-	<delete id="removeAUser" parameterType="int">
+	<delete id="deleteAUser" parameterType="int">
 		DELETE FROM users
 		WHERE user_no=#{log}
 	</delete>	

@@ -62,13 +62,13 @@ public class UserDAO {
 		return action != 0;
 	}
 	
-	public boolean removeAUser(int log) {
+	public boolean deleteAUser(int log) {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			action = session.delete("removeAUser", log);
+			action = session.delete("deleteAUser", log);
 			session.commit();
 		} catch (Exception e) {
-			System.out.println("removeAUser fail");
+			System.out.println("deleteAUser fail");
 			e.printStackTrace();
 		}
 		return action != 0;

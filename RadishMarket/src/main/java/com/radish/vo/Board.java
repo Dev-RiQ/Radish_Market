@@ -12,6 +12,33 @@ public class Board {
 	private String board_img;
 	private int board_hits;
 
+	public Board(int board_no, int board_hits) {
+		super();
+		this.board_no = board_no;
+		this.board_hits = board_hits;
+	}
+	public Board(int board_no, int board_category_no, String board_title,
+			String board_content, String board_update_datetime, String board_img) {
+		super();
+		this.board_no = board_no;
+		this.board_category_no = board_category_no;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_update_datetime = board_update_datetime;
+		this.board_img = board_img;
+	}
+	public Board(int user_no, int board_category_no, int meet_no, String board_title,
+			String board_content, String board_reg_datetime, String board_update_datetime, String board_img) {
+		super();
+		this.user_no = user_no;
+		this.board_category_no = board_category_no;
+		this.meet_no = meet_no;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_reg_datetime = board_reg_datetime;
+		this.board_update_datetime = board_update_datetime;
+		this.board_img = board_img;
+	}
 	public Board(int board_no, int user_no, int board_category_no, int meet_no, String board_title,
 			String board_content, String board_reg_datetime, String board_update_datetime, String board_img,
 			int board_hits) {
