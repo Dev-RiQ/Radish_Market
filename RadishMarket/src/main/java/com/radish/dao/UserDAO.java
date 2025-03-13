@@ -1,8 +1,11 @@
 package com.radish.dao;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
+import com.radish.vo.Item;
 import com.radish.vo.User;
 
 public class UserDAO {
@@ -72,5 +75,20 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return action != 0;
+	}
+	
+	public ArrayList<String> getLimitUserDongByItemList(ArrayList<Item> itemList) {
+		ArrayList<String> userDongList = new ArrayList<>();
+		int user_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Item item : itemList) {
+				user_no = item.getUser_no();
+				userDongList.add(session.selectOne("getLimitUserDongByItemList", item));
+			}
+		} catch (Exception e) {
+			System.out.println("getLimitUserDongByItemList fail");
+			e.printStackTrace();
+		}
+		return userDongList;
 	}
 }

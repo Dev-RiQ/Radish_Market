@@ -32,4 +32,10 @@
 		WHERE user_no=#{log}
 	</select>
 	
+	<select id="getLimitUserDongByItemList" parameterType="int" resultType="String">
+		SELECT user_dong
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>
