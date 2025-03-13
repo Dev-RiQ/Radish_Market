@@ -7,8 +7,11 @@
   <typeAliases>
   	<typeAlias type="com.radish.vo.User" alias="User"/>
   	<typeAlias type="com.radish.vo.Item" alias="Item"/>
+  	<typeAlias type="com.radish.vo.ItemCategory" alias="ItemCategory"/>
   	<typeAlias type="com.radish.vo.Board" alias="Board"/>
+  	<typeAlias type="com.radish.vo.BoardCategory" alias="BoardCategory"/>
   	<typeAlias type="com.radish.vo.Meet" alias="Meet"/>
+  	<typeAlias type="com.radish.vo.MeetCategory" alias="MeetCategory"/>
   	<typeAlias type="com.radish.vo.Review" alias="Review"/>
   	<typeAlias type="com.radish.vo.Comment" alias="Comment"/>
   	<typeAlias type="com.radish.vo.Letter" alias="Letter"/>
@@ -17,6 +20,7 @@
   	<typeAlias type="com.radish.vo.MeetJoin" alias="MeetJoin"/>
   	<typeAlias type="com.radish.vo.MeetUser" alias="MeetUser"/>
   	<typeAlias type="com.radish.vo.Alarm" alias="Alarm"/>
+  	<typeAlias type="com.radish.vo.AlarmCategory" alias="AlarmCategory"/>
   	<typeAlias type="com.radish.vo.Calendar" alias="Calendar"/>
   </typeAliases>
   <environments default="development">
