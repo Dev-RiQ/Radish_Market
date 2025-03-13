@@ -105,11 +105,11 @@ SELECT * FROM reviews;
 -- 댓글
 DROP TABLE comments;
 CREATE TABLE comments (
-	comments_no INT AUTO_INCREMENT PRIMARY KEY,
+	comment_no INT AUTO_INCREMENT PRIMARY KEY,
     board_no INT NOT NULL, -- FK
     user_no INT NOT NULL, -- FK
-    comments_content VARCHAR(300) NOT NULL,
-    comments_reg_datetime VARCHAR(20) NOT NULL,
+    comment_content VARCHAR(300) NOT NULL,
+    comment_reg_datetime VARCHAR(20) NOT NULL,
     check_update TINYINT NOT NULL
      );   
 DESC comments;
@@ -278,7 +278,7 @@ INSERT INTO reviews (reviews_deg, sell_user_no, buy_user_no, item_no, reviews_co
 (4, 2, 3, 2, '전자레인지 잘 작동해요. 가격도 적당.');
 
 -- 댓글
-INSERT INTO comments (board_no, user_no, comments_content, comments_reg_datetime, check_update) VALUES
+INSERT INTO comments (board_no, user_no, comment_content, comment_reg_datetime, check_update) VALUES
 (1, 2, '오후 2시로 알고 있습니다!', '2025-03-06 10:30:00', 0),
 (2, 3, '반포 한강공원 코스 추천드려요.', '2025-03-06 11:30:00', 0);
 

@@ -11,6 +11,13 @@ public class Comment {
 	private String comment_reg_datetime;
 	private int check_update;
 
+	public Comment(int board_no, int user_no, String comment_content, String comment_reg_datetime) {
+		super();
+		this.board_no = board_no;
+		this.user_no = user_no;
+		this.comment_content = comment_content;
+		this.comment_reg_datetime = comment_reg_datetime;
+	}
 	public Comment(int comment_no, int board_no, int user_no, String comment_content, String comment_reg_datetime,
 			int check_update) {
 		super();

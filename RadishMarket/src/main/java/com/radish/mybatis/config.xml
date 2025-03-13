@@ -7,6 +7,7 @@
   <typeAliases>
   	<typeAlias type="com.radish.vo.User" alias="User"/>
   	<typeAlias type="com.radish.vo.Item" alias="Item"/>
+  	<typeAlias type="com.radish.vo.Item" alias="ItemImg"/>
   	<typeAlias type="com.radish.vo.ItemCategory" alias="ItemCategory"/>
   	<typeAlias type="com.radish.vo.Board" alias="Board"/>
   	<typeAlias type="com.radish.vo.BoardCategory" alias="BoardCategory"/>

@@ -26,11 +26,19 @@
 		WHERE board_no=#{board_no}
 	</delete>	
 	
-	<select id="getBoardList" parameterType="int" resultType="Board">
+	<select id="getBoardListByNonMeetNo" parameterType="int" resultType="Board">
 		SELECT *
 		FROM boards
+		WHERE meet_no=0
 		ORDER BY board_no DESC
-		LIMIT #{limit},30
+		LIMIT #{start},30
+	</select>
+	
+	<select id="getCountBoardListByNonMeetNo" resultType="int">
+		SELECT COUNT(*)
+		FROM boards
+		WHERE meet_no=0
+		LIMIT #{start},30
 	</select>
 	
 	<select id="getABoardByBoardNo" parameterType="int" resultType="Board">
@@ -56,5 +64,27 @@
 		SELECT *
 		FROM board_category
 	</select>
+	
+	<select id="getCountLikeByBoardNo" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM likes
+		WHERE board_no=#{board_no}
+	</select>
+	
+	<select id="isLikedInBoardNoByLog" parameterType="Like" resultType="int">
+		SELECT COUNT(*)
+		FROM likes
+		WHERE board_no=#{board_no} AND user_no=#{user_no}
+	</select>
+	
+	<insert id="insertLike" parameterType="Like">
+		INSERT INTO likes(board_no, user_no)
+		VALUES(#{board_no}, #{user_no})
+	</insert>
+	
+	<delete id="deleteLike" parameterType="Like">
+		DELETE FROM likes
+		WHERE board_no=#{board_no} AND user_no=#{user_no}
+	</delete>
 	
 </mapper>
