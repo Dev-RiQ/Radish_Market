@@ -12,6 +12,8 @@ public class Item {
 	private int item_status;
 	private int item_hits;
 
+	public Item() {}
+	
 	public Item(int item_no, int user_no, int item_category_no, String item_name, String item_content, int item_price,
 			String item_reg_datetime, String item_update_datetime, int item_status, int item_hits) {
 		super();
