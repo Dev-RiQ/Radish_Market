@@ -18,7 +18,8 @@ public class UpdateBoardController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
-		if(request.getParameter("board") == null) {
+		if(request.getParameter("board_title") == null) {
+			request.setAttribute("boardCategoryList", null);
 			request.setAttribute("board", BoardDAO.getInstance().getABoardByBoardNo(board_no));
 			return "board/boardUpdate";
 		}

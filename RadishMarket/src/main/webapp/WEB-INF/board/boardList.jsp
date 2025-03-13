@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
-<button onclick="/insertBoard.do">글쓰기</button>
+
+<button onclick="location.href='/insertBoard.do'">글쓰기</button>
+
 <c:forEach var="board" items="${ boardList }">
 		<div style="cursor:pointer;" onclick="location.href='/infoBoard.do?board_no=${ board.board_no }'">
 			${ board.board_no }

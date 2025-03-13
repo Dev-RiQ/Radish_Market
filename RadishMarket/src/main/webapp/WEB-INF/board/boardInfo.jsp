@@ -16,8 +16,8 @@
 </div>
 <button onclick="history.back()">뒤로가기</button>
 <c:if test="${ board.user_no == log }">
-	<button onclick="/deleteBoard.do?board_no=${ board.board_no }">삭제하기</button>
-	<button onclick="/updateBoard.do?board_no=${ board.board_no }">수정하기</button>
+	<button onclick="location.href='/deleteBoard.do?board_no=${ board.board_no }'">삭제하기</button>
+	<button onclick="location.href='/updateBoard.do?board_no=${ board.board_no }'">수정하기</button>
 </c:if>
 
 <%@ include file="../main/footer.jsp" %>
