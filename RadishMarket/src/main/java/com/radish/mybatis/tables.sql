@@ -131,13 +131,13 @@ DESC letters;
 SELECT * FROM letters;   
 
 -- 찜
-DROP TABLE zimms; 
-CREATE TABLE zimms (
+DROP TABLE zzims; 
+CREATE TABLE zzims (
 	user_no INT NOT NULL, -- [users] user_no 참조
     item_no INT NOT NULL -- FK
 	);
-DESC zimms;
-SELECT * FROM zimms;         
+DESC zzims;
+SELECT * FROM zzims;         
 
 -- 좋아요
 DROP TABLE likes; 
@@ -288,7 +288,7 @@ INSERT INTO letters (receive_user_no, send_user_no, item_no, letter_title, lette
 (2, 3, 2, '전자레인지 문의', '전자레인지 상태 더 자세히 알려주세요.', '2025-03-06 13:00:00', 0);
 
 -- 찜
-INSERT INTO zimms (user_no, item_no) VALUES
+INSERT INTO zzims (user_no, item_no) VALUES
 (2, 1),
 (3, 2),
 (1, 3);
@@ -415,9 +415,9 @@ INSERT INTO calendars (main_user_no, sub_user_no, meet_no, address, calendar_dir
     REFERENCES items(item_no) 
     ON DELETE CASCADE ON UPDATE CASCADE;
     
-    -- zimms FK
-		ALTER TABLE zimms
-    ADD CONSTRAINT fk_zimms_item_no 
+    -- zzims FK
+		ALTER TABLE zzims
+    ADD CONSTRAINT fk_zzims_item_no 
     FOREIGN KEY (item_no) 
     REFERENCES items(item_no) 
     ON DELETE CASCADE ON UPDATE CASCADE;
