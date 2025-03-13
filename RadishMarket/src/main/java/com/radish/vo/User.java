@@ -12,8 +12,8 @@ public class User {
 	private String user_img;
 	private String user_phone;
 	private String user_reg_datetime;
-	private double user_dir_x;
-	private double user_dir_y;
+	private String user_dir_x;
+	private String user_dir_y;
 	private String user_city;
 	private String user_gu;
 	private String user_dong;
@@ -31,7 +31,7 @@ public class User {
 
 	public User(String user_id, String user_pw, String user_name, int user_age, String user_email,
 			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
-			double user_dir_x, double user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
+			String user_dir_x, String user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
 		super();
 		this.user_id = user_id;
 		this.user_pw = user_pw;
@@ -139,19 +139,19 @@ public class User {
 		this.user_reg_datetime = user_reg_datetime;
 	}
 
-	public double getUser_dir_x() {
+	public String getUser_dir_x() {
 		return user_dir_x;
 	}
 
-	public void setUser_dir_x(double user_dir_x) {
+	public void setUser_dir_x(String user_dir_x) {
 		this.user_dir_x = user_dir_x;
 	}
 
-	public double getUser_dir_y() {
+	public String getUser_dir_y() {
 		return user_dir_y;
 	}
 
-	public void setUser_dir_y(double user_dir_y) {
+	public void setUser_dir_y(String user_dir_y) {
 		this.user_dir_y = user_dir_y;
 	}
 

@@ -27,8 +27,8 @@ public class InsertUserController implements Controller {
 		String user_img = request.getParameter("user_img");
 		String user_phone = request.getParameter("user_phone");
 		String user_reg_datetime = DateUtil.getInstance().getRegDatetime();
-		double user_dir_x = Double.parseDouble(request.getParameter("user_dir_x"));
-		double user_dir_y = Double.parseDouble(request.getParameter("user_dir_y"));
+		String user_dir_x = request.getParameter("user_dir_x");
+		String user_dir_y = request.getParameter("user_dir_y");
 		String user_city = request.getParameter("user_city");
 		String user_gu = request.getParameter("user_gu");
 		String user_dong = request.getParameter("user_dong");
