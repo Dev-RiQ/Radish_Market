@@ -6,14 +6,14 @@ public class Calendar {
 	private int sub_user_no;
 	private int meet_no;
 	private String address;
-	private int calendar_dir_x;
-	private int calendar_dir_y;
+	private double calendar_dir_x;
+	private double calendar_dir_y;
 	private String calendar_datetime;
 	private String calendar_title;
 	private String calendar_content;
 
 	public Calendar(int calendar_no, int main_user_no, int sub_user_no, int meet_no, String address,
-			int calendar_dir_x, int calendar_dir_y, String calendar_datetime, String calendar_title,
+			double calendar_dir_x, double calendar_dir_y, String calendar_datetime, String calendar_title,
 			String calendar_content) {
 		super();
 		this.calendar_no = calendar_no;
@@ -68,19 +68,19 @@ public class Calendar {
 		this.address = address;
 	}
 
-	public int getCalendar_dir_x() {
+	public double getCalendar_dir_x() {
 		return calendar_dir_x;
 	}
 
-	public void setCalendar_dir_x(int calendar_dir_x) {
+	public void setCalendar_dir_x(double calendar_dir_x) {
 		this.calendar_dir_x = calendar_dir_x;
 	}
 
-	public int getCalendar_dir_y() {
+	public double getCalendar_dir_y() {
 		return calendar_dir_y;
 	}
 
-	public void setCalendar_dir_y(int calendar_dir_y) {
+	public void setCalendar_dir_y(double calendar_dir_y) {
 		this.calendar_dir_y = calendar_dir_y;
 	}
 
