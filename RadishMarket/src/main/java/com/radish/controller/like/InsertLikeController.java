@@ -2,7 +2,7 @@ package com.radish.controller.like;
 
 import java.io.IOException;
 
-import com.radish.dao.BoardDAO;
+import com.radish.dao.LikeDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Like;
@@ -21,7 +21,7 @@ public class InsertLikeController implements Controller {
 		
 		Like like = new Like(board_no, user_no);
 		
-		if(BoardDAO.getInstance().insertLike(like))
+		if(LikeDAO.getInstance().insertLike(like))
 			AlertUtil.getInstance().goUrlWithAlert(response, "좋아요++", "infoBoard.do?board_no="+board_no);
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 좋아요에 실패했습니다.\\n다시 시도해주세요.");

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.radish.dao.BoardDAO;
 import com.radish.dao.CommentDAO;
+import com.radish.dao.LikeDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Board;
@@ -29,7 +30,7 @@ public class ListBoardController implements Controller {
 			request.setAttribute("hasNext", true);
 		List<Board> list = BoardDAO.getInstance().getBoardListByNonMeetNo(start);
 		request.setAttribute("boardList", list);
-		request.setAttribute("likeList", BoardDAO.getInstance().getLikeListByBoardList(list));
+		request.setAttribute("likeList", LikeDAO.getInstance().getLikeListByBoardList(list));
 		request.setAttribute("commentList", CommentDAO.getInstance().getCommentListByBoardList(list));
 		return "board/boardList";
 	}
