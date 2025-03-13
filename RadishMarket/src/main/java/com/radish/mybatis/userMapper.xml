@@ -3,8 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.userMapper">
+
 	<insert id="userInsert" parameterType="User">
 		INSERT INTO users (user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_city, user_gu, user_dong, user_deg)
 		VALUES(#{user_id}, #{user_pw}, #{user_name}, #{user_age}, #{user_email}, #{user_nickname}, #{user_address}, #{user_img}, #{user_phone}, #{user_reg_datetime}, #{user_dir_x}, #{user_dir_y}, #{user_city}, #{user_gu}, #{user_dong}, #{user_deg})
 	</insert>
+	
+	<update id="userUpdate" parameterType="User">
+		UPDATE users
+		SET user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_nickname=#{user_nickname}, user_address=#{user_address}, user_img=#{user_img}, user_phone=#{user_phone}, user_dir_x=#{user_dir_x}, user_dir_y=#{user_dir_y}, user_city=#{user_city}, user_gu=#{user_gu}, user_dong=#{user_dong}
+		WHERE user_no=#{user_no}
+	</update>
+	
+	<delete id="removeAUser" parameterType="int">
+		DELETE FROM users
+		WHERE user_no=#{log}
+	</delete>	
+	
+	<select id="isLoginSuccess" parameterType="User" resultType="int">
+		SELECT user_no
+		FROM users
+		WHERE user_id=#{user_id} AND user_pw=#{user_pw}
+	</select>
+	
+	<select id="getAUserByLog" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{log}
+	</select>
+	
 </mapper>

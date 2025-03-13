@@ -19,17 +19,15 @@ public class FrontController extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getRequestURI();
-		String ctx = request.getContextPath();
-		String command = url.substring(ctx.length());
 		
 		Controller controller = null;
 		HandlerMapping mapping = new HandlerMapping();
-		controller = mapping.getController(command);
+		controller = mapping.getController(url);
 		String nextPage = controller.requestHandler(request, response);
 		
 		if(nextPage != null) {
 			if(nextPage.indexOf("redirect:") != -1)
-				response.sendRedirect(ctx + "/" + nextPage.split(":")[1] + ".do");
+				response.sendRedirect("/" + nextPage.split(":")[1] + ".do");
 			else {
 				request.setAttribute("section", ViewResolver.makeView(nextPage));
 				request.getRequestDispatcher(ViewResolver.makeView("main/main"))

@@ -19,16 +19,10 @@ public class User {
 	private String user_dong;
 	private int user_deg;
 
-	@Override
-	public String toString() {
-		return "User [user_no=" + user_no + ",\n user_id=" + user_id + ",\n user_pw=" + user_pw + ",\n user_name=" + user_name
-				+ ",\n user_age=" + user_age + ",\n user_email=" + user_email + ",\n user_nickname=" + user_nickname
-				+ ",\n user_address=" + user_address + ",\n user_img=" + user_img + ",\n user_phone=" + user_phone
-				+ ",\n user_reg_datetime=" + user_reg_datetime + ",\n user_dir_x=" + user_dir_x + ",\n user_dir_y="
-				+ user_dir_y + ",\n user_city=" + user_city + ",\n user_gu=" + user_gu + ",\n user_dong=" + user_dong
-				+ ",\n user_deg=" + user_deg + "]";
+	public User(String user_id, String user_pw) {
+		this.user_id = user_id;
+		this.user_pw = user_pw;
 	}
-
 	public User(String user_id, String user_pw, String user_name, int user_age, String user_email,
 			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
 			String user_dir_x, String user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
@@ -50,7 +44,46 @@ public class User {
 		this.user_dong = user_dong;
 		this.user_deg = user_deg;
 	}
-
+	public User(int log, String user_pw, String user_name, String user_email, String user_nickname,
+			String user_address, String user_img, String user_phone, String user_dir_x, String user_dir_y,
+			String user_city, String user_gu, String user_dong) {
+		this.user_no = log;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.user_email = user_email;
+		this.user_nickname = user_nickname;
+		this.user_address = user_address;
+		this.user_img = user_img;
+		this.user_phone = user_phone;
+		this.user_dir_x = user_dir_x;
+		this.user_dir_y = user_dir_y;
+		this.user_city = user_city;
+		this.user_gu = user_gu;
+		this.user_dong = user_dong;
+	}
+	
+	public User(int user_no, String user_id, String user_pw, String user_name, int user_age, String user_email,
+			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
+			String user_dir_x, String user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {
+		super();
+		this.user_no = user_no;
+		this.user_id = user_id;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.user_age = user_age;
+		this.user_email = user_email;
+		this.user_nickname = user_nickname;
+		this.user_address = user_address;
+		this.user_img = user_img;
+		this.user_phone = user_phone;
+		this.user_reg_datetime = user_reg_datetime;
+		this.user_dir_x = user_dir_x;
+		this.user_dir_y = user_dir_y;
+		this.user_city = user_city;
+		this.user_gu = user_gu;
+		this.user_dong = user_dong;
+		this.user_deg = user_deg;
+	}
 	public int getUser_no() {
 		return user_no;
 	}

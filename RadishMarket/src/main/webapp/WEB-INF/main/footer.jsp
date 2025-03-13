@@ -4,5 +4,5 @@
 	</footer>
 	
 </body>
-<script src="${ctx}/js/main.js"></script>
+<script src="../../js/main.js"></script>
 </html>

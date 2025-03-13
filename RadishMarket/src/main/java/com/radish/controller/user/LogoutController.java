@@ -3,6 +3,7 @@ package com.radish.controller.user;
 import java.io.IOException;
 
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +14,8 @@ public class LogoutController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		request.getSession().removeAttribute("log");
+		AlertUtil.getInstance().goHomeWithAlert(response, "로그아웃 성공 !");
 		return null;
 	}
 

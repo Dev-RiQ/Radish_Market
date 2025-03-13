@@ -3,7 +3,6 @@ package com.radish.util;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class AlertUtil {
@@ -18,11 +17,10 @@ public class AlertUtil {
 		return instance;
 	}
 
-	public void goHomeWithAlert(HttpServletResponse response, HttpServletRequest request, String msg)
+	public void goHomeWithAlert(HttpServletResponse response, String msg)
 			throws IOException {
-		String ctx = request.getContextPath();
-		String alertMsg = "<script>alert('%s'); location.href='%s/%s'</script>";
-		go(response, String.format(alertMsg, msg, ctx, "index.jsp"));
+		String alertMsg = "<script>alert('%s'); location.href='/%s'</script>";
+		go(response, String.format(alertMsg, msg, "index.jsp"));
 	}
 
 	public void goBackWithAlert(HttpServletResponse response, String msg) throws IOException {
@@ -30,11 +28,10 @@ public class AlertUtil {
 		go(response, String.format(alertMsg, msg));
 	}
 
-	public void goUrlWithAlert(HttpServletResponse response, HttpServletRequest request, String msg, String url)
+	public void goUrlWithAlert(HttpServletResponse response, String msg, String url)
 			throws IOException {
-		String ctx = request.getContextPath();
-		String alertMsg = "<script>alert('%s'); location.href='%s/%s'</script>";
-		go(response, String.format(alertMsg, msg, ctx, url));
+		String alertMsg = "<script>alert('%s'); location.href='/%s'</script>";
+		go(response, String.format(alertMsg, msg, url));
 	}
 
 	private void go(HttpServletResponse response, String msg) throws IOException {

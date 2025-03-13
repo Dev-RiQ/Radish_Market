@@ -27,3 +27,8 @@ function execDaumPostcode() {
         }
     }).open();
 }
+function deleteUserDoubleCheck(){
+	let check = confirm('진짜 지움?')
+	if(check)
+		location.href=`/RadishMarket/deleteUser.do`
+}

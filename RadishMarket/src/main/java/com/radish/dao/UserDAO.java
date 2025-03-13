@@ -27,4 +27,50 @@ public class UserDAO {
 		}
 		return action != 0;
 	}
+	
+	public int isLoginSuccess(String user_id, String user_pw) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.selectOne("isLoginSuccess", new User(user_id,user_pw));
+		} catch (Exception e) {
+			System.out.println("isLoginSuccess fail");
+			e.printStackTrace();
+		}
+		return action;
+	}
+	
+	public User getAUserByLog(int log) {
+		User action = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.selectOne("getAUserByLog", log);
+		} catch (Exception e) {
+			System.out.println("getAUserByLog fail");
+			e.printStackTrace();
+		}
+		return action;
+	}
+	
+	public boolean userUpdate(User user) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.update("userUpdate", user);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("userUpdate fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	
+	public boolean removeAUser(int log) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.delete("removeAUser", log);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("removeAUser fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }

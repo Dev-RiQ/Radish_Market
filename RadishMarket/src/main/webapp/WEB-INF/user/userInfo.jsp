@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>test</title>
-</head>
-<body>
 <form action="/updateUser.do" method="post">
 	<input type="text" name="user_id" id="user_id" value="${ user.user_id }"  readonly><br>
 	<input type="text" name="user_pw" id="user_pw" value="${ user.user_pw }" ><br>
@@ -33,16 +25,12 @@
 	<input type="number" name="user_phone" id="user_phone" value="${ user.user_phone.split('-')[1] }">
 	<input type="number" name="user_phone" id="user_phone" value="${ user.user_phone.split('-')[2] }"><br>
 	<input type="text" name="user_address" id="user_address" value="${ user.user_address }"  readonly><br>
-	<input type="button" onclick="execDaumPostcode()" value="주소 변경"><br>
 	<input type="hidden" name="user_city" id="user_city" value="${ user.user_city }">
 	<input type="hidden" name="user_gu" id="user_gu" value="${ user.user_gu }" >
 	<input type="hidden" name="user_dong" id="user_dong" value="${ user.user_dong }" >
 	<input type="hidden" name="user_dir_x" id="user_dir_x" value="${ user.user_dir_x }" >
 	<input type="hidden" name="user_dir_y" id="user_dir_y" value="${ user.user_dir_y }" >
-	<button>가입</button>
 </form>
-</body>
-<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<button onclick="location.href='/userUpdate.do'">수정하기</button>
+<button onclick="deleteUserDoubleCheck()">탈퇴하기</button>
 <script src="../../js/user.js"></script>
-</html>
