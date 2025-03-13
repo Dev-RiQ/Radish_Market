@@ -30,7 +30,7 @@ public class UserDAO {
 		}
 		return action != 0;
 	}
-	
+
 	public int isLoginSuccess(String user_id, String user_pw) {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
@@ -83,7 +83,7 @@ public class UserDAO {
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			for(Item item : itemList) {
 				user_no = item.getUser_no();
-				userDongList.add(session.selectOne("getLimitUserDongByItemList", item));
+				userDongList.add(session.selectOne("getLimitUserDongByItemList", user_no));
 			}
 		} catch (Exception e) {
 			System.out.println("getLimitUserDongByItemList fail");

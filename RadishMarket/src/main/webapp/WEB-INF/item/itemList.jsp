@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%-- <%@ include file="../main/header.jsp"%> --%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+ <%@ include file="../main/header.jsp"%>
 <div class="item-list-container">
 	<c:forEach var="item" items="${itemList}" varStatus="loop">
 		<div class="item-box">
@@ -28,5 +26,5 @@
 	</c:if>
 </div>
 
-<%-- <%@ include file="../main/footer.jsp"%> --%>
+ <%@ include file="../main/footer.jsp"%>
 
