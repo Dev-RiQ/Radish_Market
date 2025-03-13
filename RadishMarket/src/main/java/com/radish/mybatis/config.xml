@@ -7,7 +7,7 @@
   <typeAliases>
   	<typeAlias type="com.radish.vo.User" alias="User"/>
   	<typeAlias type="com.radish.vo.Item" alias="Item"/>
-  	<typeAlias type="com.radish.vo.Item" alias="ItemImg"/>
+  	<typeAlias type="com.radish.vo.ItemImg" alias="ItemImg"/>
   	<typeAlias type="com.radish.vo.ItemCategory" alias="ItemCategory"/>
   	<typeAlias type="com.radish.vo.Board" alias="Board"/>
   	<typeAlias type="com.radish.vo.BoardCategory" alias="BoardCategory"/>
@@ -46,5 +46,13 @@
     <mapper resource="com/radish/mybatis/meetJoinMapper.xml"/>
     <mapper resource="com/radish/mybatis/alarmMapper.xml"/>
     <mapper resource="com/radish/mybatis/calendarMapper.xml"/>
+    <mapper resource="com/radish/mybatis/alarmCategoryMapper.xml"/>
+    <mapper resource="com/radish/mybatis/boardCategoryMapper.xml"/>
+    <mapper resource="com/radish/mybatis/itemCategoryMapper.xml"/>
+    <mapper resource="com/radish/mybatis/itemImgMapper.xml"/>
+    <mapper resource="com/radish/mybatis/likeMapper.xml"/>
+    <mapper resource="com/radish/mybatis/meetCategoryMapper.xml"/>
+    <mapper resource="com/radish/mybatis/meetUserMapper.xml"/>
+    <mapper resource="com/radish/mybatis/zzimMapper.xml"/>
   </mappers>
 </configuration>
