@@ -52,4 +52,9 @@
 		WHERE board_no=#{board_no}
 	</select>
 	
+	<select id="getAllBoardCategoryList" resultType="BoardCategory">
+		SELECT *
+		FROM board_category
+	</select>
+	
 </mapper>

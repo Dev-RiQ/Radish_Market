@@ -18,7 +18,7 @@ public class InsertBoardController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getParameter("board_title") == null) {
-			request.setAttribute("boardCategoryList", null);
+			request.setAttribute("boardCategoryList", BoardDAO.getInstance().getAllBoardCategoryList());
 			return "board/boardInsert";
 		}
 		

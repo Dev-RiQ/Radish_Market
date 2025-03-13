@@ -7,7 +7,7 @@
 	${ board.user_no }<br>
 	<select name="board_category_no" id="board_category_no">
 		<c:forEach var="category" items="${ boardCategoryList }">
-			<option value="${ board_category_no }" ${ board_category_no == board.board_category_no ? 'selected' : '' }>${ board_category_name }</option>
+			<option value="${ category.board_category_no }" ${ category.board_category_no == board.board_category_no ? 'selected' : '' }>${ category.board_category_name }</option>
 		</c:forEach>
 	</select>
 	${ board.meet_no }<br>
