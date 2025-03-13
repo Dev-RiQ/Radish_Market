@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.userMapper">
 	<insert id="userInsert" parameterType="User">
-		INSERT INTO users (user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_user_city, user_user_gu, user_user_dong, user_deg)
-		VALUES(#{user_id}, #{user_pw}, #{user_name}, #{user_age}, #{user_email}, #{user_nickname}, #{user_address}, #{user_img}, #{user_phone}, #{user_reg_datetime}, #{user_dir_x}, #{user_dir_y}, #{user_user_city}, #{user_user_gu}, #{user_user_dong}, #{user_deg})
+		INSERT INTO users (user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_city, user_gu, user_dong, user_deg)
+		VALUES(#{user_id}, #{user_pw}, #{user_name}, #{user_age}, #{user_email}, #{user_nickname}, #{user_address}, #{user_img}, #{user_phone}, #{user_reg_datetime}, #{user_dir_x}, #{user_dir_y}, #{user_city}, #{user_gu}, #{user_dong}, #{user_deg})
 	</insert>
 </mapper>

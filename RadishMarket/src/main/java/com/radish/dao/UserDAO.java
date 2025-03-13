@@ -20,6 +20,7 @@ public class UserDAO {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			action = session.insert("userInsert", user);
+			session.commit();
 		} catch (Exception e) {
 			System.out.println("userInsert fail");
 			e.printStackTrace();
