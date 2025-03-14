@@ -1,6 +1,7 @@
 package com.radish.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -90,5 +91,20 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return userDongList;
+	}
+	
+	public List<String> getHotItemSortUserNicknameList(List<Item> hotItemSortList) {
+		List<String> list = new ArrayList<>();
+		int user_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Item hotItem : hotItemSortList) {
+				user_no = hotItem.getUser_no();
+				list.add(session.selectOne("getHotItemSortUserNicknameList", user_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getHotItemSortUserNicknameList fail");
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

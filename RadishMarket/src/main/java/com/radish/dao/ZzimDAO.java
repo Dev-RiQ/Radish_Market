@@ -1,10 +1,50 @@
 package com.radish.dao;
 
+import org.apache.ibatis.session.SqlSession;
+
+import com.radish.util.DBUtil;
+import com.radish.vo.Like;
+import com.radish.vo.Zzim;
+
 public class ZzimDAO {
 	private static ZzimDAO instance;
 	private ZzimDAO() {}
 	public static ZzimDAO getInstance() {
 		if(instance == null) instance = new ZzimDAO();
 		return instance;
+	}
+	
+	public boolean insertZzim(Zzim zzim) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.insert("insertZzim", zzim);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("insertZzim fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	
+	public boolean deleteZzim(Zzim zzim) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.delete("deleteZzim", zzim);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteZzim fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public int getCountZzimByItemNo(int item_no) {
+		int zzimCount = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			zzimCount = session.selectOne("getCountZzimByItemNo", item_no);
+		} catch (Exception e) {
+			System.out.println("getCountZzimByItemNo fail");
+			e.printStackTrace();
+		}
+		return zzimCount;
 	}
 }

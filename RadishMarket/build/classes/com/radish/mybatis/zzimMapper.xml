@@ -3,4 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.zzimMapper">
+
+	<insert id="insertZzim" parameterType="Zzim">
+		INSERT INTO zzims(item_no, user_no)
+		VALUES(#{item_no}, #{user_no})
+	</insert>
+	
+	<delete id="" parameterType="Zzim">
+		DELETE FROM zzims
+		WHERE item_no=#{item_no} AND user_no=#{user_no}
+	</delete>
+	
+	<select id="getCountZzimByItemNo" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM zzims
+		WHERE item_no=#{item_no}
+	</select>
+	
 </mapper>

@@ -16,4 +16,39 @@
 		LIMIT #{limit} OFFSET #{offset};
 	</select>
 	
+	<select id="getAItemByItemNo" parameterType="int" resultType="Item">
+		SELECT * 
+		FROM items 
+		WHERE item_no=#{item_no}
+	</select>
+	
+	<select id="getItemHits" parameterType="int" resultType="int">
+		SELECT item_hits
+		FROM items
+		WHERE item_no=#{item_no}
+	</select>
+	
+	<update id="itemHitsUp" parameterType="int">
+		UPDATE items
+		SET item_hits=#{item_hits}
+		WHERE item_no=#{item_no}
+	</update>
+	
+	<select id="getAuserAllItemListByUserNo" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getAllItemList" resultType="Item">
+		SELECT *
+		FROM items
+	</select>
+	
+	<select id="getHotItemSortList" resultType="Item">
+		SELECT *
+		FROM items
+		ORDER BY item_hits DESC
+	</select>
+	
 </mapper>

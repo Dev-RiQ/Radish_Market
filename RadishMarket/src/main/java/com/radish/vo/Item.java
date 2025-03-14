@@ -28,6 +28,11 @@ public class Item {
 		this.item_status = item_status;
 		this.item_hits = item_hits;
 	}
+	
+	public Item(int item_no, int item_hits) {
+		this.item_no = item_no;
+		this.item_hits = item_hits;
+	}
 
 	public int getItem_no() {
 		return item_no;

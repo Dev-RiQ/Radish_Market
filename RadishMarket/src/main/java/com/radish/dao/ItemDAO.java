@@ -2,6 +2,7 @@ package com.radish.dao;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -44,5 +45,60 @@ public class ItemDAO {
 			e.printStackTrace();
 		}
 		return itemList;
+	}
+
+	public Item getAItemByItemNo(int item_no) {
+		Item item = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			item = session.selectOne("getAItemByItemNo", item_no);
+		} catch (Exception e) {
+			System.out.println("getAItemByItemNo fail");
+			e.printStackTrace();
+		}
+		return item;
+	}
+	
+	public void itemHitsUp(int item_no) {
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			int item_hits = session.selectOne("getItemHits", item_no);
+			session.update("itemHitsUp", new Item(item_no, item_hits + 1));
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("itemHitsUp fail");
+			e.printStackTrace();
+		}
+	}
+
+	public List<Item> getAuserAllItemListByUserNo(int user_no) {
+		List<Item> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getAuserAllItemListByUserNo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAuserAllItemListByUserNo fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Item> getAllItemList() {
+		List<Item> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getAllItemList");
+		} catch (Exception e) {
+			System.out.println("getAllItemList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Item> getHotItemSortList() {
+		List<Item> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getHotItemSortList");
+		} catch (Exception e) {
+			System.out.println("getHotItemSortList fail");
+			e.printStackTrace();
+		}
+		return list;
 	}
 }

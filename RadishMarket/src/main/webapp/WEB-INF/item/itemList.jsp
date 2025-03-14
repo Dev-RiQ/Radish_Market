@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
- <%@ include file="../main/header.jsp"%>
+<%@ include file="../main/header.jsp"%>
 <div class="item-list-container">
-	<c:forEach var="item" items="${itemList}" varStatus="loop">
-		<div class="item-box">
+	<c:forEach var="i" begin="0" end="${itemList.size()-1}">
+		<div class="item-box" style="cursor: pointer;"
+			onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
 			<div class="item-img">
 				<img alt="" src="">이미지가 들어가요
 			</div>
-			<div class="item-body" onclick="">
-				<p>${item.item_name}</p>
-				<p>${item.item_price}원</p>
-				<p>${userDongList.get(loop.index)}</p>
+			<div class="item-body">
+				<p>${itemList.get(i).item_name}</p>
+				<p>${itemList.get(i).item_price}원</p>
+				<p>${userDongList.get(i)}</p>
+				<hr>
 			</div>
 		</div>
 	</c:forEach>
@@ -26,5 +28,5 @@
 	</c:if>
 </div>
 
- <%@ include file="../main/footer.jsp"%>
+<%@ include file="../main/footer.jsp"%>
 

@@ -38,4 +38,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getHotItemSortUserNicknameList" parameterType="int" resultType="String">
+		SELECT user_nickname
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

@@ -19,8 +19,6 @@ public class ListItemController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-//		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		System.out.println("뭐지?");
 		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
 
 		int limit = ITEMS_PER_PAGE;
@@ -29,7 +27,6 @@ public class ListItemController implements Controller {
 			limit = itemTotalCnt;
 		}
 
-		System.out.println("뭐임?");
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
 
 		ArrayList<Item> itemList = (ArrayList) ItemDAO.getInstance().getLimitItemListByLimitWithOffset(limit, offset);

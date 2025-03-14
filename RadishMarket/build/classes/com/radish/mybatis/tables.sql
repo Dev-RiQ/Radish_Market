@@ -137,7 +137,7 @@ CREATE TABLE zzims (
     item_no INT NOT NULL -- FK
 	);
 DESC zzims;
-SELECT * FROM zzims;         
+SELECT * FROM zzims;   
 
 -- 좋아요
 DROP TABLE likes; 
