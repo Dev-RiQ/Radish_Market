@@ -2,7 +2,13 @@ package com.radish.controller.meet;
 
 import java.io.IOException;
 
+import com.radish.dao.MeetCategoryDAO;
+import com.radish.dao.MeetDAO;
+import com.radish.dao.MeetUserDAO;
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
+import com.radish.vo.Meet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +19,30 @@ public class InsertMeetController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if(request.getParameter("meet_title") == null) {
+			request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getAllMeetCategoryList());
+			return "meet/meetInsert";
+		}
+		int host_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		String meet_title = request.getParameter("meet_title");
+		String meet_content = request.getParameter("meet_content");
+		int meet_category = Integer.parseInt(request.getParameter("meet_category_no"));
+		int age_min = Integer.parseInt(request.getParameter("age_min"));
+		int age_max = Integer.parseInt(request.getParameter("age_max"));
+		String meet_img = request.getParameter("meet_img");
 		
+		String meet_dong = UserDAO.getInstance().getAUserByLog(host_user_no).getUser_dong();
+		int meet_user_count = 1;
+		String meet_category_name = MeetCategoryDAO.getInstance().getAMeetCategoryName(meet_category);
+		
+		Meet meet = new Meet(host_user_no, meet_title, meet_content, meet_category, age_min, age_max, meet_img);
+		if(MeetDAO.getInstance().insertMeet(meet)) {
+			int meet_no = MeetDAO.getInstance().getLastMeetNo();
+			MeetUserDAO.getInstance().insertMeetUser(meet_no, host_user_no);
+			AlertUtil.getInstance().goUrlWithAlert(response, "모임 생성 완료", String.format("infoMeet.do?meet_no=%s&meet_dong=%s&meet_user_count=%s&meet_category_name=%s",meet_no,meet_dong,meet_user_count,meet_category_name));
+		}
+		else
+			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 모임 생성에 실패했습니다.\\n다시 시도해주세요.");
 		return null;
 	}
 

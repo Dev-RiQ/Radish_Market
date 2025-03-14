@@ -4,7 +4,10 @@
 
 <div>
 	${ board.board_no }<br>
-	${ board.user_no }<br>
+	${ user.user_img }<br>
+	${ user.user_nickname }<br>
+	${ user.user_dong }<br>
+	${ user.user_deg }<br>
 	${ board.board_category_no }<br>
 	${ board.meet_no }<br>
 	${ board.board_title }<br>
@@ -15,10 +18,17 @@
 	${ board.board_hits }<br>
 	<a href="/${ isLike == 0 ? 'insert' : 'delete' }Like.do?board_no=${ board.board_no }">좋아요 ${ likeCount }<br></a>
 	댓글<br>
-	<c:forEach var="comment" items="${commentList}">
-		${ comment.user_no }<br>
-		${ comment.comment_content }<br>
-		${ comment.comment_reg_datetime }<br>
+	<c:forEach var="i" begin="1" end="${commentList.size() - 1}">
+		${ commentNickname.get(i) }<br>
+		${ commentList.get(i).comment_content }<br>
+		${ commentList.get(i).comment_reg_datetime }<br>
+		<c:if test="${ log == commentList.get(i).user_no }">
+			<button onclick="location.href">수정</button>
+		</c:if>
+		<c:if test="${ log == commentList.get(i).user_no || log == board.user_no }">
+			<button onclick="location.href='/deleteComment.do?user_no?${commentList.get(i).user_no}'">삭제</button>
+		</c:if>
+		<br>
 	</c:forEach>
 	댓글달기<br>
 	<form action="/insertComment.do?board_no=${ board.board_no }" method="post">

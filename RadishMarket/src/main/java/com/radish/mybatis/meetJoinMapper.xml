@@ -3,4 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.meetJoinMapper">
+
+	<insert id="insertMeetJoin" parameterType="MeetJoin">
+		INSERT INTO meet_join(meet_no, user_no, meet_join_content)
+		VALUES (#{meet_no}, #{user_no}, #{meet_join_content})
+	</insert>
+	
+	<delete id="deleteMeetJoin" parameterType="int">
+		DELETE FROM meet_join
+		WHERE meet_no=#{meet_no} AND user_no=#{user_no}
+	</delete>
+	
+	<select id="hasMeetJoin" parameterType="MeetJoin" resultType="int">
+		SELECT meet_join_no
+		FROM meet_join
+		WHERE meet_no=#{meet_no} AND user_no=#{user_no}
+	</select>
+	
+	<select id="getMeetJoinListByMeetNo" parameterType="int" resultType="MeetJoin">
+		SELECT *
+		FROM meet_join
+		WHERE meet_no=#{meet_no}
+	</select>
+	
 </mapper>

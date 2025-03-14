@@ -60,9 +60,10 @@
 		WHERE board_no=#{board_no}
 	</select>
 	
-	<select id="getAllBoardCategoryList" resultType="BoardCategory">
+	<select id="getBoardListByMeetNo" parameterType="int" resultType="Board">
 		SELECT *
-		FROM board_category
+		FROM boards
+		WHERE meet_no=#{meet_no}
 	</select>
 	
 </mapper>

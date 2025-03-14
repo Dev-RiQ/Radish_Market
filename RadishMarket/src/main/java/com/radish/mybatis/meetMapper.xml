@@ -3,4 +3,47 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.meetMapper">
+	
+	<select id="getLimitedMeetList" parameterType="int" resultType="Meet">
+		SELECT *
+		FROM meets
+		ORDER BY meet_no DESC
+		LIMIT #{start},30
+	</select>
+	
+	<select id="getCountMeetList" resultType="int">
+		SELECT COUNT(*)
+		FROM meets
+		LIMIT #{start},30
+	</select>
+	
+	<select id="getAMeetByMeetNo" parameterType="int" resultType="Meet">
+		SELECT *
+		FROM meets
+		WHERE meet_no=#{meet_no}
+	</select>
+	
+	<select id="getLastMeetNo" resultType="int">
+		SELECT meet_no
+		FROM meets
+		ORDER BY meet_no DESC
+		LIMIT 1
+	</select>
+	
+	<delete id="deleteMeet" parameterType="int">
+		DELETE FROM meets
+		WHERE meet_no=#{meet_no}
+	</delete>
+	
+	<insert id="insertMeet" parameterType="Meet">
+		INSERT INTO meets(host_user_no, meet_title, meet_content, meet_category, age_min, age_max, meet_img)
+		VALUES (#{host_user_no}, #{meet_title}, #{meet_content}, #{meet_category}, #{age_min}, #{age_max}, #{meet_img})
+	</insert>
+	
+	<update id="updateMeet" parameterType="Meet">
+		UPDATE meets
+		SET host_user_no=#{host_user_no}, meet_title=#{meet_title}, meet_content=#{meet_content}, meet_category=#{meet_category}, age_min=#{age_min}, age_max=#{age_max}, meet_img=#{meet_img}
+		WHERE meet_no=#{meet_no}
+	</update>
+	
 </mapper>

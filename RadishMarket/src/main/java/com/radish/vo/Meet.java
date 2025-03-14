@@ -10,6 +10,17 @@ public class Meet {
 	private int age_max;
 	private String meet_img;
 
+	public Meet(int host_user_no, String meet_title, String meet_content, int meet_category, int age_min,
+			int age_max, String meet_img) {
+		super();
+		this.host_user_no = host_user_no;
+		this.meet_title = meet_title;
+		this.meet_content = meet_content;
+		this.meet_category = meet_category;
+		this.age_min = age_min;
+		this.age_max = age_max;
+		this.meet_img = meet_img;
+	}
 	public Meet(int meet_no, int host_user_no, String meet_title, String meet_content, int meet_category, int age_min,
 			int age_max, String meet_img) {
 		super();

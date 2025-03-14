@@ -39,6 +39,18 @@
 	</select>
 	
 	<select id="getHotItemSortUserNicknameList" parameterType="int" resultType="String">
+        SELECT user_nickname
+        FROM users
+        WHERE user_no=#{user_no}
+	</select>
+
+	<select id="getAUserPortionInfo" parameterType="int" resultType="User">
+		SELECT user_nickname, user_img, user_dong, user_deg
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getCommentedUserNickname" parameterType="int" resultType="String">
 		SELECT user_nickname
 		FROM users
 		WHERE user_no=#{user_no}
@@ -51,7 +63,13 @@
 	</select>
 	
 	<select id="getAUserNicnameByUserNo" parameterType="int" resultType="String">
-		SELECT user_nickname
+        SELECT user_nickname
+        FROM users
+        WHERE user_no=#{user_no}
+	</select>
+
+	<select id="getMeetUserList" parameterType="int" resultType="User">
+		SELECT *
 		FROM users
 		WHERE user_no=#{user_no}
 	</select>
