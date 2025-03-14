@@ -3,4 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.meetUserMapper">
+
+	<select id="getUserCountListByMeetNo" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM meet_users
+		WHERE meet_no=#{meet_no}
+	</select>
+	
+	<select id="hasUser" parameterType="MeetUser" resultType="MeetUser">
+		SELECT *
+		FROM meet_users
+		WHERE meet_no=#{meet_no} AND user_no=#{user_no}
+	</select>
+	
+	<select id="getUserNoListByMeetNo" parameterType="int" resultType="int">
+		SELECT user_no
+		FROM meet_users
+		WHERE meet_no=#{meet_no}
+	</select>
+	
+	<insert id="insertMeetUser" parameterType="MeetUser">
+		INSERT INTO meet_users(meet_no, user_no)
+		VALUES (#{meet_no}, #{user_no})
+	</insert>
+	
+	<delete id="deleteMeetUser" parameterType="MeetUser">
+		DELETE FROM meet_users
+		WHERE meet_no=#{meet_no}, user_no=#{user_no}
+	</delete>
+	
 </mapper>

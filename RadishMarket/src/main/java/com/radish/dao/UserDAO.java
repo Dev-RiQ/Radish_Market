@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.radish.util.DBUtil;
 import com.radish.vo.Comment;
 import com.radish.vo.Item;
+import com.radish.vo.Meet;
 import com.radish.vo.User;
 
 public class UserDAO {
@@ -119,4 +120,32 @@ public class UserDAO {
 		}
 		return list;
 	}
+	
+	public List<String> getDongListByMeetHostUserNo(List<Meet> meetList) {
+		List<String> list = new ArrayList<>();
+		int user_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Meet meet : meetList) {
+				user_no = meet.getHost_user_no();
+				list.add(session.selectOne("getLimitUserDongByItemList", user_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getLimitUserDongByItemList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<User> getMeetUserList(List<Integer> meetUserList) {
+		List<User> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(int user_no : meetUserList) {
+				list.add(session.selectOne("getMeetUserList", user_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getMeetUserList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

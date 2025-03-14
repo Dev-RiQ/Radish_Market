@@ -1,29 +1,29 @@
 package com.radish.vo;
 
 public class MeetCategory {
-	private int item_category_no;
-	private String item_category_name;
+	private int meet_category_no;
+	private String meet_category_name;
 
-	public MeetCategory(int item_category_no, String item_category_name) {
+	public MeetCategory(int meet_category_no, String meet_category_name) {
 		super();
-		this.item_category_no = item_category_no;
-		this.item_category_name = item_category_name;
+		this.meet_category_no = meet_category_no;
+		this.meet_category_name = meet_category_name;
 	}
 
-	public int getItem_category_no() {
-		return item_category_no;
+	public int getMeet_category_no() {
+		return meet_category_no;
 	}
 
-	public void setItem_category_no(int item_category_no) {
-		this.item_category_no = item_category_no;
+	public void setMeet_category_no(int meet_category_no) {
+		this.meet_category_no = meet_category_no;
 	}
 
-	public String getItem_category_name() {
-		return item_category_name;
+	public String getMeet_category_name() {
+		return meet_category_name;
 	}
 
-	public void setItem_category_name(String item_category_name) {
-		this.item_category_name = item_category_name;
+	public void setMeet_category_name(String meet_category_name) {
+		this.meet_category_name = meet_category_name;
 	}
 
 }

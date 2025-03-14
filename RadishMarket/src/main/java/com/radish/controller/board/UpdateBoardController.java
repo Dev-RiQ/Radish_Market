@@ -2,6 +2,7 @@ package com.radish.controller.board;
 
 import java.io.IOException;
 
+import com.radish.dao.BoardCategoryDAO;
 import com.radish.dao.BoardDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
@@ -19,7 +20,7 @@ public class UpdateBoardController implements Controller {
 			throws ServletException, IOException {
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		if(request.getParameter("board_title") == null) {
-			request.setAttribute("boardCategoryList", BoardDAO.getInstance().getAllBoardCategoryList());
+			request.setAttribute("boardCategoryList", BoardCategoryDAO.getInstance().getAllBoardCategoryList());
 			request.setAttribute("board", BoardDAO.getInstance().getABoardByBoardNo(board_no));
 			return "board/boardUpdate";
 		}

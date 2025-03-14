@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.vo.Board;
-import com.radish.vo.BoardCategory;
 
 public class BoardDAO {
 	private static BoardDAO instance;
@@ -92,16 +91,7 @@ public class BoardDAO {
 		}
 		return action != 0;
 	}
-	public List<BoardCategory> getAllBoardCategoryList() {
-		List<BoardCategory> list = null;
-		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("getAllBoardCategoryList");
-		} catch (Exception e) {
-			System.out.println("getAllBoardCategoryList fail");
-			e.printStackTrace();
-		}
-		return list;
-	}
+	
 	public boolean hasNextList(int start) {
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			start += 30;
@@ -112,6 +102,16 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public List<Board> getBoardListByMeetNo(int meet_no) {
+		List<Board> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getBoardListByMeetNo",meet_no);
+		} catch (Exception e) {
+			System.out.println("getBoardListByMeetNo fail");
+			e.printStackTrace();
+		}
+		return list;
 	}
 	
 }

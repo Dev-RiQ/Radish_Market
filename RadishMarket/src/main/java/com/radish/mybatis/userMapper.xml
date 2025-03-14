@@ -50,4 +50,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getMeetUserList" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>
