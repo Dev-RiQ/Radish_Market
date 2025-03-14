@@ -19,9 +19,9 @@ public class ListBoardController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		if(request.getSession().getAttribute("log") == null) {
-//			AlertUtil.getInstance().goUrlWithAlert(response, "로그인 후 이용 가능합니다.", "login.do");
-//		}
+		if(request.getSession().getAttribute("log") == null) {
+			AlertUtil.getInstance().goUrlWithAlert(response, "로그인 후 이용 가능합니다.", "login.do");
+		}
 		int start = 0;
 		if(request.getParameter("start") != null)
 			start = Integer.parseInt(request.getParameter("start"));

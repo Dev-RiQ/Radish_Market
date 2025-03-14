@@ -1,10 +1,12 @@
 package com.radish.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
+import com.radish.vo.Comment;
 import com.radish.vo.Item;
 import com.radish.vo.User;
 
@@ -90,5 +92,31 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return userDongList;
+	}
+	
+	public User getAUserPortionInfo(int user_no) {
+		User user = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			user = session.selectOne("getAUserPortionInfo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserPortionInfo fail");
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	public List<String> getCommentedUserNickname(List<Comment> commentList) {
+		List<String> list = new ArrayList<>();
+		int user_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Comment comment : commentList) {
+				user_no = comment.getUser_no();
+				list.add(session.selectOne("getCommentedUserNickname", user_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getCommentedUserNickname fail");
+			e.printStackTrace();
+		}
+		return list;
 	}
 }
