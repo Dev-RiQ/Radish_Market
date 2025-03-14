@@ -107,4 +107,24 @@ public class UserDAO {
 		}
 		return list;
 	}
+	public String getAUserDongByUserNo(int user_no) {
+		String user_dong = "";
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+				user_dong = session.selectOne("getAUserDongByUserNo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserDongByUserNo fail");
+			e.printStackTrace();
+		}
+		return user_dong;
+	}
+	public String getAUserNicnameByUserNo(int user_no) {
+		String user_nickname = "";
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			user_nickname = session.selectOne("getAUserNicnameByUserNo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserNicnameByUserNo fail");
+			e.printStackTrace();
+		}
+		return user_nickname;
+	}
 }

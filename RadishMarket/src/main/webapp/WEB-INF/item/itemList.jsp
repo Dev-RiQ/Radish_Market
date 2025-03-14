@@ -3,6 +3,14 @@
 
 <%@ include file="../main/header.jsp"%>
 <div class="item-list-container">
+	<div class="dir-history">
+		<a style="cursor: pointer;" onclick="location.href='/index.jsp'">홈 > </a>
+		<a style="cursor: pointer;" onclick="location.href='/listItem.do'">중고거래</a>
+	</div>
+	<h1>??시 ??구 ??동 중고거래</h1>
+	<div class="btn-box">
+		<a style="cursor: pointer;" onclick="location.href='/insertItem.do'">글 쓰기</a>
+	</div>
 	<c:forEach var="i" begin="0" end="${itemList.size()-1}">
 		<div class="item-box" style="cursor: pointer;"
 			onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">

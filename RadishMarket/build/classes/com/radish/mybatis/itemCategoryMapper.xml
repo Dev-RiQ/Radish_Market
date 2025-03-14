@@ -10,4 +10,9 @@
 		WHERE item_category_no=#{item_category_no}
 	</select>
 	
+	<select id="getAllItemCategoryList" resultType="ItemCategory">
+		SELECT *
+		FROM item_category
+	</select>
+	
 </mapper>

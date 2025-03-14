@@ -44,4 +44,16 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getAUserDongByUserNo" parameterType="int" resultType="String">
+		SELECT user_dong
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getAUserNicnameByUserNo" parameterType="int" resultType="String">
+		SELECT user_nickname
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

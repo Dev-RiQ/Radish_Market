@@ -1,9 +1,11 @@
 package com.radish.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
-import com.radish.vo.Item;
+import com.radish.vo.ItemCategory;
 
 public class ItemCategoryDAO {
 	private static ItemCategoryDAO instance;
@@ -13,7 +15,7 @@ public class ItemCategoryDAO {
 		return instance;
 	}
 	
-	public String getAitemCategoryNameByItemCategoryNo(int item_category_no) {
+	public String getAitemCategoryName(int item_category_no) {
 		String categoryName = "";
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
 			categoryName = session.selectOne("getAitemCategoryNameByItemCategoryNo", item_category_no);
@@ -23,4 +25,15 @@ public class ItemCategoryDAO {
 		}
 		return categoryName;
 	}
+	
+	public List<ItemCategory> getAllItemCategoryList() {
+        List<ItemCategory> list = null;
+        try (SqlSession session = DBUtil.getInstance().openSession()){
+            list = session.selectList("getAllItemCategoryList");
+        } catch (Exception e) {
+            System.out.println("getAllItemCategoryList fail");
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -51,4 +51,9 @@
 		ORDER BY item_hits DESC
 	</select>
 	
+	<insert id="insertItem" parameterType="Item">
+		INSERT INTO items (user_no, item_category_no, item_name, item_content, item_price, item_reg_datetime, item_update_datetime, item_status, item_hits)
+		VALUES(#{user_no}, #{item_category_no}, #{item_name}, #{item_content}, #{item_price}, #{item_reg_datetime}, #{item_update_datetime}, #{item_status}, #{item_hits})
+	</insert>
+	
 </mapper>

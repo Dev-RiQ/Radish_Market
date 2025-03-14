@@ -33,6 +33,20 @@ public class Item {
 		this.item_no = item_no;
 		this.item_hits = item_hits;
 	}
+	
+	public Item(int user_no, int item_category_no, String item_name, String item_content, int item_price,
+			String item_reg_datetime, String item_update_datetime, int item_status, int item_hits) {
+		super();
+		this.user_no = user_no;
+		this.item_category_no = item_category_no;
+		this.item_name = item_name;
+		this.item_content = item_content;
+		this.item_price = item_price;
+		this.item_reg_datetime = item_reg_datetime;
+		this.item_update_datetime = item_update_datetime;
+		this.item_status = item_status;
+		this.item_hits = item_hits;
+	}
 
 	public int getItem_no() {
 		return item_no;

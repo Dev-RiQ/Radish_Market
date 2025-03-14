@@ -9,7 +9,6 @@ import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.vo.Item;
-import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,7 +31,7 @@ public class InfoItemController implements Controller {
 		request.setAttribute("itemList", itemList);
 		
 		int item_category_no = item.getItem_category_no();
-		request.setAttribute("categoryName", ItemCategoryDAO.getInstance().getAitemCategoryNameByItemCategoryNo(item_category_no));
+		request.setAttribute("categoryName", ItemCategoryDAO.getInstance().getAitemCategoryName(item_category_no));
 		
 		List<Item> hotItemSortList = ItemDAO.getInstance().getHotItemSortList();
 		request.setAttribute("hotItemSortList", hotItemSortList);

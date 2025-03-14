@@ -101,4 +101,16 @@ public class ItemDAO {
 		}
 		return list;
 	}
+
+	public boolean insertItem(Item item) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.insert("insertItem", item);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("insertItem fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }
