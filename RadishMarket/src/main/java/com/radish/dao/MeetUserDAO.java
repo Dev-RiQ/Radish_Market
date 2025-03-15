@@ -72,4 +72,14 @@ public class MeetUserDAO {
 		}
 		return action != 0;
 	}
+	public List<Integer> getMeetNoListByUserNo(int user_no) {
+		List<Integer> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("user_no", user_no);
+		} catch (Exception e) {
+			System.out.println("user_no fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

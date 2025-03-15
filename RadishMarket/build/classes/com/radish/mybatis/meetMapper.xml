@@ -51,4 +51,17 @@
 		FROM meets
 	</select>
 	
+	<select id="getAUserHostTotalBoardCnt" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM meets
+		WHERE = host_user_no=#{user_no}
+	</select>
+	
+	<select id="getAUserHostMeetListByUserNo" parameterType="Map" resultType="Meet">
+		SELECT *
+		FROM meets
+		WHERE host_user_no=#{user_no}
+		ORDER BY meet_no DESC
+	</select>
+	
 </mapper>

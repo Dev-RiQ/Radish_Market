@@ -80,6 +80,7 @@ import com.radish.controller.user.UpdateUserController;
 import com.radish.controller.user.test_MypageUserController;
 import com.radish.controller.user.test_boardListUserController;
 import com.radish.controller.user.test_itemListUserController;
+import com.radish.controller.user.test_meetListUserController;
 import com.radish.controller.zzim.DeleteZzimController;
 import com.radish.controller.zzim.InsertZzimController;
 import com.radish.controller.zzim.ListZzimController;
@@ -100,6 +101,7 @@ public class HandlerMapping {
 		mappings.put("/test_mypageUser.do", new test_MypageUserController());
 		mappings.put("/test_itemListUser.do", new test_itemListUserController());
 		mappings.put("/test_boardListUser.do", new test_boardListUserController());
+		mappings.put("/test_meetListUser.do", new test_meetListUserController());
 		
 		// Item
 		mappings.put("/insertItem.do", new InsertItemController());

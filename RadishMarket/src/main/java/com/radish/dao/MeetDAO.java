@@ -1,6 +1,8 @@
 package com.radish.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -94,6 +96,30 @@ public class MeetDAO {
 			list = session.selectList("getAllMeetList");
 		} catch (Exception e) {
 			System.out.println("getAllMeetList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public int getAUserHostTotalBoardCnt(int user_no) {
+		int cnt = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			cnt = session.selectOne("getAUserHostTotalBoardCnt", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserHostTotalBoardCnt fail");
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	public List<Meet> getAUserHostMeetListByUserNo(int user_no, int limit, int offset) {
+		List<Meet> list = null;
+		Map<String, Integer> param = new HashMap<>();
+		param.put("user_no", user_no);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getAUserHostMeetListByUserNo", param);
+		} catch (Exception e) {
+			System.out.println("getAUserHostMeetListByUserNo fail");
 			e.printStackTrace();
 		}
 		return list;
