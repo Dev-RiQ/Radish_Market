@@ -26,7 +26,7 @@ public class FileUtil {
 	}
 	
 	public String[] uploadFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sDirectory = request.getServletContext().getRealPath("/img");
+		String sDirectory = request.getServletContext().getRealPath("/images");
 		createDirectoryIfNotExists(sDirectory);
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
@@ -43,7 +43,7 @@ public class FileUtil {
 	}
 	
 	public void deleteFile(HttpServletRequest req, String filename) {
-		String sDirectory = req.getServletContext().getRealPath("/img");
+		String sDirectory = req.getServletContext().getRealPath("/images");
 		Path filePath = Paths.get(sDirectory, filename);
 		try {
 			Files.deleteIfExists(filePath);
