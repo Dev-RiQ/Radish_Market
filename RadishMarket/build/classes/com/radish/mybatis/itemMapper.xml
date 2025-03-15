@@ -61,4 +61,10 @@
 		WHERE item_no=#{item_no}
 	</delete>	
 	
+	<update id="updateItem" parameterType="Item">
+		UPDATE items
+		SET item_name=#{item_name}, item_category_no=#{item_category_no}, item_name=#{item_name}, item_content=#{item_content}, item_price=#{item_price}, item_update_datetime=#{item_update_time}, item_status=#{item_status}
+		WHERE item_no=#{item_no}
+	</update>
+	
 </mapper>

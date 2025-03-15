@@ -125,4 +125,16 @@ public class ItemDAO {
 		}
 		return action != 0;
 	}
+
+	public boolean updateItem(Item item) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.update("updateItem", item);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("updateItem fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }

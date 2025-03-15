@@ -28,6 +28,7 @@
 			<c:otherwise>
 				<a href='/infoUser.do'>내정보</a>
 				<a href='/logout.do'>로그아웃</a>
+				<a href='/test_mypageUser.do'>마이페이지</a>
 			</c:otherwise>
 		</c:choose>
 		<a href='/listItem.do'>중고거래</a> <a href='/listBoard.do'>자유게시판</a> <a

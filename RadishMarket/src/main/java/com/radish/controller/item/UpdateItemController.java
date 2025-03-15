@@ -2,7 +2,11 @@ package com.radish.controller.item;
 
 import java.io.IOException;
 
+import com.radish.dao.ItemDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
+import com.radish.util.DateUtil;
+import com.radish.vo.Item;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,8 +17,27 @@ public class UpdateItemController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		return null;
+
+		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		String item_name = request.getParameter("item_name");
+		int item_category_no = Integer.parseInt(request.getParameter("item_category_no"));
+		int item_price = Integer.parseInt(request.getParameter("item_name"));
+		String item_content = request.getParameter("item_content");
+		String item_update_datetime = DateUtil.getInstance().getRegDatetime();
+		int item_status = Integer.parseInt(request.getParameter("item_status"));
+
+		Item item = new Item(item_no, user_no, item_category_no, item_name, item_content, item_price,
+				item_update_datetime, item_status);
+
+		if (ItemDAO.getInstance().updateItem(item)) {
+			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "test_userMypage.do");
+			return null;
+		} else {
+			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 상품 정보 수정에 실패했습니다.\\n다시 시도해주세요.");
+			return null;
+		}
+
 	}
 
 }
