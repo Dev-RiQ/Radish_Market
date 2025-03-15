@@ -24,6 +24,7 @@ public class LoginController implements Controller {
 		if(user_id.equals("admin") && user_pw.equals("admin")) {
 			request.getSession().setAttribute("log", -1);
 			AlertUtil.getInstance().goHomeWithAlert(response, "관리자님 로그인 성공 !");
+			return null;
 		}
 		
 		int log = UserDAO.getInstance().isLoginSuccess(user_id, user_pw);
