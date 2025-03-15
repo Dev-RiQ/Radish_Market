@@ -15,4 +15,20 @@
 		FROM item_category
 	</select>
 	
+	<insert id="insertItemCategory" parameterType="String">
+		INSERT INTO item_category (item_category_name)
+		VALUES (#{item_category_name})
+	</insert>
+	
+	<update id="updateItemCategory" parameterType="ItemCategory">
+		UPDATE item_category
+		SET item_category_name=#{item_category_name}
+		WHERE item_category_no=#{item_category_no}
+	</update>
+	
+	<delete id="deleteItemCategory" parameterType="int">
+		DELETE FROM item_category
+		WHERE item_category_no=#{item_category_no}
+	</delete>
+	
 </mapper>

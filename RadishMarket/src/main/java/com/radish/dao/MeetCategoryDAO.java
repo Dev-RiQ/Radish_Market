@@ -6,8 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
-import com.radish.vo.Meet;
 import com.radish.vo.MeetCategory;
+import com.radish.vo.Meet;
 
 public class MeetCategoryDAO {
 	private static MeetCategoryDAO instance;
@@ -48,5 +48,39 @@ public class MeetCategoryDAO {
 			e.printStackTrace();
 		}
 		return category;
+	}
+	
+	public boolean insertMeetCategory(String meet_category_name) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.insert("insertMeetCategory", meet_category_name);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("insertMeetCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public boolean updateMeetCategory(MeetCategory meetCategory) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.update("updateMeetCategory", meetCategory);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("updateMeetCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public boolean deleteMeetCategory(int meet_category_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.delete("deleteMeetCategory", meet_category_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteMeetCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
 	}
 }

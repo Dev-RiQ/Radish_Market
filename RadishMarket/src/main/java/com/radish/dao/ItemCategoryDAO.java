@@ -36,4 +36,37 @@ public class ItemCategoryDAO {
         }
         return list;
     }
+	public boolean insertItemCategory(String item_category_name) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.insert("insertItemCategory", item_category_name);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("insertItemCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public boolean updateItemCategory(ItemCategory itemCategory) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.update("updateItemCategory", itemCategory);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("updateItemCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public boolean deleteItemCategory(int item_category_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action= session.delete("deleteItemCategory", item_category_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteItemCategory fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }

@@ -3,4 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.alarmCategoryMapper">
+
+	<select id="getAllAlarmCategoryList" resultType="AlarmCategory">
+		SELECT *
+		FROM alarm_category
+	</select>
+	
+	<select id="getAAlarmCategoryName" parameterType="int" resultType="String">
+		SELECT alarm_category_name
+		FROM alarm_category
+		WHERE alarm_category_no=#{alarm_category_no}
+	</select>
+	
+	<insert id="insertAlarmCategory" parameterType="String">
+		INSERT INTO alarm_category (alarm_category_name)
+		VALUES (#{alarm_category_name})
+	</insert>
+	
+	<update id="updateAlarmCategory" parameterType="AlarmCategory">
+		UPDATE alarm_category
+		SET alarm_category_name=#{alarm_category_name}
+		WHERE alarm_category_no=#{alarm_category_no}
+	</update>
+	
+	<delete id="deleteAlarmCategory" parameterType="int">
+		DELETE FROM alarm_category
+		WHERE alarm_category_no=#{alarm_category_no}
+	</delete>
+	
 </mapper>

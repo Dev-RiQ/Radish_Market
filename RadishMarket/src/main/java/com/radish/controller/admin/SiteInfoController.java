@@ -14,7 +14,7 @@ public class SiteInfoController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		return null;
+		return "admin/siteInfo";
 	}
 
 }

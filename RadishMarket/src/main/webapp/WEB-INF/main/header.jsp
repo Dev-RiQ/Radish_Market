@@ -32,5 +32,7 @@
 		</c:choose>
 		<a href='/listItem.do'>중고거래</a> <a href='/listBoard.do'>자유게시판</a> <a
 			href='/listMeet.do'>모임</a>
+			
+			<a href='/siteInfo.do'>관리자테스트</a>
 	</header>
 	<header> </header>

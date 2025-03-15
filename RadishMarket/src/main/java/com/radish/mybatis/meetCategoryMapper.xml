@@ -21,4 +21,20 @@
 		WHERE meet_category_no=#{meet_category}
 	</select>
 	
+	<insert id="insertMeetCategory" parameterType="String">
+		INSERT INTO meet_category (meet_category_name)
+		VALUES (#{meet_category_name})
+	</insert>
+	
+	<update id="updateMeetCategory" parameterType="MeetCategory">
+		UPDATE meet_category
+		SET meet_category_name=#{meet_category_name}
+		WHERE meet_category_no=#{meet_category_no}
+	</update>
+	
+	<delete id="deleteMeetCategory" parameterType="int">
+		DELETE FROM meet_category
+		WHERE meet_category_no=#{meet_category_no}
+	</delete>
+	
 </mapper>

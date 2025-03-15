@@ -20,11 +20,19 @@ import com.radish.controller.ajax.ListPagingAjaxController;
 import com.radish.controller.ajax.UserInsertAjaxController;
 import com.radish.controller.alarm.DeleteAlarmController;
 import com.radish.controller.alarm.InsertAlarmController;
+import com.radish.controller.alarmCategory.DeleteAlarmCategoryController;
+import com.radish.controller.alarmCategory.InsertAlarmCategoryController;
+import com.radish.controller.alarmCategory.ListAlarmCategoryController;
+import com.radish.controller.alarmCategory.UpdateAlarmCategoryController;
 import com.radish.controller.board.DeleteBoardController;
 import com.radish.controller.board.InfoBoardController;
 import com.radish.controller.board.InsertBoardController;
 import com.radish.controller.board.ListBoardController;
 import com.radish.controller.board.UpdateBoardController;
+import com.radish.controller.boardCategory.DeleteBoardCategoryController;
+import com.radish.controller.boardCategory.InsertBoardCategoryController;
+import com.radish.controller.boardCategory.ListBoardCategoryController;
+import com.radish.controller.boardCategory.UpdateBoardCategoryController;
 import com.radish.controller.calendar.DeleteCalendarController;
 import com.radish.controller.calendar.InsertCalendarController;
 import com.radish.controller.calendar.UpdateCalendarController;
@@ -37,6 +45,10 @@ import com.radish.controller.item.InfoItemController;
 import com.radish.controller.item.InsertItemController;
 import com.radish.controller.item.ListItemController;
 import com.radish.controller.item.UpdateItemController;
+import com.radish.controller.itemCategory.DeleteItemCategoryController;
+import com.radish.controller.itemCategory.InsertItemCategoryController;
+import com.radish.controller.itemCategory.ListItemCategoryController;
+import com.radish.controller.itemCategory.UpdateItemCategoryController;
 import com.radish.controller.letter.DeleteLetterController;
 import com.radish.controller.letter.InsertLetterController;
 import com.radish.controller.letter.ListLetterController;
@@ -47,6 +59,10 @@ import com.radish.controller.meet.InfoMeetController;
 import com.radish.controller.meet.InsertMeetController;
 import com.radish.controller.meet.ListMeetController;
 import com.radish.controller.meet.UpdateMeetController;
+import com.radish.controller.meetCategory.DeleteMeetCategoryController;
+import com.radish.controller.meetCategory.InsertMeetCategoryController;
+import com.radish.controller.meetCategory.ListMeetCategoryController;
+import com.radish.controller.meetCategory.UpdateMeetCategoryController;
 import com.radish.controller.meetJoin.DeleteMeetJoinController;
 import com.radish.controller.meetJoin.InsertMeetJoinController;
 import com.radish.controller.meetJoin.ListMeetJoinController;
@@ -162,6 +178,30 @@ public class HandlerMapping {
 		mappings.put("/calendarInfoAjax.do", new CalendarInfoAjaxController());
 		mappings.put("/listPagingAjax.do", new ListPagingAjaxController());
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
+		
+		// BoardCategory
+		mappings.put("/listBoardCategory.do", new ListBoardCategoryController());
+		mappings.put("/insertBoardCategory.do", new InsertBoardCategoryController());
+		mappings.put("/updateBoardCategory.do", new UpdateBoardCategoryController());
+		mappings.put("/deleteBoardCategory.do", new DeleteBoardCategoryController());
+		
+		// AlarmCategory
+		mappings.put("/listAlarmCategory.do", new ListAlarmCategoryController());
+		mappings.put("/insertAlarmCategory.do", new InsertAlarmCategoryController());
+		mappings.put("/updateAlarmCategory.do", new UpdateAlarmCategoryController());
+		mappings.put("/deleteAlarmCategory.do", new DeleteAlarmCategoryController());
+		
+		// ItemCategory
+		mappings.put("/listItemCategory.do", new ListItemCategoryController());
+		mappings.put("/insertItemCategory.do", new InsertItemCategoryController());
+		mappings.put("/updateItemCategory.do", new UpdateItemCategoryController());
+		mappings.put("/deleteItemCategory.do", new DeleteItemCategoryController());
+		
+		// MeetCategory
+		mappings.put("/listMeetCategory.do", new ListMeetCategoryController());
+		mappings.put("/insertMeetCategory.do", new InsertMeetCategoryController());
+		mappings.put("/updateMeetCategory.do", new UpdateMeetCategoryController());
+		mappings.put("/deleteMeetCategory.do", new DeleteMeetCategoryController());
 	}
 	
 	public Controller getController(String key) {

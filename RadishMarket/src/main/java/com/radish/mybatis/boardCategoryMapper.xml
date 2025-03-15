@@ -9,4 +9,26 @@
 		FROM board_category
 	</select>
 	
+	<select id="getABoardCategoryName" parameterType="int" resultType="String">
+		SELECT board_category_name
+		FROM board_category
+		WHERE board_category_no=#{board_category_no}
+	</select>
+	
+	<insert id="insertBoardCategory" parameterType="String">
+		INSERT INTO board_category (board_category_name)
+		VALUES (#{board_category_name})
+	</insert>
+	
+	<update id="updateBoardCategory" parameterType="BoardCategory">
+		UPDATE board_category
+		SET board_category_name=#{board_category_name}
+		WHERE board_category_no=#{board_category_no}
+	</update>
+	
+	<delete id="deleteBoardCategory" parameterType="int">
+		DELETE FROM board_category
+		WHERE board_category_no=#{board_category_no}
+	</delete>
+	
 </mapper>
