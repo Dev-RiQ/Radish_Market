@@ -80,8 +80,8 @@ public class UserDAO {
 		return action != 0;
 	}
 	
-	public ArrayList<String> getLimitUserDongByItemList(ArrayList<Item> itemList) {
-		ArrayList<String> userDongList = new ArrayList<>();
+	public List<String> getLimitUserDongByItemList(List<Item> itemList) {
+		List<String> userDongList = new ArrayList<>();
 		int user_no = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			for(Item item : itemList) {

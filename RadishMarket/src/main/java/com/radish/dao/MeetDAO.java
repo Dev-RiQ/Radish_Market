@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
-import com.radish.vo.Board;
 import com.radish.vo.Meet;
 
 public class MeetDAO {

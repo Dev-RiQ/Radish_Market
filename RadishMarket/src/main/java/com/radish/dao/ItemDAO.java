@@ -33,13 +33,13 @@ public class ItemDAO {
 		return itemTotalCnt;
 	}
 
-	public ArrayList<Item> getLimitItemListByLimitWithOffset(int limit, int offset) {
-		ArrayList<Item> itemList = null;
+	public List<Item> getLimitItemListByLimitWithOffset(int limit, int offset) {
+		List<Item> itemList = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
 			Map<String, Object> params = new HashMap<>();
 			params.put("limit", limit);
 			params.put("offset", offset);
-			itemList = (ArrayList) session.selectList("getLimitItemListByLimitWithOffset", params);
+			itemList = session.selectList("getLimitItemListByLimitWithOffset", params);
 		} catch (Exception e) {
 			System.out.println("getLimitItemListByLimitWithOffset fail");
 			e.printStackTrace();
@@ -109,6 +109,18 @@ public class ItemDAO {
 			session.commit();
 		} catch (Exception e) {
 			System.out.println("insertItem fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	
+	public boolean deleteAItem(int item_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.delete("deleteAItem", item_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteAItem fail");
 			e.printStackTrace();
 		}
 		return action != 0;

@@ -16,7 +16,8 @@ public class SiteInfoController implements Controller {
 			throws ServletException, IOException {
 		Object log = request.getSession().getAttribute("log");
 		if(log == null || Integer.parseInt(log.toString()) != -1) {
-			AlertUtil.getInstance().goBackWithAlert(response, "접근 권한이 없습니다.");
+			AlertUtil.getInstance().goHomeWithAlert(response, "접근 권한이 없습니다.");
+			return null;
 		}
 		return "admin/siteInfo";
 	}

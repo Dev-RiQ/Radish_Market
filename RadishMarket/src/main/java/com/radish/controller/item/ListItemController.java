@@ -2,6 +2,7 @@ package com.radish.controller.item;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.radish.dao.ItemDAO;
 import com.radish.dao.UserDAO;
@@ -29,10 +30,10 @@ public class ListItemController implements Controller {
 
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
 
-		ArrayList<Item> itemList = (ArrayList) ItemDAO.getInstance().getLimitItemListByLimitWithOffset(limit, offset);
+		List<Item> itemList = ItemDAO.getInstance().getLimitItemListByLimitWithOffset(limit, offset);
 		request.setAttribute("itemList", itemList);
 		
-		ArrayList<String> userDongList = UserDAO.getInstance().getLimitUserDongByItemList(itemList);
+		List<String> userDongList = UserDAO.getInstance().getLimitUserDongByItemList(itemList);
 		request.setAttribute("userDongList", userDongList);
 		return "item/itemList";
 	}

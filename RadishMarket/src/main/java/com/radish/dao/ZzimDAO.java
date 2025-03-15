@@ -3,7 +3,6 @@ package com.radish.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
-import com.radish.vo.Like;
 import com.radish.vo.Zzim;
 
 public class ZzimDAO {
