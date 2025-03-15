@@ -15,7 +15,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class InfoItemController implements Controller {
-
+	private static final int ITEMS_PER_PAGE = 6;
+	
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -27,8 +28,17 @@ public class InfoItemController implements Controller {
 		request.setAttribute("zzimCount", ZzimDAO.getInstance().getCountZzimByItemNo(item_no));
 		ItemDAO.getInstance().itemHitsUp(item_no);
 		
-		List<Item> itemList = ItemDAO.getInstance().getAuserAllItemListByUserNo(item.getUser_no());
+		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
+		int limit = ITEMS_PER_PAGE;
+		if (limit > itemTotalCnt) {
+			limit = itemTotalCnt;
+		}
+		int offset = 0;
+		
+		
+		List<Item> itemList = ItemDAO.getInstance().getAuserAllItemListByUserNo(item.getUser_no(), limit, offset);
 		request.setAttribute("itemList", itemList);
+		request.setAttribute("userAllItemListSize", ItemDAO.getInstance().getAUserAllItemListSizeByUserNo(item.getUser_no()));
 		
 		int item_category_no = item.getItem_category_no();
 		request.setAttribute("categoryName", ItemCategoryDAO.getInstance().getAitemCategoryName(item_category_no));

@@ -12,7 +12,8 @@
 	<select id="getLimitItemListByLimitWithOffset" parameterType="Map" resultType="Item">
 		SELECT * 
 		FROM items 
-		ORDER BY item_no 
+		WHERE item_status='1'
+		ORDER BY item_update_datetime DESC
 		LIMIT #{limit} OFFSET #{offset};
 	</select>
 	
@@ -34,11 +35,13 @@
 		WHERE item_no=#{item_no}
 	</update>
 	
-	<select id="getAuserAllItemListByUserNo" parameterType="int" resultType="Item">
+	<select id="getAuserAllItemListByUserNo" parameterType="Map" resultType="Item">
 		SELECT *
 		FROM items
 		WHERE user_no=#{user_no} 
 		AND item_status='1'
+		ORDER BY item_update_datetime DESC
+		LIMIT #{limit} OFFSET #{offset};
 	</select>
 	
 	<select id="getAllItemList" resultType="Item">
@@ -67,5 +70,11 @@
 		SET item_name=#{item_name}, item_category_no=#{item_category_no}, item_content=#{item_content}, item_price=#{item_price}, item_update_datetime=#{item_update_datetime}, item_status=#{item_status}
 		WHERE item_no=#{item_no}
 	</update>
+	
+	<select id="getAUserAllItemListSizeByUserNo" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM items
+		WHERE user_no=#{user_no}
+	</select>
 	
 </mapper>

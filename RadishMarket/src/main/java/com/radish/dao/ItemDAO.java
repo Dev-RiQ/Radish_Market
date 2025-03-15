@@ -69,10 +69,14 @@ public class ItemDAO {
 		}
 	}
 
-	public List<Item> getAuserAllItemListByUserNo(int user_no) {
+	public List<Item> getAuserAllItemListByUserNo(int user_no, int limit, int offset) {
 		List<Item> list = new ArrayList<>();
+		Map<String, Integer> param = new HashMap<>();
+		param.put("user_no", user_no);
+		param.put("limit", limit);
+		param.put("offset", offset);
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-			list = session.selectList("getAuserAllItemListByUserNo", user_no);
+			list = session.selectList("getAuserAllItemListByUserNo", param);
 		} catch (Exception e) {
 			System.out.println("getAuserAllItemListByUserNo fail");
 			e.printStackTrace();
@@ -136,5 +140,16 @@ public class ItemDAO {
 			e.printStackTrace();
 		}
 		return action != 0;
+	}
+
+	public int getAUserAllItemListSizeByUserNo(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("getAUserAllItemListSizeByUserNo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserAllItemListSizeByUserNo fail");
+			e.printStackTrace();
+		}
+		return size;
 	}
 }

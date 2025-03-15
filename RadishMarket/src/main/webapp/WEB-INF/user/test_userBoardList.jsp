@@ -3,7 +3,7 @@
 
 <%@ include file="../main/header.jsp"%>
 
-<div class="useritemlist-container">
+<div class="userboardlist-container">
 
 	<div class="user-profile">
 		<div class="user-img">유저 이미지</div>
@@ -13,8 +13,8 @@
 		<p>매너온도</p>
 	</div>
 
-	<div class="user-itemlist">
-		<h3>판매 물품</h3>
+	<div class="user-boardlist">
+		<h3>내 게시글</h3>
 		<c:forEach var="i" begin="0" end="${itemList.size()-1}">
 			<div class="item-box" style="cursor: pointer;"
 				onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
@@ -30,15 +30,6 @@
 			</div>
 		</c:forEach>
 	</div>
-</div>
-
-<div class="btn-box">
-	<c:if test="${itemList.size() == 30 && itemTotalCnt > offset + 30}">
-		<form action="/item/listItem.do" method="get">
-			<input type="hidden" name="offset" value="${offset + 30}">
-			<button type="submit" class="btn btn-submit">더 보기</button>
-		</form>
-	</c:if>
 </div>
 
 <%@ include file="../main/footer.jsp"%>

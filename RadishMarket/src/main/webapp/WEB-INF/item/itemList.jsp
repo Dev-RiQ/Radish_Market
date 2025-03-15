@@ -31,7 +31,7 @@
 	<c:if test="${itemList.size() == 30 && itemTotalCnt > offset + 30}">
 		<form action="/item/listItem.do" method="get">
 			<input type="hidden" name="offset" value="${offset + 30}">
-			<button type="submit" class="btn btn-submit">더 보기</button>
+			<button type="submit" class="btn btn-submit">더 구경하기</button>
 		</form>
 	</c:if>
 </div>
