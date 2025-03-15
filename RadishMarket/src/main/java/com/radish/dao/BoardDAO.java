@@ -1,6 +1,8 @@
 package com.radish.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -133,6 +135,31 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public List<Board> getAllUserBoardListByUserNo(int user_no, int limit, int offset) {
+		List<Board> list = null;
+		Map<String, Integer> param = new HashMap<>();
+		param.put("user_no", user_no);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getAllUserBoardListByUserNo",param);
+		} catch (Exception e) {
+			System.out.println("getAllUserBoardListByUserNo fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public int getAUserTotalBoardCnt(int user_no) {
+		int cnt = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			cnt = session.selectOne("getAUserTotalBoardCnt", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserTotalBoardCnt fail");
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 	
 }
