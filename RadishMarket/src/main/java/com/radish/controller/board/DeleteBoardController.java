@@ -16,8 +16,9 @@ public class DeleteBoardController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
+		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		if(BoardDAO.getInstance().deleteABoard(board_no))
-			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 삭제 완료", "listBoard.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 삭제 완료", log == -1 ? "boardManage.do" : "listBoard.do");
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 게시글 삭제에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

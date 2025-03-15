@@ -2,6 +2,7 @@ package com.radish.controller.admin;
 
 import java.io.IOException;
 
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 
 import jakarta.servlet.ServletException;
@@ -13,8 +14,8 @@ public class UserManageController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		return null;
+		request.setAttribute("userList", UserDAO.getInstance().getAllUserList());
+		return "admin/userManage";
 	}
 
 }

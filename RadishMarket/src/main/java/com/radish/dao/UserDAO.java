@@ -181,4 +181,14 @@ public class UserDAO {
         }
         return list;
     }
+	public List<User> getAllUserList() {
+		List<User> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getAllUserList");
+		} catch (Exception e) {
+			System.out.println("getAllUserList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

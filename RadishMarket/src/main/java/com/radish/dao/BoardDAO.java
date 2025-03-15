@@ -113,5 +113,15 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	public List<Board> getAllBoardList() {
+		List<Board> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getAllBoardList");
+		} catch (Exception e) {
+			System.out.println("getAllBoardList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 }

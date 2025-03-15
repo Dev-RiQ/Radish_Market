@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
+import com.radish.vo.Board;
 import com.radish.vo.Meet;
 
 public class MeetDAO {
@@ -88,4 +89,15 @@ public class MeetDAO {
 		}
 		return meet_no;
 	}
+	public List<Meet> getAllMeetList() {
+		List<Meet> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getAllMeetList");
+		} catch (Exception e) {
+			System.out.println("getAllMeetList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 }

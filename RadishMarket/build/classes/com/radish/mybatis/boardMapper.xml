@@ -66,4 +66,9 @@
 		WHERE meet_no=#{meet_no}
 	</select>
 	
+	<select id="getAllBoardList" resultType="Board">
+		SELECT *
+		FROM boards
+	</select>
+	
 </mapper>

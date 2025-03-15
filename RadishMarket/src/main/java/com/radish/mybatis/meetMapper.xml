@@ -46,4 +46,9 @@
 		WHERE meet_no=#{meet_no}
 	</update>
 	
+	<select id="getAllMeetList" resultType="Meet">
+		SELECT *
+		FROM meets
+	</select>
+	
 </mapper>

@@ -73,5 +73,10 @@
 		FROM users
 		WHERE user_no=#{user_no}
 	</select>
+
+	<select id="getAllUserList" resultType="User">
+		SELECT *
+		FROM users
+	</select>
 	
 </mapper>
