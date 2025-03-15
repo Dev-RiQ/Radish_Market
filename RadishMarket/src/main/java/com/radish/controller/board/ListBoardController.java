@@ -11,6 +11,7 @@ import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.util.DongUtil;
 import com.radish.vo.Board;
 import com.radish.vo.Filter;
 
@@ -50,18 +51,11 @@ public class ListBoardController implements Controller {
 		request.setAttribute("boardList", list);
 		request.setAttribute("likeList", LikeDAO.getInstance().getLikeListByBoardList(list));
 		request.setAttribute("commentList", CommentDAO.getInstance().getCommentListByBoardList(list));
-		
-		List<String> testdong = new ArrayList<>();
-		testdong.add("한동동");
-		testdong.add("한서동");
-		testdong.add("역삼동");
-		testdong.add("한남동");
-		testdong.add("한북동");
-		
-		request.setAttribute("dongList", testdong);
 		request.setAttribute("categoryList", BoardCategoryDAO.getInstance().getAllBoardCategoryList());
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		request.setAttribute("logUserDong", UserDAO.getInstance().getAUserDongByUserNo(log));
+		String logUserDong = UserDAO.getInstance().getAUserDongByUserNo(log);
+		request.setAttribute("logUserDong", logUserDong);
+		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(logUserDong));
 		
 		return "board/boardList";
 	}

@@ -79,4 +79,12 @@
 		FROM users
 	</select>
 	
+	<select id="hasId" parameterType="String" resultType="int">
+		SELECT user_no
+		FROM users
+		WHERE user_id=#{user_id}
+	</select>
+	
+	
+	
 </mapper>

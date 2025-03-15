@@ -12,6 +12,7 @@
 
 <!-- CSS 추가 위치 -->
 <link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/user.css">
 
 <!--             -->
 

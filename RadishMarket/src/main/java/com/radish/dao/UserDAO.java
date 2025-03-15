@@ -191,4 +191,14 @@ public class UserDAO {
 		}
 		return list;
 	}
+	public boolean hasId(String user_id) {
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			if(session.selectOne("hasId",user_id) != null)
+				return true;
+		} catch (Exception e) {
+			System.out.println("hasId fail");
+			e.printStackTrace();
+		}
+		return false;
+	}
 }
