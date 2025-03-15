@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.vo.Board;
+import com.radish.vo.Filter;
 
 public class BoardDAO {
 	private static BoardDAO instance;
@@ -119,6 +120,16 @@ public class BoardDAO {
 			list = session.selectList("getAllBoardList");
 		} catch (Exception e) {
 			System.out.println("getAllBoardList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<Board> getBoardListByNonMeetNoInFilter(Filter filter) {
+		List<Board> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getBoardListByNonMeetNoInFilter",filter);
+		} catch (Exception e) {
+			System.out.println("getBoardListByNonMeetNoInFilter fail");
 			e.printStackTrace();
 		}
 		return list;

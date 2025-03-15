@@ -71,4 +71,35 @@
 		FROM boards
 	</select>
 	
+	<select id="getBoardListByNonMeetNoInFilter" parameterType="Filter" resultType="Board">
+		SELECT b.*
+		FROM boards b
+		INNER JOIN users u
+		ON b.user_no=u.user_no
+		<where>
+			meet_no=0
+	        <if test="category_no != 0">
+	         	and b.board_category_no=#{category_no}
+	        </if>
+	        <if test="user_dong != '전체'">
+	        	and u.user_dong=#{user_dong}
+	        </if>
+   	 	</where>
+   	 	<choose>
+			<when test="order_by == 0">
+			ORDER BY
+				b.board_no DESC
+			</when> 
+			<when test="order_by == 1">
+			ORDER BY
+				b.board_hits DESC
+			</when> 
+			<otherwise>
+			ORDER BY
+				b.board_no DESC
+			</otherwise>
+   	 	</choose>
+		LIMIT #{start},30
+	</select>
+	
 </mapper>

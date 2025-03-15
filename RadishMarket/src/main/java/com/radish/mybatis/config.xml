@@ -23,6 +23,7 @@
   	<typeAlias type="com.radish.vo.Alarm" alias="Alarm"/>
   	<typeAlias type="com.radish.vo.AlarmCategory" alias="AlarmCategory"/>
   	<typeAlias type="com.radish.vo.Calendar" alias="Calendar"/>
+  	<typeAlias type="com.radish.vo.Filter" alias="Filter"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">

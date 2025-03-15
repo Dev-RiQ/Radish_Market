@@ -18,7 +18,8 @@
 	${ board.board_hits }<br>
 	<a href="/${ isLike == 0 ? 'insert' : 'delete' }Like.do?board_no=${ board.board_no }">좋아요 ${ likeCount }<br></a>
 	댓글<br>
-	<c:forEach var="i" begin="1" end="${commentList.size() - 1}">
+	<c:if test="${commentList.size() != 0}">
+	<c:forEach var="i" begin="0" end="${commentList.size() - 1}">
 		${ commentNickname.get(i) }<br>
 		${ commentList.get(i).comment_content }<br>
 		${ commentList.get(i).comment_reg_datetime }<br>
@@ -26,10 +27,11 @@
 			<button onclick="location.href">수정</button>
 		</c:if>
 		<c:if test="${ log == commentList.get(i).user_no || log == board.user_no }">
-			<button onclick="location.href='/deleteComment.do?user_no?${commentList.get(i).user_no}'">삭제</button>
+			<button onclick="location.href='/deleteComment.do?user_no=${commentList.get(i).user_no}'">삭제</button>
 		</c:if>
 		<br>
 	</c:forEach>
+	</c:if>
 	댓글달기<br>
 	<form action="/insertComment.do?board_no=${ board.board_no }" method="post">
 		<textarea name="comment_content" id="comment_content" placeholder="내용을 입력하세요."></textarea>
