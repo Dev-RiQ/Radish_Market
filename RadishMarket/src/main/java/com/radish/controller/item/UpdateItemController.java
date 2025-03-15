@@ -1,7 +1,9 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
@@ -20,9 +22,16 @@ public class UpdateItemController implements Controller {
 
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		
+		if(request.getParameter("item_name") == null) {
+			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
+			request.setAttribute("itemCategoryList", ItemCategoryDAO.getInstance().getAllItemCategoryList());
+			return "item/itemUpdate";
+		}
+		
 		String item_name = request.getParameter("item_name");
 		int item_category_no = Integer.parseInt(request.getParameter("item_category_no"));
-		int item_price = Integer.parseInt(request.getParameter("item_name"));
+		int item_price = Integer.parseInt(request.getParameter("item_price"));
 		String item_content = request.getParameter("item_content");
 		String item_update_datetime = DateUtil.getInstance().getRegDatetime();
 		int item_status = Integer.parseInt(request.getParameter("item_status"));
@@ -31,7 +40,7 @@ public class UpdateItemController implements Controller {
 				item_update_datetime, item_status);
 
 		if (ItemDAO.getInstance().updateItem(item)) {
-			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "test_userMypage.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "listItem.do?item_no=" + item_no);
 			return null;
 		} else {
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 상품 정보 수정에 실패했습니다.\\n다시 시도해주세요.");

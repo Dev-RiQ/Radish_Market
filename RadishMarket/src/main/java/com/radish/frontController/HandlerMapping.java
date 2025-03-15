@@ -78,6 +78,7 @@ import com.radish.controller.user.LoginController;
 import com.radish.controller.user.LogoutController;
 import com.radish.controller.user.UpdateUserController;
 import com.radish.controller.user.test_MypageUserController;
+import com.radish.controller.user.test_itemListUserController;
 import com.radish.controller.zzim.DeleteZzimController;
 import com.radish.controller.zzim.InsertZzimController;
 import com.radish.controller.zzim.ListZzimController;
@@ -96,6 +97,7 @@ public class HandlerMapping {
 		mappings.put("/login.do", new LoginController());
 		mappings.put("/logout.do", new LogoutController());
 		mappings.put("/test_mypageUser.do", new test_MypageUserController());
+		mappings.put("/test_itemListUser.do", new test_itemListUserController());
 		
 		// Item
 		mappings.put("/insertItem.do", new InsertItemController());

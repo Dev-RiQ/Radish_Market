@@ -28,9 +28,10 @@
 		<p>${item.item_content}</p>
 		<span>찜 개수${zzimCount} </span><span>조회수 ${item.item_hits}</span>
 	</div>
+	<c:choose>
+		<c:when test="${item.user_no ne log}">
 	<div class="btn-box">
-		<a
-			href="/${isZzim == 0 ? 'insert' : 'delete' }
+		<a href="/${isZzim == 0 ? 'insert' : 'delete' }
 	Zzim.do?item_no=${item.item_no}">찜하기</a>
 		<form action="/insertLetter.do" method="post">
 			<input type="hidden" name="receive_no" value="${item.user_no}">
@@ -38,6 +39,15 @@
 			<button class="btn btn-submit">쪽지 보내기</button>
 		</form>
 	</div>
+	</c:when>
+	<c:otherwise>
+		<form action="/updateItem.do" method="post">
+			<input type="hidden" name="item_no" value="${item.item_no}">
+			<button class="btn btn-submit">상품 수정하기</button>
+		</form>
+	</c:otherwise>
+	</c:choose>
+	
 	<div class="guid-box">
 		<div id="map" style="width:500px;height:400px;"></div>
 	</div>
