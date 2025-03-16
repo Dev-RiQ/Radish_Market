@@ -3,4 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.itemImgMapper">
+
+	<insert id="insertItemImg" parameterType="ItemImg">
+		INSERT INTO item_img (item_no, item_img)
+		VALUES (#{item_no}, #{item_img})
+	</insert>
+	
 </mapper>
