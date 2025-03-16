@@ -18,17 +18,20 @@ public class DeleteUserController implements Controller {
 		String user_no = request.getParameter("user_no");
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		if(log == -1) {
-			if(UserDAO.getInstance().deleteAUser(Integer.parseInt(user_no)))
+			if(UserDAO.getInstance().deleteAUser(Integer.parseInt(user_no))) {
 				AlertUtil.getInstance().goUrlWithAlert(response, "회원 삭제 완료", "userManage.do");
-			else
+			}else {
 				AlertUtil.getInstance().goBackWithAlert(response, "회원 삭제 실패");
+			}
 			return null;
 		}
 		
-		if(UserDAO.getInstance().deleteAUser(log))
+		if(UserDAO.getInstance().deleteAUser(log)) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "회원 탈퇴 완료");
-		else
+			request.getSession().removeAttribute("log");
+		}else {
 			AlertUtil.getInstance().goBackWithAlert(response, "회원 탈퇴 실패");
+		}
 		return null;
 	}
 

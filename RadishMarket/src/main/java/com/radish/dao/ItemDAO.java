@@ -76,9 +76,9 @@ public class ItemDAO {
 		param.put("limit", limit);
 		param.put("offset", offset);
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-			list = session.selectList("getAuserAllItemListByUserNo", param);
+			list = session.selectList("getAUserAllItemListByUserNo", param);
 		} catch (Exception e) {
-			System.out.println("getAuserAllItemListByUserNo fail");
+			System.out.println("getAUserAllItemListByUserNo fail");
 			e.printStackTrace();
 		}
 		return list;

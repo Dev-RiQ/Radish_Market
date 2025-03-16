@@ -9,6 +9,7 @@ import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
 import com.radish.vo.Item;
 
 import jakarta.servlet.ServletException;
@@ -21,6 +22,11 @@ public class InfoItemController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		if(request.getParameter("item_no") == null){
+			AlertUtil.getInstance().goBackWithAlert(response, "\"서버 오류로 인해 아이템 정보를 가져오지 못했습니다.\\\\\\\\n다시 시도해주세요.\"");
+			return null;
+		}
 		
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
@@ -48,6 +54,11 @@ public class InfoItemController implements Controller {
 		
 		List<String> hotUserNicknameList = UserDAO.getInstance().getHotItemSortUserNicknameList(hotItemSortList);
 		request.setAttribute("hotUserNicknameList", hotUserNicknameList);
+		
+		if(request.getSession() == null || request.getSession().getAttribute("log") == null) {
+			AlertUtil.getInstance().goHomeWithAlert(response, "로그인 후 이용해주세요.");
+			return null;
+		}
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("isZzim", ZzimDAO.getInstance().isZzimInItemNoByLog(item_no, log));

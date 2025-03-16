@@ -22,8 +22,8 @@
 			<c:otherwise>
 				<c:forEach var="i" begin="0" end="${zzimList.size()-1}">
 					<div class="zzimlist-box" style="cursor: pointer;"
-						onclick="location.href='/infoItem.do?Item_no=${zzimList.get(i).item_no}'">
-						<div class="board-body">
+						onclick="location.href='/infoItem.do?item_no=${zzimList.get(i).item_no}'">
+						<div class="zzimlist-body">
 							<p>${zzimList.get(i).item_name}</p>
 							<p>${zzimList.get(i).item_price}원</p>
 							<p>${userDongList.get(i)}</p>
@@ -34,8 +34,6 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-</div>
-
 </div>
 
 <%@ include file="../main/footer.jsp"%>
