@@ -3,6 +3,7 @@ package com.radish.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
+import com.radish.vo.Like;
 import com.radish.vo.Zzim;
 
 public class ZzimDAO {
@@ -36,6 +37,7 @@ public class ZzimDAO {
 		}
 		return action != 0;
 	}
+	
 	public int getCountZzimByItemNo(int item_no) {
 		int zzimCount = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
@@ -45,5 +47,16 @@ public class ZzimDAO {
 			e.printStackTrace();
 		}
 		return zzimCount;
+	}
+	
+	public int isZzimInItemNoByLog(int item_no, int user_no) {
+		int count = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			count = session.selectOne("isZzimInItemNoByLog", new Zzim(item_no, user_no));
+		} catch (Exception e) {
+			System.out.println("isZzimInItemNoByLog fail");
+			e.printStackTrace();
+		}
+		return count;
 	}
 }

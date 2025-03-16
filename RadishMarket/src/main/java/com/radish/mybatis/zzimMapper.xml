@@ -9,7 +9,7 @@
 		VALUES(#{item_no}, #{user_no})
 	</insert>
 	
-	<delete id="" parameterType="Zzim">
+	<delete id="deleteZzim" parameterType="Zzim">
 		DELETE FROM zzims
 		WHERE item_no=#{item_no} AND user_no=#{user_no}
 	</delete>
@@ -18,6 +18,12 @@
 		SELECT count(*)
 		FROM zzims
 		WHERE item_no=#{item_no}
+	</select>
+	
+	<select id="isZzimInItemNoByLog" parameterType="Zzim" resultType="int">
+		SELECT count(*)
+		FROM zzims
+		WHERE item_no=#{item_no} AND user_no=#{user_no}
 	</select>
 	
 </mapper>

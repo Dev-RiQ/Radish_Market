@@ -15,7 +15,7 @@
 		</div>
 		<div class="user-box">
 			<img alt="" src="">유저 이미지 
-			<a style="cursor: pointer;" onclick="추후에 만들 아이템 유저 인포">${user.user_nickname}</a>
+			<a style="cursor: pointer;" onclick="location.href='/test_userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
 			<a style="cursor: pointer;" onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
 			<p>${user.user_deg}도</p>
 			<p>매너 온도</p>
@@ -31,8 +31,14 @@
 	<c:choose>
 		<c:when test="${item.user_no ne log}">
 	<div class="btn-box">
-		<a href="/${isZzim == 0 ? 'insert' : 'delete' }
-	Zzim.do?item_no=${item.item_no}">찜하기</a>
+		<c:choose>
+			<c:when test="${isZzim == 0}">
+				<a href="/insertZzim.do?item_no=${item.item_no}">찜하기</a>
+			</c:when>
+			<c:otherwise>
+				<a href="/deleteZzim.do?item_no=${item.item_no}">찜취소</a>
+			</c:otherwise>
+		</c:choose>
 		<form action="/insertLetter.do" method="post">
 			<input type="hidden" name="receive_no" value="${item.user_no}">
 			<input type="hidden" name="send_user_no" value="${log}">

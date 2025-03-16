@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
+import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
@@ -35,7 +36,6 @@ public class InfoItemController implements Controller {
 		}
 		int offset = 0;
 		
-		
 		List<Item> itemList = ItemDAO.getInstance().getAuserAllItemListByUserNo(item.getUser_no(), limit, offset);
 		request.setAttribute("itemList", itemList);
 		request.setAttribute("userAllItemListSize", ItemDAO.getInstance().getAUserAllItemListSizeByUserNo(item.getUser_no()));
@@ -48,6 +48,10 @@ public class InfoItemController implements Controller {
 		
 		List<String> hotUserNicknameList = UserDAO.getInstance().getHotItemSortUserNicknameList(hotItemSortList);
 		request.setAttribute("hotUserNicknameList", hotUserNicknameList);
+		
+		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		request.setAttribute("isZzim", ZzimDAO.getInstance().isZzimInItemNoByLog(item_no, log));
+		
 		return "item/itemInfo";
 	}
 
