@@ -12,6 +12,32 @@ public class Calendar {
 	private String calendar_title;
 	private String calendar_content;
 
+	public Calendar(int main_user_no, String address,
+			String calendar_dir_x, String calendar_dir_y, String calendar_datetime, String calendar_title,
+			String calendar_content) {
+		super();
+		this.main_user_no = main_user_no;
+		this.address = address;
+		this.calendar_dir_x = calendar_dir_x;
+		this.calendar_dir_y = calendar_dir_y;
+		this.calendar_datetime = calendar_datetime;
+		this.calendar_title = calendar_title;
+		this.calendar_content = calendar_content;
+	}
+	public Calendar(int main_user_no, int sub_user_no, int meet_no, String address,
+			String calendar_dir_x, String calendar_dir_y, String calendar_datetime, String calendar_title,
+			String calendar_content) {
+		super();
+		this.main_user_no = main_user_no;
+		this.sub_user_no = sub_user_no;
+		this.meet_no = meet_no;
+		this.address = address;
+		this.calendar_dir_x = calendar_dir_x;
+		this.calendar_dir_y = calendar_dir_y;
+		this.calendar_datetime = calendar_datetime;
+		this.calendar_title = calendar_title;
+		this.calendar_content = calendar_content;
+	}
 	public Calendar(int calendar_no, int main_user_no, int sub_user_no, int meet_no, String address,
 			String calendar_dir_x, String calendar_dir_y, String calendar_datetime, String calendar_title,
 			String calendar_content) {

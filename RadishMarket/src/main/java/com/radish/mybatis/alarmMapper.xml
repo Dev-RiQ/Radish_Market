@@ -3,4 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.alarmMapper">
+
+	<insert id="insertAAlarm" parameterType="Alarm">
+		INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check, alarm_content)
+		VALUES (#{user_no}, #{alarm_category_no}, #{link_no}, #{alarm_reg_datetime}, #{alarm_check}, #{alarm_content})
+	</insert>
+	
+	<select id="getAlarmListByUserNo" parameterType="int" resultType="Alarm">
+		SELECT *
+		FROM alarms
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<delete id="deleteAAlarm" parameterType="int">
+		DELETE FROM alarms
+		WHERE alarm_no=#{alarm_no}
+	</delete>
+
 </mapper>

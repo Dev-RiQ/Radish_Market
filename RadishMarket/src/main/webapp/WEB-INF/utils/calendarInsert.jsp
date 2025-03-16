@@ -1,13 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="jakarta.tags.core" prefix="c"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>test</title>
-</head>
-<body>
+<%@ include file="../main/header.jsp" %>
+
 <form action="/insertCalendar.do" method="post">
 	<label for="calendar_title">제목</label>
 	<input type="text" name="calendar_title" id="calendar_title" placeholder="제목"><br>
@@ -36,6 +30,7 @@
 	<button>일정 등록</button>
 </form>
 
-
-
-</body>
+<%@ include file="../main/footer.jsp" %>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../../js/user.js"></script>

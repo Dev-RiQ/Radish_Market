@@ -85,6 +85,16 @@
 		WHERE user_id=#{user_id}
 	</select>
 	
+	<select id="getLetterUserList" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
 	
+	<select id="getReviewedUserList" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
 	
 </mapper>
