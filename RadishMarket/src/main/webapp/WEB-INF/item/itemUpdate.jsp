@@ -6,7 +6,16 @@
 <div class="item-update-container">
 	<form action="/updateItem.do" method="post">
 		<input type="hidden" name="item_no" value="${item.item_no}">
-		<label>사진 올리는 곳<input type=""></label><br>
+		
+		<input type="hidden" id="user_itme_img" name="user_itme_img" />
+		<div class="post-list" id="post-list">
+		<!-- img -->
+		</div>
+		사진 : <input type="file" id="ofile" name="ofile" multiple />
+		<div class="save-filename" id="save-filename">
+		</div>
+		<hr>
+		
 		<label>제목<input type="text" name="item_name" value="${item.item_name}" required></label><br>
 		<label>카테고리<select id="item_category_no" name="item_category_no">
 		  <c:forEach var="category" items="${itemCategoryList}">

@@ -35,7 +35,7 @@
 		WHERE item_no=#{item_no}
 	</update>
 	
-	<select id="getAuserAllItemListByUserNo" parameterType="Map" resultType="Item">
+	<select id="getAUserAllItemListByUserNo" parameterType="Map" resultType="Item">
 		SELECT *
 		FROM items
 		WHERE user_no=#{user_no} 
@@ -75,6 +75,12 @@
 		SELECT count(*)
 		FROM items
 		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getAUserAllZzimItemList" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE item_no=#{item_no}
 	</select>
 	
 </mapper>

@@ -36,7 +36,7 @@ public class InfoItemController implements Controller {
 		}
 		int offset = 0;
 		
-		List<Item> itemList = ItemDAO.getInstance().getAuserAllItemListByUserNo(item.getUser_no(), limit, offset);
+		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(item.getUser_no(), limit, offset);
 		request.setAttribute("itemList", itemList);
 		request.setAttribute("userAllItemListSize", ItemDAO.getInstance().getAUserAllItemListSizeByUserNo(item.getUser_no()));
 		

@@ -33,7 +33,7 @@ public class test_itemListUserController implements Controller {
 
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
 
-		request.setAttribute("itemList", ItemDAO.getInstance().getAuserAllItemListByUserNo(log , limit, offset));
+		request.setAttribute("itemList", ItemDAO.getInstance().getAUserAllItemListByUserNo(log , limit, offset));
 		
 		return "user/test_userItemList";
 	}

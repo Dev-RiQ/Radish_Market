@@ -28,7 +28,7 @@ public class test_userPageUserController implements Controller {
 		}
 
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-		request.setAttribute("itemList", ItemDAO.getInstance().getAuserAllItemListByUserNo(user_no , limit, offset));
+		request.setAttribute("itemList", ItemDAO.getInstance().getAUserAllItemListByUserNo(user_no , limit, offset));
 		
 		return "user/test_userItemList";
 	}

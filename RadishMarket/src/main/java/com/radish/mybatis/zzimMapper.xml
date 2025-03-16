@@ -26,4 +26,10 @@
 		WHERE item_no=#{item_no} AND user_no=#{user_no}
 	</select>
 	
+	<select id="getAUserZzimItemNoList" parameterType="int" resultType="int">
+		SELECT item_no
+		FROM zzims
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>
