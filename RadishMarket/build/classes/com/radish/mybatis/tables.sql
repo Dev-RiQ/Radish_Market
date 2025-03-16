@@ -93,11 +93,11 @@ SELECT * FROM meets;
 -- 후기
 DROP TABLE reviews;
 CREATE TABLE reviews (
-	reviews_deg TINYINT NOT NULL,
+	review_deg TINYINT NOT NULL,
     sell_user_no INT NOT NULL, -- FK
     buy_user_no INT NOT NULL, -- [users] user_no 참조
     item_no INT NOT NULL, -- FK
-    reviews_content VARCHAR(100) NOT NULL
+    review_content VARCHAR(100) NOT NULL
     );    
 DESC reviews;
 SELECT * FROM reviews; 
@@ -198,13 +198,13 @@ SELECT * FROM meet_users;
 -- 알람
 DROP TABLE alarms;  
 CREATE TABLE alarms (
-	alarms_no INT AUTO_INCREMENT PRIMARY KEY,
+	alarm_no INT AUTO_INCREMENT PRIMARY KEY,
     user_no INT NOT NULL, -- FK
-    alarms_category_no INT NOT NULL, -- [alarms_category] alarms_category_no 참조
+    alarm_category_no INT NOT NULL, -- [alarms_category] alarms_category_no 참조
     link_no INT NOT NULL, -- [items, boards] item_no, board_no 참조
-    alarms_reg_datetime VARCHAR(20) NOT NULL,
-	alarms_check TINYINT NOT NULL,
-	alarms_content VARCHAR(300) NOT NULL
+    alarm_reg_datetime VARCHAR(20) NOT NULL,
+	alarm_check TINYINT NOT NULL,
+	alarm_content VARCHAR(300) NOT NULL
 	);
 DESC alarms;
 SELECT * FROM alarms; 
@@ -213,7 +213,7 @@ SELECT * FROM alarms;
 DROP TABLE alarm_category;  
 CREATE TABLE alarm_category (
 	alarm_category_no INT AUTO_INCREMENT PRIMARY KEY,
-    alarm_name VARCHAR(10) NOT NULL
+    alarm_category_name VARCHAR(10) NOT NULL
     );
 DESC alarm_category;
 SELECT * FROM alarm_category; 
@@ -273,7 +273,7 @@ INSERT INTO boards (user_no, meet_no, board_category_no, board_title, board_cont
 (2, 2, 2, '러닝 코스 추천', '서초 근처 좋은 러닝 코스 아시는 분?', '2025-03-06 11:00:00', '2025-03-06 11:00:00', 'boardsDefaultImg', 8);
 
 -- 후기
-INSERT INTO reviews (reviews_deg, sell_user_no, buy_user_no, item_no, reviews_content) VALUES
+INSERT INTO reviews (review_deg, sell_user_no, buy_user_no, item_no, review_content) VALUES
 (5, 1, 2, 1, '티셔츠 상태 정말 좋네요! 추천합니다.'),
 (4, 2, 3, 2, '전자레인지 잘 작동해요. 가격도 적당.');
 
@@ -324,16 +324,17 @@ INSERT INTO meet_users (meet_no, user_no) VALUES
 (2, 3);
 
 -- 알람 카테고리
-INSERT INTO alarm_category (alarm_name) VALUES
+INSERT INTO alarm_category (alarm_category_name) VALUES
 ('쪽지'),
 ('댓글'),
 ('좋아요');
 
 -- 알람
-INSERT INTO alarms (user_no, alarms_category_no, link_no, alarms_reg_datetime, alarms_check, alarms_content) VALUES
+INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check, alarm_content) VALUES
 (1, 1, 1, '2025-03-06 12:00:00', 0, '새로운 쪽지가 도착했습니다.'),
 (2, 2, 1, '2025-03-06 10:30:00', 0, '게시글에 댓글이 달렸습니다.'),
-(1, 3, 2, '2025-03-06 11:00:00', 0, '게시글에 좋아요가 추가되었습니다.');
+(1, 3, 2, '2025-03-06 11:00:00', 0, '게시글에 좋아요가 추가되었습니다.'),
+(1, 5, 2, '2025-03-06 11:00:00', 0, '리뷰써라...');
 
 -- 캘린더
 INSERT INTO calendars (main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content) VALUES

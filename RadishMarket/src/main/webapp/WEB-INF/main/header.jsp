@@ -21,6 +21,13 @@
 <body>
 
 	<header>
+		<a href='/listItem.do'>중고거래</a> 
+		<a href='/listBoard.do'>자유게시판</a> 
+		<a href='/listMeet.do'>모임</a>
+			<c:if test='${ log == -1 }'>
+				<a href='/siteInfo.do'>관리자테스트</a>
+			</c:if>
+			
 		<c:choose>
 			<c:when test='${ log eq null }'>
 				<a href='/login.do'>로그인</a>
@@ -30,11 +37,10 @@
 				<a href='/infoUser.do'>내정보</a>
 				<a href='/logout.do'>로그아웃</a>
 				<a href='/test_mypageUser.do'>마이페이지</a>
+				<button id="show-alarm-div" onclick="showAlarmDiv()">알람</button>
+				<div class="hide" id="alarm-list"></div>
 			</c:otherwise>
 		</c:choose>
-		<a href='/listItem.do'>중고거래</a> <a href='/listBoard.do'>자유게시판</a> <a
-			href='/listMeet.do'>모임</a>
 			
-			<a href='/siteInfo.do'>관리자테스트</a>
+			
 	</header>
-	<header> </header>

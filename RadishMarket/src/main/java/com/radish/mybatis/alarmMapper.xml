@@ -13,6 +13,7 @@
 		SELECT *
 		FROM alarms
 		WHERE user_no=#{user_no}
+		ORDER BY alarm_no DESC
 	</select>
 	
 	<delete id="deleteAAlarm" parameterType="int">

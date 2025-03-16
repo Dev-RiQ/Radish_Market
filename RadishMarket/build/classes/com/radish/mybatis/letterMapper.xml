@@ -13,6 +13,7 @@
 		SELECT *
 		FROM letters
 		WHERE receive_user_id=#{receive_user_id}
+		ORDER BY letter_no DESC
 	</select>
 	
 	<delete id="deleteALetterByLetterNo" parameterType="int">

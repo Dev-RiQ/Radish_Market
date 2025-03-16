@@ -30,7 +30,7 @@ public class DateUtil {
 			now[i] = Integer.parseInt(nowDate.split("-")[i]);
 			save[i] = Integer.parseInt(saveDate.split("-")[i]);
 		}
-		Period period = Period.between(LocalDate.of(save[0],save[1],save[2]),LocalDate.of(now[0],now[2],now[2]));
+		Period period = Period.between(LocalDate.of(save[0],save[1],save[2]),LocalDate.of(now[0],now[1],now[2]));
 		String printDateAgo = "오늘";
 		if(period.getYears() != 0)
 			printDateAgo = period.getYears() + "년 전";

@@ -86,5 +86,5 @@ public class Alarm {
 	public void setAlarm_content(String alarm_content) {
 		this.alarm_content = alarm_content;
 	}
-
+	
 }
