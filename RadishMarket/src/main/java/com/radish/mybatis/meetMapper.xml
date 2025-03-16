@@ -54,7 +54,7 @@
 	<select id="getAUserHostTotalBoardCnt" parameterType="int" resultType="int">
 		SELECT count(*)
 		FROM meets
-		WHERE = host_user_no=#{user_no}
+		WHERE host_user_no=#{user_no}
 	</select>
 	
 	<select id="getAUserHostMeetListByUserNo" parameterType="Map" resultType="Meet">
@@ -62,6 +62,18 @@
 		FROM meets
 		WHERE host_user_no=#{user_no}
 		ORDER BY meet_no DESC
+	</select>
+	
+	<select id="getAUserAllMeetListByMeetNo" parameterType="Map" resultType="Meet">
+    	SELECT *
+   		FROM meets
+    	WHERE meet_no IN
+    <foreach collection="meetNoList" item="meetNo" open="(" separator="," close=")">
+        #{meetNo}
+    </foreach>
+    	AND host_user_no != #{user_no}
+   	 	ORDER BY meet_no DESC
+    	LIMIT #{limit} OFFSET #{offset}
 	</select>
 	
 </mapper>

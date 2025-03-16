@@ -1,5 +1,6 @@
 package com.radish.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -120,6 +121,21 @@ public class MeetDAO {
 			list = session.selectList("getAUserHostMeetListByUserNo", param);
 		} catch (Exception e) {
 			System.out.println("getAUserHostMeetListByUserNo fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<Meet> getAUserAllMeetListByMeetNo(List<Integer> meetNoList, int limit, int offset, int user_no) {
+		List<Meet> list = new ArrayList<>();
+		Map <String, Object> param = new HashMap<>();
+		param.put("meetNoList", meetNoList);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		param.put("user_no", user_no);
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+				list = session.selectList("getAUserAllMeetListByMeetNo", param);
+		} catch (Exception e) {
+			System.out.println("getAUserAllMeetListByMeetNo fail");
 			e.printStackTrace();
 		}
 		return list;

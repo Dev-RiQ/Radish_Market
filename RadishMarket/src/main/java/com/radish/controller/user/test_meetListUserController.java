@@ -26,7 +26,7 @@ public class test_meetListUserController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if (request.getSession().getAttribute("log") == null || request.getSession() == null) {
+		if (request.getSession() == null || request.getSession().getAttribute("log") == null) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "로그인 후 이용해주세요.");
 		}
 		
@@ -34,6 +34,7 @@ public class test_meetListUserController implements Controller {
 		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
 		
 		int meetHostTotalCnt = MeetDAO.getInstance().getAUserHostTotalBoardCnt(log);
+		request.setAttribute("meetHostTotalCnt", meetHostTotalCnt);
 		int hostLimit = ITEMS_PER_PAGE;
 		if (hostLimit > meetHostTotalCnt) {
 			hostLimit = meetHostTotalCnt;
@@ -42,25 +43,20 @@ public class test_meetListUserController implements Controller {
 		
 		List<Meet> hostMeetList = MeetDAO.getInstance().getAUserHostMeetListByUserNo(log, hostLimit, hostOffset);
 		request.setAttribute("hostMeetList", hostMeetList);
+		request.setAttribute("hostMeetDongList", UserDAO.getInstance().getDongListByMeetHostUserNo(hostMeetList));
+		request.setAttribute("hostMeetUserCountList", MeetUserDAO.getInstance().getUserCountListByMeetNo(hostMeetList));
+		request.setAttribute("hostMeetCategoryList", MeetCategoryDAO.getInstance().getMeetCategoryListByMeetNo(hostMeetList));
 		
-		request.setAttribute("meetDongList", UserDAO.getInstance().getDongListByMeetHostUserNo(hostMeetList));
-		request.setAttribute("meetUserCountList", MeetUserDAO.getInstance().getUserCountListByMeetNo(hostMeetList));
-		request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getMeetCategoryListByMeetNo(hostMeetList));
 		
+		int meetTotalCnt = MeetUserDAO.getInstance().getAUserMeetTotalCountByUserNo(log);
+        request.setAttribute("meetTotalCnt", meetTotalCnt);
+        int limit = ITEMS_PER_PAGE;
+        if (limit > meetTotalCnt) limit = meetTotalCnt;
+        int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
 		
 		List<Integer> meetNoList =  MeetUserDAO.getInstance().getMeetNoListByUserNo(log);
-		List<Meet> meetList = 
-				
-		int meetTotalCnt = MeetDAO.getInstance().getAUserTotalBoardCnt(log);
-		int limit = ITEMS_PER_PAGE;
-		if (limit > meetTotalCnt) {
-			limit = meetTotalCnt;
-		}
-		int offset = Integer.parseInt(request.getParameter("hostOffset") != null ? request.getParameter("hostOffset") : "0");
-		
-		List<Meet> meetList = MeetDAO.getInstance().getAUserHostMeetListByUserNo(log, limit, offset);
+		List<Meet> meetList = MeetDAO.getInstance().getAUserAllMeetListByMeetNo(meetNoList, limit, offset, log);
 		request.setAttribute("meetList", meetList);
-		
 		request.setAttribute("meetDongList", UserDAO.getInstance().getDongListByMeetHostUserNo(meetList));
 		request.setAttribute("meetUserCountList", MeetUserDAO.getInstance().getUserCountListByMeetNo(meetList));
 		request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getMeetCategoryListByMeetNo(meetList));

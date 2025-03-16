@@ -75,11 +75,21 @@ public class MeetUserDAO {
 	public List<Integer> getMeetNoListByUserNo(int user_no) {
 		List<Integer> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("user_no", user_no);
+			list = session.selectList("getMeetNoListByUserNo", user_no);
 		} catch (Exception e) {
-			System.out.println("user_no fail");
+			System.out.println("getMeetNoListByUserNo fail");
 			e.printStackTrace();
 		}
 		return list;
+	}
+	public int getAUserMeetTotalCountByUserNo(int user_no) {
+		int cnt = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			cnt = session.selectOne("getAUserMeetTotalCountByUserNo", user_no);
+		} catch (Exception e) {
+			System.out.println("getAUserMeetTotalCountByUserNo fail");
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 }

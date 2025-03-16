@@ -32,8 +32,14 @@
 		WHERE meet_no=#{meet_no}, user_no=#{user_no}
 	</delete>
 	
-	<select id="getMeetNoListByUserNo" parameterType="int" resultType="MeetUser">
+	<select id="getMeetNoListByUserNo" parameterType="int" resultType="int">
 		SELECT meet_no
+		FROM meet_users
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getAUserMeetTotalCountByUserNo" parameterType="int" resultType="int">
+		SELECT count(*)
 		FROM meet_users
 		WHERE user_no=#{user_no}
 	</select>
