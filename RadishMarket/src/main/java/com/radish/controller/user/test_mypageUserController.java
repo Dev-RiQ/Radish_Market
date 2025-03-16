@@ -18,6 +18,7 @@ public class test_mypageUserController implements Controller {
 		
 		if(request.getSession().getAttribute("log") == null || request.getSession() == null) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "로그인 후 이용해주세요.");
+			return null;
 		}
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());

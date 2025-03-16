@@ -21,7 +21,7 @@ public class ListLetterController implements Controller {
 		List<Letter> letterList = LetterDAO.getInstance().getLetterListByUserNo(user_no);
 		request.setAttribute("letterList", letterList);
 		request.setAttribute("sendUserInfo", UserDAO.getInstance().getLetterUserList(letterList));
-		return "마이페이지 쪽지 목록";
+		return "/user/test_userLetterList";
 	}
 
 }

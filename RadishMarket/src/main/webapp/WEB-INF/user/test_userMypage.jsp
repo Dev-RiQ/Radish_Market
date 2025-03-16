@@ -18,7 +18,7 @@
 	</div>
 	
 	<a style="cursor: pointer;" onclick="location.href='/infoUser.do'">프로필 수정</a>
-	<a style="cursor: pointer;" onclick="location.href='/infoUser.do'">쪽지함</a>
+	<a style="cursor: pointer;" onclick="location.href='/listLetter.do'">쪽지함</a>
 	<a style="cursor: pointer;" onclick="location.href='/test_zzimListUser.do'">찜목록</a>
 	<a style="cursor: pointer;" onclick="location.href='/test_itemListUser.do'">내 상품</a>
 	<a style="cursor: pointer;" onclick="location.href='/test_boardListUser.do'">내 게시글</a>

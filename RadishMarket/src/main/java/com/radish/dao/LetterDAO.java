@@ -25,10 +25,10 @@ public class LetterDAO {
 		}
 		return action != 0;
 	}
-	public List<Letter> getLetterListByUserNo(int receive_user_id) {
+	public List<Letter> getLetterListByUserNo(int receive_user_no) {
 		List<Letter> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("getLetterListByUserNo", receive_user_id);
+			list = session.selectList("getLetterListByUserNo", receive_user_no);
 		} catch (Exception e) {
 			System.out.println("getLetterListByUserNo fail");
 			e.printStackTrace();

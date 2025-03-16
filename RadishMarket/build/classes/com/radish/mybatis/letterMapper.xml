@@ -5,19 +5,24 @@
 <mapper namespace="com.radish.mybatis.letterMapper">
 
 	<insert id="insertALetter" parameterType="Letter">
-		INSERT INTO letters (sell_user_no, buy_user_no, item_no, review_deg, review_content)
-		VALUES (#{sell_user_no}, #{buy_user_no}, #{item_no}, #{review_deg}, #{review_content})
+		INSERT INTO letters
+		(sell_user_no, buy_user_no, item_no, review_deg, review_content)
+		VALUES (#{sell_user_no}, #{buy_user_no}, #{item_no}, #{review_deg},
+		#{review_content})
 	</insert>
-	
-	<select id="getLetterListByUserNo" parameterType="int" resultType="Letter">
-		SELECT *
+
+	<select id="getLetterListByUserNo" parameterType="int"
+		resultType="Letter">
+		SELECT letter_no, receive_user_no, send_user_no, item_no, letter_title, letter_content, letter_check
 		FROM letters
-		WHERE receive_user_id=#{receive_user_id}
+		WHERE
+		receive_user_no=#{receive_user_no}
 		ORDER BY letter_no DESC
 	</select>
-	
+
 	<delete id="deleteALetterByLetterNo" parameterType="int">
-		DELETE FROM letters
+		DELETE FROM
+		letters
 		WHERE letter_no=#{letter_no}
 	</delete>
 
