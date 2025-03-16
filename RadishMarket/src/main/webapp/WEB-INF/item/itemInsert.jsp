@@ -4,8 +4,18 @@
 <%@ include file="../main/header.jsp"%>
 
 <div class="item-insert-container">
+
 	<form action="/insertItem.do" method="post">
-		<label>사진 올리는 곳<input type=""></label><br>
+	
+		<input type="hidden" id="user_itme_img" name="user_itme_img" />
+		<div class="post-list" id="post-list">
+		<!-- img -->
+		</div>
+		사진 : <input type="file" id="ofile" name="ofile" multiple />
+		<div class="save-filename" id="save-filename">
+		</div>
+		<hr>
+			
 		<label>제목<input type="text" name="item_name" placeholder="제목" required></label><br>
 		<label>카테고리<select id="item_category_no" name="item_category_no">
 		  <c:forEach var="category" items="${itemCategoryList}">
@@ -17,6 +27,6 @@
 		<button class="btn submit-btn" type="submit">작성 완료</button>
 	</form>
 </div>
-
+<script src="../../js/multiFile.js"></script>
 <%@ include file="../main/footer.jsp"%>
 

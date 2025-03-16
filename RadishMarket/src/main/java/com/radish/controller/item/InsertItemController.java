@@ -38,7 +38,6 @@ public class InsertItemController implements Controller {
 			return "item/itemInsert";
 		}
 		
-//	 	사진받는 거 추가 해야함 ㄷㄷ
 		int item_category_no = Integer.parseInt(request.getParameter("item_category_no"));
 		String item_name = request.getParameter("item_name");
 		String item_content = request.getParameter("item_content");

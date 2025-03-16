@@ -70,7 +70,7 @@
 		<div class="seller-info-box">
 			<h3>${user.user_nickname}님의 판매물품</h3>
 		<c:if test="${userAllItemListSize > 6}">
-			<a style="cursor: pointer;" onclick="location.href='/????.do'">더 구경하기</a>
+			<a style="cursor: pointer;" onclick="location.href='/test_userpageUser.do?user_no=${user.user_no}'">더 구경하기</a>
 		</c:if>
 		</div>
 		<c:forEach var="i" begin="0" end="${itemList.size()-1 > 7 ? 6 : itemList.size()-1}">
