@@ -3,4 +3,16 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.reviewMapper">
+	
+	<insert id="insertAReview" parameterType="Review">
+		INSERT INTO reviews (sell_user_no, buy_user_no, item_no, review_deg, review_content)
+		VALUES (#{sell_user_no}, #{buy_user_no}, #{item_no}, #{review_deg}, #{review_content})
+	</insert>
+	
+	<select id="getReviewListByUserNo" parameterType="int" resultType="Review">
+		SELECT *
+		FROM reviews
+		WHERE sell_user_id=#{sell_user_id}
+	</select>
+	
 </mapper>

@@ -3,4 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.calendarMapper">
+
+	<insert id="insertACalenadr" parameterType="Calendar">
+		INSERT INTO calendars (main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content)
+		VALUES (#{main_user_no}, #{sub_user_no}, #{meet_no}, #{address}, #{calendar_dir_x}, #{calendar_dir_y}, #{calendar_datetime}, #{calendar_title}, #{calendar_content})
+	</insert>
+	
+	<select id="getCalendarListByUserNo" parameterType="int" resultType="Calendar">
+		SELECT *
+		FROM calendars
+		WHERE main_user_id=#{user_id} OR sub_user_id=#{user_id}
+	</select>
+	
+	<delete id="deleteACalendarByCalendarNo" parameterType="int">
+		DELETE FROM calendars
+		WHERE calendar_no=#{calendar_no}
+	</delete>
+	
+	<update id="updateACalendar" parameterType="Calendar">
+		UPDATE calendars
+		SET address=#{address}, calendar_dir_x=#{calendar_dir_x}, calendar_dir_y=#{calendar_dir_y}, calendar_datetime=#{calendar_datetime}, calendar_title=#{calendar_title}, calendar_content=#{calendar_content}
+		WHERE calendar_no=#{calendar_no}
+	</update>
+
+	<select id="getACalendarByCalendarNo" parameterType="int" resultType="Calendar">
+		SELECT *
+		FROM calendars
+		WHERE calendar_no=#{calendar_no}
+	</select>
 </mapper>

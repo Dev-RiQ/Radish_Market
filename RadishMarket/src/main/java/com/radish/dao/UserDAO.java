@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import com.radish.util.DBUtil;
 import com.radish.vo.Comment;
 import com.radish.vo.Item;
+import com.radish.vo.Letter;
 import com.radish.vo.Meet;
+import com.radish.vo.Review;
 import com.radish.vo.User;
 
 public class UserDAO {
@@ -200,5 +202,31 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public List<User> getLetterUserList(List<Letter> letterList) {
+		List<User> list = new ArrayList<>();
+        try (SqlSession session = DBUtil.getInstance().openSession()){
+            for(Letter letter : letterList) {
+            	int user_no = letter.getReceive_user_no();
+                list.add(session.selectOne("getLetterUserList", user_no));
+            }
+        } catch (Exception e) {
+            System.out.println("getLetterUserList fail");
+            e.printStackTrace();
+        }
+		return list;
+	}
+	public List<User> getReviewedUserList(List<Review> reviewList) {
+		List<User> list = new ArrayList<>();
+        try (SqlSession session = DBUtil.getInstance().openSession()){
+            for(Review review : reviewList) {
+            	int user_no = review.getSell_user_no(); 
+                list.add(session.selectOne("getReviewedUserList", user_no));
+            }
+        } catch (Exception e) {
+            System.out.println("getReviewedUserList fail");
+            e.printStackTrace();
+        }
+		return list;
 	}
 }
