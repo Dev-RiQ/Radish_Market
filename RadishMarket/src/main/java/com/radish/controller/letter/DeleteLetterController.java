@@ -17,7 +17,7 @@ public class DeleteLetterController implements Controller {
 			throws ServletException, IOException {
 		int letter_no = Integer.parseInt(request.getParameter("letter_no"));
 		if(LetterDAO.getInstance().deleteALetterByLetterNo(letter_no))
-			AlertUtil.getInstance().goHomeWithAlert(response, "쪽지 삭제 완료");
+			AlertUtil.getInstance().goUrlWithAlert(response, "쪽지 삭제 완료", "listLetter.do");
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 쪽지 삭제에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

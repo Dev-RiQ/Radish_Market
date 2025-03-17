@@ -46,4 +46,25 @@ public class LetterDAO {
 		}
 		return action != 0;
 	}
+	public Letter getALetter(int letter_no) {
+		Letter letter = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			letter = session.selectOne("getALetter", letter_no);
+		} catch (Exception e) {
+			System.out.println("getALetter fail");
+			e.printStackTrace();
+		}
+		return letter;
+	}
+	public boolean setCheck(int letter_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.update("setCheck", letter_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("setCheck fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }
