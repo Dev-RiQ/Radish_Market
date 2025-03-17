@@ -23,10 +23,8 @@ function openPop(type) {
 		case 'read' : 
 			fetchReadLetter();
 			let check = document.querySelector(`#check-letter${letter_no}`);
-			console.log(check)
 			if(check.innerText == '미확인 쪽지')
 				check.innerText = '확인한 쪽지';
-			console.log(check)
 			break;
 	}
 }

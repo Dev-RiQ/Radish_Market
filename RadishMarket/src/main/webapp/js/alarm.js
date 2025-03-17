@@ -73,7 +73,7 @@ function sendAlarm () {
 		.catch(error => console.log(error))
 	}
 	if(alarm_category_no == '9'){
-		location.href=`/insetMeetUser.do?meet_no=${link_no}&user_no=${user_no}`;
+		location.href=`/insertMeetUser.do?meet_no=${link_no}&user_no=${user_no}`;
 	}
 }
 
@@ -109,7 +109,7 @@ function showAlarm(alarms){
 			case '5' : href = `insertReview.do?item_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 리뷰 작성 페이지 이동
 			case '6' : href = `listLetter.do?alarm_no=${datas[3]}`; break; // 쪽지함 이동
 			case '7' : href = `mypageUser.do?alarm_no=${datas[3]}`; break; // 일정 보기 이동
-			case '8' : href = `listMeetJoin.do?alarm_no=${datas[3]}`; break; // 모임 가입 리스트 이동
+			case '8' : href = `listMeetJoin.do?meet_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 모임 가입 리스트 이동
 			case '9' : href = `infoMeet.do?meet_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 신청 모임으로 이동
 		}
 		

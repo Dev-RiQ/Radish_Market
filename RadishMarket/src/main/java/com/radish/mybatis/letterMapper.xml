@@ -13,7 +13,7 @@
 
 	<select id="getLetterListByUserNo" parameterType="int"
 		resultType="Letter">
-		SELECT letter_no, receive_user_no, send_user_no, item_no, letter_title, letter_content, letter_check
+		SELECT *
 		FROM letters
 		WHERE
 		receive_user_no=#{receive_user_no}

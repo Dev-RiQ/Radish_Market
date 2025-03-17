@@ -11,7 +11,7 @@
 	
 	<delete id="deleteMeetJoin" parameterType="int">
 		DELETE FROM meet_join
-		WHERE meet_no=#{meet_no} AND user_no=#{user_no}
+		WHERE meet_join_no=#{meet_join_no}
 	</delete>
 	
 	<select id="hasMeetJoin" parameterType="MeetJoin" resultType="int">
