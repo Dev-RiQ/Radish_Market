@@ -4,12 +4,20 @@
 <%@ include file="../main/header.jsp"%>
 <div class="item-list-container">
 	<div class="dir-history">
-		<a style="cursor: pointer;" onclick="location.href='/index.jsp'">홈
-			> </a> <a style="cursor: pointer;" onclick="location.href='/listItem.do'">중고거래</a>
+		<a href='/index.jsp'>홈 > </a>
+		<a href='/listItem.do'>중고거래</a>
 	</div>
-	<h1>??시 ??구 ??동 중고거래</h1>
+	<c:choose>
+		<c:when test="${log ne null}">
+			<h1>${user.user_city} ${user.user_gu} ${user.user_dong} 중고거래</h1>
+		</c:when>
+		<c:otherwise>
+			<h1>??시 ??구 ??동 중고거래</h1>
+		</c:otherwise>
+	</c:choose>
+	
 	<div class="btn-box">
-		<a style="cursor: pointer;" onclick="location.href='/insertItem.do'">글 쓰기</a>
+		<a href='/insertItem.do'>글 쓰기</a>
 	</div>
 	<c:choose>
 		<c:when test="${itemList eq null or itemList.size() == 0}">

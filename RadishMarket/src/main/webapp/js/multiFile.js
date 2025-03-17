@@ -4,8 +4,10 @@ let imgArr = [];
 let inData = new FormData();
 
 imageUploadInput.addEventListener('change', () => {
-	start = new Date().getTime();
+	imgArr = [];
 	inData = new FormData();
+	document.getElementById('post-list').innerHTML= ''; 
+	
 	let idx = 0;
 	if (imageUploadInput.files.length > 8) {
 		alert('파일은 8개까지임 ㅇㅇ');
@@ -26,7 +28,7 @@ imageUploadInput.addEventListener('change', () => {
 				postKey = `post-${new Date().getTime()}`;
 				const post = { image: e.target.result };
 				imgArr.push(JSON.stringify(post));
-				end = new Date().getTime();
+				displayImage();
 			};
 
 			reader.readAsDataURL(selectedImage);
