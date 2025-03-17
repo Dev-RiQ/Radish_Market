@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.radish.dao.ItemDAO;
+import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
@@ -33,7 +34,10 @@ public class zzimListUserController implements Controller {
 		request.setAttribute("zzimList", zzimList);
 		request.setAttribute("userDongList", userDongList);
 		
-		return "user/test_userZzimList";
+		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
+		request.setAttribute("mainImgList", mainImgList);
+		
+		return "myPage/userZzimList";
 	}
 
 }

@@ -31,7 +31,7 @@ public class mypageUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		
 		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
-		return "user/test_userMypage";
+		return "myPage/userMypage";
 	}
 
 }

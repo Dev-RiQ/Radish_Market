@@ -39,7 +39,7 @@ public class boardListUserController implements Controller {
 		request.setAttribute("likeList", LikeDAO.getInstance().getLikeListByBoardList(list));
 		request.setAttribute("commentList", CommentDAO.getInstance().getCommentListByBoardList(list));
 		
-		return "user/test_userBoardList";
+		return "myPage/userBoardList";
 	}
 
 }

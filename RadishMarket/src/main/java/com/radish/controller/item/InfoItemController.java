@@ -1,11 +1,13 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
+import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
@@ -46,11 +48,25 @@ public class InfoItemController implements Controller {
 		request.setAttribute("itemList", itemList);
 		request.setAttribute("userAllItemListSize", ItemDAO.getInstance().getAUserAllItemListSizeByUserNo(item.getUser_no()));
 		
+		List<Integer> itemNoList = new ArrayList<>();
+		for(Item itemNo : itemList) {
+			itemNoList.add(itemNo.getItem_no());
+		}
+		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
+		request.setAttribute("mainImgList", mainImgList);
+		
 		int item_category_no = item.getItem_category_no();
 		request.setAttribute("categoryName", ItemCategoryDAO.getInstance().getAitemCategoryName(item_category_no));
 		
 		List<Item> hotItemSortList = ItemDAO.getInstance().getHotItemSortList();
 		request.setAttribute("hotItemSortList", hotItemSortList);
+		
+		List<Integer> hotItemNoList = new ArrayList<>();
+		for(Item hotItemNo : hotItemSortList) {
+			hotItemNoList.add(hotItemNo.getItem_no());
+		}
+		List<String> hotImgList = ItemImgDAO.getInstance().getItemImgListByItemList(hotItemNoList);
+		request.setAttribute("hotImgList", hotImgList);
 		
 		List<String> hotUserNicknameList = UserDAO.getInstance().getHotItemSortUserNicknameList(hotItemSortList);
 		request.setAttribute("hotUserNicknameList", hotUserNicknameList);
@@ -68,6 +84,9 @@ public class InfoItemController implements Controller {
 			int alarm_no = Integer.parseInt(alarm_no_str);
 			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
 		}
+		
+		List<String> itemImgList = ItemImgDAO.getInstance().getAllItemImgList(item_no);
+		request.setAttribute("itemImgList", itemImgList);
 		
 		return "item/itemInfo";
 	}

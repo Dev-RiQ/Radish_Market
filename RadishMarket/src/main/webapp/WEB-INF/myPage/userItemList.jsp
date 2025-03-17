@@ -23,10 +23,8 @@
 				<c:forEach var="i" begin="0" end="${itemList.size()-1}">
 					<div class="item-box" style="cursor: pointer;"
 						onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
-						<div class="item-img">
-							<img alt="" src="">이미지가 들어가요
-						</div>
 						<div class="item-body">
+							<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 							<p>${itemList.get(i).item_name}</p>
 							<p>${itemList.get(i).item_price}원</p>
 							<p>${userDongList.get(i)}</p>

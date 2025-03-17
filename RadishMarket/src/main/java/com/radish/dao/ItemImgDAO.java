@@ -1,5 +1,6 @@
 package com.radish.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -26,12 +27,35 @@ public class ItemImgDAO {
 				cnt += session.insert("insertItemImg", itemImg);
 				session.commit();
 			}
-			System.out.println(cnt + "개의 이미지 삽입");
 		} catch (Exception e) {
 			System.out.println("insertItemImg fail");
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	public List<String> getItemImgListByItemList(List<Integer> itemNoList) {
+		List<String> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			for (Integer item_no : itemNoList) {
+				list.add(session.selectOne("getItemImgListByItemList", item_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getItemImgListByItemList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<String> getAllItemImgList(int item_no) {
+		List<String> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getAllItemImgList", item_no);
+		} catch (Exception e) {
+			System.out.println("getAllItemImgList fail");
+			e.printStackTrace();
+		}
+		return list;
 	}
 
 }

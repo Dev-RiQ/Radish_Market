@@ -20,7 +20,7 @@
 				<div class="item-box" style="cursor: pointer;"
 					onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
 					<div class="item-img">
-						<img alt="" src="">이미지가 들어가요
+						<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 					</div>
 					<div class="item-body">
 						<p>${itemList.get(i).item_name}</p>

@@ -8,17 +8,27 @@
 		<a style="cursor: pointer;" onclick="location.href='/index.jsp'">홈
 			> </a> <a style="cursor: pointer;" onclick="location.href='/listItem.do'">중고거래
 			> </a>
-		<p>${item.item_name}</p>
+		<span>${item.item_name}</span>
 	</div>
 	<div class="fir-box">
-		<div class="img-box">
-			<img alt="" src="">아이템 이미지
-		</div>
-		<div class="user-box">
-			<img alt="" src="">유저 이미지 <a style="cursor: pointer;"
-				onclick="location.href='/test_userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
-			<a style="cursor: pointer;"
-				onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
+		<div class="img-box" >
+			<%-- <img alt="item-images" src="/images/${itemImgList.get(i)}"> --%>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
+					<div class="swiper-slide">
+						<img alt="item-images" src="/images/${itemImgList.get(i)}">
+					</div>
+					</c:forEach> 
+				</div>
+				<div class="swiper-pagination"></div>
+				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev"></div>
+			</div>
+			<div class="user-box">
+			<img alt="" src="">유저 이미지 
+			<a style="cursor: pointer;" onclick="location.href='/userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
+			<a style="cursor: pointer;" onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
 			<p>${user.user_deg}도</p>
 			<p>매너 온도</p>
 		</div>
@@ -29,15 +39,18 @@
 			onclick="location.href='/listItem.do?item_no=${item.item_no}'">${categoryName}</a>
 		<p>${item.item_price}</p>
 		<p>${item.item_content}</p>
-		<span>찜 개수<span id="zzim-count">${zzimCount}</span> </span><span>조회수 ${item.item_hits}</span>
+		<span>찜 개수<span id="zzim-count">${zzimCount}</span>
+		</span><span>조회수 ${item.item_hits}</span>
 	</div>
 	<c:choose>
 		<c:when test="${item.user_no ne log}">
 			<div class="btn-box">
-			<input type="hidden" name="user_no" id="user_no" value="${ item.user_no }">
-			<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="3">
-			<input type="hidden" name="link_no" id="link_no" value="${ item.item_no }">
-			<input type="hidden" name="isZzim" id="isZzim" value="${ isZzim }">
+				<input type="hidden" name="user_no" id="user_no"
+					value="${ item.user_no }"> <input type="hidden"
+					name="alarm_category_no" id="alarm_category_no" value="3">
+				<input type="hidden" name="link_no" id="link_no"
+					value="${ item.item_no }"> <input type="hidden"
+					name="isZzim" id="isZzim" value="${ isZzim }">
 				<c:choose>
 					<c:when test="${isZzim == 0}">
 						<button type="button" onclick="sendAlarm()">찜하기</button>
@@ -86,20 +99,18 @@
 			</c:choose>
 			<c:choose>
 				<c:when test="${itemList eq null or itemList.size() == 0}">
-					<p>${user.user_nickname}님은판매중인 물품이 없습니다.</p>
+					<p>${user.user_nickname}님은판매중인물품이 없습니다.</p>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${userAllItemListSize > 6}">
-						<a style="cursor: pointer;"
-							onclick="location.href='/test_userpageUser.do?user_no=${user.user_no}'">더
-							구경하기</a>
+						<a href='/userpageUser.do?user_no=${user.user_no}'>더 구경하기</a>
 					</c:if>
 					<c:forEach var="i" begin="0"
 						end="${itemList.size()-1 > 7 ? 6 : itemList.size()-1}">
 						<div class="seller-item-box" style="cursor: pointer;"
 							onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
 							<div class="seller-item-img">
-								<img alt="" src="">이미지가 들어가요
+								<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 							</div>
 							<div class="seller-item">
 								<p>${itemList.get(i).item_name}</p>
@@ -119,15 +130,14 @@
 	<div class="hot-item-box">
 		<div class="hot-item-info">
 			<h3>인기매물</h3>
-			<a style="cursor: pointer;" onclick="location.href='/listItem.do'">더
-				구경하기</a>
+			<a href='/listItem.do'>더 구경하기</a>
 		</div>
 		<c:forEach var="i" begin="0"
 			end="${hotItemSortList.size()-1 > 18 ? 17 : hotItemSortList.size()-1}">
 			<div class="hot-item-box" style="cursor: pointer;"
 				onclick="location.href='/infoItem.do?item_no=${hotItemSortList.get(i).item_no}'">
 				<div class="hot-item-img">
-					<img alt="" src="">이미지가 들어가요
+					<img alt="대표 이미지" src="/images/${hotImgList.get(i)}">
 				</div>
 				<div class="hot-item">
 					<p>${hotItemSortList.get(i).item_name}</p>
@@ -140,5 +150,8 @@
 	</div>
 </div>
 
-<%@ include file="../main/footer.jsp"%>
 
+<script src="../../js/swiper.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<%@ include file="../main/footer.jsp"%>

@@ -19,7 +19,7 @@ public class UpdateUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		if(request.getParameter("user_id") == null) {
 			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
-			return "user/test_userInfo";
+			return "myPage/userUpdate";
 		}
 		String user_pw = request.getParameter("user_pw");
 		String user_name = request.getParameter("user_name");

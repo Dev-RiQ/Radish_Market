@@ -83,4 +83,11 @@
 		WHERE item_no=#{item_no}
 	</select>
 	
+	<select id="getLastItemNo"  resultType="int">
+		SELECT item_no
+		FROM items
+		ORDER BY item_no DESC
+		LIMIT 1
+	</select>
+	
 </mapper>

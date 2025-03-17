@@ -1,10 +1,14 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.radish.dao.ItemDAO;
+import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
+import com.radish.vo.Item;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,11 +29,20 @@ public class userPageUserController implements Controller {
 		if (limit > itemTotalCnt) {
 			limit = itemTotalCnt;
 		}
-
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-		request.setAttribute("itemList", ItemDAO.getInstance().getAUserAllItemListByUserNo(user_no , limit, offset));
 		
-		return "user/test_userItemList";
+		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(user_no , limit, offset);
+		request.setAttribute("itemList", itemList);
+		
+		List<Integer> itemNoList = new ArrayList<>();
+		for(Item item : itemList) {
+			itemNoList.add(item.getItem_no());
+		}
+		
+		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
+		request.setAttribute("mainImgList", mainImgList);
+		
+		return "myPage/userItemList";
 	}
 
 }

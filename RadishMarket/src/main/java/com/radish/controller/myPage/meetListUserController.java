@@ -57,7 +57,7 @@ public class meetListUserController implements Controller {
 		request.setAttribute("meetUserCountList", MeetUserDAO.getInstance().getUserCountListByMeetNo(meetList));
 		request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getMeetCategoryListByMeetNo(meetList));
 		
-		return "user/test_userMeetList";
+		return "myPage/userMeetList";
 	}
 
 }

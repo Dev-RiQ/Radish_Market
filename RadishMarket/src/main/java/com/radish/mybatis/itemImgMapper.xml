@@ -9,4 +9,17 @@
 		VALUES (#{item_no}, #{item_img})
 	</insert>
 	
+	<select id="getItemImgListByItemList" parameterType="int" resultType="String">
+		SELECT item_img
+		FROM item_img
+		WHERE item_no=${item_no}
+		LIMIT 1
+	</select>
+	
+	<select id="getAllItemImgList" parameterType="int" resultType="String">
+		SELECT item_img 
+		FROM item_img 
+		WHERE item_no=#{item_no}
+	</select>
+	
 </mapper>

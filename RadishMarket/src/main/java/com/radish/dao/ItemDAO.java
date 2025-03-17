@@ -96,7 +96,7 @@ public class ItemDAO {
 	}
 
 	public List<Item> getHotItemSortList() {
-		List<Item> list = new ArrayList<>();
+		List<Item> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
 			list = session.selectList("getHotItemSortList");
 		} catch (Exception e) {
@@ -164,5 +164,16 @@ public class ItemDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public int getLastItemNo() {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.selectOne("getLastItemNo");
+		} catch (Exception e) {
+			System.out.println("getLastItemNo fail");
+			e.printStackTrace();
+		}
+		return action;
 	}
 }

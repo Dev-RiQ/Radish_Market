@@ -13,7 +13,8 @@
 <!-- CSS 추가 위치 -->
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" type="text/css" href="../../css/item.css">
 <!--             -->
 
 </head>
@@ -36,7 +37,7 @@
 			<c:otherwise>
 				<a href='/infoUser.do'>내정보</a>
 				<a href='/logout.do'>로그아웃</a>
-				<a href='/test_mypageUser.do'>마이페이지</a>
+				<a href='/mypageUser.do'>마이페이지</a>
 				<button id="show-alarm-div" onclick="showAlarmDiv()">알람</button>
 				<div class="hide" id="alarm-list"></div>
 			</c:otherwise>

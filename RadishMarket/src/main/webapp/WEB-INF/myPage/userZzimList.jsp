@@ -16,7 +16,7 @@
 	<div class="user-zzimlist">
 		<h3>내 찜목록</h3>
 		<c:choose>
-			<c:when test="${zzimList eq null or zzimList.size() == 0}">
+			<c:when test="${zzimList eq null or zzimList.size() == 0 or userDongList eq null or userDongList.size() == 0}">
 				<p>아직 찜한 상품이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
@@ -24,6 +24,7 @@
 					<div class="zzimlist-box" style="cursor: pointer;"
 						onclick="location.href='/infoItem.do?item_no=${zzimList.get(i).item_no}'">
 						<div class="zzimlist-body">
+							<img alt="item-images" src="/images/${mainImgList.get(i)}">
 							<p>${zzimList.get(i).item_name}</p>
 							<p>${zzimList.get(i).item_price}원</p>
 							<p>${userDongList.get(i)}</p>
