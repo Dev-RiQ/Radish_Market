@@ -30,6 +30,7 @@
 			<option value="3">판매 완료</option>
 		</select></label><br>
 		<button class="btn submit-btn" type="submit">수정 완료</button>
+		<button onclick="location.href='deleteItem.do?item_no=${item.item_no}'">판매 물품 삭제</button>
 	</form>
 </div>
 

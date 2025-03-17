@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.radish.dao.AlarmDAO;
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ItemImgDAO;
@@ -13,6 +14,7 @@ import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Item;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +35,10 @@ public class InfoItemController implements Controller {
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 		request.setAttribute("item", item);
-		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(item.getUser_no()));
+		request.setAttribute("item_category_name", ItemCategoryDAO.getInstance().getAitemCategoryName(item_no));
+		User user = UserDAO.getInstance().getAUserByLog(item.getUser_no());
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		request.setAttribute("zzimCount", ZzimDAO.getInstance().getCountZzimByItemNo(item_no));
 		ItemDAO.getInstance().itemHitsUp(item_no);
 		

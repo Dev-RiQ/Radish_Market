@@ -26,7 +26,17 @@
 						<div class="item-body">
 							<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 							<p>${itemList.get(i).item_name}</p>
-							<p>${itemList.get(i).item_price}원</p>
+							<p>
+								<span> <c:choose>
+										<c:when test="${itemList.get(i).item_status == 2}">
+										예약중
+									</c:when>
+										<c:when test="${itemList.get(i).item_status == 3}">
+										판매 완료
+									</c:when>
+									</c:choose>
+								</span>${itemList.get(i).item_price}원
+							</p>
 							<p>${userDongList.get(i)}</p>
 							<hr>
 						</div>
@@ -56,7 +66,6 @@
 					<div>
 						${buyUserInfo.get(i).user_nickname} 구매자 <span>${buyUserInfo.get(i).user_dong}</span>
 					</div>
-					<div>${reviewList.get(i).review_content}</div>
 					<div>${reviewList.get(i).review_content}</div>
 				</c:forEach>
 			</c:otherwise>

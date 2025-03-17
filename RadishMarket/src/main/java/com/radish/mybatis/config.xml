@@ -24,6 +24,7 @@
   	<typeAlias type="com.radish.vo.AlarmCategory" alias="AlarmCategory"/>
   	<typeAlias type="com.radish.vo.Calendar" alias="Calendar"/>
   	<typeAlias type="com.radish.vo.Filter" alias="Filter"/>
+  	<typeAlias type="com.radish.vo.Emoji" alias="Emoji"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -55,5 +56,6 @@
     <mapper resource="com/radish/mybatis/meetCategoryMapper.xml"/>
     <mapper resource="com/radish/mybatis/meetUserMapper.xml"/>
     <mapper resource="com/radish/mybatis/zzimMapper.xml"/>
+    <mapper resource="com/radish/mybatis/emojiMapper.xml"/>
   </mappers>
 </configuration>

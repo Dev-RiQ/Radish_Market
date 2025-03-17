@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -32,7 +33,17 @@
 					</div>
 					<div class="item-body">
 						<p>${itemList.get(i).item_name}</p>
-						<p>${itemList.get(i).item_price}원</p>
+						<p>
+							<span> <c:choose>
+									<c:when test="${itemList.get(i).item_status == 2}">
+										예약중
+									</c:when>
+									<c:when test="${itemList.get(i).item_status == 3}">
+										판매 완료
+									</c:when>
+								</c:choose>
+							</span> ${itemList.get(i).item_price}원
+						</p>
 						<p>${userDongList.get(i)}</p>
 						<hr>
 					</div>

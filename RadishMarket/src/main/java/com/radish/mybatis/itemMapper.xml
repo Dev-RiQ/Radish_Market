@@ -12,7 +12,6 @@
 	<select id="getLimitItemListByLimitWithOffset" parameterType="Map" resultType="Item">
 		SELECT * 
 		FROM items 
-		WHERE item_status='1'
 		ORDER BY item_update_datetime DESC
 		LIMIT #{limit} OFFSET #{offset};
 	</select>
@@ -39,7 +38,6 @@
 		SELECT *
 		FROM items
 		WHERE user_no=#{user_no} 
-		AND item_status='1'
 		ORDER BY item_update_datetime DESC
 		LIMIT #{limit} OFFSET #{offset};
 	</select>

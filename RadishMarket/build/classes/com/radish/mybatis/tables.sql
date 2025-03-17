@@ -235,8 +235,18 @@ CREATE TABLE calendars (
 DESC calendars;
 SELECT * FROM calendars; 
 
--- 더미데이터 삽입
+-- 이모지
+DROP TABLE emojis; 
+CREATE TABLE emojis(
+	min_deg INT NOT NULL,
+    max_deg INT NOT NULL,
+    emoji VARCHAR(10) NOT NULL,
+    CHECK (min_deg >= 0 AND max_deg <= 100)
+    )CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+DESC emojis;
+SELECT * FROM emojis; 
 
+-- [더미데이터 삽입] --
 -- 유저
 INSERT INTO users (user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_city, user_gu, user_dong, user_deg) VALUES
 ('alice123', 'pass1234', '김민지', 25, 'alice123@gmail.com', '민지', '서울특별시 강남구 역삼동 123-45', 'usersDefaultImg', '010-1234-5678', '2025-03-01 10:00:00', '37.5013', '127.0396', '서울', '강남구', '역삼동', 5),
@@ -347,11 +357,17 @@ INSERT INTO calendars (main_user_no, sub_user_no, meet_no, address, calendar_dir
 (1, 2, 1, '서울특별시 강남구 역삼동 카페', '37.5013', '127.0396', '2025-03-07 14:00:00', '독서 모임', '이번 주 책: "데미안"'),
 (2, 3, 2, '서울특별시 서초구 반포 한강공원', '37.489', '127.018', '2025-03-08 07:00:00', '아침 러닝', '5km 코스 예정');
 
+-- 이모지
+INSERT INTO emojis (min_deg, max_deg, emoji) VALUES
+(0, 20, '😰'),
+(21, 35, '🙁'),
+(36, 48, '🙂'),
+(49, 63, '😀'),
+(64, 80, '😄'),
+(81, 100, '😆');
 
 
-
--- 외래 키 설정 --
-
+-- [외래 키 설정] --
 	-- items FK
     ALTER TABLE items
     ADD CONSTRAINT fk_items_user_no 

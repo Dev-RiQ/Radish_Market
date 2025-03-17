@@ -27,15 +27,15 @@
 					onclick="location.href='/userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
 				<a style="cursor: pointer;"
 					onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
-				<p>${user.user_deg}도</p>
+				<p>${user.user_deg}℃ ${emoji}</p>
 				<p>매너 온도</p>
 			</div>
 		</div>
 		<div class="sec-box">
 			<h3>${item.item_name}</h3>
-			<a style="cursor: pointer;"
-				onclick="location.href='/listItem.do?item_no=${item.item_no}'">${categoryName}</a>
-			<p>${item.item_price}</p>
+			<a href="카테고리 생기면...">${item_category_name}</a>
+			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
+			<p>${item.item_price}원</p>
 			<p>${item.item_content}</p>
 			<span>찜 개수<span id="zzim-count">${zzimCount}</span>
 			</span><span>조회수 ${item.item_hits}</span>
@@ -73,6 +73,7 @@
 		</c:choose>
 
 		<div class="guid-box">
+			<h3>거래 희망 장소</h3>
 			<div id="map" style="width: 500px; height: 400px;"></div>
 		</div>
 	</div>
@@ -108,7 +109,17 @@
 								</div>
 								<div class="seller-item">
 									<p>${itemList.get(i).item_name}</p>
-									<p>${itemList.get(i).item_price}</p>
+									<p>
+										<span> <c:choose>
+												<c:when test="${itemList.get(i).item_status == 2}">
+										예약중
+									</c:when>
+												<c:when test="${itemList.get(i).item_status == 3}">
+										판매 완료
+									</c:when>
+											</c:choose>
+										</span> ${itemList.get(i).item_price}원
+									</p>
 									<p>${user.user_dong}</p>
 									<hr>
 								</div>
@@ -135,7 +146,17 @@
 					</div>
 					<div class="hot-item">
 						<p>${hotItemSortList.get(i).item_name}</p>
-						<p>${hotItemSortList.get(i).item_price}</p>
+						<p>
+							<span> <c:choose>
+									<c:when test="${hotItemSortList.get(i).item_status == 2}">
+										예약중
+									</c:when>
+									<c:when test="${hotItemSortList.get(i).item_status == 3}">
+										판매 완료
+									</c:when>
+								</c:choose>
+							</span> ${hotItemSortList.get(i).item_price}원
+						</p>
 						<p>${hotUserNicknameList.get(i)}</p>
 						<hr>
 					</div>

@@ -28,25 +28,25 @@ public class itemListUserController implements Controller {
 
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
-		
+
 		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
 		int limit = ITEMS_PER_PAGE;
 		if (limit > itemTotalCnt) {
 			limit = itemTotalCnt;
 		}
 		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-		
-		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(log , limit, offset);
+
+		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(log, limit, offset);
 		request.setAttribute("itemList", itemList);
-		
+
 		List<Integer> itemNoList = new ArrayList<>();
-		for(Item itemNo : itemList) {
+		for (Item itemNo : itemList) {
 			itemNoList.add(itemNo.getItem_no());
 		}
-		
+
 		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
 		request.setAttribute("mainImgList", mainImgList);
-		
+
 		return "myPage/userItemList";
 	}
 
