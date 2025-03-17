@@ -1,17 +1,16 @@
-package com.radish.controller.user;
+package com.radish.controller.myPage;
 
 import java.io.IOException;
 
 import com.radish.dao.ItemDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
-import com.radish.util.AlertUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class test_userPageUserController implements Controller {
+public class userPageUserController implements Controller {
 	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override

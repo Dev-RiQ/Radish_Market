@@ -1,9 +1,8 @@
-package com.radish.controller.user;
+package com.radish.controller.myPage;
 
 import java.io.IOException;
 import java.util.List;
 
-import com.radish.dao.BoardDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
@@ -15,7 +14,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class test_zzimListUserController implements Controller {
+public class zzimListUserController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

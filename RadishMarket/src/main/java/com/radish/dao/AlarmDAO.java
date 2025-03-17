@@ -46,4 +46,25 @@ public class AlarmDAO {
 		}
 		return action != 0;
 	}
+	public int getAlarmNo(Alarm alarm) {
+		int alarm_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			alarm_no = session.selectOne("getAlarmNo", alarm);
+		} catch (Exception e) {
+			System.out.println("getAlarmNo fail");
+			e.printStackTrace();
+		}
+		return alarm_no;
+	}
+	public boolean setAlarmCheck(int alarm_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.update("setAlarmCheck", alarm_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("setAlarmCheck fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }

@@ -1,25 +1,21 @@
-package com.radish.controller.user;
+package com.radish.controller.myPage;
 
 import java.io.IOException;
 import java.util.List;
 
-import com.radish.dao.BoardDAO;
-import com.radish.dao.CommentDAO;
-import com.radish.dao.LikeDAO;
 import com.radish.dao.MeetCategoryDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetUserDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Board;
 import com.radish.vo.Meet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class test_meetListUserController implements Controller {
+public class meetListUserController implements Controller {
 	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override

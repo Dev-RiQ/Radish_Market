@@ -10,6 +10,7 @@ import com.radish.vo.Comment;
 import com.radish.vo.Item;
 import com.radish.vo.Letter;
 import com.radish.vo.Meet;
+import com.radish.vo.MeetJoin;
 import com.radish.vo.Review;
 import com.radish.vo.User;
 
@@ -221,6 +222,19 @@ public class UserDAO {
         try (SqlSession session = DBUtil.getInstance().openSession()){
             for(Review review : reviewList) {
             	int user_no = review.getSell_user_no(); 
+                list.add(session.selectOne("getReviewedUserList", user_no));
+            }
+        } catch (Exception e) {
+            System.out.println("getReviewedUserList fail");
+            e.printStackTrace();
+        }
+		return list;
+	}
+	public Object getAllUserByMeetJoinList(List<MeetJoin> meetJoinList) {
+		List<User> list = new ArrayList<>();
+        try (SqlSession session = DBUtil.getInstance().openSession()){
+            for(MeetJoin meetJoin : meetJoinList) {
+            	int user_no = meetJoin.getUser_no(); 
                 list.add(session.selectOne("getReviewedUserList", user_no));
             }
         } catch (Exception e) {

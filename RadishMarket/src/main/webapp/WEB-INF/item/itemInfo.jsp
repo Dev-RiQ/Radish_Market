@@ -29,17 +29,21 @@
 			onclick="location.href='/listItem.do?item_no=${item.item_no}'">${categoryName}</a>
 		<p>${item.item_price}</p>
 		<p>${item.item_content}</p>
-		<span>찜 개수${zzimCount} </span><span>조회수 ${item.item_hits}</span>
+		<span>찜 개수<span id="zzim-count">${zzimCount}</span> </span><span>조회수 ${item.item_hits}</span>
 	</div>
 	<c:choose>
 		<c:when test="${item.user_no ne log}">
 			<div class="btn-box">
+			<input type="hidden" name="user_no" id="user_no" value="${ item.user_no }">
+			<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="3">
+			<input type="hidden" name="link_no" id="link_no" value="${ item.item_no }">
+			<input type="hidden" name="isZzim" id="isZzim" value="${ isZzim }">
 				<c:choose>
 					<c:when test="${isZzim == 0}">
-						<a href="/insertZzim.do?item_no=${item.item_no}">찜하기</a>
+						<button type="button" onclick="sendAlarm()">찜하기</button>
 					</c:when>
 					<c:otherwise>
-						<a href="/deleteZzim.do?item_no=${item.item_no}">찜취소</a>
+						<button type="button" onclick="sendAlarm()">찜취소</button>
 					</c:otherwise>
 				</c:choose>
 				<form action="/insertLetter.do" method="post">

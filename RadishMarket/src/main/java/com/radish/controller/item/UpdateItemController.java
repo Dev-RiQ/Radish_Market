@@ -1,7 +1,6 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;

@@ -50,4 +50,26 @@ public class CommentDAO {
 		}
 		return action != 0;
 	}
+	public boolean deleteAComment(int comment_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.delete("deleteAComment", comment_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteAComment fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+	public boolean updateAComment(Comment comment) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			action = session.update("updateAComment", comment);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("updateAComment fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
 }

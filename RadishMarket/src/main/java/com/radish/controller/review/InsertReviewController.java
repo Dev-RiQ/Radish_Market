@@ -2,6 +2,7 @@ package com.radish.controller.review;
 
 import java.io.IOException;
 
+import com.radish.dao.AlarmDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ReviewDAO;
 import com.radish.frontController.Controller;
@@ -19,6 +20,13 @@ public class InsertReviewController implements Controller {
 			throws ServletException, IOException {
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		String review_content = request.getParameter("review_content");
+		
+		String alarm_no_str = request.getParameter("alarm_no");
+		if(alarm_no_str != null) {
+			int alarm_no = Integer.parseInt(alarm_no_str);
+			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		}
+		
 		if(review_content == null) {
 			String item_img = "아이템 이미지 1장";
 			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));

@@ -81,7 +81,7 @@ function idValidCheck () {
 		alert('값을 입력하세요.')
 		return
 	}
-	fetch('/userInsertAjax.do',{
+	fetch('/insertUserAjax.do',{
 		method: "post",
 		headers:{
 			"Content-type" : "application/x-www-form-urlencoded; charset=UFT-8"

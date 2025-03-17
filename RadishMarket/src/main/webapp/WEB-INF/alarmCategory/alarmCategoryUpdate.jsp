@@ -4,7 +4,8 @@
 
 <form action="/updateAlarmCategory.do" method="post">
 	<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="${ alarm_category_no }">
-	<input type="text" name="alarm_category_name" id="alarm_category_name" value="${ alarm_category_name }"><br>
+	<input type="text" name="alarm_category_name" id="alarm_category_name" value="${ alarm_category_name }">
+	<textarea name="alarm_category_content" id="alarm_category_content">${ alarm_category_content }</textarea><br>
 	<button>수정하기</button>
 </form>
 

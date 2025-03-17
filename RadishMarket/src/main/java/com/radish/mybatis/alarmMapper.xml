@@ -5,8 +5,8 @@
 <mapper namespace="com.radish.mybatis.alarmMapper">
 
 	<insert id="insertAAlarm" parameterType="Alarm">
-		INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check, alarm_content)
-		VALUES (#{user_no}, #{alarm_category_no}, #{link_no}, #{alarm_reg_datetime}, #{alarm_check}, #{alarm_content})
+		INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check)
+		VALUES (#{user_no}, #{alarm_category_no}, #{link_no}, #{alarm_reg_datetime}, #{alarm_check})
 	</insert>
 	
 	<select id="getAlarmListByUserNo" parameterType="int" resultType="Alarm">
@@ -16,9 +16,21 @@
 		ORDER BY alarm_no DESC
 	</select>
 	
+	<select id="getAlarmNo" parameterType="int" resultType="int">
+		SELECT alarm_no
+		FROM alarms
+		WHERE user_no=#{user_no} AND link_no=#{link_no}
+	</select>
+	
 	<delete id="deleteAAlarm" parameterType="int">
 		DELETE FROM alarms
 		WHERE alarm_no=#{alarm_no}
 	</delete>
+	
+	<update id="setAlarmCheck" parameterType="int">
+		UPDATE alarms
+		SET alarm_check=1
+		WHERE alarm_no=#{alarm_no}
+	</update>
 
 </mapper>

@@ -1,7 +1,6 @@
 package com.radish.controller.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.radish.dao.BoardCategoryDAO;

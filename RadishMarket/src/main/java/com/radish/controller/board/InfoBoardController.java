@@ -3,6 +3,7 @@ package com.radish.controller.board;
 import java.io.IOException;
 import java.util.List;
 
+import com.radish.dao.AlarmDAO;
 import com.radish.dao.BoardDAO;
 import com.radish.dao.CommentDAO;
 import com.radish.dao.LikeDAO;
@@ -31,6 +32,11 @@ public class InfoBoardController implements Controller {
 		request.setAttribute("commentNickname", UserDAO.getInstance().getCommentedUserNickname(commentList));
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("isLike", LikeDAO.getInstance().isLikedInBoardNoByLog(board_no, log));
+		String alarm_no_str = request.getParameter("alarm_no");
+		if(alarm_no_str != null) {
+			int alarm_no = Integer.parseInt(alarm_no_str);
+			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		}
 		return "board/boardInfo";
 	}
 

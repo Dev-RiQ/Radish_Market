@@ -1,4 +1,4 @@
-package com.radish.controller.ajax;
+package com.radish.controller.user;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class UserInsertAjaxController implements Controller {
+public class InsertUserAjaxController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

@@ -5,6 +5,7 @@
 <c:forEach var="category" items="${ alarmCategoryList }">
 		${ category.alarm_category_no }
 		${ category.alarm_category_name }
+		${ category.alarm_category_content }
 		<button onclick="location.href='/updateAlarmCategory.do?alarm_category_no=${ category.alarm_category_no }'">수정하기</button>
 		<button onclick="location.href='/deleteAlarmCategory.do?alarm_category_no=${ category.alarm_category_no }'">삭제하기</button>
 		<hr>

@@ -9,8 +9,14 @@
 		FROM alarm_category
 	</select>
 	
-	<select id="getAAlarmCategoryName" parameterType="int" resultType="String">
-		SELECT alarm_category_name
+	<select id="getAlarmCategoryListByAlarmList" parameterType="int" resultType="AlarmCategory">
+		SELECT *
+		FROM alarm_category
+		WHERE alarm_category_no=#{alarm_category_no}
+	</select>
+	
+	<select id="getAAlarmCategory" parameterType="int" resultType="AlarmCategory">
+		SELECT *
 		FROM alarm_category
 		WHERE alarm_category_no=#{alarm_category_no}
 	</select>

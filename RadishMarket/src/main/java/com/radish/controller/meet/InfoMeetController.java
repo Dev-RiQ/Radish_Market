@@ -2,6 +2,7 @@ package com.radish.controller.meet;
 
 import java.io.IOException;
 
+import com.radish.dao.AlarmDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetJoinDAO;
 import com.radish.dao.MeetUserDAO;
@@ -28,6 +29,12 @@ public class InfoMeetController implements Controller {
 			request.setAttribute("hasUser", hasUser);
 		else if(MeetJoinDAO.getInstance().hasMeetJoin(new MeetJoin(meet_no,log)))
 			request.setAttribute("hasMeetJoin", true);
+		
+		String alarm_no_str = request.getParameter("alarm_no");
+		if(alarm_no_str != null) {
+			int alarm_no = Integer.parseInt(alarm_no_str);
+			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		}
 		
 		return "meet/meetInfo";
 	}

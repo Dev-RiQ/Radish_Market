@@ -1,4 +1,4 @@
-package com.radish.controller.ajax;
+package com.radish.controller.letter;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class LetterInfoAjaxController implements Controller {
+public class InfoLetterAjaxController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

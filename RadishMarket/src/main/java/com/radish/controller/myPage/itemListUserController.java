@@ -1,4 +1,4 @@
-package com.radish.controller.user;
+package com.radish.controller.myPage;
 
 import java.io.IOException;
 
@@ -11,7 +11,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class test_itemListUserController implements Controller {
+public class itemListUserController implements Controller {
 	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override

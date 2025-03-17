@@ -14,7 +14,10 @@
 	<label for="letter_content">내용</label>
 	<textarea name="letter_content" id="letter_content"></textarea>
 	
-	<button>쪽지 보내기</button>
+	<input type="hidden" name="user_no" id="user_no" value="${ item.user_no }">
+	<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="6">
+	<input type="hidden" name="link_no" id="link_no" value="${ item.item_no }">
+	<button type="button" onclick="sendAlarm()">쪽지 보내기</button>
 </form>
 
 <%@ include file="../main/footer.jsp" %>

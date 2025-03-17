@@ -2,6 +2,7 @@ package com.radish.controller.meetJoin;
 
 import java.io.IOException;
 
+import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetJoinDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
@@ -19,7 +20,7 @@ public class InsertMeetJoinController implements Controller {
 		String meet_join_content = request.getParameter("meet_join_content");
 		int meet_no = Integer.parseInt(request.getParameter("meet_no"));
 		if(meet_join_content == null) {
-			request.setAttribute("meet_no", meet_no);
+			request.setAttribute("meet", MeetDAO.getInstance().getAMeetByMeetNo(meet_no));
 			return "meet/meetJoinInsert";
 		}
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());

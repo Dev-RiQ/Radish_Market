@@ -26,12 +26,7 @@ public class InsertZzimController implements Controller {
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		
 		Zzim zzim = new Zzim(item_no, user_no);
-		
-		if(ZzimDAO.getInstance().insertZzim(zzim)) {
-			AlertUtil.getInstance().goUrlWithAlert(response, "찜++", "infoItem.do?item_no=" + item_no);
-		}else {
-			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 찜하기에 실패했습니다.\\n다시 시도해주세요.");
-		}
+		ZzimDAO.getInstance().insertZzim(zzim);
 		return null;
 	}
 

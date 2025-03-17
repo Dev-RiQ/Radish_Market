@@ -2,24 +2,16 @@ package com.radish.frontController;
 
 import java.util.HashMap;
 
-import com.radish.controller.admin.AlarmCategoryController;
-import com.radish.controller.admin.BoardCategoryController;
 import com.radish.controller.admin.BoardManageController;
-import com.radish.controller.admin.ItemCategoryController;
 import com.radish.controller.admin.ItemManageController;
-import com.radish.controller.admin.MeetCategoryController;
 import com.radish.controller.admin.MeetManageController;
 import com.radish.controller.admin.SiteInfoController;
 import com.radish.controller.admin.UserManageController;
-import com.radish.controller.ajax.AlarmListAjaxController;
-import com.radish.controller.ajax.CalendarInfoAjaxController;
-import com.radish.controller.ajax.CalendarListAjaxController;
 import com.radish.controller.ajax.FileUploadAjaxController;
-import com.radish.controller.ajax.LetterInfoAjaxController;
 import com.radish.controller.ajax.ListPagingAjaxController;
-import com.radish.controller.ajax.UserInsertAjaxController;
-import com.radish.controller.alarm.DeleteAlarmController;
-import com.radish.controller.alarm.InsertAlarmController;
+import com.radish.controller.alarm.ListAlarmAjaxController;
+import com.radish.controller.alarm.DeleteAlarmAjaxController;
+import com.radish.controller.alarm.InsertAlarmAjaxController;
 import com.radish.controller.alarmCategory.DeleteAlarmCategoryController;
 import com.radish.controller.alarmCategory.InsertAlarmCategoryController;
 import com.radish.controller.alarmCategory.ListAlarmCategoryController;
@@ -33,6 +25,8 @@ import com.radish.controller.boardCategory.DeleteBoardCategoryController;
 import com.radish.controller.boardCategory.InsertBoardCategoryController;
 import com.radish.controller.boardCategory.ListBoardCategoryController;
 import com.radish.controller.boardCategory.UpdateBoardCategoryController;
+import com.radish.controller.calendar.InfoCalendarAjaxController;
+import com.radish.controller.calendar.ListCalendarAjaxController;
 import com.radish.controller.calendar.DeleteCalendarController;
 import com.radish.controller.calendar.InsertCalendarController;
 import com.radish.controller.calendar.UpdateCalendarController;
@@ -51,6 +45,7 @@ import com.radish.controller.itemCategory.ListItemCategoryController;
 import com.radish.controller.itemCategory.UpdateItemCategoryController;
 import com.radish.controller.letter.DeleteLetterController;
 import com.radish.controller.letter.InsertLetterController;
+import com.radish.controller.letter.InfoLetterAjaxController;
 import com.radish.controller.letter.ListLetterController;
 import com.radish.controller.like.DeleteLikeController;
 import com.radish.controller.like.InsertLikeController;
@@ -69,6 +64,12 @@ import com.radish.controller.meetJoin.ListMeetJoinController;
 import com.radish.controller.meetUser.DeleteMeetUserController;
 import com.radish.controller.meetUser.InsertMeetUserController;
 import com.radish.controller.meetUser.ListMeetUserController;
+import com.radish.controller.myPage.boardListUserController;
+import com.radish.controller.myPage.itemListUserController;
+import com.radish.controller.myPage.meetListUserController;
+import com.radish.controller.myPage.mypageUserController;
+import com.radish.controller.myPage.userPageUserController;
+import com.radish.controller.myPage.zzimListUserController;
 import com.radish.controller.review.InsertReviewController;
 import com.radish.controller.review.ListReviewController;
 import com.radish.controller.user.DeleteUserController;
@@ -77,12 +78,7 @@ import com.radish.controller.user.InsertUserController;
 import com.radish.controller.user.LoginController;
 import com.radish.controller.user.LogoutController;
 import com.radish.controller.user.UpdateUserController;
-import com.radish.controller.user.test_boardListUserController;
-import com.radish.controller.user.test_itemListUserController;
-import com.radish.controller.user.test_meetListUserController;
-import com.radish.controller.user.test_mypageUserController;
-import com.radish.controller.user.test_userPageUserController;
-import com.radish.controller.user.test_zzimListUserController;
+import com.radish.controller.user.InsertUserAjaxController;
 import com.radish.controller.zzim.DeleteZzimController;
 import com.radish.controller.zzim.InsertZzimController;
 import com.radish.controller.zzim.ListZzimController;
@@ -100,12 +96,14 @@ public class HandlerMapping {
 		mappings.put("/infoUser.do", new InfoUserController());
 		mappings.put("/login.do", new LoginController());
 		mappings.put("/logout.do", new LogoutController());
-		mappings.put("/test_mypageUser.do", new test_mypageUserController());
-		mappings.put("/test_userpageUser.do", new test_userPageUserController());
-		mappings.put("/test_itemListUser.do", new test_itemListUserController());
-		mappings.put("/test_boardListUser.do", new test_boardListUserController());
-		mappings.put("/test_meetListUser.do", new test_meetListUserController());
-		mappings.put("/test_zzimListUser.do", new test_zzimListUserController());
+		
+		// MyPage
+		mappings.put("/mypageUser.do", new mypageUserController());
+		mappings.put("/userpageUser.do", new userPageUserController());
+		mappings.put("/itemListUser.do", new itemListUserController());
+		mappings.put("/boardListUser.do", new boardListUserController());
+		mappings.put("/meetListUser.do", new meetListUserController());
+		mappings.put("/zzimListUser.do", new zzimListUserController());
 		
 		// Item
 		mappings.put("/insertItem.do", new InsertItemController());
@@ -163,8 +161,8 @@ public class HandlerMapping {
 		mappings.put("/listMeetUser.do", new ListMeetUserController());
 		
 		// Alarm
-		mappings.put("/insertAlarm.do", new InsertAlarmController());
-		mappings.put("/deleteAlarm.do", new DeleteAlarmController());
+		mappings.put("/insertAlarmAjax.do", new InsertAlarmAjaxController());
+		mappings.put("/deleteAlarmAjax.do", new DeleteAlarmAjaxController());
 		
 		// Calendar
 		mappings.put("/insertCalendar.do", new InsertCalendarController());
@@ -177,17 +175,13 @@ public class HandlerMapping {
 		mappings.put("/boardManage.do", new BoardManageController());
 		mappings.put("/itemManage.do", new ItemManageController());
 		mappings.put("/meetManage.do", new MeetManageController());
-		mappings.put("/boardCategory.do", new BoardCategoryController());
-		mappings.put("/itemCategory.do", new ItemCategoryController());
-		mappings.put("/meetCategory.do", new MeetCategoryController());
-		mappings.put("/alarmCategory.do", new AlarmCategoryController());
 		
 		// Ajax
-		mappings.put("/userInsertAjax.do", new UserInsertAjaxController());
-		mappings.put("/leeterInfoAjax.do", new LetterInfoAjaxController());
-		mappings.put("/alarmListAjax.do", new AlarmListAjaxController());
-		mappings.put("/calendarListAjax.do", new CalendarListAjaxController());
-		mappings.put("/calendarInfoAjax.do", new CalendarInfoAjaxController());
+		mappings.put("/insertUserAjax.do", new InsertUserAjaxController());
+		mappings.put("/infoLeeterAjax.do", new InfoLetterAjaxController());
+		mappings.put("/listAlarmAjax.do", new ListAlarmAjaxController());
+		mappings.put("/listCalendarAjax.do", new ListCalendarAjaxController());
+		mappings.put("/infoCalendarAjax.do", new InfoCalendarAjaxController());
 		mappings.put("/listPagingAjax.do", new ListPagingAjaxController());
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
 		

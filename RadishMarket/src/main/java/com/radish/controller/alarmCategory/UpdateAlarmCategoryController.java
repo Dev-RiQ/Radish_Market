@@ -20,13 +20,16 @@ public class UpdateAlarmCategoryController implements Controller {
 		
 		if(request.getParameter("alarm_category_name") == null) {
 			request.setAttribute("alarm_category_no", alarm_category_no);
-			request.setAttribute("alarm_category_name", AlarmCategoryDAO.getInstance().getAAlarmCategoryName(alarm_category_no));
+			AlarmCategory alarmCategory = AlarmCategoryDAO.getInstance().getAAlarmCategory(alarm_category_no);
+			request.setAttribute("alarm_category_name", alarmCategory.getAlarm_category_name());
+			request.setAttribute("alarm_category_content", alarmCategory.getAlarm_category_content());
 			return "alarmCategory/alarmCategoryUpdate";
 		}
 		
 		String alarm_category_name = request.getParameter("alarm_category_name");
+		String alarm_category_content = request.getParameter("alarm_category_content");
 		
-		AlarmCategory alarmCategory = new AlarmCategory(alarm_category_no, alarm_category_name);
+		AlarmCategory alarmCategory = new AlarmCategory(alarm_category_no, alarm_category_name,alarm_category_content);
 		if(AlarmCategoryDAO.getInstance().updateAlarmCategory(alarmCategory))
 			AlertUtil.getInstance().goUrlWithAlert(response, "알람 카테고리 수정 완료", "listAlarmCategory.do");
 		else

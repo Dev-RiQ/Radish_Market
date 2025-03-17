@@ -24,6 +24,7 @@
 <c:if test="${ meet.host_user_no == log }">
 	<button onclick="location.href='/deleteMeet.do?meet_no=${ meet.meet_no }'">모임삭제하기</button>
 	<button onclick="location.href='/updateMeet.do?meet_no=${ meet.meet_no }'">정보수정하기</button>
+	<button onclick="location.href='/listMeetJoin.do?meet_no=${ meet.meet_no }'">가입신청목록</button>
 </c:if>
 
 <%@ include file="../main/footer.jsp" %>

@@ -1,4 +1,4 @@
-package com.radish.controller.admin;
+package com.radish.controller.calendar;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class MeetCategoryController implements Controller {
+public class ListCalendarAjaxController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

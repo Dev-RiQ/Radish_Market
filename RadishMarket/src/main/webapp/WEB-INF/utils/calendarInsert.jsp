@@ -27,7 +27,10 @@
 	<input type="hidden" name="sub_user_no" id="sub_user_no" value="${ sub_user_no }">
 	<input type="hidden" name="meet_no" id="meet_no" value="${ meet_no }">
 	
-	<button>일정 등록</button>
+	<input type="hidden" name="user_no" id="user_no" value="${ sub_user_no }">
+	<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="7">
+	<input type="hidden" name="link_no" id="link_no" value="">
+	<button type="button" onclick="sendAlarm()">일정 등록</button>
 </form>
 
 <%@ include file="../main/footer.jsp" %>

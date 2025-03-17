@@ -3,9 +3,9 @@ package com.radish.controller.item;
 import java.io.IOException;
 import java.util.List;
 
+import com.radish.dao.AlarmDAO;
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
-import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
@@ -62,6 +62,12 @@ public class InfoItemController implements Controller {
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("isZzim", ZzimDAO.getInstance().isZzimInItemNoByLog(item_no, log));
+		
+		String alarm_no_str = request.getParameter("alarm_no");
+		if(alarm_no_str != null) {
+			int alarm_no = Integer.parseInt(alarm_no_str);
+			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		}
 		
 		return "item/itemInfo";
 	}

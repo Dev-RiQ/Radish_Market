@@ -21,4 +21,15 @@
 		WHERE board_no=#{board_no}
 	</select>
 	
+	<delete id="deleteAComment" parameterType="int">
+		DELETE FROM comments
+		WHERE comment_no=#{comment_no}
+	</delete>
+	
+	<update id="updateAComment" parameterType="Comment">
+		UPDATE comments
+		SET comment_content=#{comment_content}, check_update=#{check_update}
+		WHERE comment_no=#{comment_no}
+	</update>
+	
 </mapper>

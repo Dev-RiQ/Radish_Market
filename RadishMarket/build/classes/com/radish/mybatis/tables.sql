@@ -203,8 +203,7 @@ CREATE TABLE alarms (
     alarm_category_no INT NOT NULL, -- [alarms_category] alarms_category_no 참조
     link_no INT NOT NULL, -- [items, boards] item_no, board_no 참조
     alarm_reg_datetime VARCHAR(20) NOT NULL,
-	alarm_check TINYINT NOT NULL,
-	alarm_content VARCHAR(300) NOT NULL
+	alarm_check TINYINT NOT NULL
 	);
 DESC alarms;
 SELECT * FROM alarms; 
@@ -213,7 +212,8 @@ SELECT * FROM alarms;
 DROP TABLE alarm_category;  
 CREATE TABLE alarm_category (
 	alarm_category_no INT AUTO_INCREMENT PRIMARY KEY,
-    alarm_category_name VARCHAR(10) NOT NULL
+    alarm_category_name VARCHAR(10) NOT NULL,
+    alarm_category_content VARCHAR(300) NOT NULL
     );
 DESC alarm_category;
 SELECT * FROM alarm_category; 
@@ -324,17 +324,23 @@ INSERT INTO meet_users (meet_no, user_no) VALUES
 (2, 3);
 
 -- 알람 카테고리
-INSERT INTO alarm_category (alarm_category_name) VALUES
-('쪽지'),
-('댓글'),
-('좋아요');
+INSERT INTO alarm_category (alarm_category_name, alarm_category_content) VALUES
+('좋아요','누군가 게시글을 좋아합니다.'),
+('댓글','게시글에 댓글이 추가되었습니다.'),
+('찜','누군가 아이템을 찜했습니다.'),
+('리뷰','판매 물품에 리뷰가 추가되었습니다.'),
+('리뷰','구매한 품목의 리뷰를 작성해주세요.'),
+('쪽지','새로운 쪽지가 있습니다.'),
+('일정','누군가 새로운 일정에 나를 추가했습니다.'),
+('모임','누군가 모임에 가입 신청을 했습니다.'),
+('모임','신청했던 모임에 가입되었습니다.');
 
 -- 알람
-INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check, alarm_content) VALUES
-(1, 1, 1, '2025-03-06 12:00:00', 0, '새로운 쪽지가 도착했습니다.'),
-(2, 2, 1, '2025-03-06 10:30:00', 0, '게시글에 댓글이 달렸습니다.'),
-(1, 3, 2, '2025-03-06 11:00:00', 0, '게시글에 좋아요가 추가되었습니다.'),
-(1, 5, 2, '2025-03-06 11:00:00', 0, '리뷰써라...');
+INSERT INTO alarms (user_no, alarm_category_no, link_no, alarm_reg_datetime, alarm_check) VALUES
+(1, 1, 1, '2025-03-06 12:00:00', 0),
+(2, 2, 1, '2025-03-06 10:30:00', 0),
+(1, 3, 2, '2025-03-06 11:00:00', 0),
+(1, 5, 2, '2025-03-06 11:00:00', 0);
 
 -- 캘린더
 INSERT INTO calendars (main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content) VALUES

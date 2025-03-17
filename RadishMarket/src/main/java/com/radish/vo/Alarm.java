@@ -7,20 +7,24 @@ public class Alarm {
 	private int link_no;
 	private String alarm_reg_datetime;
 	private int alarm_check;
-	private String alarm_content;
 
+	public Alarm(int user_no, int link_no, int alarm_category_no) {
+		super();
+		this.user_no = user_no;
+		this.link_no = link_no;
+		this.alarm_category_no = alarm_category_no;
+	}
 	public Alarm(int user_no, int alarm_category_no, int link_no, String alarm_reg_datetime,
-			int alarm_check, String alarm_content) {
+			int alarm_check) {
 		super();
 		this.user_no = user_no;
 		this.alarm_category_no = alarm_category_no;
 		this.link_no = link_no;
 		this.alarm_reg_datetime = alarm_reg_datetime;
 		this.alarm_check = alarm_check;
-		this.alarm_content = alarm_content;
 	}
 	public Alarm(int alarm_no, int user_no, int alarm_category_no, int link_no, String alarm_reg_datetime,
-			int alarm_check, String alarm_content) {
+			int alarm_check) {
 		super();
 		this.alarm_no = alarm_no;
 		this.user_no = user_no;
@@ -28,7 +32,6 @@ public class Alarm {
 		this.link_no = link_no;
 		this.alarm_reg_datetime = alarm_reg_datetime;
 		this.alarm_check = alarm_check;
-		this.alarm_content = alarm_content;
 	}
 
 	public int getAlarm_no() {
@@ -79,12 +82,5 @@ public class Alarm {
 		this.alarm_check = alarm_check;
 	}
 
-	public String getAlarm_content() {
-		return alarm_content;
-	}
-
-	public void setAlarm_content(String alarm_content) {
-		this.alarm_content = alarm_content;
-	}
 	
 }

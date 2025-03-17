@@ -1,34 +1,10 @@
-/* 
-	회원가입 주소 검색, 주소 정보, 좌표 가져오기 
-*/
-function execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            let roadAddr = '';
-            let jibunAddr = '';
-			roadAddr = data.roadAddress;
-            jibunAddr = data.jibunAddress;
-			if(!jibunAddr){
-				jibunAddr = data.autoJibunAddress;
-			}
-			const addressValues = jibunAddr.split(" ");
-			
-            document.getElementById("user_address").value = roadAddr;
-            document.getElementById("user_city").value = addressValues[0];
-            document.getElementById("user_gu").value = addressValues[1];
-            document.getElementById("user_dong").value = addressValues[2];
-			const geoCoder = new kakao.maps.services.Geocoder();
-			geoCoder.addressSearch(roadAddr, (result, status) => {
-				if(status === kakao.maps.services.Status.OK){
-		            document.getElementById("user_dir_x").value = result[0].x;
-		            document.getElementById("user_dir_y").value = result[0].y;
-				}
-			})
-        }
-    }).open();
-}
-function deleteUserDoubleCheck(){
-	let check = confirm('진짜 지움?')
-	if(check)
-		location.href=`/RadishMarket/deleteUser.do`
+function commentUpdate(e){
+	const comment_no = e.id.replace("btn-comment-update","");
+	const comment_content_box = document.querySelector(`#comment_content_box${comment_no}`);
+	comment_content_box.innerHTML = `<form action="/updateComment.do" method="post">
+										<textarea name="comment_content" id="comment_content">${document.querySelector(`#comment_content${comment_no}`).innerText}</textarea>
+										<input type="hidden" name="comment_no" id="comment_no" value="${comment_no}" />
+										<input type="hidden" name="board_no" id="board_no" value="${document.querySelector("#link_no").value}" />
+										<button>수정완료</button>
+									</form>`
 }
