@@ -18,6 +18,10 @@ function sendAlarm () {
 		return
 	}
 	
+	if(alarm_category_no == '3' && event.target.value){
+		alarm_category_no = '6';
+	}
+	
 	if(alarm_category_no == '3' && isZzim.value != '0'){
 		fetch(`/deleteZzim.do?item_no=${ link_no }`)
 		.then(response => response.text())
@@ -38,6 +42,14 @@ function sendAlarm () {
 	fetch(url)
 	.then(response => response.text())
 	.catch(error => console.log(error))
+	
+	if(alarm_category_no == '7'){
+		url = `/insertAlarmAjax.do?user_no=${user_no}&alarm_category_no=5&link_no=${link_no}`
+		fetch(url)
+		.then(response => response.text())
+		.catch(error => console.log(error))
+	}
+	
 	if(alarm_category_no == '3'){
 		fetch(`/insertZzim.do?item_no=${ link_no }`)
 		.then(response => response.text())
@@ -49,9 +61,11 @@ function sendAlarm () {
 		.catch(error => console.log(error))
 		return;
 	}
-	const form = document.querySelector('form');
-	if(form){
-		form.submit();
+	if(alarm_category_no != '6'){
+		const form = document.querySelector('form');
+		if(form){
+			form.submit();
+		}
 	}
 	if(alarm_category_no == '1'){
 		fetch(`/insertLike.do?board_no=${ link_no }`)

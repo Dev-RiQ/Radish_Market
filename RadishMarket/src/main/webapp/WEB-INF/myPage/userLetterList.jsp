@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../main/header.jsp"%>
-
+<input type="hidden" id="log" value="${ log }"/>
 <div class="useritemlist-container">
 
 	<div class="user-profile">

@@ -11,8 +11,7 @@
 		#{letter_content},#{letter_title}, #{letter_reg_datetime}, #{letter_check})
 	</insert>
 
-	<select id="getLetterListByUserNo" parameterType="int"
-		resultType="Letter">
+	<select id="getLetterListByUserNo" parameterType="int" resultType="Letter">
 		SELECT *
 		FROM letters
 		WHERE
