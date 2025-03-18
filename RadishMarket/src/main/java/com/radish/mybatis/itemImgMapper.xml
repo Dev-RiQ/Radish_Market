@@ -22,4 +22,9 @@
 		WHERE item_no=#{item_no}
 	</select>
 	
+	<delete id="deleteItemImg" parameterType="int">
+		DELETE FROM item_img
+		WHERE item_no=#{item_no}
+	</delete>
+	
 </mapper>

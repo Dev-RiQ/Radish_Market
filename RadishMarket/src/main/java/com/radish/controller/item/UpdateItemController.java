@@ -1,13 +1,17 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
+import com.radish.dao.ItemImgDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.util.DateUtil;
 import com.radish.vo.Item;
+import com.radish.vo.ItemImg;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +28,7 @@ public class UpdateItemController implements Controller {
 		
 		if(request.getParameter("item_name") == null) {
 			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
+			request.setAttribute("itemImgList", ItemImgDAO.getInstance().getAllItemImgList(item_no));
 			request.setAttribute("itemCategoryList", ItemCategoryDAO.getInstance().getAllItemCategoryList());
 			return "item/itemUpdate";
 		}
@@ -37,7 +42,18 @@ public class UpdateItemController implements Controller {
 
 		Item item = new Item(item_no, user_no, item_category_no, item_name, item_content, item_price,
 				item_update_datetime, item_status);
-
+		
+		String uploadFileNames = request.getParameter("user_itme_img");
+		String[] uploadFileName = uploadFileNames.split(", ");
+		
+		ItemImgDAO.getInstance().deleteItemImg(item_no);
+		
+		List<ItemImg> list = new ArrayList<>();
+		for(String item_img : uploadFileName) {
+			list.add(new ItemImg(item_no, item_img));
+		}
+		ItemImgDAO.getInstance().insertItemImg(list);
+		
 		if (ItemDAO.getInstance().updateItem(item)) {
 			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "listItem.do?item_no=" + item_no);
 			return null;

@@ -13,6 +13,7 @@ import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.util.DateUtil;
 import com.radish.vo.Item;
 import com.radish.vo.User;
 
@@ -36,6 +37,8 @@ public class InfoItemController implements Controller {
 		Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 		request.setAttribute("item", item);
 		request.setAttribute("item_category_name", ItemCategoryDAO.getInstance().getAitemCategoryName(item_no));
+		request.setAttribute("updateTime", DateUtil.getInstance().getCalcDateAgo(item.getItem_update_datetime()));
+		
 		User user = UserDAO.getInstance().getAUserByLog(item.getUser_no());
 		request.setAttribute("user", user);
 		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));

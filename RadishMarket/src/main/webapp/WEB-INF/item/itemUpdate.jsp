@@ -4,16 +4,26 @@
 <%@ include file="../main/header.jsp"%>
 
 <div class="item-update-container">
+
 	<form action="/updateItem.do" method="post">
 		<input type="hidden" name="item_no" value="${item.item_no}">
 		
 		<input type="hidden" id="user_itme_img" name="user_itme_img" />
 		<div class="post-list" id="post-list">
-		<!-- img -->
+			<c:choose>
+				<c:when test="${itemImgList eq null or itemImgList.size() == 0}">
+					<p> 서버 오류로 이미지를 불러오지 못 했습니다.</p>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
+						<img alt="item-images" src="/images/${itemImgList.get(i)}">
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
+			<!-- 사진 들어오는 공간 -->
 		</div>
-		사진 : <input type="file" id="ofile" name="ofile" multiple />
-		<div class="save-filename" id="save-filename">
-		</div>
+		<input type="file" id="ofile" name="ofile" multiple />
+		<div class="save-filename" id="save-filename"></div>
 		<hr>
 		
 		<label>제목<input type="text" name="item_name" value="${item.item_name}" required></label><br>
@@ -36,3 +46,4 @@
 
 <%@ include file="../main/footer.jsp"%>
 
+<script src="../../js/multiFile.js"></script>

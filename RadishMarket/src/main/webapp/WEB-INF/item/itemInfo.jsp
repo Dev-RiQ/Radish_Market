@@ -11,28 +11,34 @@
 		<div class="img-box">
 			<div class="swiper mySwiper">
 				<div class="swiper-wrapper">
-					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
-						<div class="swiper-slide">
-							<img alt="item-images" src="/images/${itemImgList.get(i)}">
-						</div>
-					</c:forEach>
+					<c:choose>
+						<c:when test="${itemImgList eq null or itemImgList.size() == 0}">
+							<p>서버 오류로 이미지를 불러오지 못 했습니다.</p>
+						</c:when>
+						<c:otherwise>
+							<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
+								<div class="swiper-slide">
+									<img alt="item-images" src="/images/${itemImgList.get(i)}">
+								</div>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div class="swiper-pagination"></div>
 				<div class="swiper-button-next"></div>
 				<div class="swiper-button-prev"></div>
 			</div>
 			<div class="user-box">
-				<img alt="" src="">유저 이미지 <a style="cursor: pointer;"
-					onclick="location.href='/userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
-				<a style="cursor: pointer;"
-					onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
+				<img alt="" src="">유저 이미지 <a href='/userpageUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+				<a href='/listItem.do?user_dong=${user.user_dong}'>${user.user_dong}</a>
 			<p>${user.user_deg}℃ ${emoji}</p>
 				<p>매너 온도</p>
 			</div>
 		</div>
 		<div class="sec-box">
 			<h3>${item.item_name}</h3>
-			<a href="카테고리 생기면...">${item_category_name}</a>
+			<a href="카테고리 생기면...">${item_category_name}</a> 
+			<p>${updateTime}</p>
 			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
 			<p>${item.item_content}</p>
@@ -165,9 +171,10 @@
 	</div>
 </div>
 
+<%@ include file="../main/footer.jsp"%>
+
 <script src="../../js/letter.js"></script>
 <script src="../../js/swiper.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer,drawing"></script>
 <script src="../../js/item.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer,drawing"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<%@ include file="../main/footer.jsp"%>

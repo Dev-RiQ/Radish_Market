@@ -54,8 +54,6 @@ function saveImg() {
 			.catch(error => console.log(error))
 
 		displayImage();
-	} else {
-		alert('최소 1개의 판매 물품 사진을 등록해야 합니다.');
 	}
 }
 

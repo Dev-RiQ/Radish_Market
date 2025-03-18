@@ -58,4 +58,16 @@ public class ItemImgDAO {
 		return list;
 	}
 
+	public Boolean deleteItemImg(int item_no) {
+		int action = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.delete("deleteItemImg", item_no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteItemImg fail");
+			e.printStackTrace();
+		}
+		return action != 0;
+	}
+
 }
