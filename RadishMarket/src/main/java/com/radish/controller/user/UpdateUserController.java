@@ -41,7 +41,7 @@ public class UpdateUserController implements Controller {
 		
 		User user = new User(log,user_pw, user_name, user_email, user_nickname, user_address, user_img, user_phone, user_dir_x, user_dir_y, user_city, user_gu, user_dong);
 		if(UserDAO.getInstance().userUpdate(user))
-			AlertUtil.getInstance().goUrlWithAlert(response, user_nickname + "회원 정보 수정 완료.", "userInfo.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, user_nickname + "회원 정보 수정 완료.", "mypageUser.do");
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 정보 수정에 실패했습니다.\\n다시 시도해주세요.");
 		return null;
