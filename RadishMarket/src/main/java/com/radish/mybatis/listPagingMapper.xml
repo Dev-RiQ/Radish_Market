@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.radish.mybatis.listPagingMapper">
+
+	<select id="getItemListByFilter" parameterType="Filter" resultType="Item">
+		SELECT i.*
+		FROM items i
+		INNER JOIN users u
+		ON i.user_no=u.user_no
+		<where>
+	        <if test="category_no != 0">
+	         	and i.item_category_no=#{category_no}
+	        </if>
+	        <if test="user_dong != '전체'">
+	        	and u.user_dong=#{user_dong}
+	        </if>
+	        <if test="item_status != 0">
+	         	and i.item_status=#{item_status}
+	        </if>
+	        <if test="price_min != 0">
+	         	and i.item_price <![CDATA[>=]]> #{price_min}
+	        </if>
+	        <if test="price_max != 0">
+	        	and i.item_price <![CDATA[<=]]> #{price_max}
+	        </if>
+   	 	</where>
+   	 	<choose>
+			<when test="order_by == 0">
+			ORDER BY
+				i.item_no DESC
+			</when> 
+			<when test="order_by == 1">
+			ORDER BY
+				i.item_hits DESC
+			</when> 
+			<when test="order_by == 2">
+			ORDER BY
+				i.item_price DESC
+			</when> 
+			<when test="order_by == 3">
+			ORDER BY
+				i.item_price ASC
+			</when> 
+			<otherwise>
+			ORDER BY
+				i.item_no DESC
+			</otherwise>
+   	 	</choose>
+		LIMIT #{start},30
+	</select>
+
+	<select id="getBoardListByFilter" parameterType="Filter" resultType="Board">
+		SELECT b.*
+		FROM boards b
+		INNER JOIN users u
+		ON b.user_no=u.user_no
+		<where>
+	        <if test="category_no != 0">
+	         	and b.board_category_no=#{category_no}
+	        </if>
+	        <if test="user_dong != '전체'">
+	        	and u.user_dong=#{user_dong}
+	        </if>
+   	 	</where>
+   	 	<choose>
+			<when test="order_by == 0">
+			ORDER BY
+				b.board_no DESC
+			</when> 
+			<when test="order_by == 1">
+			ORDER BY
+				b.board_hits DESC
+			</when> 
+			<otherwise>
+			ORDER BY
+				b.board_no DESC
+			</otherwise>
+   	 	</choose>
+		LIMIT #{start},30
+	</select>
+
+	<select id="getMeetBoardListByFilter" parameterType="Filter" resultType="Board">
+		SELECT b.*
+		FROM boards b
+		INNER JOIN users u
+		ON b.user_no=u.user_no
+		<where>
+			b.meet_no=#{meet_no}
+	        <if test="category_no != 0">
+	         	and b.board_category_no=#{category_no}
+	        </if>
+	        <if test="user_dong != '전체'">
+	        	and u.user_dong=#{user_dong}
+	        </if>
+   	 	</where>
+   	 	<choose>
+			<when test="order_by == 0">
+			ORDER BY
+				b.board_no DESC
+			</when> 
+			<when test="order_by == 1">
+			ORDER BY
+				b.board_hits DESC
+			</when> 
+			<otherwise>
+			ORDER BY
+				b.board_no DESC
+			</otherwise>
+   	 	</choose>
+		LIMIT #{start},30
+	</select>
+
+	<select id="getMeetListByFilter" parameterType="Filter" resultType="Meet">
+		SELECT m.*
+		FROM meets m
+		INNER JOIN users u
+		ON m.user_no=u.user_no
+		<where>
+	        <if test="category_no != 0">
+	         	and m.meet_category=#{category_no}
+	        </if>
+	        <if test="user_dong != '전체'">
+	        	and u.user_dong=#{user_dong}
+	        </if>
+   	 	</where>
+		ORDER BY
+			m.meet_no DESC
+		LIMIT #{start},30
+	</select>
+
+	<select id="getReceiveLetterListByFilter" parameterType="Filter" resultType="Letter">
+		SELECT *
+		FROM letters
+		WHERE receive_user_no=#{user_no}
+		ORDER BY
+			letter_no DESC
+		LIMIT #{start},30
+	</select>
+
+	<select id="getSendLetterListByFilter" parameterType="Filter" resultType="Letter">
+		SELECT *
+		FROM letters
+		WHERE send_user_no=#{user_no}
+		ORDER BY
+			letter_no DESC
+		LIMIT #{start},30
+	</select>
+
+	<select id="getZzimListByFilter" parameterType="Filter" resultType="Zzim">
+		SELECT *
+		FROM zzims
+		WHERE user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getCartListByFilter" parameterType="Filter" resultType="Cart">
+		SELECT *
+		FROM carts
+		WHERE user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getMyItemListByFilter" parameterType="Filter" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getReviewListByFilter" parameterType="Filter" resultType="Review">
+		SELECT *
+		FROM reviews
+		WHERE sell_user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getMyBoardListByFilter" parameterType="Filter" resultType="Board">
+		SELECT *
+		FROM boards
+		WHERE user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getHostMeetListByFilter" parameterType="Filter" resultType="Meet">
+		SELECT *
+		FROM meets
+		WHERE host_user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+
+	<select id="getMyMeetListByFilter" parameterType="Filter" resultType="Meet">
+		SELECT m.*
+		FROM meets m
+		INNER JOIN meet_users mu
+		ON mu.meet_no=m.meet_no
+		WHERE m.host_user_no!=#{user_no} AND mu.user_no=#{user_no}
+		LIMIT #{start},30
+	</select>
+	
+</mapper>

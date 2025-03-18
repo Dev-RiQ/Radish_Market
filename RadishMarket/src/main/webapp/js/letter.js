@@ -8,7 +8,7 @@ let letter_content;
 let send_user_nickname;
 let popupWindow;
 let popupDocument;
-let log = document.querySelector("#log").value;
+let log = document.querySelector("#log");
 
 function openPop(type) {
 	letter_no = event.currentTarget.id;
@@ -121,7 +121,7 @@ function setPopupWriteForRead(popupDocument){
 	popupDocument.write(`<p>${letter_reg_datetime}</p>`);
 	popupDocument.write('<hr>');
 	popupDocument.write(`<p>${letter_content}</p>`);
-	if(item_no && log != send_user_no){
+	if(item_no && log && log.value != send_user_no){
 		popupDocument.write(`<button id="set-trade">약속잡기</button>`);
 	}
 	popupDocument.write(`<button id="write-letter">답장</button>`);
@@ -132,7 +132,6 @@ function setPopupWriteForRead(popupDocument){
 
 function setSendData(popupDocument){
 	receive_user_no = popupDocument.getElementById('receive_user_no').value;
-	console.log(receive_user_no)
 	letter_title = popupDocument.getElementById('letter_title');
 	if(letter_title)
 		letter_title = letter_title.value;

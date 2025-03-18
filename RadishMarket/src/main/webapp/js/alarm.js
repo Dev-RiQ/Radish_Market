@@ -18,7 +18,7 @@ function sendAlarm () {
 		return
 	}
 	
-	if(alarm_category_no == '3' && event.target.value){
+	if(alarm_category_no == '3' && event.target.id == 'send-letter'){
 		alarm_category_no = '6';
 	}
 	

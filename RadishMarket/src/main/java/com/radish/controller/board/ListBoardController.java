@@ -42,6 +42,10 @@ public class ListBoardController implements Controller {
 			request.setAttribute("userDong", user_dong);
 			request.setAttribute("order_by", order_by);
 			Filter filter = new Filter(start, category_no, user_dong, order_by);
+			String meet_no_str = request.getParameter("meet_no");
+			if(meet_no_str != null && meet_no_str.isBlank()) {
+				filter.setMeet_no(Integer.parseInt(meet_no_str));
+			}
 			list = BoardDAO.getInstance().getBoardListByNonMeetNoInFilter(filter);
 		}else {
 			list = BoardDAO.getInstance().getBoardListByNonMeetNo(start);
