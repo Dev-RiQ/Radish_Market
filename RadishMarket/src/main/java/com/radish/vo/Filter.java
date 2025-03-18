@@ -8,7 +8,12 @@ public class Filter {
 	int price_max;
 	String user_dong;
 	int order_by;
+	int user_no;
+	int meet_no;
 	
+	public Filter(int start) {
+		this.start = start;
+	}
 	public Filter(int start, int category_no, String user_dong, int order_by) {
 		super();
 		this.start = start;
@@ -63,6 +68,24 @@ public class Filter {
 	}
 	public void setOrder_by(int order_by) {
 		this.order_by = order_by;
+	}
+	public int getStart() {
+		return start;
+	}
+	public void setStart(int start) {
+		this.start = start;
+	}
+	public int getUser_no() {
+		return user_no;
+	}
+	public void setUser_no(int user_no) {
+		this.user_no = user_no;
+	}
+	public int getMeet_no() {
+		return meet_no;
+	}
+	public void setMeet_no(int meet_no) {
+		this.meet_no = meet_no;
 	}
 	
 }

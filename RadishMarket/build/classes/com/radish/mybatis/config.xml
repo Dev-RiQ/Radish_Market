@@ -59,5 +59,6 @@
     <mapper resource="com/radish/mybatis/zzimMapper.xml"/>
     <mapper resource="com/radish/mybatis/emojiMapper.xml"/>
     <mapper resource="com/radish/mybatis/cartMapper.xml"/>
+    <mapper resource="com/radish/mybatis/listPagingMapper.xml"/>
   </mappers>
 </configuration>
