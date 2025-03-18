@@ -9,7 +9,7 @@
 	</div>
 	<div class="fir-box">
 		<div class="img-box">
-			<%-- <img alt="item-images" src="/images/${itemImgList.get(i)}"> --%>
+			<img alt="item-images" src="/images/${itemImgList.get(i)}">
 			<div class="swiper mySwiper">
 				<div class="swiper-wrapper">
 					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
@@ -27,7 +27,7 @@
 					onclick="location.href='/userpageUser.do?user_no=${user.user_no}'">${user.user_nickname}</a>
 				<a style="cursor: pointer;"
 					onclick="location.href='/listItem.do?user_dong=${user.user_dong}'">${user.user_dong}</a>
-				<p>${user.user_deg}℃ ${emoji}</p>
+			<p>${user.user_deg}℃ ${emoji}</p>
 				<p>매너 온도</p>
 			</div>
 		</div>
