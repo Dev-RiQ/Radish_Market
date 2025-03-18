@@ -9,38 +9,34 @@ import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.vo.Item;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class userPageUserController implements Controller {
-	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
-		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(user_no));
+		User user = UserDAO.getInstance().getAUserPortionInfo(user_no);
+		request.setAttribute("user", user);
 		
-		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
-		int limit = ITEMS_PER_PAGE;
-		if (limit > itemTotalCnt) {
-			limit = itemTotalCnt;
-		}
-		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
 		
-		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(user_no , limit, offset);
+		List<Item> itemList = ItemDAO.getInstance().getAllSellList(user_no);
 		request.setAttribute("itemList", itemList);
-		
 		List<Integer> itemNoList = new ArrayList<>();
 		for(Item item : itemList) {
 			itemNoList.add(item.getItem_no());
 		}
-		
 		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
 		request.setAttribute("mainImgList", mainImgList);
+		request.setAttribute("user_dong", user.getUser_dong());
+		System.out.println("우저 동 안나오냐: " + user.getUser_dong());
+		
 		
 		return "myPage/userItemList";
 	}

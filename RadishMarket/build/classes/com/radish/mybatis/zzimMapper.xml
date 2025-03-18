@@ -32,4 +32,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getZzimCountListByItemNoList" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM zzims
+		WHERE item_no=#{item_no}
+	</select>
+	
 </mapper>

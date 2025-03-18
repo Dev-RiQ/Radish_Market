@@ -6,17 +6,20 @@ import java.util.List;
 
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ItemImgDAO;
+import com.radish.dao.ReviewDAO;
 import com.radish.dao.UserDAO;
+import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Item;
+import com.radish.vo.Review;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class itemListUserController implements Controller {
-	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -29,14 +32,7 @@ public class itemListUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
 
-		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
-		int limit = ITEMS_PER_PAGE;
-		if (limit > itemTotalCnt) {
-			limit = itemTotalCnt;
-		}
-		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-
-		List<Item> itemList = ItemDAO.getInstance().getAUserAllItemListByUserNo(log, limit, offset);
+		List<Item> itemList = ItemDAO.getInstance().getAllSellList(log);
 		request.setAttribute("itemList", itemList);
 
 		List<Integer> itemNoList = new ArrayList<>();
@@ -46,6 +42,21 @@ public class itemListUserController implements Controller {
 
 		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
 		request.setAttribute("mainImgList", mainImgList);
+
+		List<Integer> zzimCountList = ZzimDAO.getInstance().getZzimCountListByItemNoList(itemNoList);
+		request.setAttribute("zzimCountList", zzimCountList);
+
+		List<Review> reviewList = ReviewDAO.getInstance().getReviewListByUserNo(log);
+		request.setAttribute("reviewList", reviewList);
+
+		if (reviewList != null) {
+			List<Integer> buyUserNoList = new ArrayList<>();
+			for (Review review : reviewList) {
+				buyUserNoList.add(review.getBuy_user_no());
+			}
+			List<User> buyUserInfoList = UserDAO.getInstance().getBuyUserInfoList(buyUserNoList);
+			request.setAttribute("buyUserInfoList", buyUserInfoList);
+		}
 
 		return "myPage/userItemList";
 	}

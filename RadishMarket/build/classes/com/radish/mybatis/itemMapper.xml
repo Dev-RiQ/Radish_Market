@@ -88,4 +88,22 @@
 		LIMIT 1
 	</select>
 	
+	<select id="getAllSellList" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE user_no=#{user_no} AND item_status=1
+	</select>
+	
+	<select id="getAllReserveItemList" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE user_no=#{user_no} AND item_status=2
+	</select>
+	
+	<select id="getAllSoldList" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE user_no=#{user_no} AND item_status=3
+	</select>
+	
 </mapper>

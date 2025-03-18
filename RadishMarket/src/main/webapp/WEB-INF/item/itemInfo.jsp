@@ -59,17 +59,17 @@
 						name="isZzim" id="isZzim" value="${ isZzim }">
 					<c:choose>
 						<c:when test="${isZzim == 0}">
-							<button type="button" onclick="sendAlarm()">찜하기</button>
+							<button type="button" id="btn-zzim" onclick="sendAlarm()">찜하기</button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" onclick="sendAlarm()">찜취소</button>
+							<button type="button" id="btn-zzim" onclick="sendAlarm()">찜취소</button>
 						</c:otherwise>
 					</c:choose>
 					<form action="/insertLetter.do" method="post">
 						<input type="hidden" id="receive_user_no" name="receive_no" value="${item.user_no}">
 						<input type="hidden" id="item_no"  name="send_user_no" value="${item.item_no}">
 						<input type="hidden" id="alarm_category_no"  name="alarm_category_no" value="6">
-						<button type="button" onclick="openPop('send')" value="${user.user_no}">쪽지 보내기</button>
+						<button type="button" onclick="openPop('send')">쪽지 보내기</button>
 					</form>
 				</div>
 			</c:when>

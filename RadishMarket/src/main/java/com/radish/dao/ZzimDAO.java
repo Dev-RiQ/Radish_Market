@@ -1,5 +1,6 @@
 package com.radish.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -67,6 +68,18 @@ public class ZzimDAO {
 			list = session.selectList("getAUserZzimItemNoList", user_no);
 		} catch (Exception e) {
 			System.out.println("getAUserZzimItemNoList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<Integer> getZzimCountListByItemNoList(List<Integer> itemNoList) {
+		List<Integer> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Integer item_no : itemNoList) {
+				list.add(session.selectOne("getZzimCountListByItemNoList", item_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getZzimCountListByItemNoList fail");
 			e.printStackTrace();
 		}
 		return list;

@@ -8,11 +8,11 @@ import com.radish.controller.admin.MeetManageController;
 import com.radish.controller.admin.SiteInfoController;
 import com.radish.controller.admin.UserManageController;
 import com.radish.controller.ajax.FileUploadAjaxController;
-import com.radish.controller.ajax.GeolocationController;
 import com.radish.controller.ajax.ListPagingAjaxController;
-import com.radish.controller.alarm.ListAlarmAjaxController;
+import com.radish.controller.ajax.MainAjaxController;
 import com.radish.controller.alarm.DeleteAlarmAjaxController;
 import com.radish.controller.alarm.InsertAlarmAjaxController;
+import com.radish.controller.alarm.ListAlarmAjaxController;
 import com.radish.controller.alarmCategory.DeleteAlarmCategoryController;
 import com.radish.controller.alarmCategory.InsertAlarmCategoryController;
 import com.radish.controller.alarmCategory.ListAlarmCategoryController;
@@ -26,10 +26,10 @@ import com.radish.controller.boardCategory.DeleteBoardCategoryController;
 import com.radish.controller.boardCategory.InsertBoardCategoryController;
 import com.radish.controller.boardCategory.ListBoardCategoryController;
 import com.radish.controller.boardCategory.UpdateBoardCategoryController;
-import com.radish.controller.calendar.InfoCalendarAjaxController;
-import com.radish.controller.calendar.ListCalendarAjaxController;
 import com.radish.controller.calendar.DeleteCalendarController;
+import com.radish.controller.calendar.InfoCalendarAjaxController;
 import com.radish.controller.calendar.InsertCalendarController;
+import com.radish.controller.calendar.ListCalendarAjaxController;
 import com.radish.controller.calendar.UpdateCalendarController;
 import com.radish.controller.comment.DeleteCommentController;
 import com.radish.controller.comment.InsertCommentController;
@@ -45,8 +45,8 @@ import com.radish.controller.itemCategory.InsertItemCategoryController;
 import com.radish.controller.itemCategory.ListItemCategoryController;
 import com.radish.controller.itemCategory.UpdateItemCategoryController;
 import com.radish.controller.letter.DeleteLetterController;
-import com.radish.controller.letter.InsertLetterController;
 import com.radish.controller.letter.InfoLetterAjaxController;
+import com.radish.controller.letter.InsertLetterController;
 import com.radish.controller.letter.ListLetterController;
 import com.radish.controller.like.DeleteLikeController;
 import com.radish.controller.like.InsertLikeController;
@@ -70,16 +70,17 @@ import com.radish.controller.myPage.cartListUserController;
 import com.radish.controller.myPage.itemListUserController;
 import com.radish.controller.myPage.meetListUserController;
 import com.radish.controller.myPage.mypageUserController;
+import com.radish.controller.myPage.sellListUserController;
 import com.radish.controller.myPage.userPageUserController;
 import com.radish.controller.myPage.zzimListUserController;
 import com.radish.controller.review.InsertReviewController;
 import com.radish.controller.review.ListReviewController;
 import com.radish.controller.user.DeleteUserController;
+import com.radish.controller.user.InsertUserAjaxController;
 import com.radish.controller.user.InsertUserController;
 import com.radish.controller.user.LoginController;
 import com.radish.controller.user.LogoutController;
 import com.radish.controller.user.UpdateUserController;
-import com.radish.controller.user.InsertUserAjaxController;
 import com.radish.controller.zzim.DeleteZzimController;
 import com.radish.controller.zzim.InsertZzimController;
 import com.radish.controller.zzim.ListZzimController;
@@ -105,6 +106,7 @@ public class HandlerMapping {
 		mappings.put("/meetListUser.do", new meetListUserController());
 		mappings.put("/zzimListUser.do", new zzimListUserController());
 		mappings.put("/cartListUser.do", new cartListUserController());
+		mappings.put("/sellListUser.do", new sellListUserController());
 		
 		// Item
 		mappings.put("/insertItem.do", new InsertItemController());
@@ -185,6 +187,7 @@ public class HandlerMapping {
 		mappings.put("/infoCalendarAjax.do", new InfoCalendarAjaxController());
 		mappings.put("/listPagingAjax.do", new ListPagingAjaxController());
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
+		mappings.put("/main.do", new MainAjaxController());
 		
 		
 		// BoardCategory

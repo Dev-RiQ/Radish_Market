@@ -15,25 +15,30 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class ListItemController implements Controller {
-	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if(request.getSession() != null && request.getSession().getAttribute("log") != null) {
+		if(request.getSession().getAttribute("log") != null) {
 			int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
 		}
 		
 		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
-		int limit = ITEMS_PER_PAGE;
-		if (limit > itemTotalCnt) {
-			limit = itemTotalCnt;
-		}
-		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-
-		List<Item> itemList = ItemDAO.getInstance().getLimitItemListByLimitWithOffset(limit, offset);
+		request.setAttribute("itemTotalCnt", itemTotalCnt);
+		
+		int defaultLimit = 30;
+        int curLimit = defaultLimit;
+        String limitParam = request.getParameter("limit");
+        if (limitParam != null) {
+        	curLimit = Integer.parseInt(limitParam);
+        }
+        
+		final int OFFSET = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
+		request.setAttribute("offset", OFFSET);
+		
+		List<Item> itemList = ItemDAO.getInstance().getLimitItemListByLimitWithOffset(curLimit, OFFSET);
 		request.setAttribute("itemList", itemList);
 		
 		List<String> userDongList = UserDAO.getInstance().getLimitUserDongByItemList(itemList);

@@ -176,4 +176,50 @@ public class ItemDAO {
 		}
 		return action;
 	}
+
+	public List<Item> getAllSellList(int user_no) {
+		List<Item> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+				list = session.selectList("getAllSellList", user_no);
+		} catch (Exception e) {
+			System.out.println("getAllSellList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Item> getAllReserveItemList(int user_no) {
+		List<Item> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+				list = session.selectList("getAllReserveItemList", user_no);
+		} catch (Exception e) {
+			System.out.println("getAllReserveItemList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Item> getAllSoldList(int user_no) {
+		List<Item> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+				list = session.selectList("getAllSoldList", user_no);
+		} catch (Exception e) {
+			System.out.println("getAllSoldList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<Item> getBuyItemList(List<Integer> buyItemNoList) {
+		List<Item> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			for(Integer item_no : buyItemNoList) {
+				list.add(session.selectOne("getBuyItemList", item_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getBuyItemList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

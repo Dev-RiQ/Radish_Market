@@ -23,6 +23,12 @@ public class User {
 		this.user_id = user_id;
 		this.user_pw = user_pw;
 	}
+	
+	public User(int user_no, String user_nickname, String user_dong) {
+		this.user_no = user_no;
+		this.user_nickname = user_nickname;
+		this.user_dong = user_dong;
+	}
 	public User(String user_nickname, String user_img, String user_dong, int user_deg) {
 		super();
 		this.user_nickname = user_nickname;

@@ -97,4 +97,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getBuyUserInfoList" parameterType="int" resultType="User">
+		SELECT user_no, user_nickname, user_dong
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

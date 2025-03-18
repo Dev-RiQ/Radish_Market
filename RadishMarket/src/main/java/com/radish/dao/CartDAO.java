@@ -9,25 +9,31 @@ import com.radish.vo.Cart;
 
 public class CartDAO {
 	private static CartDAO instance;
-	private CartDAO() {}
+
+	private CartDAO() {
+	}
+
 	public static CartDAO getInstance() {
-		if(instance == null) instance = new CartDAO();
+		if (instance == null)
+			instance = new CartDAO();
 		return instance;
 	}
+
 	public List<Cart> getCartList(int user_no) {
 		List<Cart> list = null;
-		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("getCartList",user_no);
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getCartList", user_no);
 		} catch (Exception e) {
 			System.out.println("getCartList fail");
 			e.printStackTrace();
 		}
 		return list;
 	}
+
 	public boolean cartInsert(Cart cart) {
 		int action = 0;
-		try (SqlSession session = DBUtil.getInstance().openSession()){
-			action = session.insert("cartInsert",cart);
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.insert("cartInsert", cart);
 			session.commit();
 		} catch (Exception e) {
 			System.out.println("cartInsert fail");
@@ -35,10 +41,11 @@ public class CartDAO {
 		}
 		return action != 0;
 	}
+
 	public boolean setCheckReviewed(Cart cart) {
 		int action = 0;
-		try (SqlSession session = DBUtil.getInstance().openSession()){
-			action = session.update("setCheckReviewed",cart);
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.update("setCheckReviewed", cart);
 			session.commit();
 		} catch (Exception e) {
 			System.out.println("setCheckReviewed fail");
@@ -46,6 +53,16 @@ public class CartDAO {
 		}
 		return action != 0;
 	}
-	
-	
+
+	public List<Integer> getBuyItemNoList(int user_no) {
+		List<Integer> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getBuyItemNoList", user_no);
+		} catch (Exception e) {
+			System.out.println("getBuyItemNoList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

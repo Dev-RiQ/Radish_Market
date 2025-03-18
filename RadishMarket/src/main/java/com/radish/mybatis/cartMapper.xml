@@ -21,4 +21,10 @@
 		WHERE item_no=#{item_no} AND user_no=#{user_no}
 	</update>
 	
+	<select id="getBuyItemNoList" parameterType="int" resultType="int">
+		SELECT item_no
+		FROM carts
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

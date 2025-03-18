@@ -21,18 +21,15 @@ public class cartListUserController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(user_no));
-		List<Cart> cartList = CartDAO.getInstance().getCartList(user_no);
-		List<Integer> itemNoList = new ArrayList<>();
-		for(Cart cart : cartList)
-			itemNoList.add(cart.getItem_no());
-		List<Item> itemList = ItemDAO.getInstance().getAUserAllZzimItemList(itemNoList);
-		request.setAttribute("cartList", cartList);
+		
+		List<Integer> buyItemNoList = CartDAO.getInstance().getBuyItemNoList(user_no);
+		List<Item> itemList = ItemDAO.getInstance().getBuyItemList(buyItemNoList);
 		request.setAttribute("itemList", itemList);
-		request.setAttribute("mainImgList", ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList));
-
-		return "myPage/userItemList";
+		
+		return "myPage/userCartList";
 	}
 
 }

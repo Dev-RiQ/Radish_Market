@@ -5,18 +5,17 @@
 <%@ include file="../main/header.jsp"%>
 <div class="item-list-container">
 	<div class="dir-history">
-		<a href='/index.jsp'>홈 > </a>
-		<a href='/listItem.do'>중고거래</a>
+		<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래</a>
 	</div>
 	<c:choose>
 		<c:when test="${log ne null}">
-			<h1>${user.user_city} ${user.user_gu} ${user.user_dong} 중고거래</h1>
+			<h1>${user.user_city}${user.user_gu}${user.user_dong} 중고거래</h1>
 		</c:when>
 		<c:otherwise>
-			<h1><span id="user_city"></span> <span id="user_gu"></span> <span id="user_dong"></span><span> 중고거래</span></h1>
+			<h1>${address}중고거래</h1>
 		</c:otherwise>
 	</c:choose>
-	
+
 	<div class="btn-box">
 		<a href='/insertItem.do'>글 쓰기</a>
 	</div>
@@ -50,9 +49,10 @@
 				</div>
 			</c:forEach>
 			<div class="btn-box">
-				<c:if test="${itemList.size() == 30 && itemTotalCnt > offset + 30}">
-					<form action="/item/listItem.do" method="get">
-						<input type="hidden" name="offset" value="${offset + 30}">
+				<c:if test="${itemList.size() < itemTotalCnt}">
+					<form action="/listItem.do" method="get">
+						<input type="hidden" name="limit" value="${limit + 30}"> <input
+							type="hidden" name="offset" value="0">
 						<button type="submit" class="btn btn-submit">더 구경하기</button>
 					</form>
 				</c:if>
@@ -61,6 +61,4 @@
 	</c:choose>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services"></script>
 <%@ include file="../main/footer.jsp"%>
-<script src="../../js/getUserJuso.js"></script>
