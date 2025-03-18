@@ -8,6 +8,7 @@ let letter_content;
 let send_user_nickname;
 let popupWindow;
 let popupDocument;
+let log = document.querySelector("#log").value;
 
 function openPop(type) {
 	letter_no = event.currentTarget.id;
@@ -42,6 +43,13 @@ function setEvents(){
 			popupWindow.close();
 			resetValues()
 			sendAlarm();
+		});
+	}
+	const btnTrade = popupDocument.getElementById('set-trade');
+	if(btnTrade){
+		btnTrade.addEventListener('click', () => {
+			popupWindow.close();
+			location.href=`/insertCalendar.do?sub_user_no=${send_user_no}&item_no=${item_no}`
 		});
 	}
 	const btnWrite = popupDocument.getElementById('write-letter');
@@ -113,6 +121,9 @@ function setPopupWriteForRead(popupDocument){
 	popupDocument.write(`<p>${letter_reg_datetime}</p>`);
 	popupDocument.write('<hr>');
 	popupDocument.write(`<p>${letter_content}</p>`);
+	if(item_no && log != send_user_no){
+		popupDocument.write(`<button id="set-trade">약속잡기</button>`);
+	}
 	popupDocument.write(`<button id="write-letter">답장</button>`);
 	popupDocument.write('<button id="close-popup">닫기</button>');
 	popupDocument.write('</div>');

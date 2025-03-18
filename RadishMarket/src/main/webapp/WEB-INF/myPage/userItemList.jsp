@@ -25,30 +25,23 @@
 	</div>
 
 	<div class="user-itemlist">
-		<h3>판매 물품(${itemList.size() == 0 or itemList eq null ? 0 : itemList.size()})</h3>
+		<h3>구매한 물품(${itemList.size() == 0 or itemList eq null ? 0 : itemList.size()})</h3>
 		<c:choose>
 			<c:when test="${itemList eq null or itemList.size() == 0}">
-				<p>아직 판매중인 물품이 없습니다.</p>
+				<p>아직 구매한 물품이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="i" begin="0" end="${itemList.size()-1}">
-					<div class="item-box" style="cursor: pointer;"
-						onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
+					<div class="item-box">
 						<div class="item-body">
 							<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 							<p>${itemList.get(i).item_name}</p>
-							<p>
-								<span> <c:choose>
-										<c:when test="${itemList.get(i).item_status == 2}">
-										예약중
-									</c:when>
-										<c:when test="${itemList.get(i).item_status == 3}">
-										판매 완료
-									</c:when>
-									</c:choose>
-								</span>${itemList.get(i).item_price}원
-							</p>
-							<p>${userDongList.get(i)}</p>
+							<c:if test="${ cartList.get(i).check_reviewed == 0 }">
+								<button onclick="location.href='insertReview.do?item_no=${itemList.get(i).item_no}'">리뷰작성</button>
+							</c:if>
+							<c:if test="${ cartList.get(i).check_reviewed == 1 }">
+								<p>리뷰작성완료</p>
+							</c:if>
 							<hr>
 						</div>
 					</div>
@@ -61,24 +54,6 @@
 						</form>
 					</c:if>
 				</div>
-			</c:otherwise>
-		</c:choose>
-	</div>
-
-	<div class="review-list">
-		<h3>거래 후기(${reviewList.size() == 0 or reviewList eq null  ? 0 : reviewList.size()})</h3>
-		<c:choose>
-			<c:when
-				test="${reviewList eq null or reviewList.size() == 0 or buyUserInfo eq null or buyUserInfo.size() == 0}">
-				<p>아직 거래 후기가 없습니다.</p>
-			</c:when>
-			<c:otherwise>
-				<c:forEach var="i" begin="0" end="${reviewList.size()-1}">
-					<div>
-						${buyUserInfo.get(i).user_nickname} 구매자 <span>${buyUserInfo.get(i).user_dong}</span>
-					</div>
-					<div>${reviewList.get(i).review_content}</div>
-				</c:forEach>
 			</c:otherwise>
 		</c:choose>
 	</div>

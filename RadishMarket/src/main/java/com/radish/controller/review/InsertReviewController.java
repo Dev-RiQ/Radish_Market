@@ -3,10 +3,12 @@ package com.radish.controller.review;
 import java.io.IOException;
 
 import com.radish.dao.AlarmDAO;
+import com.radish.dao.CartDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ReviewDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.vo.Cart;
 import com.radish.vo.Review;
 
 import jakarta.servlet.ServletException;
@@ -39,8 +41,11 @@ public class InsertReviewController implements Controller {
 		int buy_user_no = Integer.parseInt(request.getParameter("buy_user_no"));
 		
 		Review review = new Review(sell_user_no, buy_user_no, item_no, review_deg, review_content);
-		if(ReviewDAO.getInstance().insertAReview(review))
+		if(ReviewDAO.getInstance().insertAReview(review)) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "리뷰 등록 완료");
+			Cart cart = new Cart(item_no, buy_user_no, 0);
+			CartDAO.getInstance().setCheckReviewed(cart);
+		}
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 리뷰 등록에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

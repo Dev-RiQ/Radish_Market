@@ -3,9 +3,11 @@ package com.radish.controller.calendar;
 import java.io.IOException;
 
 import com.radish.dao.CalendarDAO;
+import com.radish.dao.CartDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Calendar;
+import com.radish.vo.Cart;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,15 +26,17 @@ public class InsertCalendarController implements Controller {
 		if(sub_user_no_str != null) {
 			sub_user_no = Integer.parseInt(sub_user_no_str);
 		}
-		if(meet_no_str != null) {
+		if(meet_no_str != null && !meet_no_str.isBlank()) {
 			meet_no = Integer.parseInt(meet_no_str);
 		}
+		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		String calendar_title = request.getParameter("calendar_title");
 		if(calendar_title == null) {
 			if(sub_user_no != 0)
 				request.setAttribute("sub_user_no", sub_user_no);
 			if(meet_no != 0)
 				request.setAttribute("meet_no", meet_no);
+			request.setAttribute("item_no", item_no);
 			return "utils/calendarInsert";
 		}
 		
@@ -44,8 +48,11 @@ public class InsertCalendarController implements Controller {
 		String calendar_content = request.getParameter("calendar_content");
 		
 		Calendar calendar = new Calendar(main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content);
-		if(CalendarDAO.getInstance().insertACalenadr(calendar))
+		if(CalendarDAO.getInstance().insertACalenadr(calendar)) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "일정 추가 완료");
+			Cart cart = new Cart(item_no, sub_user_no, 0);
+			CartDAO.getInstance().cartInsert(cart);
+		}
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 일정 추가에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

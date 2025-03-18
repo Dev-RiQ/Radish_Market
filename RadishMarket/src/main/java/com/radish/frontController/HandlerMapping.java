@@ -66,6 +66,7 @@ import com.radish.controller.meetUser.DeleteMeetUserController;
 import com.radish.controller.meetUser.InsertMeetUserController;
 import com.radish.controller.meetUser.ListMeetUserController;
 import com.radish.controller.myPage.boardListUserController;
+import com.radish.controller.myPage.cartListUserController;
 import com.radish.controller.myPage.itemListUserController;
 import com.radish.controller.myPage.meetListUserController;
 import com.radish.controller.myPage.mypageUserController;
@@ -103,6 +104,7 @@ public class HandlerMapping {
 		mappings.put("/boardListUser.do", new boardListUserController());
 		mappings.put("/meetListUser.do", new meetListUserController());
 		mappings.put("/zzimListUser.do", new zzimListUserController());
+		mappings.put("/cartListUser.do", new cartListUserController());
 		
 		// Item
 		mappings.put("/insertItem.do", new InsertItemController());

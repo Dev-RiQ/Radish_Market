@@ -246,6 +246,16 @@ CREATE TABLE emojis(
 DESC emojis;
 SELECT * FROM emojis; 
 
+-- 구매목록
+DROP TABLE carts; 
+CREATE TABLE carts(
+	item_no INT NOT NULL,
+    user_no INT NOT NULL,
+    check_reviewed INT NOT NULL
+    );
+DESC carts;
+SELECT * FROM carts; 
+
 -- [더미데이터 삽입] --
 -- 유저
 INSERT INTO users (user_id, user_pw, user_name, user_age, user_email, user_nickname, user_address, user_img, user_phone, user_reg_datetime, user_dir_x, user_dir_y, user_city, user_gu, user_dong, user_deg) VALUES
@@ -365,6 +375,13 @@ INSERT INTO emojis (min_deg, max_deg, emoji) VALUES
 (49, 63, '😀'),
 (64, 80, '😄'),
 (81, 100, '😆');
+
+-- 구매목록
+INSERT INTO carts (item_no, user_no, check_reviewed) VALUES
+(1, 1, 0),
+(2, 1, 0),
+(3, 1, 1),
+(4, 1, 0);
 
 
 -- [외래 키 설정] --
