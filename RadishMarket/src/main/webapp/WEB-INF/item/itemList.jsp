@@ -13,7 +13,7 @@
 			<h1>${user.user_city} ${user.user_gu} ${user.user_dong} 중고거래</h1>
 		</c:when>
 		<c:otherwise>
-			<h1>??시 ??구 ??동 중고거래</h1>
+			<h1><span id="user_city"></span> <span id="user_gu"></span> <span id="user_dong"></span><span> 중고거래</span></h1>
 		</c:otherwise>
 	</c:choose>
 	
@@ -61,5 +61,6 @@
 	</c:choose>
 </div>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services"></script>
 <%@ include file="../main/footer.jsp"%>
-
+<script src="../../js/getUserJuso.js"></script>

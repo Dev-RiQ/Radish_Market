@@ -8,6 +8,7 @@ import com.radish.controller.admin.MeetManageController;
 import com.radish.controller.admin.SiteInfoController;
 import com.radish.controller.admin.UserManageController;
 import com.radish.controller.ajax.FileUploadAjaxController;
+import com.radish.controller.ajax.GeolocationController;
 import com.radish.controller.ajax.ListPagingAjaxController;
 import com.radish.controller.alarm.ListAlarmAjaxController;
 import com.radish.controller.alarm.DeleteAlarmAjaxController;
@@ -182,6 +183,7 @@ public class HandlerMapping {
 		mappings.put("/infoCalendarAjax.do", new InfoCalendarAjaxController());
 		mappings.put("/listPagingAjax.do", new ListPagingAjaxController());
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
+		
 		
 		// BoardCategory
 		mappings.put("/listBoardCategory.do", new ListBoardCategoryController());

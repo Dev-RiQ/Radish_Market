@@ -9,7 +9,6 @@
 	</div>
 	<div class="fir-box">
 		<div class="img-box">
-			<img alt="item-images" src="/images/${itemImgList.get(i)}">
 			<div class="swiper mySwiper">
 				<div class="swiper-wrapper">
 					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
@@ -171,5 +170,4 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer,drawing"></script>
 <script src="../../js/item.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <%@ include file="../main/footer.jsp"%>
