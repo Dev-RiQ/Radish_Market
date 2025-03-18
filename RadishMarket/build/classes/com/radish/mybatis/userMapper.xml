@@ -45,7 +45,7 @@
 	</select>
 
 	<select id="getAUserPortionInfo" parameterType="int" resultType="User">
-		SELECT user_nickname, user_img, user_dong, user_deg
+		SELECT user_no, user_nickname, user_img, user_dong, user_deg
 		FROM users
 		WHERE user_no=#{user_no}
 	</select>

@@ -30,6 +30,14 @@ public class User {
 		this.user_dong = user_dong;
 		this.user_deg = user_deg;
 	}
+	public User(int user_no, String user_nickname, String user_img, String user_dong, int user_deg) {
+		super();
+		this.user_no = user_no;
+		this.user_nickname = user_nickname;
+		this.user_img = user_img;
+		this.user_dong = user_dong;
+		this.user_deg = user_deg;
+	}
 	public User(String user_id, String user_pw, String user_name, int user_age, String user_email,
 			String user_nickname, String user_address, String user_img, String user_phone, String user_reg_datetime,
 			String user_dir_x, String user_dir_y, String user_city, String user_gu, String user_dong, int user_deg) {

@@ -21,23 +21,26 @@
 									<img alt="item-images" src="/images/${itemImgList.get(i)}">
 								</div>
 							</c:forEach>
+							<div class="swiper-pagination"></div>
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
 						</c:otherwise>
 					</c:choose>
 				</div>
-				<div class="swiper-pagination"></div>
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
 			</div>
 			<div class="user-box">
-				<img alt="" src="">유저 이미지 <a href='/userpageUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+				<img alt="" src="">유저 이미지 <a
+					href='/userpageUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
 				<a href='/listItem.do?user_dong=${user.user_dong}'>${user.user_dong}</a>
-			<p>${user.user_deg}℃ ${emoji}</p>
+				<p>${user.user_deg}℃${emoji}</p>
+				<progress id="progress" value="${user.user_deg}" min="0" max="100"></progress>
 				<p>매너 온도</p>
+				<hr>
 			</div>
 		</div>
 		<div class="sec-box">
 			<h3>${item.item_name}</h3>
-			<a href="카테고리 생기면...">${item_category_name}</a> 
+			<a href="카테고리 생기면...">${item_category_name}</a>
 			<p>${updateTime}</p>
 			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
@@ -63,9 +66,10 @@
 						</c:otherwise>
 					</c:choose>
 					<form action="/insertLetter.do" method="post">
-						<input type="hidden" name="receive_no" value="${item.user_no}">
-						<input type="hidden" name="send_user_no" value="${log}">
-						<button type="button" onclick="쪽지보내는매서드()">쪽지 보내기</button>
+						<input type="hidden" id="receive_user_no" name="receive_no" value="${item.user_no}">
+						<input type="hidden" id="item_no"  name="send_user_no" value="${item.item_no}">
+						<input type="hidden" id="alarm_category_no"  name="alarm_category_no" value="6">
+						<button type="button" onclick="openPop('send')" value="${user.user_no}">쪽지 보내기</button>
 					</form>
 				</div>
 			</c:when>
@@ -78,6 +82,7 @@
 		</c:choose>
 
 		<div class="guid-box">
+			<hr>
 			<h3>거래 희망 장소</h3>
 			<div id="map" style="width: 500px; height: 400px;"></div>
 		</div>
@@ -99,7 +104,7 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${itemList eq null or itemList.size() == 0}">
-						<p>${user.user_nickname}님은 판매중인 물품이 없습니다.</p>
+						<p>${user.user_nickname}님은판매중인물품이 없습니다.</p>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${userAllItemListSize > 6}">
@@ -173,8 +178,10 @@
 
 <%@ include file="../main/footer.jsp"%>
 
+<script
+	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer,drawing"></script>
 <script src="../../js/letter.js"></script>
 <script src="../../js/swiper.js"></script>
 <script src="../../js/item.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer,drawing"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

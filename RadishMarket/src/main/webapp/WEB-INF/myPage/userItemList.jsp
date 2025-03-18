@@ -13,6 +13,17 @@
 		<p>매너온도</p>
 	</div>
 
+	<div class="btn-group">
+		<c:if test="${log ne user.user_no}">
+			<form action="/insertLetter.do" method="post">
+				<input type="hidden" id="receive_user_no" name="receive_no"
+					value="${user.user_no}"> <input type="hidden"
+					id="alarm_category_no" name="alarm_category_no" value="6">
+				<button type="button" onclick="openPop('send')">쪽지 보내기</button>
+			</form>
+		</c:if>
+	</div>
+
 	<div class="user-itemlist">
 		<h3>판매 물품(${itemList.size() == 0 or itemList eq null ? 0 : itemList.size()})</h3>
 		<c:choose>
