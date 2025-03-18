@@ -1,8 +1,8 @@
 package com.radish.controller.ajax;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 import com.radish.dao.ListPagingDAO;
 import com.radish.frontController.Controller;
@@ -23,13 +23,12 @@ public class ListPagingAjaxController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String queryString = request.getQueryString();
-		String[] queryCategory = queryString.split("&");
-		int queryStartIndex = Integer.parseInt(queryCategory[0].split("=")[1]);
+		Map<String, String[]> queryString = request.getParameterMap();
+		int queryStartIndex = Integer.parseInt(queryString.get("start")[0]);
 		
-		Filter filter = setFilter(queryStartIndex, queryCategory);
+		Filter filter = ListPagingDAO.getInstance().setFilter(queryStartIndex, queryString);
 		
-		String type = queryCategory[1].split("=")[1];
+		String type = queryString.get("type")[0];
 		switch(type) {
 		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", 
 			"myBoard", "hostMeet", "myMeet": 
@@ -37,51 +36,30 @@ public class ListPagingAjaxController implements Controller {
 		}
 		
 		List<?> list = ListPagingDAO.getInstance().getListByFilter(type, filter);
-		List<User> userList = ListPagingDAO.getInstance().getUserListByList(list, type);
-		List<Item> itemList = null;
-		List<BoardCategory> boardCategoryList = null;
-		List<ItemCategory> itemCategoryList = null;
-		List<MeetCategory> meetCategoryList = null;
-		List<ItemImg> itemImgList = null;
-		
-		
-		
-		StringBuilder sb = new StringBuilder();
-		
-		switch(type) {
-		case "item":  break;
-		case "board":  break;
-		case "meetBoard": ; break;
-		case "meet":  break;
-		case "receiveLetter":  break;
-		case "sendLetter":  break;
-		case "zzim":  break;
-		case "cart":  break;
-		case "myItem":  break;
-		case "review":  break;
-		case "myBoard":  break;
-		case "hostMeet":  break;
-		case "myMeet":  break;
+		if(list != null && list.size() != 0) {
+			List<User> userList = ListPagingDAO.getInstance().getUserListByList(list, type);
+			List<Item> itemList = ListPagingDAO.getInstance().getItemListByList(list, type);
+			List<BoardCategory> boardCategoryList = ListPagingDAO.getInstance().getBoardCategoryListByList(list, type);
+			List<ItemCategory> itemCategoryList = ListPagingDAO.getInstance().getItemCategoryListByList(list, type);
+			List<MeetCategory> meetCategoryList = ListPagingDAO.getInstance().getMeetCategoryListByList(list, type);
+			List<ItemImg> itemImgList = ListPagingDAO.getInstance().getItemImgListByList(list, itemList, type);
+			List<Integer> likeCountList = ListPagingDAO.getInstance().getLikeCountListByList(list, type);
+			List<Integer> commentCountList = ListPagingDAO.getInstance().getCommentCountListByList(list, type);
+			List<Integer> memberCountList = ListPagingDAO.getInstance().getMemberCountListByList(list, type);
+			
+			StringBuilder sb = ListPagingDAO.getInstance().getPrintListData(type, list, userList, itemList, 
+					boardCategoryList, itemCategoryList, meetCategoryList, itemImgList, likeCountList,
+					commentCountList, memberCountList);
+			
+			response.getWriter().print(sb.toString());
+		}else {
+			response.getWriter().print("noMoreList");
 		}
-		
-		response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        
 		return null;
 	}
 	
 
-	private Filter setFilter(int queryStartIndex, String[] queryCategory) {
-		Filter filter = new Filter(queryStartIndex);
-		if(queryCategory.length > 2) {
-			filter.setItem_status(Integer.parseInt(queryCategory[2]));
-			filter.setCategory_no(Integer.parseInt(queryCategory[3]));
-			filter.setPrice_min(Integer.parseInt(queryCategory[4]));
-			filter.setPrice_max(Integer.parseInt(queryCategory[5]));
-			filter.setUser_dong(queryCategory[6]);
-			filter.setOrder_by(Integer.parseInt(queryCategory[7]));
-			filter.setMeet_no(Integer.parseInt(queryCategory[8]));
-		}
-		return filter;
-	}
+
 
 }
