@@ -15,7 +15,7 @@
 		<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="9">
 		<input type="hidden" name="link_no" id="link_no" value="${ meetJoinList.get(i).meet_no }">
 		<button type="button" onclick="sendAlarm()">승인</button>
-		<button onclick="/deleteMeetJoin.do?meet_join_no=${meetJoinList.get(i).meet_join_no}">거절</button>
+		<button onclick="location.href='/deleteMeetJoin.do?meet_join_no=${meetJoinList.get(i).meet_join_no}'">거절</button>
 	</c:forEach>
 </c:if>
 

@@ -17,7 +17,7 @@ public class MeetJoinDAO {
 	public List<MeetJoin> getMeetJoinListByMeetNo(int meet_no) {
 		List<MeetJoin> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectOne("getMeetJoinListByMeetNo", meet_no);
+			list = session.selectList("getMeetJoinListByMeetNo", meet_no);
 		} catch (Exception e) {
 			System.out.println("getMeetJoinListByMeetNo fail");
 			e.printStackTrace();
@@ -45,10 +45,10 @@ public class MeetJoinDAO {
 		}
 		return action != 0;
 	}
-	public boolean deleteMeetJoin(MeetJoin meetJoin) {
+	public boolean deleteMeetJoin(int meet_join_no) {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			action = session.delete("deleteMeetJoin", meetJoin);
+			action = session.delete("deleteMeetJoin", meet_join_no);
 			session.commit();
 		} catch (Exception e) {
 			System.out.println("deleteMeetJoin fail");

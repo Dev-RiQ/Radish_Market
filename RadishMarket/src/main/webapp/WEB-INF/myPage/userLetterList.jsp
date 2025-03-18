@@ -22,18 +22,18 @@
 			<c:otherwise>
 				<c:forEach var="i" begin="0" end="${letterList.size()-1}">
 						<div class="receiveletter-body">
-							<div class="item-box" style="cursor: pointer;"
-						onclick="location.href='/infoItem.do?item_no=${letterList.get(i).item_no}'">
-							<p>${letterList.get(i).item_name}</p>
-							<p>아이템 번호: ${letterList.get(i).send_item_no}</p>
-							<p>받은 사람 번호: ${letterList.get(i).receiver_user_no}</p>
+							<div class="item-box" id="show-letter${ letterList.get(i).letter_no }" style="cursor: pointer;"
+						onclick="openPop('read')">
+							<p>아이템 번호: ${letterList.get(i).item_no}</p>
+							<p>받은 사람 번호: ${letterList.get(i).receive_user_no}</p>
 							<p>보낸 사람 번호: ${letterList.get(i).send_user_no}</p>
 							<p>제목: ${letterList.get(i).letter_title}</p>
-							<p>내용: ${letterList.get(i).content}</p>
-							<p>전송시간: ${letterList.get(i).reg_datetime}</p>
-							<p>${letterList.get(i).letter_check == 0 ? '미확인 쪽지' : '확인한 쪽지'}</p>
-							<hr>
+							<p>내용: ${letterList.get(i).letter_content}</p>
+							<p>전송시간: ${ letterList.get(i).letter_reg_datetime }</p>
+							<p id="check-letter${ letterList.get(i).letter_no }">${letterList.get(i).letter_check == 0 ? '미확인 쪽지' : '확인한 쪽지'}</p>
 						</div>
+							<button onclick="location.href='deleteLetter.do?letter_no=${letterList.get(i).letter_no}'">삭제</button>
+							<hr>
 						</div>
 				</c:forEach>
 				<div class="btn-box">
@@ -81,3 +81,4 @@
 
 
 <%@ include file="../main/footer.jsp"%>
+<script src="../../js/letter.js"></script>

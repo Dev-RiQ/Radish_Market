@@ -6,14 +6,14 @@
 
 	<insert id="insertALetter" parameterType="Letter">
 		INSERT INTO letters
-		(sell_user_no, buy_user_no, item_no, review_deg, review_content)
-		VALUES (#{sell_user_no}, #{buy_user_no}, #{item_no}, #{review_deg},
-		#{review_content})
+		(receive_user_no, send_user_no, item_no, letter_content, letter_title, letter_reg_datetime, letter_check)
+		VALUES (#{receive_user_no}, #{send_user_no}, #{item_no},
+		#{letter_content},#{letter_title}, #{letter_reg_datetime}, #{letter_check})
 	</insert>
 
 	<select id="getLetterListByUserNo" parameterType="int"
 		resultType="Letter">
-		SELECT letter_no, receive_user_no, send_user_no, item_no, letter_title, letter_content, letter_check
+		SELECT *
 		FROM letters
 		WHERE
 		receive_user_no=#{receive_user_no}
@@ -25,5 +25,17 @@
 		letters
 		WHERE letter_no=#{letter_no}
 	</delete>
+	
+	<select id="getALetter" parameterType="int" resultType="Letter">
+		SELECT *
+		FROM letters
+		WHERE letter_no=#{letter_no}
+	</select>
+
+	<update id="setCheck" parameterType="int">
+		UPDATE letters
+		SET letter_check=1
+		WHERE letter_no=#{letter_no}
+	</update>
 
 </mapper>

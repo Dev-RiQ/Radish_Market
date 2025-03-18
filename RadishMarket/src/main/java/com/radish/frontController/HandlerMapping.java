@@ -73,7 +73,6 @@ import com.radish.controller.myPage.zzimListUserController;
 import com.radish.controller.review.InsertReviewController;
 import com.radish.controller.review.ListReviewController;
 import com.radish.controller.user.DeleteUserController;
-import com.radish.controller.user.InfoUserController;
 import com.radish.controller.user.InsertUserController;
 import com.radish.controller.user.LoginController;
 import com.radish.controller.user.LogoutController;
@@ -93,7 +92,6 @@ public class HandlerMapping {
 		mappings.put("/insertUser.do", new InsertUserController());
 		mappings.put("/deleteUser.do", new DeleteUserController());
 		mappings.put("/updateUser.do", new UpdateUserController());
-		mappings.put("/infoUser.do", new InfoUserController());
 		mappings.put("/login.do", new LoginController());
 		mappings.put("/logout.do", new LogoutController());
 		
@@ -178,8 +176,8 @@ public class HandlerMapping {
 		
 		// Ajax
 		mappings.put("/insertUserAjax.do", new InsertUserAjaxController());
-		mappings.put("/infoLeeterAjax.do", new InfoLetterAjaxController());
 		mappings.put("/listAlarmAjax.do", new ListAlarmAjaxController());
+		mappings.put("/infoLetterAjax.do", new InfoLetterAjaxController());
 		mappings.put("/listCalendarAjax.do", new ListCalendarAjaxController());
 		mappings.put("/infoCalendarAjax.do", new InfoCalendarAjaxController());
 		mappings.put("/listPagingAjax.do", new ListPagingAjaxController());

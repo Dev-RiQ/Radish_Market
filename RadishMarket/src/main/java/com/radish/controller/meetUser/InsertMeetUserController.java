@@ -18,7 +18,7 @@ public class InsertMeetUserController implements Controller {
 		int meet_no = Integer.parseInt(request.getParameter("meet_no"));
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		if(MeetUserDAO.getInstance().insertMeetUser(meet_no, user_no))
-			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 승인 완료", "listMeetJoin.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 승인 완료", "listMeetJoin.do?meet_no="+meet_no);
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 모임 가입 승인에 실패했습니다.\\n다시 시도해주세요.");
 		return null;
