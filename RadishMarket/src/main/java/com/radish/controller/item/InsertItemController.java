@@ -11,7 +11,6 @@ import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.util.DateUtil;
-import com.radish.util.FileUtil;
 import com.radish.vo.Item;
 import com.radish.vo.ItemCategory;
 import com.radish.vo.ItemImg;
@@ -58,7 +57,7 @@ public class InsertItemController implements Controller {
 			
 			List<ItemImg> list = new ArrayList<>();
 			for(String item_img : uploadFileName) {
-				list.add(new ItemImg(lastItemNo, item_img));
+				list.add(new ItemImg(item_img, lastItemNo));
 			}
 			
 			if(ItemImgDAO.getInstance().insertItemImg(list) == 0) {

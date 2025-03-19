@@ -4,7 +4,7 @@
  * <button value="가져올리스트/현재가져온페이지수" onclick="getMoreList()">더보기</button>
  * 
  * (예시)
- * <button value="board/30" onclick="getMoreList()">더보기</button>
+ * <button id="btn-more-list" value="board/0" onclick="getMoreList()">더보기</button>
  * 
  *   리스트 종류
  *   "item"  
@@ -26,10 +26,21 @@
 	 "adminMeet"
  * 
  */
+let isLoaded = false;
+let btnMoreListLoad = document.querySelectorAll("#btn-more-list")
 let btnMoreList = null;
+btnMoreListLoad.forEach((i) => {
+	btnMoreList = i;
+	getMoreList();
+})
+setTimeout(() => {
+	isLoaded = true;
+},1000)
+
 function getMoreList(){
-	btnMoreList = event.target;
-	console.log(event.target)
+	if(isLoaded){
+		btnMoreList = event.target;
+	}
 	const typeAndStart = btnMoreList.value.split("/");
 	const type = typeAndStart[0];
 	const start = typeAndStart[1];
@@ -83,5 +94,4 @@ function printList(data){
 	} 
 	const listBox = document.querySelector("#list-box");
 	listBox.innerHTML += data;
-	btnMoreList = null;
 }
