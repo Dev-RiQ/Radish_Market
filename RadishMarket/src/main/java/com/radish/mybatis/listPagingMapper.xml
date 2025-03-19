@@ -162,6 +162,7 @@
 		LIMIT #{start},30
 	</select>
 
+	<!-- status, 최신순 반영해야함 -->
 	<select id="getMyItemListByFilter" parameterType="Filter" resultType="Item">
 		SELECT *
 		FROM items

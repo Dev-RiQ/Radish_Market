@@ -14,25 +14,16 @@
 	</div>
 
 	<div class="user-itemlist">
-		<h3>판매 물품(${itemList.size() == 0 or itemList eq null ? 0 : itemList.size()})</h3>
+		<h3>판매 물품(${empty itemList ? 0 : itemList.size()})</h3>
 		<c:choose>
-			<c:when test="${itemList eq null or itemList.size() == 0}">
+			<c:when test="${empty itemList}">
 				<p>아직 판매중인 물품이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="i" begin="0" end="${itemList.size()-1}">
-					<div class="item-box" style="cursor: pointer;"
-						onclick="location.href='/infoItem.do?item_no=${itemList.get(i).item_no}'">
-						<div class="item-body">
-							<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
-							<p>${itemList.get(i).item_name}</p>
-							<p>${itemList.get(i).item_price}원</p>
-							<p>${user.user_dong}</p>
-							<p>${zzimCountList.get(i)}</p>
-							<hr>
-						</div>
-					</div>
-				</c:forEach>
+				<div id="list-box">
+					<!-- 여기 리스트 출력 -->
+				</div>
+				<button id="btn-more-list" value="myItem/0" onclick="getMoreList()">더보기</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
@@ -40,20 +31,18 @@
 	<div class="review-list">
 		<h3>거래 후기(${empty reviewList ? 0 : reviewList.size()})</h3>
 		<c:choose>
-			<c:when
-				test="${empty reviewList or empty buyUserInfoList}">
+			<c:when test="${empty reviewList or empty buyUserInfoList}">
 				<p>아직 거래 후기가 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="i" begin="0" end="${reviewList.size()-1}">
-					<img alt="대표 이미지" src="/images/${itemImgList.get(i)}">
-					<p>${buyUserInfoList.get(i).user_nickname} <span>구매자</span></p> 
-					<p>${buyUserInfoList.get(i).user_dong}	</p>
-					<div>${reviewList.get(i).review_content}</div>
-				</c:forEach>
+				<div id="list-box">
+					<!-- 여기 리스트 출력 -->
+				</div>
+				<button id="btn-more-list" value="review/0" onclick="getMoreList()">더보기</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
 </div>
 
+<script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%>

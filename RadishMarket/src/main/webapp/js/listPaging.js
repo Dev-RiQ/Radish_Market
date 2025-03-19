@@ -1,7 +1,11 @@
 /**
  * 
  * 더보기 버튼 양식
- * <button value="가져올리스트/현재가져온페이지수" onclick="getMoreList()">더보기</button>
+  	<div id="list-box">
+	<!-- 여기 리스트 출력 -->
+	</div>
+  	<button id="btn-more-list" value="board/0" onclick="getMoreList()">더보기</button>
+	<script src="../../js/listPaging.js"></script>
  * 
  * (예시)
  * <button id="btn-more-list" value="board/0" onclick="getMoreList()">더보기</button>

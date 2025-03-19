@@ -1,30 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../main/header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../main/header.jsp"%>
 
-<button onclick="location.href='/infoMeet.do?meet_no=${ meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }''">모임 홈</button>
+<button
+	onclick="location.href='/infoMeet.do?meet_no=${ meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }''">모임
+	홈</button>
 <button onclick="location.href='/insertBoard.do?meet_no=${ meet_no }'">글쓰기</button>
 
-<c:forEach var="i" begin="0" end="${ boardList.size() - 1 }">
-		<div style="cursor:pointer;" onclick="location.href='/infoBoard.do?board_no=${ boardList.get(i).board_no }'">
-			${ boardList.get(i).board_no }
-			${ boardList.get(i).user_no }
-			${ boardList.get(i).board_category_no }
-			${ boardList.get(i).meet_no }
-			${ boardList.get(i).board_title }<br>
-			${ boardList.get(i).board_content }<br>
-			${ boardList.get(i).board_reg_datetime }
-			${ boardList.get(i).board_update_datetime }
-			${ boardList.get(i).board_img }
-			${ boardList.get(i).board_hits }<br>
-			${ likeList.get(i) }
-			${ commentList.get(i) }<br>
-		</div>
-		<hr>
-</c:forEach>
+<
+<div id="list-box">
+	<!-- 여기 리스트 출력 -->
+</div>
+<button id="btn-more-list" value="meetBoard/0" onclick="getMoreList()">더보기</button>
 
-<c:if test="${ hasNext ne null }">
-	<button onclick="location.href='/listBoard.do?start=${ start + 30 }'">더보기</button>
-</c:if>
+<%@ include file="../main/footer.jsp"%>
 
-<%@ include file="../main/footer.jsp" %>
+<script src="../../js/listPaging.js"></script>

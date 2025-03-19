@@ -14,27 +14,21 @@
 	</div>
 
 	<div class="user-zzimlist">
-		<h3>내 찜목록</h3>
+		<h3>내 찜목록 (${empty zzimList ? 0 : zzimList.size()})</h3>
 		<c:choose>
-			<c:when test="${zzimList eq null or zzimList.size() == 0 or userDongList eq null or userDongList.size() == 0}">
+			<c:when test="${empty zzimList or empty userDongList}">
 				<p>아직 찜한 상품이 없습니다.</p>
 			</c:when>
 			<c:otherwise>
-				<c:forEach var="i" begin="0" end="${zzimList.size()-1}">
-					<div class="zzimlist-box" style="cursor: pointer;"
-						onclick="location.href='/infoItem.do?item_no=${zzimList.get(i).item_no}'">
-						<div class="zzimlist-body">
-							<img alt="item-images" src="/images/${mainImgList.get(i)}">
-							<p>${zzimList.get(i).item_name}</p>
-							<p>${zzimList.get(i).item_price}원</p>
-							<p>${userDongList.get(i)}</p>
-							<hr>
-						</div>
-					</div>
-				</c:forEach>
+				<div id="list-box">
+					<!-- 여기 리스트 출력 -->
+				</div>
+				<button id="btn-more-list" value="zzim/0" onclick="getMoreList()">더보기</button>
 			</c:otherwise>
 		</c:choose>
 	</div>
 </div>
+
+<script src="../../js/listPaging.js"></script>
 
 <%@ include file="../main/footer.jsp"%>

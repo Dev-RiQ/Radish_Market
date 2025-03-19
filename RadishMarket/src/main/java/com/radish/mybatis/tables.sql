@@ -1,12 +1,6 @@
--- Test
-DROP DATABASE test_radish_market_db;
+-- [Test] --
 CREATE DATABASE test_radish_market_db;
 use test_radish_market_db;
-
--- Init
-DROP DATABASE radish_market_db;
-CREATE DATABASE radish_market_db;
-use radish_market_db;
 
 -- 유저
 DROP TABLE users;
@@ -36,7 +30,7 @@ SELECT * FROM users;
 DROP TABLE item_category;     
 CREATE TABLE item_category (
     item_category_no INT AUTO_INCREMENT PRIMARY KEY,
-    item_category_name VARCHAR(10) NOT NULL
+    item_category_name VARCHAR(10) UNIQUE NOT NULL
     );
 DESC item_category;
 SELECT * FROM item_category;
@@ -45,8 +39,8 @@ SELECT * FROM item_category;
 DROP TABLE items;
 CREATE TABLE items (
 	item_no INT AUTO_INCREMENT PRIMARY KEY,
-    user_no INT NOT NULL, -- FK
-    item_category_no INT NOT NULL, -- [item_category] item_category_no 참조
+    user_no INT NOT NULL, # FK
+    item_category_no INT NOT NULL, # [item_category] item_category_no 참조
     item_name VARCHAR(50) NOT NULL,
     item_content VARCHAR(1000) NOT NULL,
     item_price INT UNSIGNED NOT NULL,
@@ -62,9 +56,9 @@ SELECT * FROM items;
 DROP TABLE boards;
 CREATE TABLE boards (
 	board_no INT AUTO_INCREMENT PRIMARY KEY,
-    user_no INT NOT NULL, -- FK
-    meet_no INT NOT NULL, -- FK
-    board_category_no INT NOT NULL, -- [board_category] board_category_no 참조
+    user_no INT NOT NULL, # FK
+    meet_no INT NOT NULL, # FK
+    board_category_no INT NOT NULL, # [board_category] board_category_no 참조
     board_title VARCHAR(50) NOT NULL,
     board_content VARCHAR(1000) NOT NULL,
     board_reg_datetime VARCHAR(20) NOT NULL,
@@ -79,10 +73,10 @@ SELECT * FROM boards;
 DROP TABLE meets;
 CREATE TABLE meets (
 	meet_no INT AUTO_INCREMENT PRIMARY KEY,
-    host_user_no INT NOT NULL, -- FK
+    host_user_no INT NOT NULL, # FK
     meet_title VARCHAR(50) NOT NULL,
     meet_content VARCHAR(1000) NOT NULL,
-    meet_category INT NOT NULL,
+    meet_category_no INT NOT NULL,
     age_min INT NOT NULL,
     age_max INT NOT NULL,
     meet_img VARCHAR(50) NOT NULL DEFAULT 'meetsDefaultImg'
@@ -93,23 +87,23 @@ SELECT * FROM meets;
 -- 후기
 DROP TABLE reviews;
 CREATE TABLE reviews (
-	review_deg TINYINT NOT NULL,
-    sell_user_no INT NOT NULL, -- FK
-    buy_user_no INT NOT NULL, -- [users] user_no 참조
-    item_no INT NOT NULL, -- FK
-    review_content VARCHAR(100) NOT NULL
+	reviews_deg TINYINT NOT NULL,
+    sell_user_no INT NOT NULL, # FK
+    buy_user_no INT NOT NULL, # [users] user_no 참조
+    item_no INT NOT NULL, # FK
+    reviews_content VARCHAR(100) NOT NULL
     );    
 DESC reviews;
 SELECT * FROM reviews; 
 
--- 댓글
+-- 댓글 (컬럼 이름 수정해야함)
 DROP TABLE comments;
 CREATE TABLE comments (
-	comment_no INT AUTO_INCREMENT PRIMARY KEY,
-    board_no INT NOT NULL, -- FK
-    user_no INT NOT NULL, -- FK
-    comment_content VARCHAR(300) NOT NULL,
-    comment_reg_datetime VARCHAR(20) NOT NULL,
+	comments_no INT AUTO_INCREMENT PRIMARY KEY,
+    board_no INT NOT NULL, # FK
+    user_no INT NOT NULL, # FK
+    comments_content VARCHAR(300) NOT NULL,
+    comments_reg_datetime VARCHAR(20) NOT NULL,
     check_update TINYINT NOT NULL
      );   
 DESC comments;
@@ -119,9 +113,9 @@ SELECT * FROM comments;
 DROP TABLE letters;
 CREATE TABLE letters (
 	letter_no INT AUTO_INCREMENT PRIMARY KEY,
-    receive_user_no INT NOT NULL, -- FK
-	send_user_no INT NOT NULL, -- [users] user_no 참조
-    item_no INT NOT NULL, -- FK
+    receive_user_no INT NOT NULL, # FK
+	send_user_no INT NOT NULL, # [users] user_no 참조
+    item_no INT NOT NULL, # FK
     letter_title VARCHAR(50) NOT NULL,
     letter_content VARCHAR(300) NOT NULL,
     letter_reg_datetime VARCHAR(20) NOT NULL,
@@ -133,17 +127,17 @@ SELECT * FROM letters;
 -- 찜
 DROP TABLE zzims; 
 CREATE TABLE zzims (
-	user_no INT NOT NULL, -- [users] user_no 참조
-    item_no INT NOT NULL -- FK
+	user_no INT NOT NULL, # [users] user_no 참조
+    item_no INT NOT NULL # FK
 	);
 DESC zzims;
-SELECT * FROM zzims;   
+SELECT * FROM zzims;         
 
 -- 좋아요
 DROP TABLE likes; 
 CREATE TABLE likes (
-    user_no INT NOT NULL, -- [users] user_no 참조
-    board_no INT NOT NULL -- FK
+    user_no INT NOT NULL, # [users] user_no 참조
+    board_no INT NOT NULL # FK
     );
 DESC likes;
 SELECT * FROM likes;     
@@ -170,7 +164,7 @@ SELECT * FROM meet_category;
 DROP TABLE item_img; 
 CREATE TABLE item_img (
     item_img VARCHAR(50) NOT NULL,
-    item_no INT NOT NULL -- FK
+    item_no INT NOT NULL # FK
     );
 DESC item_img;
 SELECT * FROM item_img; 
@@ -179,8 +173,8 @@ SELECT * FROM item_img;
 DROP TABLE meet_join; 
 CREATE TABLE meet_join (
     meet_join_no INT AUTO_INCREMENT PRIMARY KEY,
-    meet_no INT NOT NULL, -- FK
-    user_no INT NOT NULL, -- FK
+    meet_no INT NOT NULL, # FK
+    user_no INT NOT NULL, # FK
     meet_join_content VARCHAR(300) NOT NULL
     );
 DESC meet_join;
@@ -189,8 +183,8 @@ SELECT * FROM meet_join;
 -- 모임 회원
 DROP TABLE meet_users; 
 CREATE TABLE meet_users (
-    meet_no INT NOT NULL, -- FK
-    user_no INT NOT NULL -- FK
+    meet_no INT NOT NULL, # FK
+    user_no INT NOT NULL # FK
 	);
 DESC meet_users;
 SELECT * FROM meet_users; 
@@ -198,12 +192,13 @@ SELECT * FROM meet_users;
 -- 알람
 DROP TABLE alarms;  
 CREATE TABLE alarms (
-		alarm_no INT AUTO_INCREMENT PRIMARY KEY,
-    user_no INT NOT NULL, -- FK
-    alarm_category_no INT NOT NULL, -- [alarms_category] alarms_category_no 참조
-    link_no INT NOT NULL, -- [items, boards] item_no, board_no 참조
+	alarm_no INT AUTO_INCREMENT PRIMARY KEY,
+    user_no INT NOT NULL, # FK
+    alarm_category_no INT NOT NULL, # [alarms_category] alarms_category_no 참조
+    link_no INT NOT NULL, # [items, boards] item_no, board_no 참조
     alarm_reg_datetime VARCHAR(20) NOT NULL,
-		alarm_check TINYINT NOT NULL
+	alarm_check TINYINT NOT NULL,
+	alarm_content VARCHAR(300) NOT NULL
 	);
 DESC alarms;
 SELECT * FROM alarms; 
@@ -212,8 +207,8 @@ SELECT * FROM alarms;
 DROP TABLE alarm_category;  
 CREATE TABLE alarm_category (
 	alarm_category_no INT AUTO_INCREMENT PRIMARY KEY,
-    alarm_category_name VARCHAR(10) NOT NULL,
-    alarm_category_content VARCHAR(300) NOT NULL
+    alarm_name VARCHAR(10) NOT NULL,
+    alarm_content VARCHAR(50) NOT NULL
     );
 DESC alarm_category;
 SELECT * FROM alarm_category; 
@@ -222,9 +217,9 @@ SELECT * FROM alarm_category;
 DROP TABLE calendars;  
 CREATE TABLE calendars (
 	calendar_no INT AUTO_INCREMENT PRIMARY KEY,
-    main_user_no INT NOT NULL, -- FK
-    sub_user_no INT NOT NULL, -- [users] sub_user_no 참조
-    meet_no INT NOT NULL, -- FK
+    main_user_no INT NOT NULL, # FK
+    sub_user_no INT NOT NULL, # [users] sub_user_no 참조
+    meet_no INT NOT NULL, # FK
     address VARCHAR(100) NOT NULL,
     calendar_dir_x VARCHAR(20) NOT NULL,
     calendar_dir_y VARCHAR(20) NOT NULL,
@@ -236,7 +231,7 @@ DESC calendars;
 SELECT * FROM calendars; 
 
 -- 이모지
-DROP TABLE emojis; 
+DROP TABLE emojis;
 CREATE TABLE emojis(
 	min_deg INT NOT NULL,
     max_deg INT NOT NULL,
@@ -249,12 +244,93 @@ SELECT * FROM emojis;
 -- 구매목록
 DROP TABLE carts; 
 CREATE TABLE carts(
-	item_no INT NOT NULL, -- items item_no 참조
-    user_no INT NOT NULL, -- users user_no 참조
+	item_no INT NOT NULL, -- FK
+    user_no INT NOT NULL, -- [users] user_no 참조
     check_reviewed INT NOT NULL
     );
 DESC carts;
 SELECT * FROM carts; 
 
--- 더미 데이터 --
+-- [필수 카테고리, 이모지 데이터 삽입] -- 
 
+-- item_category (20개)
+INSERT INTO item_category (item_category_name) VALUES
+('미분류'),
+('디지털기기'),
+('생활가전'),
+('가구/인테리어'),
+('생활/주방'),
+('유아동'),
+('유아도서'),
+('여성의륰'),
+('여성잡화'),
+('남성패션/잡화'),
+('뷰티/미용'),
+('스포츠/레저'),
+('취미/게임/음반'),
+('도서'),
+('티켓/교환권'),
+('가공식품'),
+('건강기능식품'),
+('반려동물용품'),
+('식물'),
+('기타 중고물품');
+ 
+-- board_category (19개)
+INSERT INTO board_category (board_category_name) VALUES
+('미분류'),
+('인기글'),
+('맛집'),
+('반려동물'),
+('운동'),
+('생활/편의'),
+('분실/실종'),
+('병원/약국'),
+('고민/사연'),
+('동네친구'),
+('이사/시공'),
+('주거/부동산'),
+('교육'),
+('취미'),
+('동네사건사고'),
+('동네풍경'),
+('미용'),
+('임신/육아'),
+('일반');
+ 
+-- meet_category (13개)
+INSERT INTO meet_category (meet_category_name) VALUES
+('미분류'),
+('운동'),
+('자기계발'),
+('동네친구'),
+('아웃도어/여행'),
+('가족/육아'),
+('반려동물'),
+('음식/음료'),
+('취미/오락'),
+('독서/인문학'),
+('문화//예술'),
+('음악/악기'),
+('기타');
+
+-- alarm_category (9개)
+INSERT INTO alarm_category (ararm_category_name, ararm_category_content) VALUES
+('좋아요', '회원님의 게시글이 좋아요를 받았습니다.'),  
+('댓글', '회원님의 게시글에 새로운 댓글이 등록되었습니다.'),  
+('찜', '회원님의 아이템이 찜 목록에 추가되었습니다.'),  
+('상품 리뷰', '판매하신 물품에 새로운 리뷰가 작성되었습니다.'),  
+('리뷰 작성 요청', '구매하신 상품에 대한 리뷰를 작성해 주세요.'),  
+('쪽지', '새로운 쪽지가 도착했습니다.'),  
+('일정 초대', '회원님이 새로운 일정에 추가되었습니다.'),  
+('모임 가입 신청', '모임 가입 신청이 접수되었습니다.'),  
+('모임 가입 승인', '회원님의 모임 가입이 승인되었습니다.'); 
+
+-- emojis (6개)
+INSERT INTO emojis (min_deg, max_deg, emoji) VALUES
+(0, 20, '😰'),
+(21, 35, '🙁'),
+(36, 48, '🙂'),
+(49, 63, '😀'),
+(64, 80, '😄'),
+(81, 100, '😆');

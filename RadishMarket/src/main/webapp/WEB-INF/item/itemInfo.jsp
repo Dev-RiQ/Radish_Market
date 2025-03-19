@@ -38,9 +38,9 @@
 				<hr>
 			</div>
 		</div>
-		<div class="sec-box">
+		<div>
 			<h3>${item.item_name}</h3>
-			<a href="카테고리 생기면...">${item_category_name}</a>
+			<a href="">${item_category_name}</a>
 			<p>${updateTime}</p>
 			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
