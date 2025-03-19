@@ -263,7 +263,9 @@ public class ListPagingDAO {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Item) list.get(i)).getItem_no();
-			String item_img = itemImgList.get(i).getItem_img();
+			String item_img = "defaultItemImg.jpg";
+			if(itemImgList.get(i) != null)
+				item_img = itemImgList.get(i).getItem_img();
 			String item_name = ((Item) list.get(i)).getItem_name();
 			int item_status = ((Item) list.get(i)).getItem_status();
 			String status = item_status == 2 ? "예약중 " : item_status == 3 ? "판매완료 " : "";
@@ -315,7 +317,8 @@ public class ListPagingDAO {
 			
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
-			sb.append("<p><img alt=\"대표 이미지\" src\"/images/"+board_img+"\"/></p>");
+			if(board_img != null)
+				sb.append("<p><img alt=\"대표 이미지\" src\"/images/"+board_img+"\"/></p>");
 			sb.append("<p>"+board_title+"</p>");
 			sb.append("<p>"+board_content+"</p>");
 			sb.append("<div>");
@@ -346,8 +349,8 @@ public class ListPagingDAO {
 			
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+user_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
-			sb.append("<p><img alt=\"대표 이미지\" src\"/images/"+meet_img+"\"/></p>");
-			sb.append("<p>"+meet_title+"</p>");
+			sb.append("<img alt=\"대표 이미지\" src\"/images/"+meet_img+"\"/>");
+			sb.append("<br><p>"+meet_title+"</p>");
 			sb.append("<p>"+meet_content+"</p>");
 			sb.append("<span>"+user_dong+"</span>");
 			sb.append("<span> / "+"회원수 : "+memberCount+"</span>");
@@ -383,7 +386,9 @@ public class ListPagingDAO {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Zzim) list.get(i)).getItem_no();
-			String item_img = itemImgList.get(i).getItem_img();
+			String item_img = "defaultItemImg.jpg";
+			if(itemImgList.get(i) != null)
+				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
@@ -392,7 +397,7 @@ public class ListPagingDAO {
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
 			sb.append("<img alt=\"대표 이미지\" src\"/images/"+item_img+"\"");
-			sb.append("<p>"+item_name+"</p>");
+			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
 			sb.append("<p>"+user_dong+"</p>");
 			sb.append("</div>");
@@ -405,7 +410,9 @@ public class ListPagingDAO {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Cart) list.get(i)).getItem_no();
-			String item_img = itemImgList.get(i).getItem_img();
+			String item_img = "defaultItemImg.jpg";
+			if(itemImgList.get(i) != null)
+				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
@@ -416,7 +423,7 @@ public class ListPagingDAO {
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
 			sb.append("<img alt=\"대표 이미지\" src\"/images/"+item_img+"\"");
-			sb.append("<p>"+item_name+"</p>");
+			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
 			sb.append("<p>"+user_nickname+"</p>");
 			sb.append("<p>"+user_dong+"</p>");
@@ -440,7 +447,9 @@ public class ListPagingDAO {
 			String buy_user_nickname = userList.get(i).getUser_nickname();
 			String buy_user_dong = userList.get(i).getUser_dong();
 			String review_content = ((Review) list.get(i)).getReview_content();
-			String item_img = itemImgList.get(i).getItem_img();
+			String item_img = "defaultItemImg.jpg";
+			if(itemImgList.get(i) != null)
+				item_img = itemImgList.get(i).getItem_img();
 			
 			sb.append("<div>");
 			sb.append("<img alt=\"대표 이미지\" src\"/images/"+buy_user_img+"\"");
