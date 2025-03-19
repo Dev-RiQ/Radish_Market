@@ -1,23 +1,24 @@
 package com.radish.vo;
 
 public class Letter {
-	private int letter_no;
-	private int receive_user_no;
 	private int send_user_no;
+	private int receive_user_no;
 	private String letter_title;
-	private String letter_content;
 	private String letter_reg_datetime;
+	private int letter_no;
+	private String letter_content;
 	private int letter_check;
 	private int item_no;
 
-	public Letter(int receive_user_no, int send_user_no, String letter_title, String letter_content,
-			String letter_reg_datetime, int letter_check, int item_no) {
+	public Letter(int send_user_no, int receive_user_no, String letter_title, String letter_reg_datetime, int letter_no,
+			String letter_content, int letter_check, int item_no) {
 		super();
-		this.receive_user_no = receive_user_no;
 		this.send_user_no = send_user_no;
+		this.receive_user_no = receive_user_no;
 		this.letter_title = letter_title;
-		this.letter_content = letter_content;
 		this.letter_reg_datetime = letter_reg_datetime;
+		this.letter_no = letter_no;
+		this.letter_content = letter_content;
 		this.letter_check = letter_check;
 		this.item_no = item_no;
 	}
@@ -55,6 +56,17 @@ public class Letter {
 		this.letter_title = letter_title;
 		this.letter_content = letter_content;
 		this.letter_check = letter_check;
+	}
+	public Letter(int send_user_no, int receive_user_no, String letter_title, String letter_reg_datetime,
+			String letter_content, int letter_check, int item_no) {
+		super();
+		this.send_user_no = send_user_no;
+		this.receive_user_no = receive_user_no;
+		this.letter_title = letter_title;
+		this.letter_reg_datetime = letter_reg_datetime;
+		this.letter_content = letter_content;
+		this.letter_check = letter_check;
+		this.item_no = item_no;
 	}
 
 	public int getLetter_no() {

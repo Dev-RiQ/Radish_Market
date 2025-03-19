@@ -27,4 +27,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getUserCartList" parameterType="int" resultType="Cart">
+		SELECT *
+		FROM carts
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

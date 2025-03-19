@@ -243,16 +243,17 @@ public class UserDAO {
         }
 		return list;
 	}
-	public List<User> getBuyUserInfoList(List<Integer> buyUserNoList) {
+	public List<User> getCartUserList(List<Integer> buyUserNoList) {
 		List<User> list = new ArrayList<>();
         try (SqlSession session = DBUtil.getInstance().openSession()){
             for(Integer user_no : buyUserNoList) {
-                list.add((session.selectOne("getBuyUserInfoList", user_no)));
+                list.add((session.selectOne("getCartUserInfoList", user_no)));
             }
         } catch (Exception e) {
-            System.out.println("getBuyUserInfoList fail");
+            System.out.println("getCartUserInfoList fail");
             e.printStackTrace();
         }
 		return list;
 	}
+	
 }

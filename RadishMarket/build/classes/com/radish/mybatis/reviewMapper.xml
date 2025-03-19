@@ -12,7 +12,7 @@
 	<select id="getReviewListByUserNo" parameterType="int" resultType="Review">
 		SELECT *
 		FROM reviews
-		WHERE sell_user_id=#{sell_user_id}
+		WHERE sell_user_no=#{sell_user_no}
 	</select>
 	
 </mapper>

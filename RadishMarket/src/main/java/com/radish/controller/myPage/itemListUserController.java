@@ -12,6 +12,7 @@ import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Item;
+import com.radish.vo.ItemImg;
 import com.radish.vo.Review;
 import com.radish.vo.User;
 
@@ -48,13 +49,17 @@ public class itemListUserController implements Controller {
 
 		List<Review> reviewList = ReviewDAO.getInstance().getReviewListByUserNo(log);
 		request.setAttribute("reviewList", reviewList);
-
+		
+		List<String> itemImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
+		request.setAttribute("itemImgList", itemImgList);
+		// 구매 확정 지난 시간 표기해야함
+		
 		if (reviewList != null) {
 			List<Integer> buyUserNoList = new ArrayList<>();
 			for (Review review : reviewList) {
 				buyUserNoList.add(review.getBuy_user_no());
 			}
-			List<User> buyUserInfoList = UserDAO.getInstance().getBuyUserInfoList(buyUserNoList);
+			List<User> buyUserInfoList = UserDAO.getInstance().getCartUserList(buyUserNoList);
 			request.setAttribute("buyUserInfoList", buyUserInfoList);
 		}
 

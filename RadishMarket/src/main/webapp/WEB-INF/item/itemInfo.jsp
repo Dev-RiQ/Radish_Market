@@ -12,7 +12,7 @@
 			<div class="swiper mySwiper">
 				<div class="swiper-wrapper">
 					<c:choose>
-						<c:when test="${itemImgList eq null or itemImgList.size() == 0}">
+						<c:when test="${empty itemImgList}">
 							<p>서버 오류로 이미지를 불러오지 못 했습니다.</p>
 						</c:when>
 						<c:otherwise>
@@ -45,8 +45,8 @@
 			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
 			<p>${item.item_content}</p>
-			<span>찜 개수<span id="zzim-count">${zzimCount}</span>
-			</span><span>조회수 ${item.item_hits}</span>
+			<span>찜 ${zzimCount}</span>
+			<span>조회수 ${item.item_hits}</span>
 		</div>
 		<c:choose>
 			<c:when test="${item.user_no ne log}">
@@ -103,8 +103,8 @@
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${itemList eq null or itemList.size() == 0}">
-						<p>${user.user_nickname}님은판매중인물품이 없습니다.</p>
+					<c:when test="${empty itemList}">
+						<p>${user.user_nickname}님은 판매중인 물품이 없습니다.</p>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${userAllItemListSize > 6}">

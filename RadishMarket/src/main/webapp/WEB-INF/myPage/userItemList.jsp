@@ -38,17 +38,17 @@
 	</div>
 
 	<div class="review-list">
-		<h3>거래 후기(${reviewList.size() == 0 or reviewList eq null  ? 0 : reviewList.size()})</h3>
+		<h3>거래 후기(${empty reviewList ? 0 : reviewList.size()})</h3>
 		<c:choose>
 			<c:when
-				test="${reviewList eq null or reviewList.size() == 0 or buyUserInfo eq null or buyUserInfo.size() == 0}">
+				test="${empty reviewList or empty buyUserInfoList}">
 				<p>아직 거래 후기가 없습니다.</p>
 			</c:when>
 			<c:otherwise>
 				<c:forEach var="i" begin="0" end="${reviewList.size()-1}">
-					<div>
-						${buyUserInfoList.get(i).user_nickname} 구매자 <span>${buyUserInfoList.get(i).user_dong}</span>
-					</div>
+					<img alt="대표 이미지" src="/images/${itemImgList.get(i)}">
+					<p>${buyUserInfoList.get(i).user_nickname} <span>구매자</span></p> 
+					<p>${buyUserInfoList.get(i).user_dong}	</p>
 					<div>${reviewList.get(i).review_content}</div>
 				</c:forEach>
 			</c:otherwise>

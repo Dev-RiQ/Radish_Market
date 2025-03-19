@@ -4,13 +4,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.radish.dao.ItemDAO;
-import com.radish.dao.ItemImgDAO;
-import com.radish.dao.UserDAO;
 import com.radish.dao.CartDAO;
+import com.radish.dao.EmojiDAO;
+import com.radish.dao.ItemDAO;
+import com.radish.dao.UserDAO;
+import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
+import com.radish.util.CalendarUtil;
+import com.radish.util.DateUtil;
 import com.radish.vo.Cart;
 import com.radish.vo.Item;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,12 +27,44 @@ public class cartListUserController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(user_no));
+		if(request.getSession().getAttribute("log") == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인 후 이용해 주세요.");
+		}
 		
-		List<Integer> buyItemNoList = CartDAO.getInstance().getBuyItemNoList(user_no);
-		List<Item> itemList = ItemDAO.getInstance().getBuyItemList(buyItemNoList);
+		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		User user = UserDAO.getInstance().getAUserPortionInfo(log);
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
+		
+		List<Cart> userCartList = CartDAO.getInstance().getUserCartList(log);
+		
+		List<Integer> userItemNoList = new ArrayList<>();
+		for(Cart cartList : userCartList) {
+			userItemNoList.add(cartList.getItem_no());
+		}
+		
+		List<Item> itemList = ItemDAO.getInstance().getBuyItemList(userItemNoList);
 		request.setAttribute("itemList", itemList);
+		
+		List<String> itemUpdateList = new ArrayList<>();
+		for(Item item : itemList) {
+		itemUpdateList.add(DateUtil.getInstance().getCalcDateAgo(item.getItem_update_datetime()));
+		}
+		request.setAttribute("itemUpdateList", itemUpdateList);
+		
+		List<Integer> itemNoList = new ArrayList<>();
+		for(Item item : itemList) {
+			itemNoList.add(item.getItem_no());
+		}
+		List<Integer> zzimCntList = ZzimDAO.getInstance().getZzimCountListByItemNoList(itemNoList);
+		request.setAttribute("zzimCntList", zzimCntList);
+		
+		List<Integer> sellerNoList = new ArrayList<>();
+		for(Item item : itemList) {
+			sellerNoList.add(item.getUser_no());
+		}
+		List<User> sellerList = UserDAO.getInstance().getCartUserList(sellerNoList);
+		request.setAttribute("sellerList", sellerList);
 		
 		return "myPage/userCartList";
 	}

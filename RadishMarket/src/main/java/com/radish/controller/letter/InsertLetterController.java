@@ -30,7 +30,7 @@ public class InsertLetterController implements Controller {
 		String letter_reg_datetime = DateUtil.getInstance().getRegDatetime();
 		int letter_check = 0;
 		
-		Letter letter = new Letter(receive_user_no, send_user_no, letter_title, letter_content, letter_reg_datetime, letter_check, item_no);
+		Letter letter = new Letter(send_user_no, receive_user_no, letter_title, letter_reg_datetime, letter_content, letter_check, item_no);
 		boolean check = LetterDAO.getInstance().insertALetter(letter);
 		response.getWriter().print(check? "check" : "");
 		return null;

@@ -22,7 +22,7 @@
 		<a href='/listLetter.do'>쪽지함</a> 
 		<a href='/zzimListUser.do'>찜목록</a>
 		<a href='/itemListUser.do'>내 상품</a>
-		<a href='/cartListUser.do'>구매내역(!)</a>
+		<a href='/cartListUser.do'>구매내역</a>
 		<a href='/sellListUser.do'>판매내역</a>
 		<a href='/boardListUser.do'>내 게시글</a>
 		<a href='/meetListUser.do'>내 모임</a>

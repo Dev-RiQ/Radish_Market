@@ -12,7 +12,7 @@
 			<h1>${user.user_city}${user.user_gu}${user.user_dong} 중고거래</h1>
 		</c:when>
 		<c:otherwise>
-			<h1>${address}중고거래</h1>
+			<h1>${address} 중고거래</h1>
 		</c:otherwise>
 	</c:choose>
 

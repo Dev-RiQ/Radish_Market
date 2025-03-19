@@ -65,4 +65,15 @@ public class CartDAO {
 		return list;
 	}
 
+	public List<Cart> getUserCartList(int user_no) {
+		List<Cart> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			list = session.selectList("getUserCartList", user_no);
+		} catch (Exception e) {
+			System.out.println("getUserCartList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }
