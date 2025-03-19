@@ -40,7 +40,7 @@ public class UserDAO {
 	public int isLoginSuccess(String user_id, String user_pw) {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			action = session.selectOne("isLoginSuccess", new User(user_id,user_pw));
+			action = session.selectOne("isLoginSuccess", new User(user_id, user_pw));
 		} catch (Exception e) {
 			System.out.println("isLoginSuccess fail");
 			e.printStackTrace();

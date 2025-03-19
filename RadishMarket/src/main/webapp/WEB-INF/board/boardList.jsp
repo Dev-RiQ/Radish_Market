@@ -2,6 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
 
+<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활</a>
+	</div>
+
 <form action="/listBoard.do?filter=true" method="post">
 	<label for="user_dong">위치</label><br> <label><input
 		type="radio" name="user_dong" id="user_dong" value="전체"

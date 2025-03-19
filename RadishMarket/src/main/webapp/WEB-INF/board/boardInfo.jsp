@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
+<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활 > </a> <span>${board.board_title}</span>
+	</div>
+
 <div>
 	${ board.board_no }<br>
 	${ user.user_img }<br>

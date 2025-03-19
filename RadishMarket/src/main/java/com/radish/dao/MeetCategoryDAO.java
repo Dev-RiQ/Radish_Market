@@ -20,7 +20,7 @@ public class MeetCategoryDAO {
 		List<String> list = new ArrayList<>();
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			for(Meet meet : meetList) {
-				int meet_category_no = meet.getMeet_category();
+				int meet_category_no = meet.getMeet_category_no();
 				list.add(session.selectOne("getMeetCategoryListByMeetNo", meet_category_no));
 			}
 		} catch (Exception e) {
@@ -39,10 +39,10 @@ public class MeetCategoryDAO {
 		}
 		return list;
 	}
-	public String getAMeetCategoryName(int meet_category) {
+	public String getAMeetCategoryName(int meet_category_no) {
 		String category = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			category = session.selectOne("getAMeetCategoryName", meet_category);
+			category = session.selectOne("getAMeetCategoryName", meet_category_no);
 		} catch (Exception e) {
 			System.out.println("getAMeetCategoryName fail");
 			e.printStackTrace();

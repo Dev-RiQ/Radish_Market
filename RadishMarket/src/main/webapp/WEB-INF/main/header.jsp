@@ -35,13 +35,11 @@
 				<a href='/insertUser.do'>회원가입</a>
 			</c:when>
 			<c:otherwise>
-				<a href='/infoUser.do'>내정보</a>
 				<a href='/logout.do'>로그아웃</a>
 				<a href='/mypageUser.do'>마이페이지</a>
 				<button id="show-alarm-div" onclick="showAlarmDiv()">알람</button>
 				<div class="hide" id="alarm-list"></div>
 			</c:otherwise>
 		</c:choose>
-			
 			
 	</header>

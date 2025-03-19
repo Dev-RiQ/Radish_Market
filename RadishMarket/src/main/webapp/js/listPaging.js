@@ -88,6 +88,7 @@ function getFilter(){
 	const meetNo = document.querySelector("#meet_no");
 	queryString += `&meet_no=${meetNo ? meetNo.value ? meetNo.value : 0 : 0}`
 	
+	console.log('쿼리스트링: ' + (queryString));
 	return queryString;
 }
 

@@ -3,13 +3,18 @@
 
 <%@ include file="../main/header.jsp"%>
 
+<div class="dir-history">
+	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>내 모임</span>
+</div>
+
 <div class="userboardlist-container">
 
 	<div class="user-profile">
-		<div class="user-img">유저 이미지</div>
+		<img alt="유저 이미지" src="/images/${user.user_img}">
 		<p>${user.user_nickname}</p>
 		<p>${user.user_dong}</p>
-		<p>${user.user_deg}</p>
+		<p>${user.user_deg}℃ ${emoji}</p>
+		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
 

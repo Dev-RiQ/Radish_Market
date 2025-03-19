@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
+<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 > </a> <span>${meet.meet_title}</span>
+	</div>
+
 <div>
 	${ meet.meet_img }<br>
 	${ meet.meet_title }<br>

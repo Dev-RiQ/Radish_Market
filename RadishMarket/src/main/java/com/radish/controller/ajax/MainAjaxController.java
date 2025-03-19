@@ -21,7 +21,6 @@ public class MainAjaxController implements Controller {
 			request.getSession().setAttribute("address", address);
 			request.getSession().setAttribute("dong", dong);
 		}
-
 		return null;
 	}
 

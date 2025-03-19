@@ -1,4 +1,14 @@
+-- [ERD DB] --
+DROP DATABASE erd_db;
+CREATE DATABASE erd_db;
+use erd_db;
+
+-- [Init] --
+CREATE DATABASE radish_market_db;
+use radish_market_db;
+
 -- [Test] --
+DROP DATABASE test_radish_market_db;
 CREATE DATABASE test_radish_market_db;
 use test_radish_market_db;
 
@@ -87,11 +97,11 @@ SELECT * FROM meets;
 -- 후기
 DROP TABLE reviews;
 CREATE TABLE reviews (
-	reviews_deg TINYINT NOT NULL,
+	review_deg TINYINT NOT NULL,
     sell_user_no INT NOT NULL, # FK
     buy_user_no INT NOT NULL, # [users] user_no 참조
     item_no INT NOT NULL, # FK
-    reviews_content VARCHAR(100) NOT NULL
+    review_content VARCHAR(100) NOT NULL
     );    
 DESC reviews;
 SELECT * FROM reviews; 
@@ -99,11 +109,11 @@ SELECT * FROM reviews;
 -- 댓글 (컬럼 이름 수정해야함)
 DROP TABLE comments;
 CREATE TABLE comments (
-	comments_no INT AUTO_INCREMENT PRIMARY KEY,
+	comment_no INT AUTO_INCREMENT PRIMARY KEY,
     board_no INT NOT NULL, # FK
     user_no INT NOT NULL, # FK
-    comments_content VARCHAR(300) NOT NULL,
-    comments_reg_datetime VARCHAR(20) NOT NULL,
+    comment_content VARCHAR(300) NOT NULL,
+    comment_reg_datetime VARCHAR(20) NOT NULL,
     check_update TINYINT NOT NULL
      );   
 DESC comments;
@@ -207,8 +217,8 @@ SELECT * FROM alarms;
 DROP TABLE alarm_category;  
 CREATE TABLE alarm_category (
 	alarm_category_no INT AUTO_INCREMENT PRIMARY KEY,
-    alarm_name VARCHAR(10) NOT NULL,
-    alarm_content VARCHAR(50) NOT NULL
+    alarm_category_name VARCHAR(10) NOT NULL,
+    alarm_category_content VARCHAR(50) NOT NULL
     );
 DESC alarm_category;
 SELECT * FROM alarm_category; 
@@ -250,87 +260,3 @@ CREATE TABLE carts(
     );
 DESC carts;
 SELECT * FROM carts; 
-
--- [필수 카테고리, 이모지 데이터 삽입] -- 
-
--- item_category (20개)
-INSERT INTO item_category (item_category_name) VALUES
-('미분류'),
-('디지털기기'),
-('생활가전'),
-('가구/인테리어'),
-('생활/주방'),
-('유아동'),
-('유아도서'),
-('여성의륰'),
-('여성잡화'),
-('남성패션/잡화'),
-('뷰티/미용'),
-('스포츠/레저'),
-('취미/게임/음반'),
-('도서'),
-('티켓/교환권'),
-('가공식품'),
-('건강기능식품'),
-('반려동물용품'),
-('식물'),
-('기타 중고물품');
- 
--- board_category (19개)
-INSERT INTO board_category (board_category_name) VALUES
-('미분류'),
-('인기글'),
-('맛집'),
-('반려동물'),
-('운동'),
-('생활/편의'),
-('분실/실종'),
-('병원/약국'),
-('고민/사연'),
-('동네친구'),
-('이사/시공'),
-('주거/부동산'),
-('교육'),
-('취미'),
-('동네사건사고'),
-('동네풍경'),
-('미용'),
-('임신/육아'),
-('일반');
- 
--- meet_category (13개)
-INSERT INTO meet_category (meet_category_name) VALUES
-('미분류'),
-('운동'),
-('자기계발'),
-('동네친구'),
-('아웃도어/여행'),
-('가족/육아'),
-('반려동물'),
-('음식/음료'),
-('취미/오락'),
-('독서/인문학'),
-('문화//예술'),
-('음악/악기'),
-('기타');
-
--- alarm_category (9개)
-INSERT INTO alarm_category (ararm_category_name, ararm_category_content) VALUES
-('좋아요', '회원님의 게시글이 좋아요를 받았습니다.'),  
-('댓글', '회원님의 게시글에 새로운 댓글이 등록되었습니다.'),  
-('찜', '회원님의 아이템이 찜 목록에 추가되었습니다.'),  
-('상품 리뷰', '판매하신 물품에 새로운 리뷰가 작성되었습니다.'),  
-('리뷰 작성 요청', '구매하신 상품에 대한 리뷰를 작성해 주세요.'),  
-('쪽지', '새로운 쪽지가 도착했습니다.'),  
-('일정 초대', '회원님이 새로운 일정에 추가되었습니다.'),  
-('모임 가입 신청', '모임 가입 신청이 접수되었습니다.'),  
-('모임 가입 승인', '회원님의 모임 가입이 승인되었습니다.'); 
-
--- emojis (6개)
-INSERT INTO emojis (min_deg, max_deg, emoji) VALUES
-(0, 20, '😰'),
-(21, 35, '🙁'),
-(36, 48, '🙂'),
-(49, 63, '😀'),
-(64, 80, '😄'),
-(81, 100, '😆');

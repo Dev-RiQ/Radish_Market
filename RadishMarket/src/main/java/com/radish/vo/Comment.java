@@ -1,8 +1,5 @@
 package com.radish.vo;
 
-/**
- * 
- */
 public class Comment {
 	private int comment_no;
 	private int board_no;

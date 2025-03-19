@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
+<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>프로필 수정</span>
+	</div>
+
 <form action="/updateUser.do" method="post">
 	<label for="user_id">아이디</label>
 	<input type="text" name="user_id" id="user_id" value="${ user.user_id }"  readonly>

@@ -5,30 +5,30 @@ public class Meet {
 	private int host_user_no;
 	private String meet_title;
 	private String meet_content;
-	private int meet_category;
+	private int meet_category_no;
 	private int age_min;
 	private int age_max;
 	private String meet_img;
 
-	public Meet(int host_user_no, String meet_title, String meet_content, int meet_category, int age_min,
+	public Meet(int host_user_no, String meet_title, String meet_content, int meet_category_no, int age_min,
 			int age_max, String meet_img) {
 		super();
 		this.host_user_no = host_user_no;
 		this.meet_title = meet_title;
 		this.meet_content = meet_content;
-		this.meet_category = meet_category;
+		this.meet_category_no = meet_category_no;
 		this.age_min = age_min;
 		this.age_max = age_max;
 		this.meet_img = meet_img;
 	}
-	public Meet(int meet_no, int host_user_no, String meet_title, String meet_content, int meet_category, int age_min,
+	public Meet(int meet_no, int host_user_no, String meet_title, String meet_content, int meet_category_no, int age_min,
 			int age_max, String meet_img) {
 		super();
 		this.meet_no = meet_no;
 		this.host_user_no = host_user_no;
 		this.meet_title = meet_title;
 		this.meet_content = meet_content;
-		this.meet_category = meet_category;
+		this.meet_category_no = meet_category_no;
 		this.age_min = age_min;
 		this.age_max = age_max;
 		this.meet_img = meet_img;
@@ -66,12 +66,12 @@ public class Meet {
 		this.meet_content = meet_content;
 	}
 
-	public int getMeet_category() {
-		return meet_category;
+	public int getMeet_category_no() {
+		return meet_category_no;
 	}
 
-	public void setMeet_category(int meet_category) {
-		this.meet_category = meet_category;
+	public void setMeet_category_no(int meet_category_no) {
+		this.meet_category_no = meet_category_no;
 	}
 
 	public int getAge_min() {

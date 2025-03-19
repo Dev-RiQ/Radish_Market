@@ -159,7 +159,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int meet_category_no = 0;
 				switch(type) {
-				case "meet", "hostMeet", "myMeet": meet_category_no = ((Meet) value).getMeet_category(); break;
+				case "meet", "hostMeet", "myMeet": meet_category_no = ((Meet) value).getMeet_category_no(); break;
 				default: return null;
 				}
 				meetCategoryList.add(session.selectOne("getMeetCategoryListByList", meet_category_no));

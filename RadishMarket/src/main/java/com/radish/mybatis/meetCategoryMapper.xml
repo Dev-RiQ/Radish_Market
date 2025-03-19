@@ -18,7 +18,7 @@
 	<select id="getAMeetCategoryName" parameterType="int" resultType="String">
 		SELECT meet_category_name
 		FROM meet_category
-		WHERE meet_category_no=#{meet_category}
+		WHERE meet_category_no=#{meet_category_no}
 	</select>
 	
 	<insert id="insertMeetCategory" parameterType="String">

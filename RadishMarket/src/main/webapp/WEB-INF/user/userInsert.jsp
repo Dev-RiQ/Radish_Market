@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
+<div class="dir-history">
+	<a href='/index.jsp'>홈 > </a>  <span>회원가입</span>
+</div>
+
 <form action="/insertUser.do" method="post">
 	<label for="user_id">아이디</label>
 	<input type="text" name="user_id" id="user_id" placeholder="아이디">

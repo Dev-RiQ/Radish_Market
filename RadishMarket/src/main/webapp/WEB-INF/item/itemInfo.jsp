@@ -29,15 +29,16 @@
 				</div>
 			</div>
 			<div class="user-box">
-				<img alt="" src="">유저 이미지 <a
-					href='/userpageUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+				<img alt="유저 이미지" src="/images/${user.user_img}">
+				<a href='/userpageUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
 				<a href='/listItem.do?user_dong=${user.user_dong}'>${user.user_dong}</a>
 				<p>${user.user_deg}℃${emoji}</p>
-				<progress id="progress" value="${user.user_deg}" min="0" max="100"></progress>
+				<progress id="progress" value="${user.user_deg}" max="100"></progress>
 				<p>매너 온도</p>
 				<hr>
 			</div>
 		</div>
+		
 		<div>
 			<h3>${item.item_name}</h3>
 			<a href="">${item_category_name}</a>
@@ -48,6 +49,7 @@
 			<span>찜 ${zzimCount}</span>
 			<span>조회수 ${item.item_hits}</span>
 		</div>
+		
 		<c:choose>
 			<c:when test="${item.user_no ne log}">
 				<div class="btn-box">

@@ -13,8 +13,6 @@ function getAddressFromCoords(lat, lon) {
 	});
 }
 
-
-
 function setAddressData(jibunAddr) {
 	const addressValues = jibunAddr.split(" ");
 
@@ -59,15 +57,10 @@ function eupmyendongCheck(value) {
 
 function getLocation() {
 	if (navigator.geolocation) {
-		console.log(1)
 		navigator.geolocation.getCurrentPosition(
 			function(position) {
-		console.log(2)
 				let lat = position.coords.latitude;
-		console.log(lat)
 				let lon = position.coords.longitude;
-		console.log(lon)
-
 				getAddressFromCoords(lat, lon); // 📌 위경도를 주소로 변환
 			},
 			function(error) {

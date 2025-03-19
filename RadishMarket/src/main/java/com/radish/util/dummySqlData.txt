@@ -707,7 +707,7 @@ INSERT INTO boards(user_no, meet_no, board_category_no, board_title, board_conte
 (17, 3, 6, '연길송노문', '민임 주설염바장노  정숭춘소뜸솔래소정김찬희설서엽지변금삼성 송열도림채혼조홍후구김흠겸두항 차', '2025-03-19 17:25', '2025-03-19 17:25', 'boardImg1.jpg', 26),
 (10, 24, 1, '국라화', '여조제세아염장훔권강분문채빈엽현조해명위선희조이최항타안섭탁화국 인나선진오어 ', '2025-03-19 17:25', '2025-03-19 17:25', 'boardImg1.jpg', 70);
 
-INSERT INTO meets(host_user_no, meet_title, meet_content, meet_category, age_min, age_max, meet_img) VALUES
+INSERT INTO meets(host_user_no, meet_title, meet_content, meet_category_no, age_min, age_max, meet_img) VALUES
 (4, '권엄민변윤한', ' 전철모해술연묵반랑무채노양엽부익추마구잎안 완채악재조위 변조', 2, 37, 79, 'meetImg2.jpg'),
 (29, '옥문나탁하왕함두범인', ' 유신하현탁준권박 탁율슬초철선련견이남걸조식위고', 8, 50, 80, 'meetImg2.jpg'),
 (7, '권원지심', '하흠서동 한현마루강채류반혼어방주언차준홍옥성유국', 2, 21, 92, 'meetImg3.jpg'),
