@@ -1,10 +1,10 @@
 /**
  * 
  * 더보기 버튼 양식
- * <button id="btn-more-list" value="가져올리스트/현재가져온페이지수" onclick="getMoreList()">더보기</button>
+ * <button value="가져올리스트/현재가져온페이지수" onclick="getMoreList()">더보기</button>
  * 
  * (예시)
- * <button id="btn-more-list" value="board/30" onclick="getMoreList()">더보기</button>
+ * <button id="btn-more-list" value="board/0" onclick="getMoreList()">더보기</button>
  * 
  *   리스트 종류
  *   "item"  
@@ -20,22 +20,42 @@
 	 "myBoard"  
 	 "hostMeet"  
 	 "myMeet"
+	 "adminUser"
+	 "adminBoard"
+	 "adminItem"
+	 "adminMeet"
  * 
  */
+let isLoaded = false;
+let btnMoreListLoad = document.querySelectorAll("#btn-more-list")
+let btnMoreList = null;
+btnMoreListLoad.forEach((i) => {
+	btnMoreList = i;
+	getMoreList();
+})
+setTimeout(() => {
+	isLoaded = true;
+},1000)
 
 function getMoreList(){
-	const btnMoreList = document.querySelector("#btn-more-list");
+	if(isLoaded){
+		btnMoreList = event.target;
+	}
 	const typeAndStart = btnMoreList.value.split("/");
 	const type = typeAndStart[0];
 	const start = typeAndStart[1];
-	btnMoreList.value = `${type}/${parseInt(startIndex) + parseInt(30)}`;
+	btnMoreList.value = `${type}/${parseInt(start) + parseInt(30)}`;
 	
 	let queryString = `start=${start}&type=${type}`;
 	if(type == 'item' || type == 'board' || type == 'meetBoard' || type == 'meet'){
 		queryString += getFilter();
 	}
-	let url = `/listPagingAjax.do?${queryString}`;
-	fetch(url)
+	let url = `/listPagingAjax.do`;
+	fetch(url, {
+		method: "post",
+		headers:{"Content-type" : "application/x-www-form-urlencoded; charset=UFT-8"},
+		body:queryString
+	})
 	.then(response => response.text())
 	.then(printList)
 	.catch(error => console.log(error))
@@ -68,5 +88,10 @@ function getFilter(){
 }
 
 function printList(data){
-	
+	if(data == 'noMoreList'){
+		btnMoreList.classList.add('hide');
+		return;
+	} 
+	const listBox = document.querySelector("#list-box");
+	listBox.innerHTML += data;
 }

@@ -50,7 +50,7 @@ public class UpdateItemController implements Controller {
 		
 		List<ItemImg> list = new ArrayList<>();
 		for(String item_img : uploadFileName) {
-			list.add(new ItemImg(item_no, item_img));
+			list.add(new ItemImg(item_img, item_no));
 		}
 		ItemImgDAO.getInstance().insertItemImg(list);
 		

@@ -116,7 +116,7 @@
 		SELECT m.*
 		FROM meets m
 		INNER JOIN users u
-		ON m.user_no=u.user_no
+		ON m.host_user_no=u.user_no
 		<where>
 	        <if test="category_no != 0">
 	         	and m.meet_category=#{category_no}
@@ -197,6 +197,61 @@
 		ON mu.meet_no=m.meet_no
 		WHERE m.host_user_no!=#{user_no} AND mu.user_no=#{user_no}
 		LIMIT #{start},30
+	</select>
+	
+	<select id="getUserListByList" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{user_no}
+	</select>
+	
+	<select id="getItemListByList" parameterType="int" resultType="Item">
+		SELECT *
+		FROM items
+		WHERE item_no=#{item_no}
+	</select>
+	
+	<select id="getBoardCategoryListByList" parameterType="int" resultType="BoardCategory">
+		SELECT *
+		FROM board_category
+		WHERE board_category_no=#{board_category_no}
+	</select>
+	
+	<select id="getItemCategoryListByList" parameterType="int" resultType="ItemCategory">
+		SELECT *
+		FROM item_category
+		WHERE item_category_no=#{item_category_no}
+	</select>
+	
+	<select id="getMeetCategoryListByList" parameterType="int" resultType="MeetCategory">
+		SELECT *
+		FROM meet_category
+		WHERE meet_category_no=#{meet_category_no}
+	</select>
+	
+	<select id="getItemImgListByList" parameterType="int" resultType="ItemImg">
+		SELECT *
+		FROM item_img
+		WHERE item_no=#{item_no}
+		LIMIT 1
+	</select>
+	
+	<select id="getLikeCountListByList" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM likes
+		WHERE board_no=#{board_no}
+	</select>
+	
+	<select id="getCommentCountListByList" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM comments
+		WHERE board_no=#{board_no}
+	</select>
+	
+	<select id="getMemberCountListByList" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM meet_users
+		WHERE meet_no=#{meet_no}
 	</select>
 	
 </mapper>

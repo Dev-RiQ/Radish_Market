@@ -1,13 +1,14 @@
 package com.radish.vo;
 
 public class ItemImg {
-	private int item_no;
 	private String item_img;
+	private int item_no;
 
-	public ItemImg(int item_no, String item_img) {
+
+	public ItemImg(String item_img, int item_no) {
 		super();
-		this.item_no = item_no;
 		this.item_img = item_img;
+		this.item_no = item_no;
 	}
 
 	public int getItem_no() {
