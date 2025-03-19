@@ -32,7 +32,10 @@ public class InfoLetterAjaxController implements Controller {
 		sb.append("/devide/");
 		sb.append(send_user_nickname);
 		response.getWriter().print(sb.toString());
-		LetterDAO.getInstance().setCheck(letter_no);
+		
+		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		if(!UserDAO.getInstance().getAUserByLog(log).getUser_nickname().equals(send_user_nickname))
+			LetterDAO.getInstance().setCheck(letter_no);
 		return null;
 	}
 
