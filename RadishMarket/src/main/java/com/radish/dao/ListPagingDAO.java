@@ -264,7 +264,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Item) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList.get(i) != null)
+			if(itemImgList != null && itemImgList.size() > 0)
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = ((Item) list.get(i)).getItem_name();
 			int item_status = ((Item) list.get(i)).getItem_status();
@@ -387,7 +387,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Zzim) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList.get(i) != null)
+			if(itemImgList != null && itemImgList.size() > 0)
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
@@ -411,7 +411,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Cart) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList.get(i) != null)
+			if(itemImgList != null && itemImgList.size() > 0)
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
@@ -448,7 +448,7 @@ public class ListPagingDAO {
 			String buy_user_dong = userList.get(i).getUser_dong();
 			String review_content = ((Review) list.get(i)).getReview_content();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList.get(i) != null)
+			if(itemImgList != null && itemImgList.size() > 0)
 				item_img = itemImgList.get(i).getItem_img();
 			
 			sb.append("<div>");
