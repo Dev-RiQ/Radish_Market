@@ -58,15 +58,16 @@ function saveImg() {
 }
 
 function displayImage() {
+	const slider = document.querySelector('.swiper-slide');
 	const postList = document.getElementById('post-list');
-	postList.innerHTML = '';
+	slider.innerHTML = '';
 	imgArr.forEach((img) => {
 		const post = JSON.parse(img);
 		const image = post.image;
 		const imageElement = document.createElement('img');
 		imageElement.src = image;
 		imageElement.alt = '이미지';
-		postList.appendChild(imageElement);
+		slider.appendChild(imageElement);
 	})
 }
 
@@ -75,3 +76,4 @@ function showImageName(sFileName) {
 	let fileName = sFileName.substring(1, sFileName.length - 1);
 	user_itme_img.value = fileName;
 }
+

@@ -34,23 +34,40 @@
 		WHERE item_no=#{item_no}
 	</update>
 	
-	<select id="getAUserAllItemListByUserNo" parameterType="Map" resultType="Item">
+	<select id="getItemInfoList" parameterType="int" resultType="Item">
 		SELECT *
 		FROM items
 		WHERE user_no=#{user_no} 
 		ORDER BY item_update_datetime DESC
-		LIMIT #{limit} OFFSET #{offset};
+		LIMIT 6 OFFSET 0;
 	</select>
 	
-	<select id="getAllItemList" resultType="Item">
-		SELECT *
+	<select id="getSellListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
 		FROM items
+		WHERE user_no=#{user_no} AND item_status=1
+		LIMIT 101 OFFSET 0;
 	</select>
 	
-	<select id="getHotItemSortList" resultType="Item">
+	<select id="getReserveListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM items
+		WHERE user_no=#{user_no} AND item_status=2
+		LIMIT 101 OFFSET 0;
+	</select>
+	
+	<select id="getSoldListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM items
+		WHERE user_no=#{user_no} AND item_status=3
+		LIMIT 101 OFFSET 0;
+	</select>
+	
+	<select id="getHotItemInfoList" resultType="Item">
 		SELECT *
 		FROM items
 		ORDER BY item_hits DESC
+		LIMIT 18 OFFSET 0;
 	</select>
 	
 	<insert id="insertItem" parameterType="Item">
@@ -69,10 +86,18 @@
 		WHERE item_no=#{item_no}
 	</update>
 	
-	<select id="getAUserAllItemListSizeByUserNo" parameterType="int" resultType="int">
+	<select id="checkInfoItemSize" parameterType="int" resultType="int">
 		SELECT count(*)
 		FROM items
 		WHERE user_no=#{user_no}
+		LIMIT 7 OFFSET 0;
+	</select>
+	
+	<select id="checkInfoHotItemSize" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM items
+		WHERE user_no=#{user_no}
+		LIMIT 19 OFFSET 0;
 	</select>
 	
 	<select id="getAUserAllZzimItemList" parameterType="int" resultType="Item">

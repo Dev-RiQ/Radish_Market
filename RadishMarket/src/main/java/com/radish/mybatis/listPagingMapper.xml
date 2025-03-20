@@ -115,7 +115,7 @@
 		<where>
         	meet_gu=#{gu}
 	        <if test="category_no != 0">
-	         	and meet_category=#{category_no}
+	         	and meet_category_no=#{category_no}
 	        </if>
 	        <if test="dong != '전체'">
 	        	and meet_dong=#{dong}
@@ -162,7 +162,7 @@
 	<select id="getMyItemListByFilter" parameterType="Filter" resultType="Item">
 		SELECT *
 		FROM items
-		WHERE user_no=#{user_no}
+		WHERE user_no=#{user_no} AND item_status=#{item_status}
 		LIMIT #{start},30
 	</select>
 

@@ -29,39 +29,31 @@ public class itemListUserController implements Controller {
 		if (request.getSession().getAttribute("log") == null || request.getSession() == null) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "로그인 후 이용해주세요.");
 		}
-
+		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		String user_no_str = request.getParameter("user_no");
+		if(user_no_str != null) {
+			log = Integer.parseInt(user_no_str);
+		}
 		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
 
-		List<Item> itemList = ItemDAO.getInstance().getAllSellList(log);
-		request.setAttribute("itemList", itemList);
-
-		List<Integer> itemNoList = new ArrayList<>();
-		for (Item itemNo : itemList) {
-			itemNoList.add(itemNo.getItem_no());
+		String sellListSize = "";
+		int sellListSizeInt = ItemDAO.getInstance().getSellListSize(log);
+		if(sellListSizeInt > 100) {
+			sellListSize = "100+";
+		}else {
+			sellListSize = sellListSizeInt + "";
 		}
-
-		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
-		request.setAttribute("mainImgList", mainImgList);
-
-		List<Integer> zzimCountList = ZzimDAO.getInstance().getZzimCountListByItemNoList(itemNoList);
-		request.setAttribute("zzimCountList", zzimCountList);
-
-		List<Review> reviewList = ReviewDAO.getInstance().getReviewListByUserNo(log);
-		request.setAttribute("reviewList", reviewList);
+		request.setAttribute("sellListSize", sellListSize);
 		
-		List<String> itemImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
-		request.setAttribute("itemImgList", itemImgList);
-		// 구매 확정 지난 시간 표기해야함
-		
-		if (reviewList != null) {
-			List<Integer> buyUserNoList = new ArrayList<>();
-			for (Review review : reviewList) {
-				buyUserNoList.add(review.getBuy_user_no());
-			}
-			List<User> buyUserInfoList = UserDAO.getInstance().getCartUserList(buyUserNoList);
-			request.setAttribute("buyUserInfoList", buyUserInfoList);
+		String reviewListSize = "";
+		int reviewListSizeInt = ReviewDAO.getInstance().getReviewListSize(log);
+		if(reviewListSizeInt > 100) {
+			reviewListSize = "100+";
+		}else {
+			reviewListSize = reviewListSizeInt + "";
 		}
+		request.setAttribute("reviewListSize", reviewListSize);
 
 		return "myPage/userItemList";
 	}

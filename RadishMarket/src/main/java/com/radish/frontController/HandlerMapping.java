@@ -71,7 +71,6 @@ import com.radish.controller.myPage.itemListUserController;
 import com.radish.controller.myPage.meetListUserController;
 import com.radish.controller.myPage.mypageUserController;
 import com.radish.controller.myPage.sellListUserController;
-import com.radish.controller.myPage.userPageUserController;
 import com.radish.controller.myPage.zzimListUserController;
 import com.radish.controller.review.InsertReviewController;
 import com.radish.controller.review.ListReviewController;
@@ -100,7 +99,6 @@ public class HandlerMapping {
 		
 		// MyPage
 		mappings.put("/mypageUser.do", new mypageUserController());
-		mappings.put("/userpageUser.do", new userPageUserController());
 		mappings.put("/itemListUser.do", new itemListUserController());
 		mappings.put("/boardListUser.do", new boardListUserController());
 		mappings.put("/meetListUser.do", new meetListUserController());

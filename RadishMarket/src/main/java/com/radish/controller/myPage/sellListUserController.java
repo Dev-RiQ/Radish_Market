@@ -1,3 +1,5 @@
+
+
 package com.radish.controller.myPage;
 
 import java.io.IOException;
@@ -30,30 +32,33 @@ public class sellListUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
 		
-		List<Item> itemList = ItemDAO.getInstance().getAllSellList(log);
-		request.setAttribute("itemList", itemList);
-		List<Integer> itemNoList = new ArrayList<>();
-		for(Item item : itemList) {
-			itemNoList.add(item.getItem_no());
+		int sellListSizeInt = ItemDAO.getInstance().getSellListSize(log);
+		String sellListSize = "";
+		if(sellListSizeInt > 100) {
+			sellListSize = "100+";
+		}else {
+			sellListSize = sellListSizeInt+"";
 		}
-		request.setAttribute("mainImgList", ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList));
+		request.setAttribute("sellListSize", sellListSize);
 		
-		List<Item> reserveItemList = ItemDAO.getInstance().getAllReserveItemList(log);
-		request.setAttribute("reserveItemList", reserveItemList);
-		List<Integer> reserveItemNoList = new ArrayList<>();
-		for(Item reserveItem : reserveItemList) {
-			reserveItemNoList.add(reserveItem.getItem_no());
+		int reserveListSizeInt = ItemDAO.getInstance().getReserveListSize(log);
+		String reserveListSize = "";
+		if(reserveListSizeInt > 100) {
+			reserveListSize = "100+";
+		}else {
+			reserveListSize = reserveListSizeInt+"";
 		}
-		request.setAttribute("mainReserveImgList", ItemImgDAO.getInstance().getItemImgListByItemList(reserveItemNoList));
+		request.setAttribute("reserveListSize", reserveListSize);
 		
-		List<Item> soldItemList = ItemDAO.getInstance().getAllSoldList(log);
-		request.setAttribute("soldItemList", soldItemList);
-		List<Integer> soldItemNoList = new ArrayList<>();
-		for(Item soldItem : reserveItemList) {
-			soldItemNoList.add(soldItem.getItem_no());
+		int soldListSizeInt = ItemDAO.getInstance().getSoldListSize(log);
+		String soldListSize = "";
+		if(soldListSizeInt > 100) {
+			soldListSize = "100+";
+		}else {
+			soldListSize = soldListSizeInt+"";
 		}
-		request.setAttribute("mainReserveImgList", ItemImgDAO.getInstance().getItemImgListByItemList(soldItemNoList));
-
+		request.setAttribute("soldListSize", soldListSize);
+		
 		return "myPage/userSellList";
 	}
 

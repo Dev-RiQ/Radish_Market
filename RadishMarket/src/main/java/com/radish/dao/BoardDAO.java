@@ -161,5 +161,15 @@ public class BoardDAO {
 		}
 		return cnt;
 	}
+	public int getBoardListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			size = session.selectOne("getBoardListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getBoardListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
 	
 }

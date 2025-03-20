@@ -76,4 +76,11 @@
     	LIMIT #{limit} OFFSET #{offset}
 	</select>
 	
+	<select id="getHostMeetListSize" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM meets
+		WHERE host_user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
 </mapper>

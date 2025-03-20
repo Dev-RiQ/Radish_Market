@@ -36,5 +36,19 @@
 		SET letter_check=1
 		WHERE letter_no=#{letter_no}
 	</update>
+	
+	<select id="getReceveListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM letters
+		WHERE receive_user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
+	<select id="getSendListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM letters
+		WHERE send_user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
 
 </mapper>

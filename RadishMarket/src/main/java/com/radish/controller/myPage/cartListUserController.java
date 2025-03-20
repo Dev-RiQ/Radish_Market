@@ -36,35 +36,14 @@ public class cartListUserController implements Controller {
 		request.setAttribute("user", user);
 		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		
-		List<Cart> userCartList = CartDAO.getInstance().getUserCartList(log);
-		
-		List<Integer> userItemNoList = new ArrayList<>();
-		for(Cart cartList : userCartList) {
-			userItemNoList.add(cartList.getItem_no());
+		int buyListSizeInt = CartDAO.getInstance().getBuyItemSize(log);
+		String buyListSize = "";
+		if(buyListSizeInt > 100) {
+			buyListSize = "100+";
+		}else {
+			buyListSize = buyListSizeInt+"";
 		}
-		
-		List<Item> itemList = ItemDAO.getInstance().getBuyItemList(userItemNoList);
-		request.setAttribute("itemList", itemList);
-		
-		List<String> itemUpdateList = new ArrayList<>();
-		for(Item item : itemList) {
-		itemUpdateList.add(DateUtil.getInstance().getCalcDateAgo(item.getItem_update_datetime()));
-		}
-		request.setAttribute("itemUpdateList", itemUpdateList);
-		
-		List<Integer> itemNoList = new ArrayList<>();
-		for(Item item : itemList) {
-			itemNoList.add(item.getItem_no());
-		}
-		List<Integer> zzimCntList = ZzimDAO.getInstance().getZzimCountListByItemNoList(itemNoList);
-		request.setAttribute("zzimCntList", zzimCntList);
-		
-		List<Integer> sellerNoList = new ArrayList<>();
-		for(Item item : itemList) {
-			sellerNoList.add(item.getUser_no());
-		}
-		List<User> sellerList = UserDAO.getInstance().getCartUserList(sellerNoList);
-		request.setAttribute("sellerList", sellerList);
+		request.setAttribute("buyListSize", buyListSize);
 		
 		return "myPage/userCartList";
 	}

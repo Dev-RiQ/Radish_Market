@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.EmojiDAO;
+import com.radish.dao.ItemDAO;
 import com.radish.dao.LetterDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
@@ -31,15 +32,23 @@ public class ListLetterController implements Controller {
 		request.setAttribute("user", user);
 		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		
-		List<Letter> letterList = LetterDAO.getInstance().getLetterListByUserNo(user_no);
-		request.setAttribute("letterList", letterList);
-		
-		
-		String alarm_no_str = request.getParameter("alarm_no");
-		if(alarm_no_str != null) {
-			int alarm_no = Integer.parseInt(alarm_no_str);
-			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		int receiveLetterListSizeInt = LetterDAO.getInstance().getReceveListSize(user_no);
+		String receiveLetterListSize = "";
+		if(receiveLetterListSizeInt > 100) {
+			receiveLetterListSize = "100+";
+		}else {
+			receiveLetterListSize = receiveLetterListSizeInt + "";
 		}
+		request.setAttribute("receiveLetterListSize", receiveLetterListSize);
+		
+		int sendLetterListSizeInt = LetterDAO.getInstance().getSendListSize(user_no);
+		String sendLetterListSize = "";
+		if(sendLetterListSizeInt > 100) {
+			sendLetterListSize = "100+";
+		}else {
+			sendLetterListSize = sendLetterListSizeInt + "";
+		}
+		request.setAttribute("sendLetterListSize", sendLetterListSize);
 		
 		return "myPage/userLetterList";
 	}

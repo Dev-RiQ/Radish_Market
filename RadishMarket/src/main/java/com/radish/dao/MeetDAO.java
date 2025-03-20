@@ -141,4 +141,15 @@ public class MeetDAO {
 		return list;
 	}
 	
+	public int getHostMeetListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			size = session.selectOne("getHostMeetListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getHostMeetListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
 }

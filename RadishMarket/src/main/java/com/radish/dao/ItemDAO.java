@@ -69,16 +69,12 @@ public class ItemDAO {
 		}
 	}
 
-	public List<Item> getAUserAllItemListByUserNo(int user_no, int limit, int offset) {
-		List<Item> list = new ArrayList<>();
-		Map<String, Integer> param = new HashMap<>();
-		param.put("user_no", user_no);
-		param.put("limit", limit);
-		param.put("offset", offset);
+	public List<Item> getItemInfoList(int user_no) {
+		List<Item> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-			list = session.selectList("getAUserAllItemListByUserNo", param);
+			list = session.selectList("getItemInfoList", user_no);
 		} catch (Exception e) {
-			System.out.println("getAUserAllItemListByUserNo fail");
+			System.out.println("getItemInfoList fail");
 			e.printStackTrace();
 		}
 		return list;
@@ -95,12 +91,12 @@ public class ItemDAO {
 		return list;
 	}
 
-	public List<Item> getHotItemSortList() {
+	public List<Item> getHotItemInfoList() {
 		List<Item> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-			list = session.selectList("getHotItemSortList");
+			list = session.selectList("getHotItemInfoList");
 		} catch (Exception e) {
-			System.out.println("getHotItemSortList fail");
+			System.out.println("getHotItemInfoList fail");
 			e.printStackTrace();
 		}
 		return list;
@@ -142,12 +138,12 @@ public class ItemDAO {
 		return action != 0;
 	}
 
-	public int getAUserAllItemListSizeByUserNo(int user_no) {
+	public int checkInfoItemSize(int user_no) {
 		int size = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-			size = session.selectOne("getAUserAllItemListSizeByUserNo", user_no);
+			size = session.selectOne("checkInfoItemSize", user_no);
 		} catch (Exception e) {
-			System.out.println("getAUserAllItemListSizeByUserNo fail");
+			System.out.println("checkInfoItemSize fail");
 			e.printStackTrace();
 		}
 		return size;
@@ -177,15 +173,15 @@ public class ItemDAO {
 		return action;
 	}
 
-	public List<Item> getAllSellList(int user_no) {
-		List<Item> list = null;
+	public int getSellListSize(int user_no) {
+		int size = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
-				list = session.selectList("getAllSellList", user_no);
+			size = session.selectOne("getSellListSize", user_no);
 		} catch (Exception e) {
-			System.out.println("getAllSellList fail");
+			System.out.println("getSellListSize fail");
 			e.printStackTrace();
 		}
-		return list;
+		return size;
 	}
 
 	public List<Item> getAllReserveItemList(int user_no) {
@@ -222,5 +218,39 @@ public class ItemDAO {
 		}
 		return list;
 	}
+
+	public int checkInfoHotItemSize() {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("checkInfoHotItemSize");
+		} catch (Exception e) {
+			System.out.println("checkInfoHotItemSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+
+	public int getReserveListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("getReserveListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getReserveListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+	
+	public int getSoldListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("getSoldListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getSoldListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+
 
 }

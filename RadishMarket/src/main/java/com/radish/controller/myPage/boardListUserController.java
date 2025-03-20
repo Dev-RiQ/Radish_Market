@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class boardListUserController implements Controller {
-	private static final int ITEMS_PER_PAGE = 30;
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -28,16 +27,14 @@ public class boardListUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
 		
-		int boardTotalCnt = BoardDAO.getInstance().getAUserTotalBoardCnt(log);
-		int limit = ITEMS_PER_PAGE;
-		if (limit > boardTotalCnt) {
-			limit = boardTotalCnt;
+		int boardListSizeInt = BoardDAO.getInstance().getBoardListSize(log);
+		String boardListSize = "";
+		if(boardListSizeInt > 100) {
+			boardListSize = "100+";
+		}else {
+			boardListSize = boardListSizeInt+"";
 		}
-		int offset = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-		List<Board> list = BoardDAO.getInstance().getAllUserBoardListByUserNo(log, limit, offset);
-		request.setAttribute("boardList", list);
-		request.setAttribute("likeList", LikeDAO.getInstance().getLikeListByBoardList(list));
-		request.setAttribute("commentList", CommentDAO.getInstance().getCommentListByBoardList(list));
+		request.setAttribute("boardListSize", boardListSize);
 		
 		return "myPage/userBoardList";
 	}

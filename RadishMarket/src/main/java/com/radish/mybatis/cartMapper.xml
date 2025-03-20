@@ -33,4 +33,11 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getBuyItemSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM carts
+		WHERE user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
 </mapper>

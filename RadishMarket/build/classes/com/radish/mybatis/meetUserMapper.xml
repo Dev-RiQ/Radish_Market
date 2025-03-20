@@ -44,4 +44,11 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getMeetListSize" parameterType="int" resultType="int">
+		SELECT count(*)
+		FROM meet_users
+		WHERE user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
 </mapper>

@@ -11,6 +11,12 @@ let popupDocument;
 let log = document.querySelector("#log");
 
 function openPop(type) {
+	
+	if(document.getElementById('#log') === null){
+		alert('로그인 후 이용 가능합니다.');
+		return;
+	}
+	
 	letter_no = event.currentTarget.id;
 	if(letter_no)
 		letter_no = letter_no.replace("show-letter","");

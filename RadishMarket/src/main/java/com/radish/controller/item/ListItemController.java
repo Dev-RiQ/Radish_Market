@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.radish.dao.BoardCategoryDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.DongUtil;
 import com.radish.vo.Item;
 
 import jakarta.servlet.ServletException;
@@ -20,37 +22,19 @@ public class ListItemController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if(request.getSession().getAttribute("log") != null) {
-			int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Object log_str = request.getSession().getAttribute("log");
+		int log = 0;
+		String dong = request.getParameter("dong");
+		if(log_str != null) {
+			log = Integer.parseInt(log_str.toString());
 			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
+			dong = UserDAO.getInstance().getAUserDongByUserNo(log);
+			
 		}
-//		
-//		int itemTotalCnt = ItemDAO.getInstance().getTotalItemCnt();
-//		request.setAttribute("itemTotalCnt", itemTotalCnt);
-//		
-//		int defaultLimit = 30;
-//        int curLimit = defaultLimit;
-//        String limitParam = request.getParameter("limit");
-//        if (limitParam != null) {
-//        	curLimit = Integer.parseInt(limitParam);
-//        }
-//        
-//		final int OFFSET = Integer.parseInt(request.getParameter("offset") != null ? request.getParameter("offset") : "0");
-//		request.setAttribute("offset", OFFSET);
-//		
-//		List<Item> itemList = ItemDAO.getInstance().getLimitItemListByLimitWithOffset(curLimit, OFFSET);
-//		request.setAttribute("itemList", itemList);
-//		
-//		List<String> userDongList = UserDAO.getInstance().getLimitUserDongByItemList(itemList);
-//		request.setAttribute("userDongList", userDongList);
-//		
-//		List<Integer> itemNoList = new ArrayList<>();
-//		for(Item item : itemList) {
-//			itemNoList.add(item.getItem_no());
-//		}
-//		
-//		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
-//		request.setAttribute("mainImgList", mainImgList);
+		
+		request.setAttribute("categoryList", BoardCategoryDAO.getInstance().getAllBoardCategoryList());
+		request.setAttribute("logUserDong", dong);
+		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(dong));
 		
 		return "item/itemList";
 	}

@@ -33,7 +33,8 @@
 			</c:choose>
 		</c:otherwise>
 	</c:choose>
-			<input type="hidden" id="user_dong" value="역삼동">
+	
+			<!-- <input type="hidden" id="user_dong" value="역삼동"> -->
 			
 			<div id="list-box">
 				<!-- 여기 리스트 출력 -->

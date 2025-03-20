@@ -18,7 +18,7 @@
 <!--             -->
 
 </head>
-
+	<input type="hidden" id='log' value="${log}">
 <body>
 
 	<header>

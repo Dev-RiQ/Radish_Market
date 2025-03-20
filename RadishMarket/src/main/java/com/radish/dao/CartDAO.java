@@ -76,4 +76,15 @@ public class CartDAO {
 		return list;
 	}
 
+	public int getBuyItemSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("getBuyItemSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getBuyItemSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+
 }

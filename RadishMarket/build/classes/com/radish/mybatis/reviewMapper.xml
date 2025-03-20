@@ -15,4 +15,11 @@
 		WHERE sell_user_no=#{sell_user_no}
 	</select>
 	
+	<select id="getReviewListSize" parameterType="int" resultType="int" >
+		SELECT COUNT(*)
+		FROM reviews
+		WHERE sell_user_no=#{sell_user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
 </mapper>

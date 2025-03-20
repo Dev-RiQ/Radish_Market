@@ -35,4 +35,14 @@ public class ReviewDAO {
 		}
 		return list;
 	}
+	public int getReviewListSize(int sell_user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			size = session.selectOne("getReviewListSize", sell_user_no);
+		} catch (Exception e) {
+			System.out.println("getReviewListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
 }

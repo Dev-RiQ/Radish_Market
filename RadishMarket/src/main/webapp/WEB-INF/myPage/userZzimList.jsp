@@ -21,7 +21,7 @@
 	<div class="user-zzimlist">
 		<h3>내 찜목록 (${empty zzimList ? 0 : zzimList.size()})</h3>
 		<c:choose>
-			<c:when test="${empty zzimList or empty userDongList}">
+			<c:when test="${empty zzimList}">
 				<p>아직 찜한 상품이 없습니다.</p>
 			</c:when>
 			<c:otherwise>

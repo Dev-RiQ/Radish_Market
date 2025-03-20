@@ -1,4 +1,9 @@
 function sendAlarm () {
+	if(document.getElementById('#log') === null){
+		alert('로그인 후 이용가능합니다.')
+		return;
+	}
+	
 	const user_no = document.querySelector('#user_no').value;
 	let alarm_category_no = document.querySelector('#alarm_category_no').value;
 	const link_no = document.querySelector('#link_no').value;

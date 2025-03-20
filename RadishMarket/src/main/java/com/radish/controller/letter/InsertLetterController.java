@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.LetterDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
 import com.radish.util.DateUtil;
 import com.radish.vo.Letter;
 
@@ -17,6 +18,12 @@ public class InsertLetterController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		if(request.getSession().getAttribute("log") == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인 후 이용가능합니다.");
+			return null;
+		}
+		
 		int receive_user_no = Integer.parseInt(request.getParameter("user_no"));
 		int send_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		String letter_title = request.getParameter("letter_title");
@@ -30,7 +37,7 @@ public class InsertLetterController implements Controller {
 		String letter_reg_datetime = DateUtil.getInstance().getRegDatetime();
 		int letter_check = 0;
 		
-		Letter letter = new Letter(send_user_no, receive_user_no, letter_title, letter_reg_datetime, letter_content, letter_check, item_no);
+		Letter letter = new Letter(receive_user_no, send_user_no, item_no, letter_title, letter_content, letter_reg_datetime, letter_check);
 		boolean check = LetterDAO.getInstance().insertALetter(letter);
 		response.getWriter().print(check? "check" : "");
 		return null;

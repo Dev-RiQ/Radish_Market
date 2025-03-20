@@ -21,7 +21,6 @@ public class InsertZzimController implements Controller {
 			AlertUtil.getInstance().goBackWithAlert(response, "로그인 후 이용해주세요.");
 			return null;
 		}
-		
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		

@@ -67,4 +67,24 @@ public class LetterDAO {
 		}
 		return action != 0;
 	}
+	public int getReceveListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			size = session.selectOne("getReceveListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getReceveListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
+	public int getSendListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			size = session.selectOne("getSendListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getSendListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
 }

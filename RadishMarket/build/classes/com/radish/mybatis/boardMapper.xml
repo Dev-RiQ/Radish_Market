@@ -116,4 +116,11 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<select id="getBoardListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM boards
+		WHERE user_no=#{user_no}
+		LIMIT 101 OFFSET 0
+	</select>
+	
 </mapper>
