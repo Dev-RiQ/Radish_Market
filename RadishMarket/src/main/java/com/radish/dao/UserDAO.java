@@ -255,5 +255,13 @@ public class UserDAO {
         }
 		return list;
 	}
+	public void setReviewDegree(User user) {
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+            session.update("setReviewDegree", user);
+        } catch (Exception e) {
+            System.out.println("setReviewDegree fail");
+            e.printStackTrace();
+        }
+	}
 	
 }

@@ -103,4 +103,10 @@
 		WHERE user_no=#{user_no}
 	</select>
 	
+	<update id="setReviewDegree" parameterType="User">
+		UPDATE users
+		SET user_deg=#{user_deg}
+		WHERE user_no=#{user_no}
+	</update>
+	
 </mapper>

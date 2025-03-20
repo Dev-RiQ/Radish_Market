@@ -2,15 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
-<c:forEach var="meet" items="${ meetList }">
-	${ meet.meet_no }
-	${ meet.host_user_no }
-	${ meet.meet_title }
-	${ meet.meet_category }
-	${ meet.age_min }
-	${ meet.age_max }
-	<button onclick="location.href='deleteMeet.do?meet_no=${meet.meet_no}'">삭제</button>
-	<hr>
-</c:forEach>
-
+<div id="list-box">
+	<!-- 여기 리스트 출력 -->
+</div>
+<button id="btn-more-list" value="adminMeet/0" onclick="getMoreList()">더보기</button>
+<input type="hidden" id="category_no" name="category_no" value="0"/>
+<input type="hidden" id="gu" name="gu" value="강남구"/>
+<input type="hidden" id="dong" name="dong" value="전체"/>
+<input type="hidden" id="order_by" name="order_by" value="0"/>
+<input type="hidden" id="meet_no" name="meet_no" value="0"/>
 <%@ include file="../main/footer.jsp" %>
+<script src="../../js/listPaging.js"></script>

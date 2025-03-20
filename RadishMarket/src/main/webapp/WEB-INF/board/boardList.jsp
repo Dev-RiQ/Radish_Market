@@ -7,13 +7,15 @@
 	</div>
 
 <form action="/listBoard.do?filter=true" method="post">
+	<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }"/>
 	<label for="user_dong">위치</label><br> <label><input
 		type="radio" name="user_dong" id="user_dong" value="전체"
 		${ userDong eq '전체' ? 'checked' : '' } />전체보기</label><br>
+	<input type="hidden" id="gu" name="gu" value="${ gu }"/>
 	<c:forEach var="category_dong" items="${ dongList }">
-		<label><input type="radio" name="user_dong" id="user_dong"
+		<label><input type="radio" name="dong" id="dong"
 			value="${ category_dong }"
-			${ userDong eq category_dong ? 'checked' : userDong eq null and logUserDong eq category_dong? 'checked' : '' } />${ dong }</label>
+			${ userDong eq category_dong ? 'checked' : userDong eq null and logUserDong eq category_dong? 'checked' : '' } />${ category_dong }</label>
 		<br>
 	</c:forEach>
 

@@ -19,10 +19,16 @@ public class InsertMeetJoinController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		Object log_obj = request.getSession().getAttribute("log");
+		if(log_obj == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인을 먼저 해주세요.");
+			return null;
+		}
+		
 		String meet_join_content = request.getParameter("meet_join_content");
 		int meet_no = Integer.parseInt(request.getParameter("meet_no"));
 		Meet meet = MeetDAO.getInstance().getAMeetByMeetNo(meet_no);
-		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		int log = Integer.parseInt(log_obj.toString());
 		int user_age = UserDAO.getInstance().getAUserByLog(log).getUser_age();
 		if(user_age < meet.getAge_min() || user_age > meet.getAge_max()) {
 			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 나이 제한에 해당하지 않습니다. \\n다른 모임을 찾아주세요!", "listMeet.do");

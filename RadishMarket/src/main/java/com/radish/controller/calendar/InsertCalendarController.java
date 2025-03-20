@@ -18,7 +18,13 @@ public class InsertCalendarController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int main_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Object log_obj = request.getSession().getAttribute("log");
+		if(log_obj == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인을 먼저 해주세요.");
+			return null;
+		}
+		
+		int main_user_no = Integer.parseInt(log_obj.toString());
 		String sub_user_no_str = request.getParameter("sub_user_no");
 		String meet_no_str = request.getParameter("meet_no");
 		int sub_user_no = 0;

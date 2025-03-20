@@ -5,11 +5,15 @@ import java.io.IOException;
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.CartDAO;
 import com.radish.dao.ItemDAO;
+import com.radish.dao.ItemImgDAO;
 import com.radish.dao.ReviewDAO;
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Cart;
+import com.radish.vo.Item;
 import com.radish.vo.Review;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,9 +34,9 @@ public class InsertReviewController implements Controller {
 		}
 		
 		if(review_content == null) {
-			String item_img = "아이템 이미지 1장";
-			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
-			request.setAttribute("item_img", item_img);
+			Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
+			request.setAttribute("item", item);
+			request.setAttribute("item_img", ItemImgDAO.getInstance().getAItemImg(item_no));
 			return "utils/reviewInsert";
 		}
 		
@@ -45,6 +49,14 @@ public class InsertReviewController implements Controller {
 			AlertUtil.getInstance().goHomeWithAlert(response, "리뷰 등록 완료");
 			Cart cart = new Cart(item_no, buy_user_no, 0);
 			CartDAO.getInstance().setCheckReviewed(cart);
+			int nowDeg = UserDAO.getInstance().getAUserByLog(sell_user_no).getUser_deg();
+			int afterDeg = nowDeg + review_deg;
+			if(afterDeg < 0)
+				afterDeg = 0;
+			if(afterDeg > 100)
+				afterDeg = 100;
+			User user = new User(sell_user_no, afterDeg);
+			UserDAO.getInstance().setReviewDegree(user);
 		}
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 리뷰 등록에 실패했습니다.\\n다시 시도해주세요.");

@@ -19,7 +19,12 @@ public class InsertMeetController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int host_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Object log_obj = request.getSession().getAttribute("log");
+		if(log_obj == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인을 먼저 해주세요.");
+			return null;
+		}
+		int host_user_no = Integer.parseInt(log_obj.toString());
 		if(request.getParameter("meet_title") == null) {
 			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(host_user_no));
 			request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getAllMeetCategoryList());

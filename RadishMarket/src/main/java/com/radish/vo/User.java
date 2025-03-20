@@ -105,6 +105,11 @@ public class User {
 		this.user_dong = user_dong;
 		this.user_deg = user_deg;
 	}
+	public User(int user_no, int user_deg) {
+		this.user_no = user_no;
+		this.user_deg = user_deg;
+	}
+
 	public int getUser_no() {
 		return user_no;
 	}

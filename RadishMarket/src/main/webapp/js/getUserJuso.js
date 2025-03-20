@@ -1,4 +1,5 @@
 let address = '';
+let gu = '';
 let dong = '';
 
 function getAddressFromCoords(lat, lon) {
@@ -21,15 +22,17 @@ function setAddressData(jibunAddr) {
 			address = addressValues[i];
 		if (sigunguCheck(addressValues[i])) {
 			address += " " + addressValues[i];
+			gu += " " + addressValues[i];
 		}
 		if (eupmyendongCheck(addressValues[i])) {
 			address += " " + addressValues[i]
 			dong += " " + addressValues[i];
 		}
 	}
+	gu = gu.trim();
 	dong = dong.trim();
 	if (!document.querySelector('#address').value) {
-		fetch(`/main.do?address=${address}&dong=${dong}`)
+		fetch(`/main.do?address=${address}&gu=${gu}&dong=${dong}`)
 			.then(response => response.text())
 			.catch(error => console.log(error))
 	}

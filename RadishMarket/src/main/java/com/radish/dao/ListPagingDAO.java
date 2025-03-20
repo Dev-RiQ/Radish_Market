@@ -51,10 +51,10 @@ public class ListPagingDAO {
 		List<?> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			switch(type) {
-			case "item": list = session.selectList("getItemListByFilter", filter); break;
-			case "board": list = session.selectList("getBoardListByFilter", filter); break;
-			case "meetBoard": list = session.selectList("getMeetBoardListByFilter", filter); break;
-			case "meet": list = session.selectList("getMeetListByFilter", filter); break;
+			case "adminUser": list = session.selectList("getUserListByFilter", filter); break;
+			case "item", "adminItem": list = session.selectList("getItemListByFilter", filter); break;
+			case "board", "meetBoard", "adminBoard": list = session.selectList("getBoardListByFilter", filter); break;
+			case "meet", "adminMeet": list = session.selectList("getMeetListByFilter", filter); break;
 			case "receiveLetter": list = session.selectList("getReceiveLetterListByFilter", filter); break;
 			case "sendLetter": list = session.selectList("getSendLetterListByFilter", filter); break;
 			case "zzim": list = session.selectList("getZzimListByFilter", filter); break;
@@ -119,7 +119,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int board_category_no = 0;
 				switch(type) {
-				case "board", "meetBoard", "myBoard": board_category_no = ((Board) value).getBoard_category_no(); break;
+				case "board", "meetBoard", "myBoard", "adminBoard": board_category_no = ((Board) value).getBoard_category_no(); break;
 				default: return null;
 				}
 				boardCategoryList.add(session.selectOne("getBoardCategoryListByList", board_category_no));
@@ -155,7 +155,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int meet_category_no = 0;
 				switch(type) {
-				case "meet", "hostMeet", "myMeet": meet_category_no = ((Meet) value).getMeet_category_no(); break;
+				case "meet", "hostMeet", "myMeet", "adminMeet": meet_category_no = ((Meet) value).getMeet_category_no(); break;
 				default: return null;
 				}
 				meetCategoryList.add(session.selectOne("getMeetCategoryListByList", meet_category_no));
@@ -192,7 +192,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int board_no = 0;
 				switch(type) {
-				case "board", "meetBoard", "myBoard": board_no = ((Board) value).getBoard_no(); break;
+				case "board", "meetBoard", "myBoard", "adminBoard": board_no = ((Board) value).getBoard_no(); break;
 				default: return null;
 				}
 				likeCountList.add(session.selectOne("getLikeCountListByList", board_no));
@@ -210,7 +210,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int board_no = 0;
 				switch(type) {
-				case "board", "meetBoard", "myBoard": board_no = ((Board) value).getBoard_no(); break;
+				case "board", "meetBoard", "myBoard", "adminBoard": board_no = ((Board) value).getBoard_no(); break;
 				default: return null;
 				}
 				commentCountList.add(session.selectOne("getCommentCountListByList", board_no));
@@ -228,7 +228,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int meet_no = 0;
 				switch(type) {
-				case "meet", "hostMeet", "myMeet": meet_no = ((Meet) value).getMeet_no(); break;
+				case "meet", "hostMeet", "myMeet", "adminMeet": meet_no = ((Meet) value).getMeet_no(); break;
 				default: return null;
 				}
 				memberCountList.add(session.selectOne("getMemberCountListByList", meet_no));
@@ -252,6 +252,10 @@ public class ListPagingDAO {
 		case "zzim": sb = getPrintZzimListData(list, itemList, itemImgList); break;
 		case "cart": sb = getPrintCartListData(list, userList, itemList, itemCategoryList, itemImgList); break;
 		case "review": sb = getPrintReviewListData(list, userList, itemList, itemCategoryList, itemImgList); break;
+		case "adminUser": sb = getPrintAdminUserListData(list); break;
+		case "adminBoard": sb = getPrintAdminBoardListData(list, boardCategoryList, likeCountList, commentCountList); break;
+		case "adminItem": sb = getPrintAdminItemListData(list); break;
+		case "adminMeet": sb = getPrintAdminMeetListData(list, meetCategoryList, memberCountList); break;
 		}
 		return sb;
 	}
@@ -277,6 +281,7 @@ public class ListPagingDAO {
 			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -328,6 +333,7 @@ public class ListPagingDAO {
 			sb.append("</div>");
 			sb.append("</div>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -355,6 +361,7 @@ public class ListPagingDAO {
 			sb.append("<span> / "+meet_category_name+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -377,6 +384,7 @@ public class ListPagingDAO {
 			sb.append("</div>");
 			sb.append("<button onclick=\"location.href='deleteLetter.do?letter_no="+letter_no+"'\">삭제</button>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -400,6 +408,7 @@ public class ListPagingDAO {
 			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -434,6 +443,7 @@ public class ListPagingDAO {
 			}
 			sb.append("</div>");
 			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -456,6 +466,109 @@ public class ListPagingDAO {
 			sb.append("<p>"+review_content+"</p>");
 			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
 			sb.append("</div>");
+			sb.append("<hr>");
+		}
+		return sb;
+	}
+	private StringBuilder getPrintAdminUserListData(List<?> list) {
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < list.size() ; i++) {
+			int user_no = ((User) list.get(i)).getUser_no();
+			String nickname = ((User) list.get(i)).getUser_nickname();
+			int age = ((User) list.get(i)).getUser_age();
+			String email = ((User) list.get(i)).getUser_email();
+			String address = ((User) list.get(i)).getUser_address();
+			String phone = ((User) list.get(i)).getUser_phone();
+			int deg = ((User) list.get(i)).getUser_deg();
+			
+			sb.append("<div>");
+			sb.append("<span>no : "+user_no+" </span>");
+			sb.append("<span> | nickname : "+nickname+" </span>");
+			sb.append("<span> | age : "+age+" </span><br>");
+			sb.append("<span>email : "+email+" </span>");
+			sb.append("<span> | address : "+address+" </span><br>");
+			sb.append("<span>phone : "+phone+" </span>");
+			sb.append("<span> | deg : "+deg+" </span>");
+			sb.append("<button> 삭제 </button>");
+			sb.append("</div>");
+			sb.append("<hr>");
+		}
+		return sb;
+	}
+	private StringBuilder getPrintAdminBoardListData(List<?> list, List<BoardCategory> boardCategoryList, List<Integer> likeCountList, List<Integer> commentCountList) {
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < list.size() ; i++) {
+			int board_no = ((Board) list.get(i)).getBoard_no();
+			String board_title = ((Board) list.get(i)).getBoard_title();
+			String board_content = ((Board) list.get(i)).getBoard_content();
+			String board_dong = ((Board) list.get(i)).getBoard_dong();
+			String board_category_name = boardCategoryList.get(i).getBoard_category_name();
+			String board_reg_datetime = DateUtil.getInstance().getCalcDateAgo(((Board) list.get(i)).getBoard_reg_datetime());
+			int likeCount = likeCountList.get(i);
+			int commentCount = commentCountList.get(i);
+			
+			sb.append("<div>");
+			sb.append("<span>no : "+board_no+"</span>");
+			sb.append("<span> / title : "+board_title+"</span><br>");
+			sb.append("<span>content : "+board_content+"</span><br>");
+			sb.append("<div>");
+			sb.append("<span>dong : "+board_dong+"</span>");
+			sb.append("<span> | category_name : "+board_category_name+"</span>");
+			sb.append("<span> | reg_datetime : "+board_reg_datetime+"</span>");
+			sb.append("</div>");
+			sb.append("<div>");
+			sb.append("<span>"+"종아요 : "+likeCount+"</span>");
+			sb.append("<span>"+" | 댓글 : "+commentCount+" | </span>");
+			sb.append("<button onclick=\"location.href='deleteBoard.do?board_no="+board_no+"'\"> 삭제 </button>");
+			sb.append("</div>");
+			sb.append("</div>");
+			sb.append("<hr>");
+		}
+		return sb;
+	}
+	private StringBuilder getPrintAdminItemListData(List<?> list) {
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < list.size() ; i++) {
+			int item_no = ((Item) list.get(i)).getItem_no();
+			String item_name = ((Item) list.get(i)).getItem_name();
+			int item_status = ((Item) list.get(i)).getItem_status();
+			String status = item_status == 2 ? "예약중 " : item_status == 3 ? "판매완료 " : "";
+			int item_price= ((Item) list.get(i)).getItem_price();
+			String price = getPrintPrice(item_price);
+			String item_dong = ((Item) list.get(i)).getItem_dong();
+			
+			sb.append("<div>");
+			sb.append("<span>no : "+item_no+"</span>");
+			sb.append("<span> | name : "+item_name+"</span><br>");
+			sb.append("<span><span>status : "+status+" | </span> price : "+price+"</span><br>");
+			sb.append("<span>dong : "+item_dong+" | </span>");
+			sb.append("<button onclick=\"location.href='deleteItem.do?item_no="+item_no+"'\">삭제</button>");
+			sb.append("</div>");
+			sb.append("<hr>");
+		}
+		return sb;
+	}
+	private StringBuilder getPrintAdminMeetListData(List<?> list, 
+			List<MeetCategory> meetCategoryList, List<Integer> memberCountList) {
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < list.size() ; i++) {
+			int meet_no = ((Meet) list.get(i)).getMeet_no();
+			String meet_title = ((Meet) list.get(i)).getMeet_title();
+			String meet_content = ((Meet) list.get(i)).getMeet_content();
+			String meet_dong = ((Meet) list.get(i)).getMeet_dong();
+			int memberCount = memberCountList.get(i);
+			String meet_category_name = meetCategoryList.get(i).getMeet_category_name();
+			
+			sb.append("<div>");
+			sb.append("<span>no : "+meet_no+"</span>");
+			sb.append("<span> | title : "+meet_title+"</span><br>");
+			sb.append("<span>content : "+meet_content+"</span><br>");
+			sb.append("<span>dong : "+meet_dong+"</span>");
+			sb.append("<span> | "+"회원수 : "+memberCount+"</span>");
+			sb.append("<span> | category_name : "+meet_category_name+" | </span>");
+			sb.append("<button onclick=\"location.href='deleteMeet.do?meet_no="+meet_no+"'\">삭제</button>");
+			sb.append("</div>");
+			sb.append("<hr>");
 		}
 		return sb;
 	}

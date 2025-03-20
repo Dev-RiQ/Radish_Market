@@ -70,4 +70,15 @@ public class ItemImgDAO {
 		return action != 0;
 	}
 
+	public String getAItemImg(int item_no) {
+		String action = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			action = session.selectOne("getAItemImg", item_no);
+		} catch (Exception e) {
+			System.out.println("getAItemImg fail");
+			e.printStackTrace();
+		}
+		return action;
+	}
+
 }
