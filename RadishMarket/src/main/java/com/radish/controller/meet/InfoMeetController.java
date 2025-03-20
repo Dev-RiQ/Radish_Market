@@ -18,17 +18,21 @@ public class InfoMeetController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Object log_obj = request.getSession().getAttribute("log");
 		int meet_no = Integer.parseInt(request.getParameter("meet_no"));
-		boolean hasUser = MeetUserDAO.getInstance().hasUser(meet_no, log);
+		if(log_obj != null) {
+			int log = Integer.parseInt(log_obj.toString());
+			boolean hasUser = MeetUserDAO.getInstance().hasUser(meet_no, log);
+			if(hasUser)
+				request.setAttribute("hasUser", hasUser);
+			else if(MeetJoinDAO.getInstance().hasMeetJoin(new MeetJoin(meet_no,log)))
+				request.setAttribute("hasMeetJoin", true);
+			
+		}
 		request.setAttribute("meet", MeetDAO.getInstance().getAMeetByMeetNo(meet_no));
 		request.setAttribute("meet_dong", request.getParameter("meet_dong"));
 		request.setAttribute("meet_user_count", request.getParameter("meet_user_count"));
 		request.setAttribute("meet_category_name", request.getParameter("meet_category_name"));
-		if(hasUser)
-			request.setAttribute("hasUser", hasUser);
-		else if(MeetJoinDAO.getInstance().hasMeetJoin(new MeetJoin(meet_no,log)))
-			request.setAttribute("hasMeetJoin", true);
 		
 		String alarm_no_str = request.getParameter("alarm_no");
 		if(alarm_no_str != null) {

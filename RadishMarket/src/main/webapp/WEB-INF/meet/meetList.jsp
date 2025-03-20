@@ -8,6 +8,44 @@
 
 <button onclick="location.href='/insertMeet.do'">모임생성</button>
 
+
+<form action="/listMeet.do?filter=true" method="post">
+	<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }"/>
+	<label for="user_dong">위치</label><br> <label><input
+		type="radio" name="user_dong" id="user_dong" value="전체"
+		${ userDong eq '전체' ? 'checked' : '' } />전체보기</label><br>
+	<input type="hidden" id="gu" name="gu" value="${ gu }"/>
+	<c:forEach var="category_dong" items="${ dongList }">
+		<label><input type="radio" name="dong" id="dong"
+			value="${ category_dong }"
+			${ userDong eq category_dong ? 'checked' : userDong eq null and logUserDong eq category_dong? 'checked' : '' } />${ category_dong }</label>
+		<br>
+	</c:forEach>
+
+	<hr>
+
+	<label for="category_no">카테고리</label><br> <label><input
+		type="radio" name="category_no" id="category_no" value="0"
+		${ categoryNo eq null || categoryNo eq 0 ? 'checked' : '' } />전체보기</label><br>
+	<c:forEach var="category" items="${ categoryList }">
+		<label><input type="radio" name="category_no" id="category_no"
+			value="${ category.meet_category_no }"
+			${ categoryNo eq category.meet_category_no ? 'checked' : '' } />${ category.meet_category_name }</label>
+		<br>
+	</c:forEach>
+
+	<hr>
+
+	<label for="order_by">정렬</label><br> <label><input
+		type="radio" name="order_by" id="order_by" value=0
+		${ order_by eq null || order_by == 0 ? 'checked' : '' } />최신순</label><br>
+	<label><input type="radio" name="order_by" id="order_by"
+		value=1 ${ order_by eq 1 ? 'checked' : '' } />인기순</label><br>
+	<button>필터적용</button>
+</form>
+
+
+
 	<input type="hidden" id="user_dong" value="역삼동" >
 <div id="list-box">
 	<!-- 여기 리스트 출력 -->

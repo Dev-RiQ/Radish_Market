@@ -30,8 +30,12 @@ public class InfoBoardController implements Controller {
 		List<Comment> commentList = CommentDAO.getInstance().getCommentListByBoard(board_no);
 		request.setAttribute("commentList", commentList);
 		request.setAttribute("commentNickname", UserDAO.getInstance().getCommentedUserNickname(commentList));
-		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		request.setAttribute("isLike", LikeDAO.getInstance().isLikedInBoardNoByLog(board_no, log));
+		Object log_obj = request.getSession().getAttribute("log");
+		int log = 0;
+		if(log_obj != null) {
+			log = Integer.parseInt(log_obj.toString());
+			request.setAttribute("isLike", LikeDAO.getInstance().isLikedInBoardNoByLog(board_no, log));
+		}
 		String alarm_no_str = request.getParameter("alarm_no");
 		if(alarm_no_str != null) {
 			int alarm_no = Integer.parseInt(alarm_no_str);

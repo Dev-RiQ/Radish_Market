@@ -2,16 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
-<c:forEach var="item" items="${ itemList }">
-	${ item.item_no }
-	${ item.item_name }
-	${ item.item_content }
-	${ item.item_price }
-	${ item.item_reg_datetime }
-	${ item.item_status }
-	${ item.item_hits }
-	<button onclick="location.href='deleteItem.do?item_no=${item.item_no}'">삭제</button>
-	<hr>
-</c:forEach>
-
+<div id="list-box">
+	<!-- 여기 리스트 출력 -->
+</div>
+<button id="btn-more-list" value="adminItem/0" onclick="getMoreList()">더보기</button>
+<input type="hidden" id="item_status" name="item_status" value="0"/>
+<input type="hidden" id="category_no" name="category_no" value="0"/>
+<input type="hidden" id="price_min" name="price_min" value="0"/>
+<input type="hidden" id="price_max" name="price_max" value="0"/>
+<input type="hidden" id="gu" name="gu" value="강남구"/>
+<input type="hidden" id="dong" name="dong" value="전체"/>
+<input type="hidden" id="order_by" name="order_by" value="0"/>
+<input type="hidden" id="meet_no" name="meet_no" value="0"/>
 <%@ include file="../main/footer.jsp" %>
+<script src="../../js/listPaging.js"></script>

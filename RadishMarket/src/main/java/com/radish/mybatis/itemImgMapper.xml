@@ -27,4 +27,11 @@
 		WHERE item_no=#{item_no}
 	</delete>
 	
+	<select id="getAItemImg" parameterType="int" resultType="String">
+		SELECT item_img 
+		FROM item_img 
+		WHERE item_no=#{item_no}
+		LIMIT 1
+	</select>
+	
 </mapper>

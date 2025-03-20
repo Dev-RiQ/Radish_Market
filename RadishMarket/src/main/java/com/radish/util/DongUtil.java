@@ -16,10 +16,10 @@ public class DongUtil {
 		return instance;
 	}
 	
-	public List<String> getDongFilterList(String dong) {
+	public List<String> getDongFilterList(String gu, String dong) {
 		List<String> list = null;
 		try {
-			String querySet = getQuerySet(path, dong);
+			String querySet = getQuerySet(path, gu, dong);
 			list = getDongsIncludeCode(path, querySet);
 		} catch (Exception e) {
 			System.out.println("getDongFilterList fail");
@@ -28,8 +28,8 @@ public class DongUtil {
 		return list;
 	}
 	
-	private String getQuerySet(String path, String dong) throws Exception {
-		Document doc = Jsoup.connect(path + "locataddNm=" + dong).get();
+	private String getQuerySet(String path, String gu, String dong) throws Exception {
+		Document doc = Jsoup.connect(path + "locataddNm=" +gu +"%20"+ dong).get();
 		String fullCode = doc.select("td.table_left").getLast().text();
 		String sidoCd = fullCode.substring(0, 2);
 		String sggCd = fullCode.substring(2, 5);

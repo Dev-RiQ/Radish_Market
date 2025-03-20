@@ -19,7 +19,12 @@ public class InsertBoardController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Object log_obj = request.getSession().getAttribute("log");
+		if(log_obj == null) {
+			AlertUtil.getInstance().goBackWithAlert(response, "로그인을 먼저 해주세요.");
+			return null;
+		}
+		int user_no = Integer.parseInt(log_obj.toString());
 		if(request.getParameter("board_title") == null) {
 			String meet_no_str = request.getParameter("meet_no");
 			int meet_no = 0;

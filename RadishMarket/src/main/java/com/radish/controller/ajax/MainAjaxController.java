@@ -7,7 +7,6 @@ import com.radish.frontController.Controller;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 public class MainAjaxController implements Controller {
 
@@ -17,8 +16,10 @@ public class MainAjaxController implements Controller {
 
 		if (request.getSession().getAttribute("log") == null) {
 			String address = request.getParameter("address");
+			String gu = request.getParameter("gu");
 			String dong = request.getParameter("dong");
 			request.getSession().setAttribute("address", address);
+			request.getSession().setAttribute("gu", gu);
 			request.getSession().setAttribute("dong", dong);
 		}
 		return null;

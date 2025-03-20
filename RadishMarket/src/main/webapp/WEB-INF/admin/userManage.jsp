@@ -2,19 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
-<c:forEach var="user" items="${ userList }">
-	${ user.user_no }
-	${ user.user_id }
-	${ user.user_name }
-	${ user.user_age }
-	${ user.user_email }
-	${ user.user_nickname }
-	${ user.user_address }
-	${ user.user_phone }
-	${ user.user_reg_datetime }
-	${ user.user_deg }
-	<button onclick="location.href='deleteUser.do?user_no=${user.user_no}'">삭제</button>
-	<hr>
-</c:forEach>
-
+<div id="list-box">
+	<!-- 여기 리스트 출력 -->
+</div>
+<button id="btn-more-list" value="adminUser/0" onclick="getMoreList()">더보기</button>
+<input type="hidden" id="gu" name="gu" value="강남구"/>
+<input type="hidden" id="dong" name="dong" value="전체"/>
+<input type="hidden" id="order_by" name="order_by" value="0"/>
 <%@ include file="../main/footer.jsp" %>
+<script src="../../js/listPaging.js"></script>

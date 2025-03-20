@@ -4,6 +4,37 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.radish.mybatis.listPagingMapper">
 
+	<select id="getUserListByFilter" parameterType="Filter" resultType="User">
+		SELECT *
+		FROM users
+		<where>
+	        <if test="user_no != 0">
+	        	and user_no=#{user_no}
+	        </if>
+	        <if test="gu != '전체'">
+	        	and user_gu=#{gu}
+	        </if>
+	        <if test="dong != '전체'">
+	        	and user_dong=#{dong}
+	        </if>
+   	 	</where>
+   	 	<choose>
+			<when test="order_by == 0">
+			ORDER BY
+				user_no
+			</when> 
+			<when test="order_by == 1">
+			ORDER BY
+				user_no DESC
+			</when> 
+			<otherwise>
+			ORDER BY
+				user_no
+			</otherwise>
+   	 	</choose>
+		LIMIT #{start},30
+	</select>
+
 	<select id="getItemListByFilter" parameterType="Filter" resultType="Item">
 		SELECT *
 		FROM items
@@ -51,35 +82,6 @@
 	</select>
 
 	<select id="getBoardListByFilter" parameterType="Filter" resultType="Board">
-		SELECT *
-		FROM boards
-		<where>
-			board_gu=#{gu}
-	        <if test="category_no != 0">
-	         	and board_category_no=#{category_no}
-	        </if>
-	        <if test="dong != '전체'">
-	        	and board_dong=#{dong}
-	        </if>
-   	 	</where>
-   	 	<choose>
-			<when test="order_by == 0">
-			ORDER BY
-				board_no DESC
-			</when> 
-			<when test="order_by == 1">
-			ORDER BY
-				board_hits DESC
-			</when> 
-			<otherwise>
-			ORDER BY
-				board_no DESC
-			</otherwise>
-   	 	</choose>
-		LIMIT #{start},30
-	</select>
-
-	<select id="getMeetBoardListByFilter" parameterType="Filter" resultType="Board">
 		SELECT *
 		FROM boards
 		<where>
