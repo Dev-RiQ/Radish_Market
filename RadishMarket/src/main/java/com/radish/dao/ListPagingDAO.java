@@ -377,7 +377,7 @@ public class ListPagingDAO {
 			
 			sb.append("<div>");
 			sb.append("<div id=\"show-letter"+letter_no+"\" style=\"cursor: pointer;\" onclick=\"openPop('read')\">");
-			sb.append("<span>"+check+" </span>");
+			sb.append("<span id=\"check-letter"+letter_no+"\">"+check+"</span>");
 			sb.append("<span> "+user_nickname+" </span>");
 			sb.append("<span> "+letter_title+" </span>");
 			sb.append("<span> "+letter_reg_datetime+" </span>");

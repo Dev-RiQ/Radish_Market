@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import com.radish.dao.ItemDAO;
-import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;

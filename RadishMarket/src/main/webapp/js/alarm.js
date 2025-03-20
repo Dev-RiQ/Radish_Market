@@ -1,5 +1,5 @@
 function sendAlarm () {
-	if(document.getElementById('#log') === null){
+	if(document.getElementById('log') === null){
 		alert('로그인 후 이용가능합니다.')
 		return;
 	}
@@ -12,7 +12,7 @@ function sendAlarm () {
 	if(event.target.id && event.target.id == 'btn-comment-submit')
 		alarm_category_no = '2'; 
 	if(alarm_category_no == '1' && isLike.value != '0'){
-		fetch(`/deleteLike.do?board_no=${ link_no }`)
+		fetch(`/deleteLike.do?board_no=${ link_no }&user_no=${user_no}`)
 		.then(response => response.text())
 		.then(() => {
 			const likeCount = document.querySelector('#like-count');
@@ -28,9 +28,11 @@ function sendAlarm () {
 	}
 	
 	if(alarm_category_no == '3' && isZzim.value != '0'){
-		fetch(`/deleteZzim.do?item_no=${ link_no }`)
+		fetch(`/deleteZzim.do?item_no=${ link_no }&user_no=${user_no}`)
 		.then(response => response.text())
 		.then(() => {
+			const zzimBtn = document.querySelector('#btn-zzim');
+			zzimBtn.innerText = '찜하기';
 			const zzimCount = document.querySelector('#zzim-count');
 			zzimCount.innerText = parseInt(zzimCount.innerText) - parseInt(1);
 			isZzim.value = '0'
@@ -59,6 +61,8 @@ function sendAlarm () {
 		fetch(`/insertZzim.do?item_no=${ link_no }`)
 		.then(response => response.text())
 		.then(() => {
+			const zzimBtn = document.querySelector('#btn-zzim');
+			zzimBtn.innerText = '찜취소';
 			const zzimCount = document.querySelector('#zzim-count');
 			zzimCount.innerText = parseInt(zzimCount.innerText) + parseInt(1);
 			isZzim.value = '1'

@@ -3,9 +3,7 @@ package com.radish.controller.meet;
 import java.io.IOException;
 import java.util.List;
 
-import com.radish.dao.BoardCategoryDAO;
 import com.radish.dao.MeetCategoryDAO;
-import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.DongUtil;
 import com.radish.vo.MeetCategory;
@@ -23,33 +21,32 @@ public class ListMeetController implements Controller {
 		int category_no = 0;
 		if(category_no_str != null)
 			category_no = Integer.parseInt(category_no_str);
-		String user_dong = request.getParameter("dong");
-		if(user_dong == null)
-			user_dong = request.getParameter("meet_dong");
+		
 		String order_by_str = request.getParameter("order_by");
 		int order_by = 0;
 		if(order_by_str != null)
 			order_by = Integer.parseInt(order_by_str);
+		
 		String meet_no_str = request.getParameter("meet_no");
 		int meet_no = 0;
 		if(meet_no_str != null)
 			meet_no = Integer.parseInt(meet_no_str);
-		String gu = null;
-		request.setAttribute("categoryList", BoardCategoryDAO.getInstance().getAllBoardCategoryList());
-		Object log_obj = request.getSession().getAttribute("log");
-		if(log_obj != null && user_dong == null) {
-			int log = Integer.parseInt(log_obj.toString());
-			user_dong = UserDAO.getInstance().getAUserDongByUserNo(log);
-			gu = UserDAO.getInstance().getAUserByLog(log).getUser_gu();
+		
+		String gu = request.getSession().getAttribute("gu").toString();
+		String user_dong = request.getSession().getAttribute("dong").toString();
+		
+		if(request.getParameter("filter") != null) {
+			String filter_gu = request.getParameter("gu"); 
+			if(filter_gu != null && !filter_gu.isBlank())
+				gu = filter_gu;
+			String filter_dong = request.getParameter("dong"); 
+			if(filter_dong != null && !filter_dong.isBlank())
+				user_dong = filter_dong;
 		}
-		Object dong = request.getSession().getAttribute("dong");
-		if(dong != null && user_dong == null) {
-			user_dong = dong.toString();
-		}
-		if(gu == null)
-			gu = request.getSession().getAttribute("gu").toString();
+		
 		List<MeetCategory> categoryList = MeetCategoryDAO.getInstance().getAllMeetCategoryList();
 		request.setAttribute("categoryNo", category_no);
+		request.setAttribute("gu", gu);
 		request.setAttribute("userDong", user_dong);
 		request.setAttribute("order_by", order_by);
 		request.setAttribute("meet_no", meet_no);

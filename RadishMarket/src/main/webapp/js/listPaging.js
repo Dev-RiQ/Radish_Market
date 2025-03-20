@@ -126,29 +126,8 @@ function printList(data){
 }
 
 function printNoData(type){
-/*	const emptyInfo = document.querySelector(".empty-info")
-	if(!emptyInfo) return;
-	switch(type){
-	case "item": emptyInfo.innerText = "등록된 물품이 존재하지 않습니다."; break;
-	case "board": emptyInfo.innerText = "등록된 게시물이 존재하지 않습니다."; break;
-	case "meetBoard": emptyInfo.innerText = "등록된 게시물이 존재하지 않습니다."; break;  
-	case "meet": emptyInfo.innerText = "등록된 모임이 존재하지 않습니다."; break;
-	case "receiveLetter": emptyInfo.innerText = "받은 쪽지가 존재하지 않습니다."; break;
-	case "sendLetter": emptyInfo.innerText = "보낸 쪽지가 존재하지 않습니다."; break;
-	case "zzim": emptyInfo.innerText = "찜 목록에 추가한 물품이 존재하지 않습니다."; break;
-	case "cart": emptyInfo.innerText = "구매한 물품이 존재하지 않습니다."; break;
-	case "myItem": emptyInfo.innerText = "등록한 물품이 존재하지 않습니다."; break;
-	case "review": emptyInfo.innerText = "등록된 리뷰가 존재하지 않습니다."; break;
-	case "myBoard": emptyInfo.innerText = "등록한 게시물이 존재하지 않습니다."; break;
-	case "hostMeet": emptyInfo.innerText = "생성한 모임이 존재하지 않습니다."; break;
-	case "myMeet": emptyInfo.innerText = "가입한 모임이 존재하지 않습니다."; break;
-	case "adminUser": emptyInfo.innerText = "등록된 회원이 존재하지 않습니다."; break;
-	case "adminBoard": emptyInfo.innerText = "등록된 게시물이 존재하지 않습니다."; break;
-	case "adminItem": emptyInfo.innerText = "등록된 물품이 존재하지 않습니다."; break;
-	case "adminMeet": emptyInfo.innerText = "등록된 모임이 존재하지 않습니다."; break;
-	}*/
-	if(btnMoreList.value.split('/')[1] == 30){
-		let word = document.querySelector('.empty-info')
+	let word = document.querySelector('.empty-info')
+	if(word){
 		switch(word.id){
 			case 'sellList' : word.innerHTML = '판매중인 물품이 없습니다.'; break;
 			case 'reviewList' : word.innerHTML = '후기가 없습니다.'; break;

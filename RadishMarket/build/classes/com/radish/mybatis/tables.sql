@@ -240,8 +240,7 @@ CREATE TABLE calendars (
     calendar_dir_x VARCHAR(20) NOT NULL,
     calendar_dir_y VARCHAR(20) NOT NULL,
     calendar_datetime VARCHAR(20) NOT NULL,
-    calendar_title VARCHAR(20) NOT NULL,
-    calendar_content VARCHAR(100) NOT NULL
+    calendar_title VARCHAR(20) NOT NULL
     );
 DESC calendars;
 SELECT * FROM calendars; 

@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,6 +31,10 @@ public class LoginController implements Controller {
 		int log = UserDAO.getInstance().isLoginSuccess(user_id, user_pw);
 		if(log != 0) {
 			request.getSession().setAttribute("log", log);
+			User user = UserDAO.getInstance().getAUserByLog(log);
+			request.getSession().setAttribute("address", user.getUser_address());
+			request.getSession().setAttribute("gu", user.getUser_gu());
+			request.getSession().setAttribute("dong", user.getUser_dong());
 			AlertUtil.getInstance().goHomeWithAlert(response, user_id + "님 로그인 성공 !");
 		}else {
 			AlertUtil.getInstance().goBackWithAlert(response, "아이디 혹은 비밀번호를 확인해주세요.");

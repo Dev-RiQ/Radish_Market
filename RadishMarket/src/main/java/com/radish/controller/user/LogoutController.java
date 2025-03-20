@@ -15,6 +15,9 @@ public class LogoutController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getSession().removeAttribute("log");
+		request.getSession().removeAttribute("address");
+		request.getSession().removeAttribute("gu");
+		request.getSession().removeAttribute("dong");
 		AlertUtil.getInstance().goHomeWithAlert(response, "로그아웃 성공 !");
 		return null;
 	}

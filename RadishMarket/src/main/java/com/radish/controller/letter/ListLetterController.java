@@ -1,16 +1,12 @@
 package com.radish.controller.letter;
 
 import java.io.IOException;
-import java.util.List;
 
-import com.radish.dao.AlarmDAO;
 import com.radish.dao.EmojiDAO;
-import com.radish.dao.ItemDAO;
 import com.radish.dao.LetterDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Letter;
 import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;

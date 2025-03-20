@@ -1,15 +1,12 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
-import java.util.List;
 
-import com.radish.dao.MeetCategoryDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetUserDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Meet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

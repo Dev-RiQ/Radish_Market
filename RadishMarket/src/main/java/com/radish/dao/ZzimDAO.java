@@ -54,7 +54,7 @@ public class ZzimDAO {
 	public int isZzimInItemNoByLog(int item_no, int user_no) {
 		int count = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			count = session.selectOne("isZzimInItemNoByLog", new Zzim(item_no, user_no));
+			count = session.selectOne("isZzimInItemNoByLog", new Zzim(user_no, item_no));
 		} catch (Exception e) {
 			System.out.println("isZzimInItemNoByLog fail");
 			e.printStackTrace();

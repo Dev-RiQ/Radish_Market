@@ -1,15 +1,11 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.radish.dao.BoardDAO;
-import com.radish.dao.CommentDAO;
-import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Board;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

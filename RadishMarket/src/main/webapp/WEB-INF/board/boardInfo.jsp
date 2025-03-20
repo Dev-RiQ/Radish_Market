@@ -23,7 +23,7 @@
 	<input type="hidden" name="user_no" id="user_no" value="${ board.user_no }">
 	<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="1">
 	<input type="hidden" name="link_no" id="link_no" value="${ board.board_no }">
-	<input type="hidden" name="isLike" id="isLike" value="${ isLike ne null ? isList : 0 }">
+	<input type="hidden" name="isLike" id="isLike" value="${ isLike ne null ? isLike : 0 }">
 	<button id="btn-like-submit" type="button" onclick="sendAlarm()">좋아요 <span id="like-count">${ likeCount }</span></button>
 	댓글<br>
 	<div id="comment-list">

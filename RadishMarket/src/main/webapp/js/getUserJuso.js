@@ -74,7 +74,8 @@ function getLocation() {
 		alert("이 브라우저에서는 Geolocation을 지원하지 않습니다.");
 	}
 }
-
-setTimeout(() => {
-	getLocation();
-}, 10)
+if(document.getElementById('log') === null){
+	setTimeout(() => {
+		getLocation();
+	}, 10)
+}

@@ -15,7 +15,7 @@
 	<c:forEach var="category_dong" items="${ dongList }">
 		<label><input type="radio" name="dong" id="dong"
 			value="${ category_dong }"
-			${ userDong eq category_dong ? 'checked' : userDong eq null and logUserDong eq category_dong? 'checked' : '' } />${ category_dong }</label>
+			${ userDong eq category_dong ? 'checked' : '' } />${ category_dong }</label>
 		<br>
 	</c:forEach>
 

@@ -19,11 +19,13 @@ public class DeleteLikeController implements Controller {
 			throws ServletException, IOException {
 		int board_no = Integer.parseInt(request.getParameter("board_no"));
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		Like like = new Like(board_no, user_no);
+		LikeDAO.getInstance().deleteLike(like);
+		
+		user_no = Integer.parseInt(request.getParameter("user_no"));
 		Alarm alarm = new Alarm(user_no, board_no, 1);
 		int alarm_no = AlarmDAO.getInstance().getAlarmNo(alarm);
 		AlarmDAO.getInstance().deleteAAlarm(alarm_no);
-		Like like = new Like(board_no, user_no);
-		LikeDAO.getInstance().deleteLike(like);
 		
 		return null;
 	}

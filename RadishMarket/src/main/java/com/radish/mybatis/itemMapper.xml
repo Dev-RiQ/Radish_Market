@@ -37,8 +37,7 @@
 	<select id="getItemInfoList" parameterType="int" resultType="Item">
 		SELECT *
 		FROM items
-		WHERE user_no=#{user_no} 
-		ORDER BY item_update_datetime DESC
+		WHERE user_no=#{user_no} AND item_status=1
 		LIMIT 6 OFFSET 0;
 	</select>
 	

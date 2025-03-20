@@ -1,20 +1,12 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.radish.dao.CartDAO;
 import com.radish.dao.EmojiDAO;
-import com.radish.dao.ItemDAO;
 import com.radish.dao.UserDAO;
-import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.util.CalendarUtil;
-import com.radish.util.DateUtil;
-import com.radish.vo.Cart;
-import com.radish.vo.Item;
 import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;

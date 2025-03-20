@@ -3,17 +3,11 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.radish.dao.ItemDAO;
-import com.radish.dao.ItemImgDAO;
 import com.radish.dao.UserDAO;
-import com.radish.dao.CartDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Cart;
-import com.radish.vo.Item;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

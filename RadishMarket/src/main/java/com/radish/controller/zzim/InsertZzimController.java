@@ -24,7 +24,7 @@ public class InsertZzimController implements Controller {
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		
-		Zzim zzim = new Zzim(item_no, user_no);
+		Zzim zzim = new Zzim(user_no, item_no);
 		ZzimDAO.getInstance().insertZzim(zzim);
 		return null;
 	}

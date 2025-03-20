@@ -1,20 +1,12 @@
 package com.radish.controller.myPage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.radish.dao.ItemDAO;
-import com.radish.dao.ItemImgDAO;
 import com.radish.dao.ReviewDAO;
 import com.radish.dao.UserDAO;
-import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
-import com.radish.vo.Item;
-import com.radish.vo.ItemImg;
-import com.radish.vo.Review;
-import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

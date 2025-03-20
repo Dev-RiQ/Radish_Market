@@ -12,7 +12,7 @@ let log = document.querySelector("#log");
 
 function openPop(type) {
 	
-	if(document.getElementById('#log') === null){
+	if(document.getElementById('log') === null){
 		alert('로그인 후 이용 가능합니다.');
 		return;
 	}
@@ -30,8 +30,8 @@ function openPop(type) {
 		case 'read' : 
 			fetchReadLetter();
 			let check = document.querySelector(`#check-letter${letter_no}`);
-			if(check.innerText == '미확인 쪽지')
-				check.innerText = '확인한 쪽지';
+			if(check.innerText == '안읽음')
+				check.innerText = '읽음';
 			break;
 	}
 }

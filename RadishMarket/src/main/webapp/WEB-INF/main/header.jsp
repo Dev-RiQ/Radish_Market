@@ -18,8 +18,10 @@
 <!--             -->
 
 </head>
-	<input type="hidden" id='log' value="${log}">
 <body>
+	<c:if test="${ log ne null }">
+		<input type="hidden" id="log" value="${log}">
+	</c:if>
 
 	<header>
 		<a href='/listItem.do'>중고거래</a> 

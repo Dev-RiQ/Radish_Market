@@ -31,7 +31,7 @@
 			<div class="user-box">
 				<img alt="유저 이미지" src="/images/${user.user_img}">
 				<a href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
-				<a href='/listItem.do?user_dong=${user.user_dong}'>${user.user_dong}</a>
+				<a href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
 				<p>${user.user_deg}℃${emoji}</p>
 				<progress id="progress" value="${user.user_deg}" max="100"></progress>
 				<p>매너 온도</p>
@@ -43,7 +43,7 @@
 			<h3>${item.item_name}</h3>
 			<a href="">${item_category_name}</a>
 			<p>${updateTime}</p>
-			<a href='/listItem.do?item_no=${item.item_no}'>${categoryName}</a>
+			<a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
 			<p>${item.item_content}</p>
 			<span>찜  <span id="zzim-count" >${zzimCount}</span></span>

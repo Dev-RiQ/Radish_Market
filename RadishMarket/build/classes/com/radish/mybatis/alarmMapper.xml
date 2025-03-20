@@ -16,10 +16,10 @@
 		ORDER BY alarm_no DESC
 	</select>
 	
-	<select id="getAlarmNo" parameterType="int" resultType="int">
+	<select id="getAlarmNo" parameterType="Alarm" resultType="int">
 		SELECT alarm_no
 		FROM alarms
-		WHERE user_no=#{user_no} AND link_no=#{link_no}
+		WHERE user_no=#{user_no} AND link_no=#{link_no} AND alarm_category_no=#{alarm_category_no}
 	</select>
 	
 	<delete id="deleteAAlarm" parameterType="int">
