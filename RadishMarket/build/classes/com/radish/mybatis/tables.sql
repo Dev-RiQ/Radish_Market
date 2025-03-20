@@ -57,7 +57,9 @@ CREATE TABLE items (
     item_reg_datetime VARCHAR(20) NOT NULL,
     item_update_datetime VARCHAR(20) NOT NULL,
     item_status INT NOT NULL,
-    item_hits INT NOT NULL
+    item_hits INT NOT NULL,
+    item_gu VARCHAR(10) NOT NULL,
+    item_dong VARCHAR(10) NOT NULL
     );
 DESC items;
 SELECT * FROM items;
@@ -74,7 +76,9 @@ CREATE TABLE boards (
     board_reg_datetime VARCHAR(20) NOT NULL,
     board_update_datetime VARCHAR(20) NOT NULL,
     board_img VARCHAR(50) NOT NULL DEFAULT 'boardsDefaultImg',
-    board_hits INT NOT NULL
+    board_hits INT NOT NULL,
+    board_gu VARCHAR(10) NOT NULL,
+    board_dong VARCHAR(10) NOT NULL
        );
 DESC boards;
 SELECT * FROM boards;       
@@ -89,7 +93,9 @@ CREATE TABLE meets (
     meet_category_no INT NOT NULL,
     age_min INT NOT NULL,
     age_max INT NOT NULL,
-    meet_img VARCHAR(50) NOT NULL DEFAULT 'meetsDefaultImg'
+    meet_img VARCHAR(50) NOT NULL DEFAULT 'meetsDefaultImg',
+    meet_gu VARCHAR(10) NOT NULL,
+    meet_dong VARCHAR(10) NOT NULL
 	);
 DESC meets;
 SELECT * FROM meets;      

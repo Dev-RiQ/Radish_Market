@@ -19,23 +19,25 @@ public class InsertMeetController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		int host_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		if(request.getParameter("meet_title") == null) {
+			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(host_user_no));
 			request.setAttribute("meetCategoryList", MeetCategoryDAO.getInstance().getAllMeetCategoryList());
 			return "meet/meetInsert";
 		}
-		int host_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		String meet_title = request.getParameter("meet_title");
 		String meet_content = request.getParameter("meet_content");
 		int meet_category = Integer.parseInt(request.getParameter("meet_category_no"));
 		int age_min = Integer.parseInt(request.getParameter("age_min"));
 		int age_max = Integer.parseInt(request.getParameter("age_max"));
 		String meet_img = request.getParameter("meet_img");
+		String meet_gu = request.getParameter("meet_gu");
+		String meet_dong = request.getParameter("meet_dong");
 		
-		String meet_dong = UserDAO.getInstance().getAUserByLog(host_user_no).getUser_dong();
 		int meet_user_count = 1;
 		String meet_category_name = MeetCategoryDAO.getInstance().getAMeetCategoryName(meet_category);
 		
-		Meet meet = new Meet(host_user_no, meet_title, meet_content, meet_category, age_min, age_max, meet_img);
+		Meet meet = new Meet(host_user_no, meet_title, meet_content, meet_category, age_min, age_max, meet_img, meet_gu, meet_dong);
 		if(MeetDAO.getInstance().insertMeet(meet)) {
 			int meet_no = MeetDAO.getInstance().getLastMeetNo();
 			MeetUserDAO.getInstance().insertMeetUser(meet_no, host_user_no);

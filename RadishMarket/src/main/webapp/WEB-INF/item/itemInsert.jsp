@@ -23,9 +23,11 @@
 		<label>거래 가격<input type="number" name="item_price"
 			placeholder="₩ 가격을 입력해주세요." required></label><br> 
 			<label>자세한 설명<textarea name="item_content"
-				placeholder="${user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."
+				placeholder="${user.user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."
 				required></textarea>
 		</label><br>
+		<input type="hidden" name="item_gu" id="item_gu" value="${ user.user_gu }">
+		<input type="hidden" name="item_dong" id="item_dong" value="${ user.user_dong }">
 		<button class="btn submit-btn" type="submit">작성 완료</button>
 	</form>
 </div>

@@ -6,7 +6,8 @@ public class Filter {
 	int category_no;
 	int price_min;
 	int price_max;
-	String user_dong;
+	String gu;
+	String dong;
 	int order_by;
 	int user_no;
 	int meet_no;
@@ -14,25 +15,51 @@ public class Filter {
 	public Filter(int start) {
 		this.start = start;
 	}
-	public Filter(int start, int category_no, String user_dong, int order_by) {
+	public Filter(int start, int category_no, String dong, int order_by) {
 		super();
 		this.start = start;
 		this.category_no = category_no;
-		this.user_dong = user_dong;
+		this.dong = dong;
 		this.order_by = order_by;
 	}
 	
-	public Filter(int start, int item_status, int category_no, int price_min, int price_max, String user_dong, int order_by) {
+	public Filter(int start, int item_status, int category_no, int price_min, int price_max, String dong, int order_by) {
 		super();
 		this.start = start;
 		this.item_status = item_status;
 		this.category_no = category_no;
 		this.price_min = price_min;
 		this.price_max = price_max;
-		this.user_dong = user_dong;
+		this.dong = dong;
 		this.order_by = order_by;
 	}
 
+	public Filter(int start, int item_status, int category_no, int price_min, int price_max, String gu, String dong,
+			int order_by, int user_no, int meet_no) {
+		super();
+		this.start = start;
+		this.item_status = item_status;
+		this.category_no = category_no;
+		this.price_min = price_min;
+		this.price_max = price_max;
+		this.gu = gu;
+		this.dong = dong;
+		this.order_by = order_by;
+		this.user_no = user_no;
+		this.meet_no = meet_no;
+	}
+	public String getGu() {
+		return gu;
+	}
+	public void setGu(String gu) {
+		this.gu = gu;
+	}
+	public String getDong() {
+		return dong;
+	}
+	public void setDong(String dong) {
+		this.dong = dong;
+	}
 	public int getPrice_min() {
 		return price_min;
 	}
@@ -56,12 +83,6 @@ public class Filter {
 	}
 	public void setCategory_no(int category_no) {
 		this.category_no = category_no;
-	}
-	public String getUser_dong() {
-		return user_dong;
-	}
-	public void setUser_dong(String user_dong) {
-		this.user_dong = user_dong;
 	}
 	public int getOrder_by() {
 		return order_by;

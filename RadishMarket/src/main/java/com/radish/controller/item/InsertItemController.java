@@ -31,8 +31,7 @@ public class InsertItemController implements Controller {
 		}
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		String user_dong = UserDAO.getInstance().getAUserDongByUserNo(log);
-		request.setAttribute("user_dong", user_dong);
+		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
 		
 		List<ItemCategory> itemCategoryList = ItemCategoryDAO.getInstance().getAllItemCategoryList();
 		request.setAttribute("itemCategoryList", itemCategoryList);
@@ -46,7 +45,9 @@ public class InsertItemController implements Controller {
 		String item_content = request.getParameter("item_content");
 		int item_price = Integer.parseInt(request.getParameter("item_price"));
 		String item_reg_datetime = DateUtil.getInstance().getRegDatetime();
-		Item item = new Item(log, item_category_no, item_name, item_content, item_price, item_reg_datetime, item_reg_datetime, 1, 0);
+		String item_gu = request.getParameter("item_gu");
+		String item_dong = request.getParameter("item_dong");
+		Item item = new Item(log, item_category_no, item_name, item_content, item_price, item_reg_datetime, item_reg_datetime, 1, item_gu,item_dong);
 		Boolean check = ItemDAO.getInstance().insertItem(item);
 		
 		if(item != null) {

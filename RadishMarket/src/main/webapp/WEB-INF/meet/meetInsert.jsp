@@ -13,6 +13,8 @@
 	<input type="number" name="age_min" id="age_min" value=10><br>
 	<input type="number" name="age_max" id="age_max" value=20><br>
 	<input type="text" name="meet_img" id="meet_img" placeholder="이미지"><br>
+	<input type="hidden" name="meet_gu" id="meet_gu" value="${ user.user_gu }">
+	<input type="hidden" name="meet_dong" id="meet_dong" value="${ user.user_dong }">
 	<button>모임 생성하기</button>
 </form>
 

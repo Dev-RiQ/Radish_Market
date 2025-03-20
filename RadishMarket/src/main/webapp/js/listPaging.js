@@ -30,21 +30,21 @@
 	 "adminMeet"
  * 
  */
-let isLoaded = false;
-let btnMoreListLoad = document.querySelectorAll("#btn-more-list")
+/*let isLoaded = false;
+let btnMoreListLoad = document.querySelectorAll("#btn-more-list")*/
 let btnMoreList = null;
-btnMoreListLoad.forEach((i) => {
+/*btnMoreListLoad.forEach((i) => {
 	btnMoreList = i;
 	getMoreList();
 })
 setTimeout(() => {
 	isLoaded = true;
-},1000)
+},1000)*/
 
 function getMoreList(){
-	if(isLoaded){
+	/*if(isLoaded){*/
 		btnMoreList = event.target;
-	}
+	/*}*/
 	const typeAndStart = btnMoreList.value.split("/");
 	const type = typeAndStart[0];
 	const start = typeAndStart[1];
@@ -67,28 +67,48 @@ function getMoreList(){
 
 function getFilter(){
 	let queryString = '';
-	const itemStatus = document.querySelector("#item_status");
+	let itemStatus = document.querySelector('input[id="item_status"]:checked');
+	if(!itemStatus)
+		itemStatus = document.querySelector('#item_status');
 	queryString += `&item_status=${itemStatus ? itemStatus.value ? itemStatus.value : 0 : 0}`
 	
-	const categoryNo = document.querySelector("#category_no");
+	let categoryNo = document.querySelector('input[id="category_no"]:checked');
+	if(!categoryNo)
+		categoryNo = document.querySelector('#category_no');
 	queryString += `&category_no=${categoryNo ? categoryNo.value ? categoryNo.value : 0 : 0}`
 	
-	const priceMin = document.querySelector("#price_min");
+	let priceMin = document.querySelector('input[id="price_min"]:checked');
+	if(!priceMin)
+		priceMin = document.querySelector('#price_min');
 	queryString += `&price_min=${priceMin ? priceMin.value ? priceMin.value : 0 : 0}`
 	
-	const priceMax = document.querySelector("#price_max");
+	let priceMax = document.querySelector('input[id="price_max"]:checked');
+	if(!priceMax)
+		priceMax = document.querySelector('#price_max');
 	queryString += `&price_max=${priceMax ? priceMax.value ? priceMax.value : 0 : 0}`
 	
-	const userDong = document.querySelector("#user_dong");
-	queryString += `&user_dong=${userDong ? userDong.value ? userDong.value : 0 : 0}`
+	let gu = document.querySelector('input[id="gu"]:checked');
+	if(!gu)
+		gu = document.querySelector('#gu');
+	queryString += `&gu=${gu ? gu.value ? gu.value : "강남구" : "강남구"}`
 	
-	const orderBy = document.querySelector("#order_by");
+	let dong = document.querySelector('input[id="dong"]:checked');
+	if(!dong)
+		dong = document.querySelector('#dong');
+	queryString += `&dong=${dong ? dong.value ? dong.value : "전체" : "전체"}`
+	
+	let orderBy = document.querySelector('input[id="order_by"]:checked');
+	if(!orderBy)
+		orderBy = document.querySelector('#order_by');
 	queryString += `&order_by=${orderBy ? orderBy.value ? orderBy.value : 0 : 0}`
 	
-	const meetNo = document.querySelector("#meet_no");
+	let meetNo = document.querySelector('input[id="meet_no"]:checked');
+	if(!meetNo)
+		meetNo = document.querySelector('#meet_no');
 	queryString += `&meet_no=${meetNo ? meetNo.value ? meetNo.value : 0 : 0}`
 	
-	console.log('쿼리스트링: ' + (queryString));
+	console.log(queryString)
+	
 	return queryString;
 }
 

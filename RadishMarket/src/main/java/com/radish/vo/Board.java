@@ -11,7 +11,42 @@ public class Board {
 	private String board_update_datetime;
 	private String board_img;
 	private int board_hits;
+	private String board_gu;
+	private String board_dong;
 
+	public Board(int board_no, int user_no, int board_category_no, int meet_no, String board_title,
+			String board_content, String board_reg_datetime, String board_update_datetime, String board_img,
+			int board_hits, String board_gu, String board_dong) {
+		super();
+		this.board_no = board_no;
+		this.user_no = user_no;
+		this.board_category_no = board_category_no;
+		this.meet_no = meet_no;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_reg_datetime = board_reg_datetime;
+		this.board_update_datetime = board_update_datetime;
+		this.board_img = board_img;
+		this.board_hits = board_hits;
+		this.board_gu = board_gu;
+		this.board_dong = board_dong;
+	}
+	public Board(int board_no, int user_no, int board_category_no, int meet_no, String board_title,
+			String board_content, String board_reg_datetime, String board_update_datetime, String board_img,
+			int board_hits, String board_dong) {
+		super();
+		this.board_no = board_no;
+		this.user_no = user_no;
+		this.board_category_no = board_category_no;
+		this.meet_no = meet_no;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_reg_datetime = board_reg_datetime;
+		this.board_update_datetime = board_update_datetime;
+		this.board_img = board_img;
+		this.board_hits = board_hits;
+		this.board_dong = board_dong;
+	}
 	public Board(int board_no, int board_hits) {
 		super();
 		this.board_no = board_no;
@@ -55,6 +90,27 @@ public class Board {
 		this.board_hits = board_hits;
 	}
 
+	public Board(int user_no, int board_category_no, int meet_no, String board_title,
+			String board_content, String board_reg_datetime, String board_update_datetime, String board_img,
+			String board_gu, String board_dong) {
+		super();
+		this.user_no = user_no;
+		this.board_category_no = board_category_no;
+		this.meet_no = meet_no;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_reg_datetime = board_reg_datetime;
+		this.board_update_datetime = board_update_datetime;
+		this.board_img = board_img;
+		this.board_gu = board_gu;
+		this.board_dong = board_dong;
+	}
+	public String getBoard_gu() {
+		return board_gu;
+	}
+	public void setBoard_gu(String board_gu) {
+		this.board_gu = board_gu;
+	}
 	public int getBoard_no() {
 		return board_no;
 	}
@@ -133,6 +189,12 @@ public class Board {
 
 	public void setBoard_hits(int board_hits) {
 		this.board_hits = board_hits;
+	}
+	public String getBoard_dong() {
+		return board_dong;
+	}
+	public void setBoard_dong(String board_dong) {
+		this.board_dong = board_dong;
 	}
 
 }

@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
- <input type="hidden" id="item_status" value="0" />
+ <input type="hidden" id="item_status" value="1" />
 <input type="hidden" id="category_no" value="0" />
 <input type="hidden" id="price_min" value="100" />
 <input type="hidden" id="price_max" value="100000" />
-<input type="hidden" id="user_dong" value="역삼동" />
+<input type="hidden" id="gu" value="강남구" />
+<input type="hidden" id="dong" value="역삼동" />
 <input type="hidden" id="order_by" value="0" />
-<input type="hidden" id="meet_no" value="0" /> 
+<input type="hidden" id="meet_no" value="13" /> 
 <div id="list-box">
 
 </div>

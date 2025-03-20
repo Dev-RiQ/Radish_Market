@@ -10,10 +10,10 @@
 	<label for="user_dong">위치</label><br> <label><input
 		type="radio" name="user_dong" id="user_dong" value="전체"
 		${ userDong eq '전체' ? 'checked' : '' } />전체보기</label><br>
-	<c:forEach var="dong" items="${ dongList }">
+	<c:forEach var="category_dong" items="${ dongList }">
 		<label><input type="radio" name="user_dong" id="user_dong"
-			value="${ dong }"
-			${ userDong eq dong ? 'checked' : userDong eq null and logUserDong eq dong? 'checked' : '' } />${ dong }</label>
+			value="${ category_dong }"
+			${ userDong eq category_dong ? 'checked' : userDong eq null and logUserDong eq category_dong? 'checked' : '' } />${ dong }</label>
 		<br>
 	</c:forEach>
 

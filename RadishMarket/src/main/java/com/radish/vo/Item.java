@@ -11,9 +11,45 @@ public class Item {
 	private String item_update_datetime;
 	private int item_status;
 	private int item_hits;
+	private String item_gu;
+	private String item_dong;
 
 	public Item() {}
 	
+	public Item(int item_no, int user_no, int item_category_no, String item_name, String item_content, int item_price,
+			String item_reg_datetime, String item_update_datetime, int item_status, int item_hits, String item_gu,
+			String item_dong) {
+		super();
+		this.item_no = item_no;
+		this.user_no = user_no;
+		this.item_category_no = item_category_no;
+		this.item_name = item_name;
+		this.item_content = item_content;
+		this.item_price = item_price;
+		this.item_reg_datetime = item_reg_datetime;
+		this.item_update_datetime = item_update_datetime;
+		this.item_status = item_status;
+		this.item_hits = item_hits;
+		this.item_gu = item_gu;
+		this.item_dong = item_dong;
+	}
+
+	public Item(int item_no, int user_no, int item_category_no, String item_name, String item_content, int item_price,
+			String item_reg_datetime, String item_update_datetime, int item_status, int item_hits, String item_dong) {
+		super();
+		this.item_no = item_no;
+		this.user_no = user_no;
+		this.item_category_no = item_category_no;
+		this.item_name = item_name;
+		this.item_content = item_content;
+		this.item_price = item_price;
+		this.item_reg_datetime = item_reg_datetime;
+		this.item_update_datetime = item_update_datetime;
+		this.item_status = item_status;
+		this.item_hits = item_hits;
+		this.item_dong = item_dong;
+	}
+
 	public Item(int item_no, int user_no, int item_category_no, String item_name, String item_content, int item_price,
 			String item_reg_datetime, String item_update_datetime, int item_status, int item_hits) {
 		super();
@@ -59,6 +95,30 @@ public class Item {
 		this.item_price = item_price;
 		this.item_update_datetime = item_update_datetime;
 		this.item_status = item_status;
+	}
+
+	public Item(int user_no, int item_category_no, String item_name, String item_content, int item_price,
+			String item_reg_datetime, String item_update_datetime, int item_status, String item_gu,
+			String item_dong) {
+		super();
+		this.user_no = user_no;
+		this.item_category_no = item_category_no;
+		this.item_name = item_name;
+		this.item_content = item_content;
+		this.item_price = item_price;
+		this.item_reg_datetime = item_reg_datetime;
+		this.item_update_datetime = item_update_datetime;
+		this.item_status = item_status;
+		this.item_gu = item_gu;
+		this.item_dong = item_dong;
+	}
+
+	public String getItem_gu() {
+		return item_gu;
+	}
+
+	public void setItem_gu(String item_gu) {
+		this.item_gu = item_gu;
 	}
 
 	public int getItem_no() {
@@ -139,6 +199,14 @@ public class Item {
 
 	public void setItem_hits(int item_hits) {
 		this.item_hits = item_hits;
+	}
+
+	public String getItem_dong() {
+		return item_dong;
+	}
+
+	public void setItem_dong(String item_dong) {
+		this.item_dong = item_dong;
 	}
 
 }

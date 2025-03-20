@@ -9,7 +9,36 @@ public class Meet {
 	private int age_min;
 	private int age_max;
 	private String meet_img;
+	private String meet_gu;
+	private String meet_dong;
 
+	public Meet(int meet_no, int host_user_no, String meet_title, String meet_content, int meet_category_no,
+			int age_min, int age_max, String meet_img, String meet_gu, String meet_dong) {
+		super();
+		this.meet_no = meet_no;
+		this.host_user_no = host_user_no;
+		this.meet_title = meet_title;
+		this.meet_content = meet_content;
+		this.meet_category_no = meet_category_no;
+		this.age_min = age_min;
+		this.age_max = age_max;
+		this.meet_img = meet_img;
+		this.meet_gu = meet_gu;
+		this.meet_dong = meet_dong;
+	}
+	public Meet(int meet_no, int host_user_no, String meet_title, String meet_content, int meet_category_no,
+			int age_min, int age_max, String meet_img, String meet_dong) {
+		super();
+		this.meet_no = meet_no;
+		this.host_user_no = host_user_no;
+		this.meet_title = meet_title;
+		this.meet_content = meet_content;
+		this.meet_category_no = meet_category_no;
+		this.age_min = age_min;
+		this.age_max = age_max;
+		this.meet_img = meet_img;
+		this.meet_dong = meet_dong;
+	}
 	public Meet(int host_user_no, String meet_title, String meet_content, int meet_category_no, int age_min,
 			int age_max, String meet_img) {
 		super();
@@ -34,6 +63,25 @@ public class Meet {
 		this.meet_img = meet_img;
 	}
 
+	public Meet(int host_user_no, String meet_title, String meet_content, int meet_category_no,
+			int age_min, int age_max, String meet_img, String meet_gu, String meet_dong) {
+		super();
+		this.host_user_no = host_user_no;
+		this.meet_title = meet_title;
+		this.meet_content = meet_content;
+		this.meet_category_no = meet_category_no;
+		this.age_min = age_min;
+		this.age_max = age_max;
+		this.meet_img = meet_img;
+		this.meet_gu = meet_gu;
+		this.meet_dong = meet_dong;
+	}
+	public String getMeet_gu() {
+		return meet_gu;
+	}
+	public void setMeet_gu(String meet_gu) {
+		this.meet_gu = meet_gu;
+	}
 	public int getMeet_no() {
 		return meet_no;
 	}
@@ -96,6 +144,12 @@ public class Meet {
 
 	public void setMeet_img(String meet_img) {
 		this.meet_img = meet_img;
+	}
+	public String getMeet_dong() {
+		return meet_dong;
+	}
+	public void setMeet_dong(String meet_dong) {
+		this.meet_dong = meet_dong;
 	}
 
 }

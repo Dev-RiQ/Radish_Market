@@ -31,14 +31,14 @@
 					<input type="hidden" id="user_dong" value="${user.user_dong}">
 				</c:otherwise>
 			</c:choose>
+		</c:otherwise>
+	</c:choose>
 			<input type="hidden" id="user_dong" value="역삼동">
 			
 			<div id="list-box">
 				<!-- 여기 리스트 출력 -->
 			</div>
 			<button id="btn-more-list" value="item/0" onclick="getMoreList()">더보기</button>
-		</c:otherwise>
-	</c:choose>
 </div>
 
 <%@ include file="../main/footer.jsp"%>

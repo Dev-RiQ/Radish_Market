@@ -38,7 +38,8 @@ public class ListPagingDAO {
 				case "category_no": filter.setCategory_no(Integer.parseInt(queryCategory.get(key)[0])); break;
 				case "price_min": filter.setPrice_min(Integer.parseInt(queryCategory.get(key)[0])); break;
 				case "price_max": filter.setPrice_max(Integer.parseInt(queryCategory.get(key)[0])); break;
-				case "user_dong": filter.setUser_dong(queryCategory.get(key)[0]); break;
+				case "gu": filter.setGu(queryCategory.get(key)[0]); break;
+				case "dong": filter.setDong(queryCategory.get(key)[0]); break;
 				case "order_by": filter.setOrder_by(Integer.parseInt(queryCategory.get(key)[0])); break;
 				case "meet_no": filter.setMeet_no(Integer.parseInt(queryCategory.get(key)[0])); break;
 				}
@@ -78,11 +79,7 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int user_no = 0;
 				switch(type) {
-				case "item", "myItem": user_no = ((Item) value).getUser_no(); break;
-				case "board", "meetBoard", "myBoard": user_no = ((Board) value).getUser_no(); break;
-				case "meet", "hostMeet", "myMeet": user_no = ((Meet) value).getHost_user_no(); break;
 				case "receiveLetter", "sendLetter": user_no = ((Letter) value).getReceive_user_no(); break;
-				case "zzim": user_no = ((Zzim) value).getUser_no(); break;
 				case "cart": user_no = ((Cart) value).getUser_no(); break;
 				case "review": user_no = ((Review) value).getBuy_user_no(); break;
 				default: return null;
@@ -102,7 +99,6 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int item_no = 0;
 				switch(type) {
-				case "receiveLetter", "sendLetter": item_no = ((Letter) value).getItem_no(); break;
 				case "zzim": item_no = ((Zzim) value).getItem_no(); break;
 				case "cart": item_no = ((Cart) value).getItem_no(); break;
 				case "review": item_no = ((Review) value).getItem_no(); break;
@@ -249,17 +245,17 @@ public class ListPagingDAO {
 			List<Integer> commentCountList, List<Integer> memberCountList) {
 		StringBuilder sb = null;
 		switch(type) {
-		case "item", "myItem": sb = getPrintItemListData(list, userList, itemImgList); break;
-		case "board", "meetBoard", "myBoard": sb = getPrintBoardListData(list, userList, boardCategoryList, likeCountList, commentCountList); break;
-		case "meet", "hostMeet", "myMeet": sb = getPrintMeetListData(list, userList, meetCategoryList, memberCountList); break;
+		case "item", "myItem": sb = getPrintItemListData(list, itemImgList); break;
+		case "board", "meetBoard", "myBoard": sb = getPrintBoardListData(list, boardCategoryList, likeCountList, commentCountList); break;
+		case "meet", "hostMeet", "myMeet": sb = getPrintMeetListData(list, meetCategoryList, memberCountList); break;
 		case "receiveLetter", "sendLetter": sb = getPrintLetterListData(list, userList); break;
-		case "zzim": sb = getPrintZzimListData(list, userList, itemList, itemImgList); break;
+		case "zzim": sb = getPrintZzimListData(list, itemList, itemImgList); break;
 		case "cart": sb = getPrintCartListData(list, userList, itemList, itemCategoryList, itemImgList); break;
 		case "review": sb = getPrintReviewListData(list, userList, itemList, itemCategoryList, itemImgList); break;
 		}
 		return sb;
 	}
-	private StringBuilder getPrintItemListData(List<?> list, List<User> userList, List<ItemImg> itemImgList) {
+	private StringBuilder getPrintItemListData(List<?> list, List<ItemImg> itemImgList) {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Item) list.get(i)).getItem_no();
@@ -271,14 +267,14 @@ public class ListPagingDAO {
 			String status = item_status == 2 ? "예약중 " : item_status == 3 ? "판매완료 " : "";
 			int item_price= ((Item) list.get(i)).getItem_price();
 			String price = getPrintPrice(item_price);
-			String user_dong = userList.get(i).getUser_dong();
+			String item_dong = ((Item) list.get(i)).getItem_dong();
 			
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<p><img alt=\"대표 이미지\" src\"/images/"+item_img+"\"/></p>");
+			sb.append("<p><img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"/></p>");
 			sb.append("<p>"+item_name+"</p>");
 			sb.append("<p><span>"+status+"</span> "+price+"</p>");
-			sb.append("<p>"+user_dong+"</p>");
+			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -301,7 +297,7 @@ public class ListPagingDAO {
 		}
 		return sb.reverse().toString();
 	}
-	private StringBuilder getPrintBoardListData(List<?> list, List<User> userList, List<BoardCategory> boardCategoryList,
+	private StringBuilder getPrintBoardListData(List<?> list, List<BoardCategory> boardCategoryList,
 			List<Integer> likeCountList, List<Integer> commentCountList) {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
@@ -309,7 +305,7 @@ public class ListPagingDAO {
 			String board_img = ((Board) list.get(i)).getBoard_img();
 			String board_title = ((Board) list.get(i)).getBoard_title();
 			String board_content = ((Board) list.get(i)).getBoard_content();
-			String user_dong = userList.get(i).getUser_dong();
+			String board_dong = ((Board) list.get(i)).getBoard_dong();
 			String board_category_name = boardCategoryList.get(i).getBoard_category_name();
 			String board_reg_datetime = DateUtil.getInstance().getCalcDateAgo(((Board) list.get(i)).getBoard_reg_datetime());
 			int likeCount = likeCountList.get(i);
@@ -318,11 +314,11 @@ public class ListPagingDAO {
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
 			if(board_img != null)
-				sb.append("<p><img alt=\"대표 이미지\" src\"/images/"+board_img+"\"/></p>");
+				sb.append("<p><img alt=\"대표 이미지\" src=\"/images/"+board_img+"\"/></p>");
 			sb.append("<p>"+board_title+"</p>");
 			sb.append("<p>"+board_content+"</p>");
 			sb.append("<div>");
-			sb.append("<span>"+user_dong+"</span>");
+			sb.append("<span>"+board_dong+"</span>");
 			sb.append("<span> / "+board_category_name+"</span>");
 			sb.append("<span> / "+board_reg_datetime+"</span>");
 			sb.append("</div>");
@@ -335,24 +331,26 @@ public class ListPagingDAO {
 		}
 		return sb;
 	}
-	private StringBuilder getPrintMeetListData(List<?> list, List<User> userList, 
+	private StringBuilder getPrintMeetListData(List<?> list, 
 			List<MeetCategory> meetCategoryList, List<Integer> memberCountList) {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int meet_no = ((Meet) list.get(i)).getMeet_no();
 			String meet_img = ((Meet) list.get(i)).getMeet_img();
+			if(meet_img.isBlank())
+				meet_img = "meetsDefaultImg.png";
 			String meet_title = ((Meet) list.get(i)).getMeet_title();
 			String meet_content = ((Meet) list.get(i)).getMeet_content();
-			String user_dong = userList.get(i).getUser_dong();
+			String meet_dong = ((Meet) list.get(i)).getMeet_dong();
 			int memberCount = memberCountList.get(i);
 			String meet_category_name = meetCategoryList.get(i).getMeet_category_name();
 			
 			sb.append("<div>");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+user_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src\"/images/"+meet_img+"\"/>");
+			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+meet_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+meet_img+"\"/>");
 			sb.append("<br><p>"+meet_title+"</p>");
 			sb.append("<p>"+meet_content+"</p>");
-			sb.append("<span>"+user_dong+"</span>");
+			sb.append("<span>"+meet_dong+"</span>");
 			sb.append("<span> / "+"회원수 : "+memberCount+"</span>");
 			sb.append("<span> / "+meet_category_name+"</span>");
 			sb.append("</div>");
@@ -382,7 +380,7 @@ public class ListPagingDAO {
 		}
 		return sb;
 	}
-	private StringBuilder getPrintZzimListData(List<?> list, List<User> userList, List<Item> itemList, List<ItemImg> itemImgList) {
+	private StringBuilder getPrintZzimListData(List<?> list, List<Item> itemList, List<ItemImg> itemImgList) {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Zzim) list.get(i)).getItem_no();
@@ -392,14 +390,14 @@ public class ListPagingDAO {
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
-			String user_dong = userList.get(i).getUser_dong();
+			String item_dong = itemList.get(i).getItem_dong();
 			
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src\"/images/"+item_img+"\"");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
 			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
-			sb.append("<p>"+user_dong+"</p>");
+			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -417,16 +415,16 @@ public class ListPagingDAO {
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
 			String user_nickname = userList.get(i).getUser_nickname();
-			String user_dong = userList.get(i).getUser_dong();
+			String item_dong = itemList.get(i).getItem_dong();
 			int check_reviewed = ((Cart) list.get(i)).getCheck_reviewed();
 			
 			sb.append("<div>");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src\"/images/"+item_img+"\"");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
 			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
 			sb.append("<p>"+user_nickname+"</p>");
-			sb.append("<p>"+user_dong+"</p>");
+			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("<div>");
 			if(check_reviewed == 0) {
@@ -452,11 +450,11 @@ public class ListPagingDAO {
 				item_img = itemImgList.get(i).getItem_img();
 			
 			sb.append("<div>");
-			sb.append("<img alt=\"대표 이미지\" src\"/images/"+buy_user_img+"\"");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+buy_user_img+"\"");
 			sb.append("<br><span>"+buy_user_nickname+"</span>");
 			sb.append("<span>"+buy_user_dong+"</span>");
 			sb.append("<p>"+review_content+"</p>");
-			sb.append("<img alt=\"대표 이미지\" src\"/images/"+item_img+"\"");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
 			sb.append("</div>");
 		}
 		return sb;
