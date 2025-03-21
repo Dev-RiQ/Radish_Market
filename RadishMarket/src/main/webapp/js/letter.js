@@ -72,6 +72,22 @@ function setEvents(){
 		popupWindow.close();
 		resetValues()
 	});
+	const title = popupDocument.getElementById('letter_title'); 
+	if(title){
+		title.addEventListener('input', () => {
+			if(title.value && title.value.length > 50){
+				title.value = title.value.substring(0, 50);
+			}
+		});
+	}
+	const content = popupDocument.getElementById('letter_title'); 
+	if(content){
+		content.addEventListener('input', () => {
+			if(content.value && content.value.length > 300){
+				content.value = content.value.substring(0, 300);
+			}
+		});
+	}
 }
 
 function setSendLetterInfo(){

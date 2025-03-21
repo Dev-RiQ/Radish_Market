@@ -4,7 +4,7 @@ function idValidCheck () {
 	joinId = document.querySelector("#user_id")
 	checkId = joinId.value;
 	if(!checkId.trim()){
-		alert('값을 입력하세요.')
+		
 		return
 	}
 	fetch('/insertUserAjax.do',{
@@ -19,45 +19,56 @@ function idValidCheck () {
 }
 
 function hasId(check){
+	const idCheck = document.querySelector("#id_check");
 	if(!check){
-		alert('이미 존재하는 아이디입니다.')
+		idCheck.innerText = '사용 불가능한 아이디입니다.'
 		joinId.style.border = "2px solid crimson"
 		joinId.value = ""
 		joinId.focus()
 		checkId = null;
 	}else{
-		alert('사용할 수 있는 아이디입니다.')
+		idCheck.innerText = ''
 		joinId.style.border = "2px solid royalblue"
 	}
 }
 
 function validCheck(){
 	const inputs = document.querySelectorAll("input")
-	const labels = document.querySelectorAll("label");
-	const spans = document.querySelectorAll("span");
 	const userImg = document.querySelector("#user_img");
 	const hiddenEmail = document.querySelectorAll("#user_email")[2];
+	const selectEmail = document.querySelectorAll("#user_email")[1];
 	for(let i = 0 ; i < inputs.length ; i++){
 		let value = inputs[i].value.trim();
-		if(inputs[i] === hiddenEmail || inputs[i] === userImg) continue;
-		if(!value){
-			alert(labels[i].innerText+' 입력이 필요합니다.')
-			return			
+		if(selectEmail.value != "@" && inputs[i] === hiddenEmail || inputs[i] === userImg) continue;
+		let type = inputs[i].id.split("_")[1];
+		const span = document.querySelector(`#${type}_check`);
+		if(value && span){
+			span.innerText = '';
+			inputs[i].style.border = "1px solid black"
 		}
-		if(i < inputs.length - 7 && value.includes(" ")){
-			alert(labels[i].innerText+'에 공백을 제거해주세요.')
-			return			
+		if(!value && span){
+			span.innerText = '값을 입력해주세요.';
+			inputs[i].style.border = "2px solid crimson"
+		}
+		if(span && i < 10 && value.includes(" ")){
+			span.innerText = '공백을 제거해주세요.';
+			inputs[i].style.border = "2px solid crimson"
 		}
 	}
+	const spans = document.querySelectorAll("span");
 	for(let i = 0 ; i < spans.length ; i++){
-		let countClass = spans[i].classList.length;
-		if(countClass == 1){
-			alert('유효하지 않은 값이 있습니다.')
-			return			
+		if(spans[i].id && spans[i].innerText){
+			let type = spans[i].id.split("_")[0];
+			const input = document.querySelector(`#user_${type}`);
+			if(input){
+				input.focus();
+			}
+			return;		
 		}
 	}
 	if(checkId == null || joinId == null || joinId.value != checkId){
-		alert('아이디 중복체크가 필요합니다.')
+		const span = document.querySelector("#id_check");
+		span.innerText = '중복체크 해주세요.';
 		return;
 	}
 	document.querySelector("form").submit()
@@ -72,18 +83,17 @@ function onlyNumberAndEnglish(str) {
 }
 
 const user_id = document.querySelector('#user_id');
-const id_length_check = document.querySelector('.id_length_check');
-const id_value_check = document.querySelector('.id_value_check');
+user_id.focus();
+const idCheck = document.querySelector(`#id_check`);
 user_id.addEventListener('keyup', () => {
-	if(onlyNumberAndEnglish(user_id.value)){
-		id_value_check.classList.add('hide');
-	}else{
-		id_value_check.classList.remove('hide');
-	}
 	if(inputLength(user_id.value, 4, 12)){
-		id_length_check.classList.add('hide');
+		if(onlyNumberAndEnglish(user_id.value)){
+			idCheck.innerText = '';
+		}else{
+			idCheck.innerText = '숫자, 영어만 입력';
+		}
 	}else{
-		id_length_check.classList.remove('hide');
+		idCheck.innerText = '4~12자 입력';
 	}
 })
 
@@ -92,38 +102,34 @@ function strongPassword (str) {
 }
 
 const user_pw = document.querySelector('#user_pw');
-const pw_length_check = document.querySelector('.pw_length_check');
-const pw_value_check = document.querySelector('.pw_value_check');
+const pwCheck = document.querySelector('#pw_check');
 user_pw.addEventListener('keyup', () => {
-	if(strongPassword(user_pw.value)){
-		pw_value_check.classList.add('hide');
-	}else{
-		pw_value_check.classList.remove('hide');
-	}
 	if(inputLength(user_pw.value, 8, 16)){
-		pw_length_check.classList.add('hide');
+		if(strongPassword(user_pw.value)){
+			pwCheck.innerText = '';
+		}else{
+			pwCheck.innerText = '숫자, 영어, 특수문자 포함 입력';
+		}
 	}else{
-		pw_length_check.classList.remove('hide');
+			pwCheck.innerText = '8~16자 입력';
 	}
 })
 
 function validName (str) {
-  return /^[ㄱ-ㅎ|가-힣]+$/.test(str);
+  return /^[가-힣]+$/.test(str);
 }
 
 const user_name = document.querySelector('#user_name');
-const name_length_check = document.querySelector('.name_length_check');
-const name_value_check = document.querySelector('.name_value_check');
+const nameCheck = document.querySelector('#name_check');
 user_name.addEventListener('keyup', () => {
-	if(validName(user_name.value)){
-		name_value_check.classList.add('hide');
-	}else{
-		name_value_check.classList.remove('hide');
-	}
 	if(inputLength(user_name.value, 2, 10)){
-		name_length_check.classList.add('hide');
+		if(validName(user_name.value)){
+			nameCheck.innerText = '';
+		}else{
+			nameCheck.innerText = '한글만 입력';
+		}
 	}else{
-		name_length_check.classList.remove('hide');
+		nameCheck.innerText = '2~10자 입력';
 	}
 })
 
@@ -132,12 +138,12 @@ function validAge (str) {
 }
 
 const user_age = document.querySelector('#user_age');
-const number_value_check = document.querySelector('.number_value_check');
+const ageCheck = document.querySelector('#age_check');
 user_age.addEventListener('keyup', () => {
 	if(validAge(user_age.value)){
-		number_value_check.classList.add('hide');
+		ageCheck.innerText = '';
 	}else{
-		number_value_check.classList.remove('hide');
+		ageCheck.innerText = '14~130사이 숫자만 입력';
 	}
 	if(user_age.value.length > 3)
 		user_age.value = user_age.value.substring(0,3)
@@ -148,29 +154,29 @@ function validEmail (str) {
 }
 
 const user_email = document.querySelectorAll('#user_email');
-const email_value_check = document.querySelector('.email_value_check');
+const emailCheck = document.querySelector('#email_check');
 user_email[1].addEventListener('input', () => {
 	if(user_email[1].value =='@'){
+		emailCheck.innerText = '';
 		user_email[2].classList.remove('hide');
-		email_value_check.classList.remove('hide');
 	}else{
 		user_email[2].classList.add('hide');
+		emailCheck.innerText = '';
 		user_email[2].value="";
-		email_value_check.classList.add('hide');
 	}
 })
 user_email[0].addEventListener('keyup', () => {
 	if(validEmail(user_email[0].value + user_email[1].value + user_email[2].value)){
-		email_value_check.classList.add('hide');
+		emailCheck.innerText = '';
 	}else{
-		email_value_check.classList.remove('hide');
+		emailCheck.innerText = 'test@example.com 형식으로 입력해주세요.';
 	}
 })
 user_email[2].addEventListener('keyup', () => {
 	if(validEmail(user_email[0].value + user_email[1].value + user_email[2].value)){
-		email_value_check.classList.add('hide');
+		emailCheck.innerText = '';
 	}else{
-		email_value_check.classList.remove('hide');
+		emailCheck.innerText = 'test@example.com 형식으로 입력해주세요.';
 	}
 })
 
@@ -179,18 +185,16 @@ function validNickname (str) {
 }
 
 const user_nickname = document.querySelector('#user_nickname');
-const nickname_length_check = document.querySelector('.nickname_length_check');
-const nickname_value_check = document.querySelector('.nickname_value_check');
+const nicknameCheck = document.querySelector('#nickname_check');
 user_nickname.addEventListener('keyup', () => {
-	if(validNickname(user_nickname.value)){
-		nickname_value_check.classList.add('hide');
-	}else{
-		nickname_value_check.classList.remove('hide');
-	}
 	if(inputLength(user_nickname.value, 2, 6)){
-		nickname_length_check.classList.add('hide');
+		if(validNickname(user_nickname.value)){
+			nicknameCheck.innerText = '';
+		}else{
+			nicknameCheck.innerText = '사용할 수 없는 닉네임';
+		}
 	}else{
-		nickname_length_check.classList.remove('hide');
+		nicknameCheck.innerText = '2~6자 입력';
 	}
 })
 
@@ -199,22 +203,28 @@ function validPhoneNumber (str) {
 }
 
 const user_phone = document.querySelectorAll('#user_phone');
-const phone_value_check = document.querySelector('.phone_value_check');
+const phoneCheck = document.querySelector('#phone_check');
 user_phone[1].addEventListener('keyup', () => {
 	if(validPhoneNumber(user_phone[0].value + "-" +user_phone[1].value + "-" +user_phone[2].value)){
-		phone_value_check.classList.add('hide');
+		phoneCheck.innerText = '';
 	}else{
-		phone_value_check.classList.remove('hide');
+		phoneCheck.innerText = '유효하지 않은 전화번호입니다.';
 	}
 	if(user_phone[1].value.length > 4)
 		user_phone[1].value = user_phone[1].value.substring(0,4)
 })
 user_phone[2].addEventListener('keyup', () => {
 	if(validPhoneNumber(user_phone[0].value + "-" +user_phone[1].value + "-" +user_phone[2].value)){
-		phone_value_check.classList.add('hide');
+		phoneCheck.innerText = '';
 	}else{
-		phone_value_check.classList.remove('hide');
+		phoneCheck.innerText = '유효하지 않은 전화번호입니다.';
 	}
 	if(user_phone[2].value.length > 4)
 		user_phone[2].value = user_phone[2].value.substring(0,4)
+})
+
+const btn_user_address = document.querySelector('#btn_user_address');
+const addressCheck = document.querySelector('#address_check');
+btn_user_address.addEventListener('click', () => {
+	addressCheck.innerText = '';
 })

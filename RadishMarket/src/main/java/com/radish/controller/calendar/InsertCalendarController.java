@@ -35,7 +35,11 @@ public class InsertCalendarController implements Controller {
 		if(meet_no_str != null && !meet_no_str.isBlank()) {
 			meet_no = Integer.parseInt(meet_no_str);
 		}
-		int item_no = Integer.parseInt(request.getParameter("item_no"));
+		String item_no_str = request.getParameter("item_no");
+		int item_no = 0;
+		if(item_no_str != null && !item_no_str.isBlank()) {
+			item_no = Integer.parseInt(item_no_str);
+		}
 		String calendar_title = request.getParameter("calendar_title");
 		if(calendar_title == null) {
 			if(sub_user_no != 0)

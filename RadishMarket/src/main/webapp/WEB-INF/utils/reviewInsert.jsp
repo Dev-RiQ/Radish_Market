@@ -18,11 +18,13 @@
 	</select>
 	<label for="review_content">내용</label>
 	<textarea name="review_content" id="review_content"></textarea>
+	<span id="content_check"></span>
 	
 	<input type="hidden" name="user_no" id="user_no" value="${ item.user_no }">
 	<input type="hidden" name="alarm_category_no" id="alarm_category_no" value="4">
 	<input type="hidden" name="link_no" id="link_no" value="">
-	<button type="button" onclick="sendAlarm()">등록</button>
+	<button type="button" onclick="validCheck()">등록</button>
 </form>
 
 <%@ include file="../main/footer.jsp" %>
+<script src="../../js/reviewInsertValidCheck.js"></script>
