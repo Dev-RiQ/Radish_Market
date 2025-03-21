@@ -13,24 +13,18 @@
 		<img alt="유저 이미지" src="/images/${user.user_img}">
 		<p>${user.user_nickname}</p>
 		<p>${user.user_dong}</p>
-		<p>${user.user_deg}℃ ${emoji}</p>
+		<p>${user.user_deg}℃${emoji}</p>
 		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
 
 	<div class="user-zzimlist">
-		<h3>내 찜목록 (${empty zzimList ? 0 : zzimList.size()})</h3>
-		<c:choose>
-			<c:when test="${empty zzimList}">
-				<p>아직 찜한 상품이 없습니다.</p>
-			</c:when>
-			<c:otherwise>
-				<div id="list-box">
-					<!-- 여기 리스트 출력 -->
-				</div>
-				<button id="btn-more-list" value="zzim/0" onclick="getMoreList()">더보기</button>
-			</c:otherwise>
-		</c:choose>
+		<h3>내 찜목록 (${zzimListSize})</h3>
+		<p class="empty-info" id="zzimList"></p>
+		<div id="list-box">
+			<!-- 여기 리스트 출력 -->
+		</div>
+		<button id="btn-more-list" value="zzim/0" onclick="getMoreList()">더보기</button>
 	</div>
 </div>
 

@@ -7,6 +7,7 @@ import java.util.List;
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ItemImgDAO;
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.util.DateUtil;
@@ -27,6 +28,7 @@ public class UpdateItemController implements Controller {
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		
 		if(request.getParameter("item_name") == null) {
+			request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(user_no));
 			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
 			request.setAttribute("itemImgList", ItemImgDAO.getInstance().getAllItemImgList(item_no));
 			request.setAttribute("itemCategoryList", ItemCategoryDAO.getInstance().getAllItemCategoryList());
@@ -55,7 +57,7 @@ public class UpdateItemController implements Controller {
 		ItemImgDAO.getInstance().insertItemImg(list);
 		
 		if (ItemDAO.getInstance().updateItem(item)) {
-			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "listItem.do?item_no=" + item_no);
+			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "mypageUser.do?item_no=" + item_no);
 			return null;
 		} else {
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 상품 정보 수정에 실패했습니다.\\n다시 시도해주세요.");

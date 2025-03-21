@@ -26,26 +26,21 @@
 		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
-
-	<div class="user-itemlist">
-		<h3>판매 물품(${sellListSize})</h3>
-		<p class="empty-info" id="sellList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="myItem/0" onclick="getMoreList()">더보기</button>
-		<input type="hidden" id="item_status" value="1">
+	
+	<input type="hidden" id="item_status" value="1">
+	<div class="btn-box">
+		<button class="list-btn" id="sell-btn" onclick="openList()">판매 물품(${sellListSize})</button>
+		<button class="list-btn" id="review-btn" onclick="openList()">거래 후기(${reviewListSize}))</button>
 	</div>
 
-	<div class="review-list">
-		<h3>거래 후기(${reviewListSize})</h3>
-		<p class="empty-info" id="reviewList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="review/0" onclick="getMoreList()">더보기</button>
+	<p class="empty-info" id=""></p>
+	<div id="list-box">
+		<!-- 여기 리스트 출력 -->
 	</div>
+	<button id="btn-more-list" value="" onclick="getMoreList()">더보기</button>
+
 </div>
 
+<script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%> 

@@ -3,7 +3,16 @@
 
 <%@ include file="../main/header.jsp"%>
 
+<link rel="stylesheet" type="text/css" href="../../css/swiper.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <div class="item-update-container">
+
+	<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래</a> <span>중고거래
+			글 수정하기</span>
+	</div>
 
 	<form action="/updateItem.do" method="post">
 		<input type="hidden" name="item_no" value="${item.item_no}"> <input
@@ -14,10 +23,20 @@
 					<p>서버 오류로 이미지를 불러오지 못 했습니다.</p>
 				</c:when>
 				<c:otherwise>
-					<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
-						<img alt="item-images" src="/images/${itemImgList.get(i)}">
-						<!-- 사진 들어오는 공간 -->
-					</c:forEach>
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
+								<div class="swiper-slide">
+									<img alt="item-images" src="/images/${itemImgList.get(i)}">
+										<input type="hidden" id="loadImage" value="${itemImgList.get(i)}">
+									<!-- 사진 들어오는 공간 -->
+								</div>
+							</c:forEach>
+						</div>
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -34,8 +53,7 @@
 				</c:forEach>
 		</select></label><br> <label>거래 가격<input type="number" name="item_price"
 			value="${item.item_price}" required></label><br> <label>자세한
-			설명<textarea name="item_content"
-				placeholder="${user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."
+			설명<textarea name="item_content" style="height: 200px; width: 800" placeholder="${user_dong}에 올릴 게시글 내용을 작성해 주세요.<br> (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."
 				required>${item.item_content}</textarea>
 		</label><br> <label>판매 상태<select id="item_status"
 			name="item_status">
@@ -50,6 +68,8 @@
 	</form>
 </div>
 
-<%@ include file="../main/footer.jsp"%>
-
+<script
+	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="../../js/multiFile.js"></script>
+
+<%@ include file="../main/footer.jsp"%>

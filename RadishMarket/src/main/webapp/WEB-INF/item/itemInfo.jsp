@@ -47,7 +47,7 @@
 			<p>${updateTime}</p>
 			<a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
-			<p>${item.item_content}</p>
+			<textarea style="height: 200px; width: 800" readonly>${item.item_content}</textarea>
 			<span>찜  <span id="zzim-count" >${zzimCount}</span></span>
 			<span>조회수 ${item.item_hits}</span>
 		</div>

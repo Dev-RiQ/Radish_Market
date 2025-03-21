@@ -18,37 +18,22 @@
 		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
-
-	<div class="sell-list">
-		<h3>판매 중(${sellListSize})</h3>
-		<p class="empty-info" id="sellList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="myItem/0" onclick="getMoreList()">더보기</button>
+	
+	<div class="btn-box">
 		<input type="hidden" id="item_status" value="1">
+		<button class="list-btn" id="sell-btn" onclick="openList()">판매 중 (${sellListSize})</button>
+		<button class="list-btn" id="reserve-btn" onclick="openList()">예약 중 (${reserveListSize})</button>
+		<button class="list-btn" id="sold-btn" onclick="openList()">거래 완료(${soldListSize})</button>
 	</div>
-
-	<div class="reserve-list">
-		<h3>예약 중(${reserveListSize})</h3>
-		<p class="empty-info" id="reserveList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="myItem/0" onclick="getMoreList()">더보기</button>
-		<input type="hidden" id="item_status" value="2">
+	
+	<p class="empty-info" id=""></p>
+	<div id="list-box">
+		<!-- 여기 리스트 출력 -->
 	</div>
-
-	<div class="sold-list">
-		<h3>거래 완료(${soldListSize})</h3>
-		<p class="empty-info" id="soldList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="myItem/0" onclick="getMoreList()">더보기</button>
-		<input type="hidden" id="item_status" value="3">
-	</div>
+	<button id="btn-more-list" id="" value="" onclick="getMoreList()">더보기</button>
+	
 </div>
 
+<script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%>

@@ -18,26 +18,20 @@
 		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
-
-	<div class="hostuser-boardlist">
-		<h3>내가 호스트인 모임 (${hostMeetListSize})</h3>
-		<p class="empty-info" id="hostMeetList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="hostMeet/0" onclick="getMoreList()">더보기</button>
+	
+	<div class="btn-box">
+		<button class="list-btn" id="hostMeet-btn" onclick="openList()">내가 호스트인 모임 (${hostMeetListSize})</button>
+		<button class="list-btn" id="meet-btn" onclick="openList()">내 모임 (${meetListSize})</button>
 	</div>
 
-	<div class="user-boardlist">
-		<h3>내 모임 (${meetListSize})</h3>
-		<p class="empty-info" id="meetList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="myMeet/0" onclick="getMoreList()">더보기</button>
+	<p class="empty-info" id=""></p>
+	<div id="list-box">
+		<!-- 여기 리스트 출력 -->
 	</div>
+	<button id="btn-more-list" id="" value="" onclick="getMoreList()">더보기</button>
 
 </div>
 
+<script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%>

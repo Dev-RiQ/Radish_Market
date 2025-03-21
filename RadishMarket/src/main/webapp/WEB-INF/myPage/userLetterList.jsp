@@ -3,11 +3,12 @@
 
 <%@ include file="../main/header.jsp"%>
 
+<input type="hidden" id="log" value="${ log }" />
+
 <div class="dir-history">
 	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>쪽지함</span>
 </div>
 
-<input type="hidden" id="log" value="${ log }" />
 <div class="useritemlist-container">
 
 	<div class="user-profile">
@@ -19,27 +20,21 @@
 		<p>매너온도</p>
 	</div>
 
-	<div class="user-sendletterlist">
-		<h3>받은 쪽지 (${receiveLetterListSize})</h3>
-		<p class="empty-info" id="receiveLetterList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="receiveLetter/0"
-			onclick="getMoreList()">더보기</button>
+	<div class="btn-box">
+		<button class="list-btn" id="receive-btn" onclick="openList()">받은 쪽지 (${receiveLetterListSize})</button>
+		<button class="list-btn" id="send-btn" onclick="openList()">보낸 쪽지 (${sendLetterListSize})</button>
 	</div>
 
-	<div class="user-receiveletterlist">
-		<h3>보낸 쪽지 (${sendLetterListSize})</h3>
-		<p class="empty-info" id="sendLetterList"></p>
-		<div id="list-box">
-			<!-- 여기 리스트 출력 -->
-		</div>
-		<button id="btn-more-list" value="sendLetter/0"
-			onclick="getMoreList()">더보기</button>
+	<p class="empty-info" id=""></p>
+	<div id="list-box">
+		<!-- 여기 리스트 출력 -->
 	</div>
+	<button id="btn-more-list" id="" value="" onclick="getMoreList()">더보기</button>
+
 </div>
 
+<script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/letter.js"></script>
 <script src="../../js/listPaging.js"></script>
+
 <%@ include file="../main/footer.jsp"%>

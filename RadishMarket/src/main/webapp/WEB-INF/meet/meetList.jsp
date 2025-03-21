@@ -3,18 +3,18 @@
 <%@ include file="../main/header.jsp"%>
 
 <div class="dir-history">
-		<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
-	</div>
+	<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
+</div>
 
 <button onclick="location.href='/insertMeet.do'">모임생성</button>
 
 
 <form action="/listMeet.do?filter=true" method="post">
-	<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }"/>
+	<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }" />
 	<label for="user_dong">위치</label><br> <label><input
 		type="radio" name="user_dong" id="user_dong" value="전체"
-		${ userDong eq '전체' ? 'checked' : '' } />전체보기</label><br>
-	<input type="hidden" id="gu" name="gu" value="${ gu }"/>
+		${ userDong eq '전체' ? 'checked' : '' } />전체보기</label><br> <input
+		type="hidden" id="gu" name="gu" value="${ gu }" />
 	<c:forEach var="category_dong" items="${ dongList }">
 		<label><input type="radio" name="dong" id="dong"
 			value="${ category_dong }"
@@ -46,11 +46,12 @@
 
 
 
-	<input type="hidden" id="user_dong" value="역삼동" >
+<input type="hidden" id="user_dong" value="역삼동">
 <div id="list-box">
 	<!-- 여기 리스트 출력 -->
 </div>
 <button id="btn-more-list" value="meet/0" onclick="getMoreList()">더보기</button>
+
 
 <script src="../../js/listPaging.js"></script>
 

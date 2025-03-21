@@ -38,4 +38,10 @@
 		WHERE item_no=#{item_no}
 	</select>
 	
+	<select id="getZzimListSize" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM zzims
+		WHERE user_no=#{user_no}
+	</select>
+	
 </mapper>

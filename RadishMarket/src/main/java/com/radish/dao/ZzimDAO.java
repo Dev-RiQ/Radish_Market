@@ -84,4 +84,14 @@ public class ZzimDAO {
 		}
 		return list;
 	}
+	public int getZzimListSize(int user_no) {
+		int size = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			size = session.selectOne("getZzimListSize", user_no);
+		} catch (Exception e) {
+			System.out.println("getZzimListSize fail");
+			e.printStackTrace();
+		}
+		return size;
+	}
 }

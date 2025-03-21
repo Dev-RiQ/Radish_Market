@@ -27,16 +27,14 @@ public class zzimListUserController implements Controller {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
 		
-		List<Integer> itemNoList = ZzimDAO.getInstance().getAUserZzimItemNoList(log);
-		List<Item> zzimList = ItemDAO.getInstance().getAUserAllZzimItemList(itemNoList);
-		request.setAttribute("zzimList", zzimList);
-		
-//		List<String> userDongList = UserDAO.getInstance().getLimitUserDongByItemList(zzimList);
-//		request.setAttribute("userDongList", userDongList);
-//		
-//		List<String> mainImgList = ItemImgDAO.getInstance().getItemImgListByItemList(itemNoList);
-//		request.setAttribute("mainImgList", mainImgList);
-		
+		int zzimListSizeInt = ZzimDAO.getInstance().getZzimListSize(log);
+		String zzimListSize = "";
+		if(zzimListSizeInt > 100) {
+			zzimListSize = "100+";
+		}else {
+			zzimListSize = zzimListSizeInt+"";
+		}
+		request.setAttribute("zzimListSize", zzimListSize);
 		return "myPage/userZzimList";
 	}
 

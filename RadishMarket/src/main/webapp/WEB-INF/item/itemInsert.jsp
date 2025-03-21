@@ -7,6 +7,10 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+<div class="dir-history">
+	<a href='/index.jsp'>홈 > </a>  <a href='/listItem.do'>중고거래 > </a> <span>내 물건 팔기</span>
+</div>
+
 <div class="item-insert-container">
 
 	<form action="/insertItem.do" method="post">
@@ -23,9 +27,6 @@
 			<div class="swiper-button-prev"></div>
 		</div>
 
-		<div class="post-list" id="post-list">
-			<!-- 사진 들어오는 공간 -->
-		</div>
 		<input type="file" id="ofile" name="ofile" multiple />
 		<div class="save-filename" id="save-filename"></div>
 		<hr>
@@ -37,7 +38,7 @@
 				</c:forEach>
 		</select></label><br> <label>거래 가격<input type="number" name="item_price"
 			placeholder="₩ 가격을 입력해주세요." required></label><br> <label>자세한
-			설명<textarea name="item_content" placeholder="${user.user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요." required></textarea>
+			설명<textarea name="item_content" style="height: 200px; width: 800" placeholder="${user.user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요." required></textarea>
 		</label><br> <input type="hidden" name="item_gu" id="item_gu" value="${ user.user_gu }"> 
 		<input type="hidden" name="item_dong" id="item_dong" value="${ user.user_dong }">
 		<button class="btn submit-btn" type="submit">작성 완료</button>
