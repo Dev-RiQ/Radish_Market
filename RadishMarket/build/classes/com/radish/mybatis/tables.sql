@@ -213,8 +213,7 @@ CREATE TABLE alarms (
     alarm_category_no INT NOT NULL, # [alarms_category] alarms_category_no 참조
     link_no INT NOT NULL, # [items, boards] item_no, board_no 참조
     alarm_reg_datetime VARCHAR(20) NOT NULL,
-	alarm_check TINYINT NOT NULL,
-	alarm_content VARCHAR(300) NOT NULL
+	alarm_check TINYINT NOT NULL
 	);
 DESC alarms;
 SELECT * FROM alarms; 

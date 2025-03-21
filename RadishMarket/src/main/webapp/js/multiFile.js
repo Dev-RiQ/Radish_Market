@@ -1,3 +1,26 @@
+let swiper;
+
+document.addEventListener("DOMContentLoaded", function() {
+	if (typeof Swiper !== "undefined") {
+		var swiper = new Swiper(".mySwiper", {
+			loop: true,
+			//slidesPerView: "auto",
+			slidesPerView: 1,
+			spaceBetween: 20,
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+			},
+		});
+	} else {
+		console.error("Swiper 라이브러리가 정상적으로 로드되지 않았습니다.");
+	}
+});
+
 const imageUploadInput = document.getElementById('ofile');
 let postKey = null;
 let imgArr = [];
@@ -44,31 +67,37 @@ imageUploadInput.addEventListener('change', () => {
 
 function saveImg() {
 	if (imgArr.length > 0) {
-
 		fetch('/fileUploadAjax.do', {
 			method: "post",
-			headers: {},
+			//headers: {},
 			body: inData
-		}).then(response => response.text())
-			.then(showImageName)
+		})
+			.then(response => response.text())
+			.then((sFileName) => {
+				showImageName(sFileName);
+				displayImage();
+			})
 			.catch(error => console.log(error))
-
-		displayImage();
 	}
 }
 
 function displayImage() {
-	const slider = document.querySelector('.swiper-slide');
-	const postList = document.getElementById('post-list');
-	slider.innerHTML = '';
+	const sliderWrapper = document.querySelector('.swiper-wrapper');
+	sliderWrapper.innerHTML = '';
 	imgArr.forEach((img) => {
 		const post = JSON.parse(img);
 		const image = post.image;
+		const slide = document.createElement('div');
+		slide.classList.add('swiper-slide');
 		const imageElement = document.createElement('img');
 		imageElement.src = image;
 		imageElement.alt = '이미지';
-		slider.appendChild(imageElement);
+		slide.appendChild(imageElement);
+		sliderWrapper.appendChild(slide);
 	})
+	if (typeof swiper !== "undefined") {
+		swiper.update();
+	}
 }
 
 function showImageName(sFileName) {
