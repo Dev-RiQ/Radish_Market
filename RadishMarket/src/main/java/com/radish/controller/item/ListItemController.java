@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
 import com.radish.util.DongUtil;
 
 import jakarta.servlet.ServletException;
@@ -20,7 +21,12 @@ public class ListItemController implements Controller {
 		int category_no = 0;
 		if(category_no_str != null)
 			category_no = Integer.parseInt(category_no_str);
-		String gu = request.getSession().getAttribute("gu").toString();
+		Object gu_obj = request.getSession().getAttribute("gu");
+		if(gu_obj == null) {
+			AlertUtil.getInstance().goHomeWithAlert(response, "위치 정보를 불러올 수 없습니다.\\n로그인 또는 위치 정보 사용을 허용해주세요.");
+			return null;
+		}
+		String gu = gu_obj.toString();
 		String user_dong = request.getSession().getAttribute("dong").toString();
 		
 		if(request.getParameter("filter") != null) {

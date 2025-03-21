@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<link rel="stylesheet" type="text/css" href="../../css/item.css">
 <!--             -->
 
 </head>

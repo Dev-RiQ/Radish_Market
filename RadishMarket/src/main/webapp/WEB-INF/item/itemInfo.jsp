@@ -3,6 +3,8 @@
 
 <%@ include file="../main/header.jsp"%>
 
+<link rel="stylesheet" type="text/css" href="../../css/swiper.css">
+
 <div class="item-info-container">
 	<div class="dir-history">
 		<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래 > </a> <span>${item.item_name}</span>
