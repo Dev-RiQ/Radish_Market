@@ -53,6 +53,9 @@ public class ListBoardController implements Controller {
 		request.setAttribute("categoryList", BoardCategoryDAO.getInstance().getAllBoardCategoryList());
 		request.setAttribute("gu", gu);
 		request.setAttribute("userDong", user_dong);
+		if(user_dong.equals("전체")) {
+			user_dong = request.getSession().getAttribute("dong").toString();
+		}
 		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(gu, user_dong));
 		request.setAttribute("meet_no", meet_no);
 		

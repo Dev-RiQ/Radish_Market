@@ -30,7 +30,7 @@ function openPop(type) {
 		case 'read' : 
 			fetchReadLetter();
 			let check = document.querySelector(`#check-letter${letter_no}`);
-			if(check.innerText == '안읽음')
+			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check.innerText == '안읽음')
 				check.innerText = '읽음';
 			break;
 	}

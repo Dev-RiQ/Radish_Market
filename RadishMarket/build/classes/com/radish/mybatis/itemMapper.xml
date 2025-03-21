@@ -38,6 +38,7 @@
 		SELECT *
 		FROM items
 		WHERE user_no=#{user_no} AND item_status=1
+		ORDER BY item_no DESC
 		LIMIT 6 OFFSET 0;
 	</select>
 	

@@ -29,24 +29,26 @@
 	 "adminMeet"
  */
 
-/*let isLoaded = false;
-let btnMoreListLoad = document.querySelectorAll("#btn-more-list")*/
-/*btnMoreListLoad.forEach((i) => {
-	btnMoreList = i;
+let isLoaded = false;
+let btnMoreList = document.querySelector("#btn-more-list")
+let type = null;
+if(btnMoreList){
 	getMoreList();
-})
-setTimeout(() => {
-	isLoaded = true;
-},1000)*/
+	setTimeout(() => {
+		isLoaded = true;
+	},1000)
+}
 
-let btnMoreList = null;
 function getMoreList() {
-	/*if(isLoaded){*/
-	btnMoreList = event.target;
-	/*}*/
+	if(isLoaded){
+		btnMoreList = event.target;
+	}
+	if(!btnMoreList || !btnMoreList.value){
+		btnMoreList = document.querySelector("#show-alarm-div");
+	}
 	const typeAndStart = btnMoreList.value.split("/");
-	const type = typeAndStart[0];
-	const start = typeAndStart[1];
+	type = typeAndStart[0];
+	let start = typeAndStart[1];
 	btnMoreList.value = `${type}/${parseInt(start) + parseInt(30)}`;
 
 	let queryString = `start=${start}&type=${type}`;
@@ -114,17 +116,19 @@ function getFilter() {
 
 function printList(data) {
 	if (data == 'noMoreList') {
+		if(type == 'alarm') return;
 		btnMoreList.classList.add('hide');
 		if (btnMoreList.value.split("/")[1] == '30') {
-			printNoData(btnMoreList.value.split("/")[0]);
+			printNoData();
 		}
 		return;
 	}
-	const listBox = document.querySelector("#list-box");
+	let listBox = document.querySelector("#list-box");
+	if(type == 'alarm') listBox = document.querySelector("#alarm-list-box")
 	listBox.innerHTML += data;
 }
 
-function printNoData(type) {
+function printNoData() {
 	let word = document.querySelector('.empty-info')
 	if (word) {
 		switch (word.id) {

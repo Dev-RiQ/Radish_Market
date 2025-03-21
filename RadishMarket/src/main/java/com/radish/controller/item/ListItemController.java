@@ -66,6 +66,9 @@ public class ListItemController implements Controller {
 		request.setAttribute("categoryList", ItemCategoryDAO.getInstance().getAllItemCategoryList());
 		request.setAttribute("gu", gu);
 		request.setAttribute("userDong", user_dong);
+		if(user_dong.equals("전체")) {
+			user_dong = request.getSession().getAttribute("dong").toString();
+		}
 		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(gu, user_dong));
 		
 		return "item/itemList";

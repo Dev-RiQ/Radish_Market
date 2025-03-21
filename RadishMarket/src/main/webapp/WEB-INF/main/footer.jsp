@@ -9,6 +9,7 @@
 		
 </body>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services"></script>
+<script src="../../js/listPaging.js"></script>
 <script src="../../js/getUserJuso.js"></script>
 <script src="../../js/main.js"></script>
 <script src="../../js/alarm.js"></script>

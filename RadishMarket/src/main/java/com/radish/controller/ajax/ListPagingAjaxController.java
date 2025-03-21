@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.radish.dao.ListPagingDAO;
 import com.radish.frontController.Controller;
+import com.radish.vo.AlarmCategory;
 import com.radish.vo.BoardCategory;
 import com.radish.vo.Filter;
 import com.radish.vo.Item;
@@ -31,7 +32,7 @@ public class ListPagingAjaxController implements Controller {
 		String type = queryString.get("type")[0];
 		switch(type) {
 		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", 
-			"myBoard", "hostMeet", "myMeet": 
+			"myBoard", "hostMeet", "myMeet", "alarm": 
 			filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString())); break;
 		}
 		
@@ -42,6 +43,7 @@ public class ListPagingAjaxController implements Controller {
 			List<BoardCategory> boardCategoryList = ListPagingDAO.getInstance().getBoardCategoryListByList(list, type);
 			List<ItemCategory> itemCategoryList = ListPagingDAO.getInstance().getItemCategoryListByList(list, type);
 			List<MeetCategory> meetCategoryList = ListPagingDAO.getInstance().getMeetCategoryListByList(list, type);
+			List<AlarmCategory> alarmCategoryList = ListPagingDAO.getInstance().getAlarmCategoryListByList(list, type);
 			List<ItemImg> itemImgList = ListPagingDAO.getInstance().getItemImgListByList(list, itemList, type);
 			List<Integer> likeCountList = ListPagingDAO.getInstance().getLikeCountListByList(list, type);
 			List<Integer> commentCountList = ListPagingDAO.getInstance().getCommentCountListByList(list, type);
@@ -49,7 +51,7 @@ public class ListPagingAjaxController implements Controller {
 			
 			StringBuilder sb = ListPagingDAO.getInstance().getPrintListData(type, list, userList, itemList, 
 					boardCategoryList, itemCategoryList, meetCategoryList, itemImgList, likeCountList,
-					commentCountList, memberCountList);
+					commentCountList, memberCountList, alarmCategoryList);
 			
 			response.getWriter().print(sb.toString());
 		}else {

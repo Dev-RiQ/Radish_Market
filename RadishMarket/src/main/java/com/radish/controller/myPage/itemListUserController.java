@@ -2,6 +2,7 @@ package com.radish.controller.myPage;
 
 import java.io.IOException;
 
+import com.radish.dao.AlarmDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ReviewDAO;
 import com.radish.dao.UserDAO;
@@ -46,6 +47,14 @@ public class itemListUserController implements Controller {
 			reviewListSize = reviewListSizeInt + "";
 		}
 		request.setAttribute("reviewListSize", reviewListSize);
+		
+		String alarm_no_str = request.getParameter("alarm_no");
+		if (alarm_no_str != null) {
+			int alarm_no = Integer.parseInt(alarm_no_str);
+			request.setAttribute("alarm_no", alarm_no);
+			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
+		}
+		
 
 		return "myPage/userItemList";
 	}

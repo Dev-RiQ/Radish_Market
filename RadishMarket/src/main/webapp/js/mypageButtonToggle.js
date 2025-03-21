@@ -17,6 +17,7 @@ btns.forEach((btn) => {
 			case 'hostMeet-btn': moreList.value = 'hostMeet/0'; break;
 			case 'meet-btn': moreList.value = 'myMeet/0'; break;
 		}
+		moreList.click();
 	});
 })
 
@@ -32,10 +33,12 @@ function openList() {
 			case 'hostMeet/0': infoMsg.id = 'hostMeetList'; break;
 			case 'myMeet/0': infoMsg.id = 'meetList'; break;
 		}
-		if (hiddenTag.value === "2") {
-			infoMsg.id = "reserveList";
-		} else if (hiddenTag.value === "3") {
-			infoMsg.id = "soldList";
+		if(hiddenTag){
+			if (hiddenTag.value === "2") {
+				infoMsg.id = "reserveList";
+			} else if (hiddenTag.value === "3") {
+				infoMsg.id = "soldList";
+			}
 		}
 	})
 }

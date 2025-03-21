@@ -253,4 +253,18 @@
 		WHERE meet_no=#{meet_no}
 	</select>
 	
+	<select id="getAlarmList" parameterType="int" resultType="Alarm">
+		SELECT *
+		FROM alarms
+		WHERE user_no=#{user_no}
+		ORDER BY alarm_no DESC
+		LIMIT #{start},30
+	</select>
+	
+	<select id="getAlarmCategoryListByList" parameterType="int" resultType="AlarmCategory">
+		SELECT *
+		FROM alarm_category
+		WHERE alarm_category_no=#{alarm_category_no}
+	</select>
+	
 </mapper>

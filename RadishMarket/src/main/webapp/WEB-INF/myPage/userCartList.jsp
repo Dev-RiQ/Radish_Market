@@ -21,12 +21,11 @@
 	<div class="user-itemlist">
 		<h3>구매 내역 (${buyListSize})</h3>
 		<p class="empty-info" id="buyList"></p>
-		<div id="list-box">
+		<div id="list-box" style="width:100vw; flex-wrap:wrap; display:flex;">
 			<!-- 여기 리스트 출력 -->
 		</div>
 		<button id="btn-more-list" value="cart/0" onclick="getMoreList()">더보기</button>
 	</div>
 </div>
 
-<script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%>

@@ -29,12 +29,11 @@
 	<div id="list-box">
 		<!-- 여기 리스트 출력 -->
 	</div>
-	<button id="btn-more-list" id="" value="" onclick="getMoreList()">더보기</button>
+	<button id="btn-more-list" value="receiveLetter/0" onclick="getMoreList()">더보기</button>
 
 </div>
 
 <script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/letter.js"></script>
-<script src="../../js/listPaging.js"></script>
 
 <%@ include file="../main/footer.jsp"%>

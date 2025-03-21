@@ -38,8 +38,8 @@
 			<c:otherwise>
 				<a href='/logout.do'>로그아웃</a>
 				<a href='/mypageUser.do'>마이페이지</a>
-				<button id="show-alarm-div" onclick="showAlarmDiv()">알람</button>
-				<div class="hide" id="alarm-list"></div>
+				<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()">알람</button>
+				<div class="hide" style="max-height:300px; overflow-y:auto;" id="alarm-list-box"></div>
 			</c:otherwise>
 		</c:choose>
 			

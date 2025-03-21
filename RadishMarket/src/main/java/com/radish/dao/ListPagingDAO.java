@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.util.DateUtil;
+import com.radish.vo.Alarm;
+import com.radish.vo.AlarmCategory;
 import com.radish.vo.Board;
 import com.radish.vo.BoardCategory;
 import com.radish.vo.Cart;
@@ -64,6 +66,7 @@ public class ListPagingDAO {
 			case "myBoard": list = session.selectList("getMyBoardListByFilter", filter); break;
 			case "hostMeet": list = session.selectList("getHostMeetListByFilter", filter); break;
 			case "myMeet": list = session.selectList("getMyMeetListByFilter", filter); break;
+			case "alarm": list = session.selectList("getAlarmList", filter); break;
 			default: return null;
 			}
 		} catch (Exception e) {
@@ -79,7 +82,8 @@ public class ListPagingDAO {
 			for(Object value : list) {
 				int user_no = 0;
 				switch(type) {
-				case "receiveLetter", "sendLetter": user_no = ((Letter) value).getReceive_user_no(); break;
+				case "receiveLetter": user_no = ((Letter) value).getSend_user_no(); break;
+				case "sendLetter": user_no = ((Letter) value).getReceive_user_no(); break;
 				case "cart": user_no = ((Cart) value).getUser_no(); break;
 				case "review": user_no = ((Review) value).getBuy_user_no(); break;
 				default: return null;
@@ -166,6 +170,24 @@ public class ListPagingDAO {
 		}
 		return meetCategoryList;
 	}
+	public List<AlarmCategory> getAlarmCategoryListByList(List<?> list, String type) {
+		if(list == null) return null;
+		List<AlarmCategory> alarmCategoryList = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Object value : list) {
+				int alarm_category_no = 0;
+				switch(type) {
+				case "alarm": alarm_category_no = ((Alarm) value).getAlarm_category_no(); break;
+				default: return null;
+				}
+				alarmCategoryList.add(session.selectOne("getAlarmCategoryListByList", alarm_category_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getAlarmCategoryListByList fail");
+			e.printStackTrace();
+		}
+		return alarmCategoryList;
+	}
 	
 	public List<ItemImg> getItemImgListByList(List<?> list, List<Item> itemList, String type) {
 		if(list == null || (!type.contains("tem") && itemList == null)) return null;
@@ -242,7 +264,7 @@ public class ListPagingDAO {
 	public StringBuilder getPrintListData(String type, List<?> list, List<User> userList, List<Item> itemList,
 			List<BoardCategory> boardCategoryList, List<ItemCategory> itemCategoryList,
 			List<MeetCategory> meetCategoryList, List<ItemImg> itemImgList, List<Integer> likeCountList,
-			List<Integer> commentCountList, List<Integer> memberCountList) {
+			List<Integer> commentCountList, List<Integer> memberCountList,List<AlarmCategory> alarmCategoryList) {
 		StringBuilder sb = null;
 		switch(type) {
 		case "item", "myItem": sb = getPrintItemListData(list, itemImgList); break;
@@ -256,6 +278,7 @@ public class ListPagingDAO {
 		case "adminBoard": sb = getPrintAdminBoardListData(list, boardCategoryList, likeCountList, commentCountList); break;
 		case "adminItem": sb = getPrintAdminItemListData(list); break;
 		case "adminMeet": sb = getPrintAdminMeetListData(list, meetCategoryList, memberCountList); break;
+		case "alarm": sb = getPrintAlarmListData(list, alarmCategoryList); break;
 		}
 		return sb;
 	}
@@ -264,7 +287,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Item) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList != null && itemImgList.size() > 0)
+			if(itemImgList != null && itemImgList.size() > 0 && itemImgList.get(i).getItem_img() != null && !itemImgList.get(i).getItem_img().isBlank())
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = ((Item) list.get(i)).getItem_name();
 			int item_status = ((Item) list.get(i)).getItem_status();
@@ -273,15 +296,14 @@ public class ListPagingDAO {
 			String price = getPrintPrice(item_price);
 			String item_dong = ((Item) list.get(i)).getItem_dong();
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<p><img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"/></p>");
+			sb.append("<p><img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\"/></p>");
 			sb.append("<p>"+item_name+"</p>");
 			sb.append("<p><span>"+status+"</span> "+price+"</p>");
 			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -316,10 +338,10 @@ public class ListPagingDAO {
 			int likeCount = likeCountList.get(i);
 			int commentCount = commentCountList.get(i);
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
 			if(board_img != null)
-				sb.append("<p><img alt=\"대표 이미지\" src=\"/images/"+board_img+"\"/></p>");
+				sb.append("<p><img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+board_img+"\"/></p>");
 			sb.append("<p>"+board_title+"</p>");
 			sb.append("<p>"+board_content+"</p>");
 			sb.append("<div>");
@@ -333,7 +355,6 @@ public class ListPagingDAO {
 			sb.append("</div>");
 			sb.append("</div>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -343,7 +364,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int meet_no = ((Meet) list.get(i)).getMeet_no();
 			String meet_img = ((Meet) list.get(i)).getMeet_img();
-			if(meet_img.isBlank())
+			if(meet_img == null || meet_img.isBlank())
 				meet_img = "meetsDefaultImg.png";
 			String meet_title = ((Meet) list.get(i)).getMeet_title();
 			String meet_content = ((Meet) list.get(i)).getMeet_content();
@@ -351,9 +372,9 @@ public class ListPagingDAO {
 			int memberCount = memberCountList.get(i);
 			String meet_category_name = meetCategoryList.get(i).getMeet_category_name();
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+meet_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+meet_img+"\"/>");
+			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+meet_img+"\"/>");
 			sb.append("<br><p>"+meet_title+"</p>");
 			sb.append("<p>"+meet_content+"</p>");
 			sb.append("<span>"+meet_dong+"</span>");
@@ -361,7 +382,6 @@ public class ListPagingDAO {
 			sb.append("<span> / "+meet_category_name+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -375,7 +395,7 @@ public class ListPagingDAO {
 			String letter_title = ((Letter) list.get(i)).getLetter_title();
 			String letter_reg_datetime = ((Letter) list.get(i)).getLetter_reg_datetime();
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div id=\"show-letter"+letter_no+"\" style=\"cursor: pointer;\" onclick=\"openPop('read')\">");
 			sb.append("<span id=\"check-letter"+letter_no+"\">"+check+"</span>");
 			sb.append("<span> "+user_nickname+" </span>");
@@ -384,7 +404,6 @@ public class ListPagingDAO {
 			sb.append("</div>");
 			sb.append("<button onclick=\"location.href='deleteLetter.do?letter_no="+letter_no+"'\">삭제</button>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -393,22 +412,21 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Zzim) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList != null && itemImgList.size() > 0)
+			if(itemImgList != null && itemImgList.size() > 0 && itemImgList.get(i).getItem_img() != null && !itemImgList.get(i).getItem_img().isBlank())
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
 			String item_dong = itemList.get(i).getItem_dong();
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
+			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
 			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
 			sb.append("<p>"+item_dong+"</p>");
 			sb.append("</div>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -418,7 +436,7 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int item_no = ((Cart) list.get(i)).getItem_no();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList != null && itemImgList.size() > 0)
+			if(itemImgList != null && itemImgList.size() > 0 && itemImgList.get(i).getItem_img() != null && !itemImgList.get(i).getItem_img().isBlank())
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
@@ -427,9 +445,9 @@ public class ListPagingDAO {
 			String item_dong = itemList.get(i).getItem_dong();
 			int check_reviewed = ((Cart) list.get(i)).getCheck_reviewed();
 			
-			sb.append("<div>");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
 			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
+			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
 			sb.append("<br><p>"+item_name+"</p>");
 			sb.append("<p>"+price+"</p>");
 			sb.append("<p>"+user_nickname+"</p>");
@@ -443,7 +461,6 @@ public class ListPagingDAO {
 			}
 			sb.append("</div>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -452,21 +469,22 @@ public class ListPagingDAO {
 		StringBuilder sb = new StringBuilder();
 		for(int i = 0 ; i < list.size() ; i++) {
 			String buy_user_img = userList.get(i).getUser_img();
+			if(buy_user_img == null || buy_user_img.isBlank())
+				buy_user_img="usersDefaultImg.jpg";
 			String buy_user_nickname = userList.get(i).getUser_nickname();
 			String buy_user_dong = userList.get(i).getUser_dong();
 			String review_content = ((Review) list.get(i)).getReview_content();
 			String item_img = "defaultItemImg.jpg";
-			if(itemImgList != null && itemImgList.size() > 0)
+			if(itemImgList != null && itemImgList.size() > 0 && itemImgList.get(i).getItem_img() != null && !itemImgList.get(i).getItem_img().isBlank())
 				item_img = itemImgList.get(i).getItem_img();
 			
-			sb.append("<div>");
-			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+buy_user_img+"\"");
+			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
+			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+buy_user_img+"\">");
 			sb.append("<br><span>"+buy_user_nickname+"</span>");
 			sb.append("<span>"+buy_user_dong+"</span>");
 			sb.append("<p>"+review_content+"</p>");
-			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\"");
+			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -571,5 +589,49 @@ public class ListPagingDAO {
 			sb.append("<hr>");
 		}
 		return sb;
+	}
+	private StringBuilder getPrintAlarmListData(List<?> list, List<AlarmCategory> alarmCategoryList) {
+		List<String> alarmLocationList = getAlarmLocationList(list);
+		StringBuilder sb = new StringBuilder();
+		for(int i = 0 ; i < list.size() ; i++) {
+			String alarm_location = alarmLocationList.get(i);
+			int alarm_no = ((Alarm) list.get(i)).getAlarm_no();
+			String alarm_category_content = alarmCategoryList.get(i).getAlarm_category_content();
+			String alarm_date_ago = DateUtil.getInstance().getCalcDateAgo(((Alarm) list.get(i)).getAlarm_reg_datetime());
+			int alarm_check = ((Alarm) list.get(i)).getAlarm_check();
+			sb.append("<div>");
+			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='"+alarm_location+"'\">");
+			if(alarm_check == 1) {
+				sb.append("<span>"+alarm_category_content+" </span>");
+				sb.append("<span> "+alarm_date_ago+"</span><br>");
+			}else {
+				sb.append("<span><strong>"+alarm_category_content+" </strong></span>");
+				sb.append("<span><strong> "+alarm_date_ago+"</strong></span><br>");
+			}
+			sb.append("</div>");
+			sb.append("<button id=\"btn-deleteAlarm"+alarm_no+"\"onclick=\"deleteAlarm()\">X</button>");
+			sb.append("<hr>");
+			sb.append("</div>");
+		}
+		return sb;
+	}
+	private List<String> getAlarmLocationList(List<?> list) {
+		List<String> alarmLocationList = new ArrayList<>();
+		for(int i = 0 ; i < list.size() ; i++) {
+			int alarm_category_no = ((Alarm) list.get(i)).getAlarm_category_no();
+			int link_no = ((Alarm) list.get(i)).getLink_no();
+			int alarm_no = ((Alarm) list.get(i)).getAlarm_no();
+			switch(alarm_category_no){
+			case 1, 2 : alarmLocationList.add("/infoBoard.do?board_no="+link_no+"&alarm_no="+alarm_no); break; // 게시판 이동
+			case 3 : alarmLocationList.add("/infoItem.do?item_no="+link_no+"&alarm_no="+alarm_no); break; // 아이템 이동
+			case 4 : alarmLocationList.add("/itemListUser.do?alarm_no="+alarm_no); break; // 리뷰 리스트 이동
+			case 5 : alarmLocationList.add("/insertReview.do?item_no="+link_no+"&alarm_no="+alarm_no); break; // 리뷰 작성 페이지 이동
+			case 6 : alarmLocationList.add("/listLetter.do?alarm_no="+alarm_no); break; // 쪽지함 이동
+			case 7 : alarmLocationList.add("/mypageUser.do?alarm_no="+alarm_no); break; // 일정 보기 이동
+			case 8 : alarmLocationList.add("/listMeetJoin.do?meet_no="+link_no+"&alarm_no="+alarm_no); break; // 모임 가입 리스트 이동
+			case 9 : alarmLocationList.add("/infoMeet.do?meet_no="+link_no+"&alarm_no="+alarm_no); break; // 신청 모임으로 이동
+			}
+		}
+		return alarmLocationList;
 	}
 }

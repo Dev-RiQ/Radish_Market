@@ -19,7 +19,9 @@ public class ListReviewController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String user_no = request.getParameter("user_no");
-		int sell_user_no = Integer.parseInt(user_no);
+		int sell_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
+		if(user_no != null)
+			sell_user_no = Integer.parseInt(user_no);
 		List<Review> reviewList = ReviewDAO.getInstance().getReviewListByUserNo(sell_user_no);
 		request.setAttribute("reviewList", reviewList);
 		request.setAttribute("buyUserInfo", UserDAO.getInstance().getReviewedUserList(reviewList));

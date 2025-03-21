@@ -100,77 +100,62 @@ function sendAlarm () {
 	}
 }
 
-function deleteAlarm(e){
-	const alarm_no = e.id.replace("btn-deleteAlarm","");
+let alarmList = document.querySelector("#alarm-list-box");
+const btn_alarm = document.querySelector("#show-alarm-div");
+let isOpenAlarm = false;
+let isLoad = false;
+let scrollH = 0;
+function showAlarmDiv(){
+	if(isOpenAlarm){
+		resetAlarmList()
+	}else{
+		getMoreList();
+		isLoad = true;
+		alarmList.classList.remove('hide');
+		isOpenAlarm = true;
+		alarmList.addEventListener('scroll', infiniteScroll)
+	}
+}
+
+function infiniteScroll(){
+	if(isLoad && scrollH != alarmList.scrollHeight){
+		scrollH = alarmList.scrollHeight;
+		isLoad = false;				
+	}
+	const addListHeight = scrollH - alarmList.clientHeight - 90;
+	if(!isLoad && alarmList.scrollTop > addListHeight){
+		isLoad = true;
+		getMoreList();
+	}
+}
+
+document.addEventListener('click', (e)=>{
+	if(isOpenAlarm && !alarmList.contains(e.target) && !document.querySelector('#show-alarm-div').contains(e.target)){
+		resetAlarmList()
+	}
+})
+
+function resetAlarmList(){
+	alarmList.innerHTML = '';
+	btn_alarm.value = 'alarm/0';
+	alarmList.classList.add('hide');
+	isOpenAlarm = false;
+	alarmList.removeEventListener('scroll', infiniteScroll)
+	scrollH = 0;
+}
+
+function deleteAlarm(){
+	const alarm_no = event.target.id.replace("btn-deleteAlarm","");
+	btn_alarm.value = `alarm/${parseInt(btn_alarm.value.split("/")[1]) - 1}`;
 	fetch(`/deleteAlarmAjax.do?alarm_no=${alarm_no}`)
 	.then(response => response.text())
 	.catch(error => console.log(error))
-	showAlarmDiv()
-	showAlarmDiv()
-}
-
-const alarmList = document.querySelector("#alarm-list");
-function loadAlarm () {
-	fetch(`/listAlarmAjax.do`)
-	.then(response => response.text())
-	.then(showAlarm)
-	.catch(error => console.log(error))
-}
-function showAlarm(alarms){
-	if(!alarms){
-		return;
-	}
-	let alarm = alarms.split("/");
-	alarmList.innerHTML = '';
-	for(let i = 0 ; i < alarm.length ; i++){
-		const datas = alarm[i].split(",");
-		let href = '';
-		switch(datas[4]){
-			case '1': case '2' : href = `infoBoard.do?board_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 게시판 이동
-			case '3' : href = `infoItem.do?item_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 아이템 이동
-			case '4' : href = `listReview.do?alarm_no=${datas[3]}`; break; // 리뷰 리스트 이동
-			case '5' : href = `insertReview.do?item_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 리뷰 작성 페이지 이동
-			case '6' : href = `listLetter.do?alarm_no=${datas[3]}`; break; // 쪽지함 이동
-			case '7' : href = `mypageUser.do?alarm_no=${datas[3]}`; break; // 일정 보기 이동
-			case '8' : href = `listMeetJoin.do?meet_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 모임 가입 리스트 이동
-			case '9' : href = `infoMeet.do?meet_no=${datas[5]}&alarm_no=${datas[3]}`; break; // 신청 모임으로 이동
+	event.target.parentElement.classList.add("hide");
+	let leftAlarmCount = 0;
+	alarmList.childNodes.forEach((i) => {
+		if(!i.className){
+			leftAlarmCount++;
 		}
-		
-		let printAlarm =`<a href=${href}>
-							[${datas[0]}] ${datas[1]} ${datas[2]}
-						</a>
-						<button id="btn-deleteAlarm${datas[3]}" onclick="deleteAlarm(this)">X</button>`
-						
-		let addClass = '';
-		if(datas[6] == '0'){
-			addClass = 'class="alarm-bold"';
-		}
-		
-		if(addClass){
-			alarmList.innerHTML += `<div ${addClass}>${printAlarm}</div>`
-		}else{
-			alarmList.innerHTML += `<div>${printAlarm}</div>`
-		}
-								
-		
-		
-	}
+	})
+	if(leftAlarmCount < 5) getMoreList();
 }
-
-let isOpenAlarm = false;
-function showAlarmDiv(){
-	loadAlarm()
-	if(isOpenAlarm){
-		alarmList.classList.add('hide');
-		isOpenAlarm = false;
-	}else{
-		alarmList.classList.remove('hide');
-		isOpenAlarm = true;
-	}
-}
-document.addEventListener('click', (e)=>{
-	if(isOpenAlarm && !alarmList.contains(e.target) && !document.querySelector('#show-alarm-div').contains(e.target)){
-		alarmList.classList.add('hide');
-		isOpenAlarm = false;
-	}
-})

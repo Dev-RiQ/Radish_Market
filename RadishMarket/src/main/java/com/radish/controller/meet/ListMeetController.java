@@ -57,6 +57,9 @@ public class ListMeetController implements Controller {
 		request.setAttribute("order_by", order_by);
 		request.setAttribute("meet_no", meet_no);
 		request.setAttribute("categoryList", categoryList);
+		if(user_dong.equals("전체")) {
+			user_dong = request.getSession().getAttribute("dong").toString();
+		}
 		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(gu, user_dong));
 		return "meet/meetList";
 	}

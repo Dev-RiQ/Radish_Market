@@ -22,12 +22,11 @@
 	<div class="user-boardlist">
 		<h3>내 게시글 (${boardListSize})</h3>
 		<p class="empty-info" id="boardList"></p>
-		<div id="list-box">
+		<div id="list-box" style="width:100vw; flex-wrap:wrap; display:flex;">
 			<!-- 여기 리스트 출력 -->
 		</div>
 		<button id="btn-more-list" value="myBoard/0" onclick="getMoreList()">더보기</button>
 	</div>
 </div>
 
-<script src="../../js/listPaging.js"></script>
 <%@ include file="../main/footer.jsp"%>
