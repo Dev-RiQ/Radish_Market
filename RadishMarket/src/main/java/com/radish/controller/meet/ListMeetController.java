@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.radish.dao.MeetCategoryDAO;
 import com.radish.frontController.Controller;
+import com.radish.util.AlertUtil;
 import com.radish.util.DongUtil;
 import com.radish.vo.MeetCategory;
 
@@ -32,7 +33,12 @@ public class ListMeetController implements Controller {
 		if(meet_no_str != null)
 			meet_no = Integer.parseInt(meet_no_str);
 		
-		String gu = request.getSession().getAttribute("gu").toString();
+		Object gu_obj = request.getSession().getAttribute("gu");
+		if(gu_obj == null) {
+			AlertUtil.getInstance().goHomeWithAlert(response, "위치 정보를 불러올 수 없습니다.\\n로그인 또는 위치 정보 사용을 허용해주세요.");
+			return null;
+		}
+		String gu = gu_obj.toString();
 		String user_dong = request.getSession().getAttribute("dong").toString();
 		
 		if(request.getParameter("filter") != null) {
