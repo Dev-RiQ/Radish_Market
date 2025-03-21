@@ -16,13 +16,25 @@
 			<input type="hidden" name="meet_no" id="meet_no" value=0>
 		</c:otherwise>
 	</c:choose>
-	<input type="text" name="board_title" id="board_title" placeholder="제목"><br>
-	<textarea name="board_content" id="board_content" placeholder="내용"></textarea><br>
-	<input type="text" name="board_img" id="board_img" placeholder="이미지"><br>
+	<label for="board_title">제목</label>
+	<input type="text" name="board_title" id="board_title" placeholder="제목">
+	<span id="title_check"></span>
+	<br>
+	<label for="board_content">내용</label>
+	<textarea name="board_content" id="board_content" placeholder="내용"></textarea>
+	<span id="content_check"></span>
+	<br>
+	<label for="board_img">이미지</label>
+	<div id="post-list"></div><br>
+	<input type="text" name="board_img" id="board_img" placeholder="이미지" readonly>
+	<button type="button" onclick="openPop()">이미지 등록</button>
+	<br>
 	<input type="hidden" name="board_gu" id="board_gu" value="${ user.user_gu }">
 	<input type="hidden" name="board_dong" id="board_dong" value="${ user.user_dong }">
-	<button>게시하기</button>
+	<button type="button" onclick="validCheck()">게시하기</button>
 </form>
 
 <%@ include file="../main/footer.jsp" %>
+<script src="../../js/boardInsertValidCheck.js"></script>
+<script src="../../js/singleFileUpload.js"></script>
 <script src="../../js/board.js"></script>

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.radish.dao.ItemDAO;
 import com.radish.dao.LetterDAO;
+import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.util.DateUtil;
@@ -32,6 +33,10 @@ public class InsertLetterController implements Controller {
 		if(item_no_str != null) {
 			item_no = Integer.parseInt(item_no_str);
 			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
+		}
+		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(receive_user_no));
+		if(letter_title == null) {
+			return "utils/letterInsert";
 		}
 		String letter_content = request.getParameter("letter_content");
 		String letter_reg_datetime = DateUtil.getInstance().getRegDatetime();

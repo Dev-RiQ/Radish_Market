@@ -7,3 +7,7 @@
 .alarm-bold>a{
 	font-weight: bold;
 }
+
+.insert-error{
+	border: 1px solid crimson;
+}
