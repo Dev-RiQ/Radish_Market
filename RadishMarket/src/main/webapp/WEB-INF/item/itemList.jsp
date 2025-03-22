@@ -18,7 +18,7 @@
 	
 <div style="display:flex;">
 	<div style="width:200px;">
-		<form action="/listItem.do?filter=true" method="post">
+		<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
 		
 			<hr>
 			<label for="item_status">필터</label><br>

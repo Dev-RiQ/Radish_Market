@@ -42,5 +42,6 @@
 				<div class="hide" style="max-height:300px; overflow-y:auto;" id="alarm-list-box"></div>
 			</c:otherwise>
 		</c:choose>
-			
+			<input type="text" id="search_value" name="search_value" value="${ search_value }"/>
+			<button onclick="searchInItemList()">검색</button>
 	</header>

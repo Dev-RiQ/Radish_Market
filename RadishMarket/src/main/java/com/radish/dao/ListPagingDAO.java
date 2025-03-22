@@ -44,6 +44,7 @@ public class ListPagingDAO {
 				case "dong": filter.setDong(queryCategory.get(key)[0]); break;
 				case "order_by": filter.setOrder_by(Integer.parseInt(queryCategory.get(key)[0])); break;
 				case "meet_no": filter.setMeet_no(Integer.parseInt(queryCategory.get(key)[0])); break;
+				case "search_value": filter.setSearch_value(queryCategory.get(key)[0]); break;
 				}
 			}
 		}

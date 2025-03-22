@@ -58,6 +58,9 @@ public class ListItemController implements Controller {
 		if (price_max_str != null)
 			price_max = Integer.parseInt(price_max_str);
 		
+		String search_value = request.getParameter("search_value");
+		
+		request.setAttribute("search_value", search_value);
 		request.setAttribute("item_status", item_status);
 		request.setAttribute("price_min", price_min);
 		request.setAttribute("price_max", price_max);

@@ -111,6 +111,10 @@ function getFilter() {
 		meetNo = document.querySelector('#meet_no');
 	queryString += `&meet_no=${meetNo ? meetNo.value ? meetNo.value : 0 : 0}`
 
+	let searchValue = document.querySelector('#search_value');
+	queryString += `&search_value=${searchValue.value}`
+	console.log(queryString)
+
 	return queryString;
 }
 
