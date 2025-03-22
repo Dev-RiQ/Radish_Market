@@ -61,7 +61,7 @@
 		<span id="content_check"></span>
 		<br> 
 		
-		<button class="btn submit-btn" type="button" onclick="validCheck()">작성 완료</button>
+		<button class="btn submit-btn" type="submit">작성 완료</button>
 	</form>
 </div>
 
