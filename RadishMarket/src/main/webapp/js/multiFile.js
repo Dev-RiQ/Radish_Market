@@ -51,18 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-const submitBtn = document.querySelector('.submit-btn');
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (imgArr.length === 0) {
-        alert('최소 1장의 판매 물품 사진을 등록해야 합니다.');
-        imageUploadInput.value = '';
-        return;
-    }
-    saveImg();
-});
-
 function saveImg() {
 	if (saveList.length > 0) {
 		inData = new FormData();
@@ -126,7 +114,6 @@ function displayImage() {
     imgArr.forEach((img, idx) => {
         const post = JSON.parse(img);
         const image = post.image;
-		console.log('디버그 : ' + image)
         const slide = document.createElement('div');
         slide.classList.add('swiper-slide');
         const imageElement = document.createElement('img');
@@ -139,7 +126,6 @@ function displayImage() {
 
         deleteBtn.addEventListener('click', () => {
             const post = JSON.parse(imgArr[idx]);
-			console.log('디버그 : ' + imgArr[idx]);
             if (post.existing) {
                 const inputs = document.querySelectorAll('input[name="existingImg"]');
                 inputs.forEach(input => {

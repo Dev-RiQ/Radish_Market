@@ -50,7 +50,7 @@ public class InsertItemController implements Controller {
 		Boolean check = ItemDAO.getInstance().insertItem(item);
 		
 		if(item != null) {
-			String uploadFileNames = request.getParameter("user_itme_img");
+			String uploadFileNames = request.getParameter("user_item_img");
 			String[] uploadFileName = uploadFileNames.split(", ");
 			
 			int lastItemNo = ItemDAO.getInstance().getLastItemNo();
