@@ -11,6 +11,7 @@ public class Filter {
 	int order_by;
 	int user_no;
 	int meet_no;
+	String search_value;
 	
 	public Filter(int start) {
 		this.start = start;
@@ -47,6 +48,22 @@ public class Filter {
 		this.order_by = order_by;
 		this.user_no = user_no;
 		this.meet_no = meet_no;
+	}
+	
+	public Filter(int start, int item_status, int category_no, int price_min, int price_max, String gu, String dong,
+			int order_by, int user_no, int meet_no, String search_value) {
+		super();
+		this.start = start;
+		this.item_status = item_status;
+		this.category_no = category_no;
+		this.price_min = price_min;
+		this.price_max = price_max;
+		this.gu = gu;
+		this.dong = dong;
+		this.order_by = order_by;
+		this.user_no = user_no;
+		this.meet_no = meet_no;
+		this.search_value = search_value;
 	}
 	public String getGu() {
 		return gu;
@@ -107,6 +124,12 @@ public class Filter {
 	}
 	public void setMeet_no(int meet_no) {
 		this.meet_no = meet_no;
+	}
+	public String getSearch_value() {
+		return search_value;
+	}
+	public void setSearch_value(String search_value) {
+		this.search_value = search_value;
 	}
 	
 }

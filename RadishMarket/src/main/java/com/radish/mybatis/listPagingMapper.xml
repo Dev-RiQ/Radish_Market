@@ -55,6 +55,9 @@
 	        <if test="price_max != 0">
 	        	and item_price <![CDATA[<=]]> #{price_max}
 	        </if>
+	        <if test="search_value != ''">
+	        	and item_name LIKE '${search_value}%'
+	        </if>
    	 	</where>
    	 	<choose>
 			<when test="order_by == 0">
