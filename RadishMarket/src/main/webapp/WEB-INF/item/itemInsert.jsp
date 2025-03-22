@@ -47,10 +47,10 @@
 		</select>
 		<br> 
 		
+		<button type="button" id="sell-btn">판매하기</button>
+		<button type="button" id="free-btn">나눔하기</button>
 		<label for="item_price">거래 가격</label>
 		<input type="number" id="item_price" name="item_price" placeholder="₩ 가격을 입력해주세요." required>
-		<label for="free_item">나눔하기</label>
-		<input type="checkbox" id="free_item" name="free_item">
 		<span id="price_check"></span>
 		<br> 
 		

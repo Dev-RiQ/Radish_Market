@@ -8,9 +8,40 @@ const price = document.querySelector("#item_price")
 const priceCheck = document.querySelector("#price_check")
 const maxPrice = 2100000000;
 
-const checkBtn = document.querySelector('#free_item');
+let checkSellItem = true;
+const sellBtn = document.querySelector('#sell-btn');
+const freeBtn = document.querySelector('#free-btn');
+
+document.addEventListener("DOMContentLoaded", () => {
+	if(price.value === 0){
+		freeBtn.click();
+	}
+	
+	sellBtn.addEventListener("click", () => {
+		checkSellItem = true;
+		price.disabled = false;
+		price.style.border = "1px solid black";
+		price.value = '';
+		priceCheck.innerText = '';
+		sellBtn.classList.add("selected");
+		freeBtn.classList.remove("selected");
+	});
+
+	freeBtn.addEventListener("click", () => {
+		checkSellItem = false;
+		price.value = 0;
+		price.disabled = true;
+		price.style.border = "1px solid green";
+		priceCheck.innerText = '';
+		freeBtn.classList.add("selected");
+		sellBtn.classList.remove("selected");
+	});
+
+	sellBtn.classList.add("selected");
+});
 
 function validCheck() {
+	// 제목
 	if (!title.value.trim()) {
 		titleCheck.innerText = '값을 입력해주세요.'
 		title.style.border = "2px solid crimson"
@@ -28,6 +59,7 @@ function validCheck() {
 		}
 	})
 
+	// 물품 설명
 	if (!content.value.trim()) {
 		contentCheck.innerText = '값을 입력해주세요.'
 		content.style.border = "2px solid crimson"
@@ -45,40 +77,26 @@ function validCheck() {
 		}
 	})
 
-	if (!checkBtn.checked) {
+	// 가격
+	if (checkSellItem) {
 		if (!price.value.trim()) {
 			priceCheck.innerText = '값을 입력해주세요.'
 			price.style.border = "2px solid crimson"
-		} else if (isNaN(price.value) || Number(price.value) < 0) {
+		} else if (isNaN(price.value) || Number(price.value) < 1) {
 			priceCheck.innerText = '유효한 금액을 입력해 주세요.'
 			price.style.border = "2px solid crimson"
 		} else if (Number(price.value) > maxPrice) {
 			priceCheck.innerText = '너무 많은 금액을 입력했습니다.'
 			price.style.border = "2px solid crimson"
 		}
+	} else {
+		if (!Number(price.value) === 0) {
+			priceCheck.innerText = '나눔하기의 금액은 0원입니다.'
+			price.style.border = "2px solid crimson"
+		}
 	}
-	price.addEventListener('keyup', () => {
-		if (priceCheck.innerText && price.value.trim()) {
-			priceCheck.innerText = '';
-			price.style.border = "1px solid black"
-		}
-	})
 
-	checkBtn.addEventListener("change", () => {
-		if (checkBtn.checked) {
-			price.value = 0;
-			price.disabled = true;
-			price.style.backgroundColor = "gray";
-			price.style.border = "2px solid green";
-		} else {
-			price.disabled = false;
-			price.style.backgroundColor = "white";
-			price.style.border = "1px solid black";
-			priceCheck.innerText = '';
-			price.value = '';
-		}
-	});
-
+	// 물품 사진
 	const imageFile = document.querySelector("#ofile");
 	if (imageFile.files.length === 0) {
 		alert("사진을 한 장 이상 등록해주세요.");
@@ -116,16 +134,12 @@ price.addEventListener('input', () => {
 	let value = price.value.replace(/[^0-9]/g, '');
 	if (Number(value) > maxPrice) {
 		value = maxPrice.toString();
+	} else if (checkSellItem || Number(value) === 0) {
+		checkSellItem = false;
+		freeBtn.classList.add("selected");
+		sellBtn.classList.remove("selected");
+		freeBtn.click();
 	}
-	price.value = value;
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (Number(price.value) === 0) {
-        checkBtn.checked = true;
-        price.disabled = true;
-        price.style.backgroundColor = "gray";
-        price.style.border = "2px solid green";
-        priceCheck.innerText = '나눔하기';
-    }
+	price.value = value;
 });
