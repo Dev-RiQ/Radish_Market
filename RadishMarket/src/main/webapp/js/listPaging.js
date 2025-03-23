@@ -30,6 +30,7 @@
  */
 
 let isLoaded = false;
+let isClicked = false;
 let btnMoreList = document.querySelector("#btn-more-list")
 let type = null;
 if(btnMoreList){
@@ -49,6 +50,14 @@ function getMoreList() {
 	const typeAndStart = btnMoreList.value.split("/");
 	type = typeAndStart[0];
 	let start = typeAndStart[1];
+	if(type != 'alarm'){
+		if(isClicked){
+			return;
+		}else{
+			isClicked = true;
+			btnMoreList.innerHTML = '<img alt="로딩중" src="/images/loading.gif" style="width:50px; height: 50px; object-fit:cover;"/>'
+		}
+	}
 	btnMoreList.value = `${type}/${parseInt(start) + parseInt(30)}`;
 
 	let queryString = `start=${start}&type=${type}`;
@@ -130,6 +139,10 @@ function printList(data) {
 	let listBox = document.querySelector("#list-box");
 	if(type == 'alarm') listBox = document.querySelector("#alarm-list-box")
 	listBox.innerHTML += data;
+	if(type != 'alarm'){
+		btnMoreList.innerText = '더보기'
+		isClicked = false;
+	}
 }
 
 function printNoData() {
