@@ -16,32 +16,41 @@ const form = document.querySelector("form");
 let checkSellItem = true;
 
 document.addEventListener("DOMContentLoaded", () => {
-	if (Number(price.value) === 0) {
-		freeBtn.click();
-	}
 
 	sellBtn.addEventListener("click", () => {
 		checkSellItem = true;
-		price.disabled = false;
+		price.readOnly = false;
 		price.style.border = "1px solid black";
 		price.style.backgroundColor = "white";
 		price.value = '';
-		priceCheck.innerText = '';
 		sellBtn.classList.add("selected");
 		freeBtn.classList.remove("selected");
-		document.querySelector("#is_free").value = "false";
 	});
 
 	freeBtn.addEventListener("click", () => {
 		checkSellItem = false;
 		price.value = 0;
-		price.disabled = true;
+		price.readOnly = true;
 		price.style.border = "1px solid green";
 		price.style.backgroundColor = "#f0f0f0";
-		priceCheck.innerText = '나눔하기';
 		freeBtn.classList.add("selected");
 		sellBtn.classList.remove("selected");
-		document.querySelector("#is_free").value = "true";
+	});
+	
+	if (Number(price.value) === 0 && title.value.trim()) {
+			freeBtn.click();
+		}
+
+	title.addEventListener('input', () => {
+		if (title.value && title.value.length > 50) {
+			title.value = title.value.substring(0, 50);
+		}
+	});
+
+	content.addEventListener('input', () => {
+		if (content.value && content.value.length > 1000) {
+			content.value = content.value.substring(0, 1000);
+		}
 	});
 
 	price.addEventListener('input', () => {
@@ -90,16 +99,16 @@ function validCheck() {
 
 	if (!content.value.trim()) {
 		contentCheck.innerText = '값을 입력해주세요.';
-		title.style.border = "2px solid crimson";
+		content.style.border = "2px solid crimson";
 	} else if (content.value.trim().length < 2) {
 		contentCheck.innerText = '물품 설명은 최소 2자 이상이어야 합니다.';
-		title.style.border = "2px solid crimson";
+		content.style.border = "2px solid crimson";
 	} else if (content.value.trim().length > 1000) {
 		contentCheck.innerText = '물품 설명은 최대 1000자까지 작성 가능합니다.';
-		title.style.border = "2px solid crimson";
+		content.style.border = "2px solid crimson";
 	} else {
 		contentCheck.innerText = '';
-		title.style.border = "1px solid black";
+		content.style.border = "1px solid black";
 	}
 
 	content.addEventListener('keyup', () => {
@@ -128,7 +137,6 @@ function validCheck() {
 			priceCheck.innerText = '나눔하기가 선택된 경우 가격은 0이어야 합니다.';
 			price.style.border = "2px solid crimson";
 		} else {
-			priceCheck.innerText = '나눔하기';
 			price.style.border = "1px solid green";
 		}
 	}
@@ -144,6 +152,7 @@ function validCheck() {
 		alert("이미지 데이터를 불러오지 못했습니다. 다시 시도해주세요.");
 		return;
 	}
+
 	if (imgArr.length === 0) {
 		alert("사진을 한 장 이상 등록해주세요.");
 		document.querySelector("#ofile").focus();
@@ -171,15 +180,3 @@ function validCheck() {
 			console.error("폼 제출 중 오류:", error);
 		});
 }
-
-title.addEventListener('input', () => {
-	if (title.value && title.value.length > 50) {
-		title.value = title.value.substring(0, 50);
-	}
-});
-
-content.addEventListener('input', () => {
-	if (content.value && content.value.length > 1000) {
-		content.value = content.value.substring(0, 1000);
-	}
-});

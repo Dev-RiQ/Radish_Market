@@ -23,6 +23,9 @@ public class InsertAlarmAjaxController implements Controller {
 			return null;
 		}
 		
+		if(request.getParameter("user_no") == null || request.getParameter("user_no").isBlank()) {
+			return null;
+		}
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		int alarm_category_no = Integer.parseInt(request.getParameter("alarm_category_no"));
 		String link_no_str = request.getParameter("link_no");

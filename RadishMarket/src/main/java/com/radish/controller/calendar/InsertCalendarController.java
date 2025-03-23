@@ -29,7 +29,7 @@ public class InsertCalendarController implements Controller {
 		String meet_no_str = request.getParameter("meet_no");
 		int sub_user_no = 0;
 		int meet_no = 0;
-		if(sub_user_no_str != null) {
+		if(sub_user_no_str != null && !sub_user_no_str.isBlank()) {
 			sub_user_no = Integer.parseInt(sub_user_no_str);
 		}
 		if(meet_no_str != null && !meet_no_str.isBlank()) {
@@ -54,12 +54,23 @@ public class InsertCalendarController implements Controller {
 		String calendar_dir_x = request.getParameter("calendar_dir_x");
 		String calendar_dir_y = request.getParameter("calendar_dir_y");
 		String[] calendar_datetimes = request.getParameterValues("calendar_datetime");
-		String calendar_datetime = calendar_datetimes[0] + " " + calendar_datetimes[1] + ":" + calendar_datetimes[2];
+		String calendar_datetime = calendar_datetimes[0] + " ";
+		
+		if(Integer.parseInt(calendar_datetimes[1]) < 10) {
+			calendar_datetime += "0";
+		}
+		calendar_datetime += calendar_datetimes[1] + ":";
+		
+		if(Integer.parseInt(calendar_datetimes[2]) < 10) {
+			calendar_datetime += "0";
+		}
+		calendar_datetime += calendar_datetimes[2];
+		
 		String calendar_content = request.getParameter("calendar_content");
 		
 		Calendar calendar = new Calendar(main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content);
 		if(CalendarDAO.getInstance().insertACalenadr(calendar)) {
-			AlertUtil.getInstance().goHomeWithAlert(response, "일정 추가 완료");
+			AlertUtil.getInstance().goUrlWithAlert(response, "일정 추가 완료", "mypageUser.do");
 			Cart cart = new Cart(item_no, sub_user_no, 0);
 			CartDAO.getInstance().cartInsert(cart);
 		}

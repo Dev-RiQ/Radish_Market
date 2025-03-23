@@ -187,7 +187,6 @@ public class HandlerMapping {
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
 		mappings.put("/main.do", new MainAjaxController());
 		
-		
 		// BoardCategory
 		mappings.put("/listBoardCategory.do", new ListBoardCategoryController());
 		mappings.put("/insertBoardCategory.do", new InsertBoardCategoryController());
