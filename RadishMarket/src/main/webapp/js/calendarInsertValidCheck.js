@@ -50,8 +50,3 @@ title.addEventListener('input', ()=> {
 		title.value = title.value.substring(0, 20);
 	}
 })
-datetime.addEventListener('input', ()=> {
-	if(datetime.value && datetime.value.length > 100){
-		datetime.value = datetime.value.substring(0, 100);
-	}
-})
