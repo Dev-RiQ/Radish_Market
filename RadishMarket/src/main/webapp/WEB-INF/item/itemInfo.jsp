@@ -30,28 +30,31 @@
 					</c:choose>
 				</div>
 			</div>
+
 			<div class="user-box">
-				<img alt="유저 이미지" src="/images/${user.user_img}">
-				<a href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
-				<a href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
+				<img alt="유저 이미지" src="/images/${user.user_img}"> <a
+					href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+				<a
+					href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
 				<p>${user.user_deg}℃${emoji}</p>
 				<progress id="progress" value="${user.user_deg}" max="100"></progress>
 				<p>매너 온도</p>
 				<hr>
 			</div>
 		</div>
-		
+
 		<div>
 			<h3>${item.item_name}</h3>
 			<a href="">${item_category_name}</a>
 			<p>${updateTime}</p>
-			<a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>
+			<a
+				href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>
 			<p>${item.item_price}원</p>
 			<textarea style="height: 200px; width: 800" readonly>${item.item_content}</textarea>
-			<span>찜  <span id="zzim-count" >${zzimCount}</span></span>
-			<span>조회수 ${item.item_hits}</span>
+			<span>찜 <span id="zzim-count">${zzimCount}</span></span> <span>조회수
+				${item.item_hits}</span>
 		</div>
-		
+
 		<c:choose>
 			<c:when test="${item.user_no ne log}">
 				<div class="btn-box">
@@ -70,9 +73,11 @@
 						</c:otherwise>
 					</c:choose>
 					<form action="/insertLetter.do" method="post">
-						<input type="hidden" id="receive_user_no" name="receive_no" value="${item.user_no}">
-						<input type="hidden" id="item_no"  name="send_user_no" value="${item.item_no}">
-						<input type="hidden" id="alarm_category_no"  name="alarm_category_no" value="6">
+						<input type="hidden" id="receive_user_no" name="receive_no"
+							value="${item.user_no}"> <input type="hidden"
+							id="item_no" name="send_user_no" value="${item.item_no}">
+						<input type="hidden" id="alarm_category_no"
+							name="alarm_category_no" value="6">
 						<button type="button" onclick="openPop('send')">쪽지 보내기</button>
 					</form>
 				</div>
@@ -108,7 +113,7 @@
 				</c:choose>
 				<c:choose>
 					<c:when test="${empty itemList}">
-						<p>${user.user_nickname}님은 판매중인 물품이 없습니다.</p>
+						<p>${user.user_nickname}님은판매중인 물품이 없습니다.</p>
 					</c:when>
 					<c:otherwise>
 						<c:if test="${userAllItemListSize > 6}">

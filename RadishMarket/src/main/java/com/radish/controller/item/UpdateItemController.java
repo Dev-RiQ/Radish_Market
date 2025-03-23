@@ -45,7 +45,7 @@ public class UpdateItemController implements Controller {
 		Item item = new Item(item_no, user_no, item_category_no, item_name, item_content, item_price,
 				item_update_datetime, item_status);
 		
-		String uploadFileNames = request.getParameter("user_itme_img");
+		String uploadFileNames = request.getParameter("user_item_img");
 		String[] uploadFileName = uploadFileNames.split(", ");
 		
 		ItemImgDAO.getInstance().deleteItemImg(item_no);

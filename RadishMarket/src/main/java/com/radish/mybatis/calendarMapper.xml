@@ -9,10 +9,12 @@
 		VALUES (#{main_user_no}, #{sub_user_no}, #{meet_no}, #{address}, #{calendar_dir_x}, #{calendar_dir_y}, #{calendar_datetime}, #{calendar_title}, #{calendar_content})
 	</insert>
 	
-	<select id="getCalendarListByUserNo" parameterType="int" resultType="Calendar">
+	<select id="getCalendarListByUserNo" parameterType="map" resultType="Calendar">
 		SELECT *
 		FROM calendars
-		WHERE main_user_id=#{user_id} OR sub_user_id=#{user_id}
+		WHERE (main_user_no=#{user_no} OR sub_user_no=#{user_no}) 
+		AND calendar_datetime LIKE CONCAT(#{date_num},'%')
+		ORDER BY calendar_datetime
 	</select>
 	
 	<delete id="deleteACalendarByCalendarNo" parameterType="int">

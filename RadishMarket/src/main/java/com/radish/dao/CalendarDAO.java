@@ -1,12 +1,13 @@
 package com.radish.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.vo.Calendar;
-import com.radish.vo.Letter;
 
 public class CalendarDAO {
 	private static CalendarDAO instance;
@@ -27,12 +28,15 @@ public class CalendarDAO {
 		}
 		return action != 0;
 	}
-	public List<Letter> getCalendarListByUserNo(int user_no) {
-		List<Letter> list = null;
+	public List<Calendar> getCalendarListByUserNo(int user_no, String date_num) {
+		List<Calendar> list = null;
+		Map<String, Object> param = new HashMap<>();
+		param.put("user_no", user_no);
+		param.put("date_num", date_num);
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("getLetterListByUserNo", user_no);
+			list = session.selectList("getCalendarListByUserNo", param);
 		} catch (Exception e) {
-			System.out.println("getLetterListByUserNo fail");
+			System.out.println("getCalendarListByUserNo fail");
 			e.printStackTrace();
 		}
 		return list;

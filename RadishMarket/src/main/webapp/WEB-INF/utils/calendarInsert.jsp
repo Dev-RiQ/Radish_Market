@@ -2,13 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 
+<div class="dir-history">
+	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span> 일정 등록 </span>
+</div>
+
 <form action="/insertCalendar.do?item_no=${ item_no }" method="post">
 
 	<label for="calendar_title">제목</label>
 	<input type="text" name="calendar_title" id="calendar_title" placeholder="제목">
 	<span id="title_check"></span>
 	<br>
-	
 	
 	<label for="calendar_address">주소</label>
 	<input type="text" name="calendar_address" id="calendar_address" placeholder="주소" readonly>
