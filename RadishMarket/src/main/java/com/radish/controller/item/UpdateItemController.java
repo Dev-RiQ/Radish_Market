@@ -1,5 +1,6 @@
 package com.radish.controller.item;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,15 +27,15 @@ public class UpdateItemController implements Controller {
 
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		int user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		
-		if(request.getParameter("item_name") == null) {
+
+		if (request.getParameter("item_name") == null) {
 			request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(user_no));
 			request.setAttribute("item", ItemDAO.getInstance().getAItemByItemNo(item_no));
 			request.setAttribute("itemImgList", ItemImgDAO.getInstance().getAllItemImgList(item_no));
 			request.setAttribute("itemCategoryList", ItemCategoryDAO.getInstance().getAllItemCategoryList());
 			return "item/itemUpdate";
 		}
-		
+
 		String item_name = request.getParameter("item_name");
 		int item_category_no = Integer.parseInt(request.getParameter("item_category_no"));
 		int item_price = Integer.parseInt(request.getParameter("item_price"));
@@ -44,17 +45,35 @@ public class UpdateItemController implements Controller {
 
 		Item item = new Item(item_no, user_no, item_category_no, item_name, item_content, item_price,
 				item_update_datetime, item_status);
-		
+
 		String uploadFileNames = request.getParameter("user_item_img");
-		String[] uploadFileName = uploadFileNames.split(", ");
-		
-		ItemImgDAO.getInstance().deleteItemImg(item_no);
-		
-		List<ItemImg> list = new ArrayList<>();
-		for(String item_img : uploadFileName) {
-			list.add(new ItemImg(item_img, item_no));
+		System.out.println("uploadFileNames: " + uploadFileNames);
+		String[] uploadFileName = uploadFileNames.split(",");
+		System.out.println("uploadFileName: " + uploadFileName);
+
+		String[] deleteArr = request.getParameterValues("deleteArr");
+		System.out.println("deleteArr: " + deleteArr);
+		if (deleteArr != null) {
+			String imgPath = request.getServletContext().getRealPath("/images");
+			System.out.println("imgPath: " + imgPath);
+			for (String fileName : deleteArr) {
+				File file = new File(imgPath, fileName);
+				System.out.println("fileName: " + fileName);
+				if (file.exists()) {
+					file.delete();
+				}
+			}
 		}
-		ItemImgDAO.getInstance().insertItemImg(list);
+		
+		if (!uploadFileNames.isBlank()) {
+			ItemImgDAO.getInstance().deleteItemImg(item_no);
+
+			List<ItemImg> list = new ArrayList<>();
+			for (String item_img : uploadFileName) {
+				list.add(new ItemImg(item_img, item_no));
+			}
+			ItemImgDAO.getInstance().insertItemImg(list);
+		}
 		
 		if (ItemDAO.getInstance().updateItem(item)) {
 			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "mypageUser.do?item_no=" + item_no);

@@ -1,159 +1,131 @@
 let swiper;
-document.addEventListener("DOMContentLoaded", function() {
-	if (typeof Swiper !== "undefined") {
-		swiper = new Swiper(".mySwiper", {
-			slidesPerView: 4,
-			slidesPerGroup: 4,
-			spaceBetween: 20,
-			navigation: {
-				nextEl: ".swiper-button-next",
-				prevEl: ".swiper-button-prev",
-			},
-			pagination: {
-				el: ".swiper-pagination",
-				clickable: true,
-			},
-		});
-	}
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof Swiper !== "undefined") {
+        swiper = new Swiper(".mySwiper", {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    }
+
+    const delBtns = document.querySelectorAll('.load-delete-btn');
+    const loadImgs = document.querySelectorAll('.loadImage');
+    delBtns.forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+            deleteArr.push(loadImgs[idx].value);
+            btn.closest('.swiper-slide').remove();
+            updateHiddenInput();
+            if (swiper) swiper.update();
+        });
+    });
 });
 
-// file
 let imgArr = [];
 let saveList = [];
-let inData = new FormData();
-let checkImgUpload = false;
+let deleteArr = [];
 const imageUploadInput = document.getElementById('ofile');
 
 imageUploadInput.addEventListener('change', () => {
-	imgArr = [];
-	saveList = [];
-	const files = Array.from(imageUploadInput.files);
+    const files = Array.from(imageUploadInput.files);
+    const totalCount = document.querySelectorAll('.swiper-slide').length + files.length;
 
-	if ((saveList.length + files.length) > 8) {
-		alert('물품 사진은 최대 8장까지 등록할 수 있습니다.');
-		imageUploadInput.value = '';
-		return;
-	}
+    if (totalCount > 8) {
+        alert('물품 사진은 최대 8장까지 등록할 수 있습니다.');
+        imageUploadInput.value = '';
+        return;
+    }
 
-	files.forEach((file) => {
-		saveList.push(file);
-		const reader = new FileReader();
-		reader.onload = (e) => {
-			const post = { image: e.target.result };
-			imgArr.push(JSON.stringify(post));
-			inData = new FormData();
-			saveList.forEach(file => {
-				inData.append('img', file);
-			});
-			displayImage();
-		};
-		reader.readAsDataURL(file);
-	});
+    files.forEach(file => {
+        saveList.push(file);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            appendNewSlide(e.target.result);
+        };
+        reader.readAsDataURL(file);
+    });
 });
 
+function appendNewSlide(image) {
+    const wrapper = document.querySelector('.swiper-wrapper');
+    const slide = document.createElement('div');
+    slide.classList.add('swiper-slide');
+
+    const img = document.createElement('img');
+    img.src = image;
+    img.alt = "업로드 이미지";
+
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'X';
+    delBtn.classList.add('delete-btn');
+    delBtn.addEventListener('click', () => {
+        const index = Array.from(wrapper.children).indexOf(slide);
+        deleteImage(index);
+    });
+
+    slide.appendChild(img);
+    slide.appendChild(delBtn);
+    wrapper.appendChild(slide);
+
+    if (swiper) swiper.update();
+}
+
 function deleteImage(idx) {
-	imgArr.splice(idx, 1);
-	saveList.splice(idx, 1);
+    imgArr.splice(idx, 1);
+    saveList.splice(idx, 1);
+    const wrapper = document.querySelector('.swiper-wrapper');
+    wrapper.children[idx]?.remove();
 
-	const dataTransfer = new DataTransfer();
-	saveList.forEach(file => {
-		dataTransfer.items.add(file);
-	});
-	imageUploadInput.files = dataTransfer.files;
+    const dataTransfer = new DataTransfer();
+    saveList.forEach(file => dataTransfer.items.add(file));
+    imageUploadInput.files = dataTransfer.files;
 
-	inData = new FormData();
-	saveList.forEach(file => {
-		inData.append('img', file);
-	});
-
-	displayImage();
+    updateHiddenInput();
+    if (swiper) swiper.update();
 }
 
-function displayImage() {
-	const sliderWrapper = document.querySelector('.swiper-wrapper');
-	if (!sliderWrapper) {
-		return;
-	}
-	sliderWrapper.innerHTML = '';
-
-	imgArr.forEach((img, idx) => {
-		const post = JSON.parse(img);
-		const image = post.image;
-		const slide = document.createElement('div');
-		slide.classList.add('swiper-slide');
-		const imageElement = document.createElement('img');
-		imageElement.src = image;
-		imageElement.alt = '이미지';
-
-		const deleteBtn = document.createElement('button');
-		deleteBtn.textContent = '삭제';
-		deleteBtn.classList.add('delete-btn');
-
-		deleteBtn.addEventListener('click', () => {
-			deleteImage(idx);
-		});
-
-		slide.appendChild(imageElement);
-		slide.appendChild(deleteBtn);
-		sliderWrapper.appendChild(slide);
-	});
-
-	if (swiper) {
-		swiper.update();
-	}
+function updateHiddenInput() {
+    const user_item_img = document.querySelector("#user_item_img");
+    const loadImgs = document.querySelectorAll('.loadImage');
+    const filenames = Array.from(loadImgs).map(input => input.value);
+    user_item_img.value = filenames.join(',');
 }
 
-function saveImg() {
-	if (saveList.length > 0) {
-		inData = new FormData();
-		saveList.forEach(file => {
-			inData.append('img', file);
-		});
+async function saveImg() {
+    if (saveList.length > 0) {
+        const inData = new FormData();
+        saveList.forEach(file => inData.append('img', file));
 
-		return fetch('/fileUploadAjax.do', {
-			method: "post",
-			body: inData
-		})
-			.then(response => {
-				if (!response.ok) {
-					throw new Error('파일 업로드 실패: ' + response.statusText);
-				}
-				checkImgUpload = true;
-				return response.text();
-			})
-			.then((sFileName) => {
-				showImageName(sFileName);
-				return sFileName;
-			})
-			.catch(error => {
-				console.error("파일 업로드 오류:", error);
-				alert("이미지 업로드 중 문제가 발생했습니다.");
-				throw error;
-			});
-	} else {
-		return Promise.resolve('');
-	}
+        const response = await fetch('/multiFileUploadAjax.do', {
+            method: 'POST',
+            body: inData
+        });
+
+        if (!response.ok) throw new Error("업로드 실패");
+
+        const uploadedFileNames = await response.json(); 
+        const loadImgs = document.querySelectorAll('.loadImage');
+        const existingNames = Array.from(loadImgs).map(input => input.value);
+        const allFileNames = [...existingNames, ...uploadedFileNames];
+        document.getElementById('user_item_img').value = allFileNames.join(',');
+    }
 }
 
-function showImageName(sFileName) {
-	const user_item_img = document.querySelector("#user_item_img");
-	let fileName = sFileName.substring(1, sFileName.length - 1);
-	user_item_img.value = fileName;
-}
-
-
-const itemImages = document.querySelectorAll('.loadImage');
-if (itemImages.length > 0) {
-	const item_no = document.querySelector('.item_no').value;
-	itemImages.forEach((e) => {
-		const formData = new FormData();
-		formData.append("item_no", item_no);
-		formData.append("files", new File([e.value], e.value)); 
-
-		fetch('/multiFileUploadAjax.do', {
-			method: 'POST',
-			body: formData
-		})
-		.then(response => response.json())
-	});
-}
+document.getElementById('itemUpdateForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    try {
+        await saveImg();
+        document.getElementById('deleteArr').value = deleteArr.join(',');
+        this.submit();
+    } catch (err) {
+        alert('이미지 업로드 중 오류 발생');
+        console.error(err);
+    }
+});

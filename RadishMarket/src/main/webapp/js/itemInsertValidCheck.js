@@ -152,13 +152,15 @@ function validCheck() {
 		alert("이미지 데이터를 불러오지 못했습니다. 다시 시도해주세요.");
 		return;
 	}
-
-	if (imgArr.length === 0) {
+	
+	const loadImages = document.querySelectorAll('.loadImage');
+	if (loadImages.length === 0 && saveList.length === 0) {
 		alert("사진을 한 장 이상 등록해주세요.");
 		document.querySelector("#ofile").focus();
 		return;
 	}
 
+	
 	const spans = document.querySelectorAll("span");
 	for (let i = 0; i < spans.length; i++) {
 		if (spans[i].id && spans[i].innerText && spans[i].innerText !== '나눔하기') {

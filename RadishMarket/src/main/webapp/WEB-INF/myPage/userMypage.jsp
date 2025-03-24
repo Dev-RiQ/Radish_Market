@@ -45,17 +45,16 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">일정 정보</h4>
+					<div class="dir-history">
+						<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 >
+						</a> <span>일정</span>
+					</div>
 					<button type="button" class="close" id="close-Btn"
 						data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-					<div class="dir-history">
-						<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 >
-						</a> <span>일정</span>
-					</div>
-
 					<div class="form-group">
 						<label for="calendar_title">제목</label> <input type="text"
 							id="calendar_title" name="calendar_title" class="form-control"

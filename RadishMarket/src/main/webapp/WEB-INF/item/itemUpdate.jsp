@@ -29,6 +29,7 @@
 							<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
 								<div class="swiper-slide">
 									<img alt="item-images" src="/images/${itemImgList.get(i)}">
+									<button type="button" class="load-delete-btn load${i}" id="load-delete-btn load${i}">X</button>
 									<input type="hidden" class="loadImage" id="loadImage" value="${itemImgList.get(i)}">
 									<!-- 사진 들어오는 공간 -->
 								</div>

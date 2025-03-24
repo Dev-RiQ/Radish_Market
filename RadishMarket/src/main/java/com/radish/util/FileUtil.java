@@ -38,8 +38,6 @@ public class FileUtil {
 		
 		int idx = 0;
 		for(Part part : parts) {
-			System.out.println("파트 : " + part);
-			System.out.println("파일네임배열 : " + fileNames[idx]);
 			fileNames[idx] = getOriginalFileName(part);
 			fileNames[idx] = setAndGetSaveFileName(fileNames[idx]);
 			Path targetPath = Paths.get(sDirectory, fileNames[idx++]);

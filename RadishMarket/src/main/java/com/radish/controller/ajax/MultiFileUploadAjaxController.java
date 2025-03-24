@@ -1,13 +1,16 @@
 package com.radish.controller.ajax;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
+import com.google.gson.Gson;
 import com.radish.frontController.Controller;
-import com.radish.util.FileUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,22 +24,33 @@ public class MultiFileUploadAjaxController implements Controller {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json; charset=UTF-8");
-		
-		int item_no = Integer.parseInt(request.getParameter("item_no"));
-		System.out.println("item_no: " + item_no);
+		response.setContentType("application/json; charset=utf-8");
 
 		Collection<Part> parts = request.getParts();
-		for (Part part : parts) {
-			if (part.getName().equals("files") && part.getSize() > 0) {
-				String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-				System.out.println(fileName);
-			}
+		List<String> fileNameList = new ArrayList<>();
+
+		String savePath = request.getServletContext().getRealPath("/images");
+		File uploadDir = new File(savePath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdirs();
 		}
 
-		//response.getWriter().write("{\"status\": \"success\"}");
+		for (Part part : parts) {
+			if (part.getName().equals("img") && part.getSize() > 0) {
+				String originalFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+				String saveFileName = System.currentTimeMillis() + "_" + originalFileName;
+
+				part.write(savePath + File.separator + saveFileName);
+				fileNameList.add(saveFileName);
+			}
+		}
 		
+		Gson gson = new Gson();
+		String json = gson.toJson(fileNameList);
+		PrintWriter out = response.getWriter();
+		out.print(json);
+		out.flush();
+
 		return null;
 	}
-	
 }
