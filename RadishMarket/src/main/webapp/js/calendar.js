@@ -1,3 +1,6 @@
+let map;
+let marker;
+
 function domLoadEvent(data) {
 	if (data == 'no_data') {
 		return;
@@ -24,7 +27,6 @@ function domLoadEvent(data) {
 
 	document.querySelectorAll('.fc-event-container').forEach((e) => {
 		e.addEventListener('click', (event) => {
-			console.log(event.currentTarget);
 
 			const calendar_no = event.currentTarget.id;
 			fetch(`/infoCalendarAjax.do?calendar_no=${calendar_no}`)
@@ -38,40 +40,68 @@ function domLoadEvent(data) {
 					document.querySelector('#calendar_title').value = data.calendar_title;
 					document.querySelector('#calendar_content').value = data.calendar_content;
 					document.querySelector('#calendar_datetime').value = data.calendar_datetime;
+					$('#calendar-info-modal').modal('show');
 
 					if (data.calendar_dir_x && data.calendar_dir_y) {
+						document.querySelector('#calendar_address').value = data.address;
 						document.querySelector('#calendar_dir_x').value = data.calendar_dir_x;
 						document.querySelector('#calendar_dir_y').value = data.calendar_dir_y;
-
-						const calender_dir_y = document.querySelector('#calendar_dir_y').value;
-						const calender_dir_x = document.querySelector('#calendar_dir_x').value;
+						const calender_dir_y = data.calendar_dir_y;
+						const calender_dir_x = data.calendar_dir_x;
+						const center = new kakao.maps.LatLng(calender_dir_y, calender_dir_x);
 
 						var container = document.getElementById('map');
+
 						var options = {
-							center: new kakao.maps.LatLng(calender_dir_y, calender_dir_x),
+							center: center,
 							level: 3
 						};
 
-						var map = new kakao.maps.Map(container, options);
+						if (!map) {
+							map = new kakao.maps.Map(container, options);
+							var mapTypeControl = new kakao.maps.MapTypeControl();
+							map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPLEFT);
 
-						var markerPosition = new kakao.maps.LatLng(calender_dir_y, calender_dir_x);
+							var zoomControl = new kakao.maps.ZoomControl();
+							map.addControl(zoomControl, kakao.maps.ControlPosition.BOTTOMRIGHT);
+						}
 
-						var marker = new kakao.maps.Marker({
-							position: markerPosition
+						if (marker) {
+							marker.setMap(null);
+						}
+
+						var imageSrc = '/images/marker.png', // 마커이미지의 주소입니다    
+							imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+							imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+
+						// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+						var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+						marker = new kakao.maps.Marker({
+							position: center,
+							image: markerImage // 마커이미지 설정 
 						});
 
 						marker.setMap(map);
 
-						var mapTypeControl = new kakao.maps.MapTypeControl();
+						setTimeout(() => {
+							map.relayout();
+							map.setCenter(center);
+						}, 200)
+						document.getElementById('updateEventBtn').addEventListener('click', () => {
+							window.location.href = `/updateCalendar.do?calendar_no=${data.calendar_no}`;
+						})
 
-						map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+						document.getElementById('deleteEventBtn').addEventListener('click', () => {
+							const check = confirm('이 일정을 삭제하시겠습니까?');
+							if (check) {
+								window.location.href = `/deleteCalendar.do?calendar_no=${data.calendar_no}`;
+							}
+						})
 
-						var zoomControl = new kakao.maps.ZoomControl();
-						map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+						document.querySelector(".guid-box").style.display = 'block';
 					} else {
 						document.querySelector(".guid-box").style.display = 'none';
 					}
-					$('#calendar-info-modal').modal('show');
 				})
 				.catch(error => console.log(error))
 		})

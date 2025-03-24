@@ -34,7 +34,6 @@
 	<div class="user-calendar">
 		<div class="container">
 			<div>
-				<p>달력</p>
 				<button onclick="location.href='/insertCalendar.do'">일정 등록</button>
 			</div>
 			<div id="calendar"></div>
@@ -42,48 +41,54 @@
 	</div>
 
 	<div class="modal fade" id="calendar-info-modal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">일정 정보</h4>
-                    <button type="button" class="close" id="close-Btn" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="dir-history">
-                        <a href='/index.jsp'>홈 > </a>
-                        <a href='/mypageUser.do'>마이페이지 > </a>
-                        <span>일정</span>
-                    </div>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">일정 정보</h4>
+					<button type="button" class="close" id="close-Btn"
+						data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="dir-history">
+						<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 >
+						</a> <span>일정</span>
+					</div>
 
-                    <div class="form-group">
-                        <label for="calendar_title">제목</label>
-                        <input type="text" id="calendar_title" name="calendar_title" class="form-control" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="calendar_content">내용</label>
-                        <textarea id="calendar_content" name="calendar_content" class="form-control" readonly></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="calendar_datetime">시간</label>
-                        <input type="text" id="calendar_datetime" name="calendar_datetime" class="form-control" readonly>
-                    </div>
-                    <div class="guid-box">
-                        <label>장소</label>
-                        <div id="map" style="width: 100%; height: 300px;"></div>
-                        <input type="hidden" id="calendar_dir_x" value="">
-                        <input type="hidden" id="calendar_dir_y" value="">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="updateEventBtn" class="btn btn-primary">일정 수정하기</button>
-                    <button type="button" id="deleteEventBtn" class="btn btn-danger">일정 삭제하기</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="form-group">
+						<label for="calendar_title">제목</label> <input type="text"
+							id="calendar_title" name="calendar_title" class="form-control"
+							readonly>
+					</div>
+					<div class="form-group">
+						<label for="calendar_content">내용</label>
+						<textarea id="calendar_content" name="calendar_content"
+							class="form-control" readonly></textarea>
+					</div>
+					<div class="form-group">
+						<label for="calendar_datetime">시간</label> <input type="text"
+							id="calendar_datetime" name="calendar_datetime"
+							class="form-control" readonly>
+					</div>
+					<div class="guid-box">
+						<label>장소</label> <input type="text" id="calendar_address"
+							name="calendar_address" class="form-control" readonly>
+						<div id="map" style="width: 100%; height: 300px;"></div>
+						<input type="hidden" id="calendar_dir_x" value=""> <input
+							type="hidden" id="calendar_dir_y" value="">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="updateEventBtn" class="btn btn-primary">일정
+						수정하기</button>
+					<button type="button" id="deleteEventBtn" class="btn btn-danger">일정
+						삭제하기</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 </div>

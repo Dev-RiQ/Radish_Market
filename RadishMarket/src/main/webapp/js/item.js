@@ -24,7 +24,7 @@ marker.setMap(map);
 
 var mapTypeControl = new kakao.maps.MapTypeControl();
 
-map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPLEFT);
 
 var zoomControl = new kakao.maps.ZoomControl();
-map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+map.addControl(zoomControl, kakao.maps.ControlPosition.TOPRIGHT);

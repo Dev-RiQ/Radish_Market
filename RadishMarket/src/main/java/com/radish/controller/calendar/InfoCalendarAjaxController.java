@@ -2,6 +2,7 @@ package com.radish.controller.calendar;
 
 import java.io.IOException;
 
+import com.google.gson.Gson;
 import com.radish.dao.CalendarDAO;
 import com.radish.frontController.Controller;
 import com.radish.vo.Calendar;
@@ -25,8 +26,8 @@ public class InfoCalendarAjaxController implements Controller {
 		
 		response.setContentType("application/json;charset=utf-8");
 		if(calendar != null) {
-			ObjectMapper mapper = new ObjectMapper();
-			String json = mapper.writeValueAsString(calendar);
+			Gson gson = new Gson();
+			String json = gson.toJson(calendar);
 			response.getWriter().print(json);
 		}else {
 			response.getWriter().print("no_data");

@@ -21,6 +21,7 @@ public class UpdateCalendarController implements Controller {
 			request.setAttribute("calendar", CalendarDAO.getInstance().getACalendarByCalendarNo(calendar_no));
 			return "utils/calendarUpdate";
 		}
+		
 		int main_user_no = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		String calendar_title = request.getParameter("calendar_title");
 		String address = request.getParameter("calendar_address");
