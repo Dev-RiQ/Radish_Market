@@ -25,5 +25,12 @@
 		DELETE FROM likes
 		WHERE board_no=#{board_no} AND user_no=#{user_no}
 	</delete>
+	
+	<select id="getCountLikeByBoardNoList" parameterType="Like" resultType="int">
+		SELECT COUNT(*)
+		FROM likes
+		WHERE board_no=#{board_no}
+		LIMIT 3 OFFSET 0
+	</select>
 
 </mapper>

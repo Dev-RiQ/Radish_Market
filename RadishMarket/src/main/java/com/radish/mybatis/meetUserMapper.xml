@@ -51,4 +51,17 @@
 		LIMIT 101 OFFSET 0
 	</select>
 	
+	<select id="getUserNolimitListByMeetNo" parameterType="int" resultType="int">
+		SELECT user_no
+		FROM meet_users
+		WHERE meet_no=#{meet_no}
+		LIMIT 3 OFFSET 0
+	</select>
+	
+	<select id="getMeetMemeberCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM meet_users
+		WHERE meet_no=#{meet_no}
+	</select>
+	
 </mapper>

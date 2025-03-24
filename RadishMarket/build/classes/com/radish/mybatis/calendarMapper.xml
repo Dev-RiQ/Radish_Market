@@ -33,4 +33,17 @@
 		FROM calendars
 		WHERE calendar_no=#{calendar_no}
 	</select>
+	
+	<select id="getMeetCalendarLimitList" parameterType="int" resultType="Calendar">
+		SELECT *
+		FROM calendars
+		WHERE meet_no=#{meet_no}
+		LIMIT 4 OFFSET 0
+	</select>
+	
+	<select id="getMeetCalendarCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM calendars
+		WHERE meet_no=#{meet_no}
+	</select>
 </mapper>

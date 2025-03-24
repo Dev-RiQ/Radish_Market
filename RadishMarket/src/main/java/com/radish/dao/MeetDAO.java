@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.vo.Meet;
+import com.radish.vo.User;
 
 public class MeetDAO {
 	private static MeetDAO instance;
@@ -150,6 +151,17 @@ public class MeetDAO {
 			e.printStackTrace();
 		}
 		return size;
+	}
+	
+	public int getHostUserNoByMeetNo(int meet_no) {
+		int host_user_no = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			host_user_no = session.selectOne("getHostUserNoByMeetNo", meet_no);
+		} catch (Exception e) {
+			System.out.println("getHostUserNoByMeetNo fail");
+			e.printStackTrace();
+		}
+		return host_user_no;
 	}
 	
 }

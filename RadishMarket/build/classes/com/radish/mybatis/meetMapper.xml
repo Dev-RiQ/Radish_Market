@@ -83,4 +83,10 @@
 		LIMIT 101 OFFSET 0
 	</select>
 	
+	<select id="getHostUserNoByMeetNo" parameterType="int" resultType="int">
+		SELECT host_user_no
+		FROM meets
+		WHERE meet_no=#{meet_no}
+	</select>
+	
 </mapper>

@@ -70,12 +70,6 @@ public class FileUtil {
 		}
 	}
 	
-//	private String getOriginalFileName(Part part) {
-//		String partHeader = part.getHeader("content-disposition");
-//		String originalFileName = partHeader.split("filename=")[1].trim().replace("\"", "");
-//		return originalFileName;
-//	}
-	
 	private String getOriginalFileName(Part part) {
 	    return part.getSubmittedFileName();
 	}
@@ -83,46 +77,4 @@ public class FileUtil {
 	private String setAndGetSaveFileName(String fileName) {
 		return System.currentTimeMillis() + "_" + fileName;
 	}
-	
-	public String[] multipleFile(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-	    String sDirectory = request.getServletContext().getRealPath("/images");
-	    createDirectoryIfNotExists(sDirectory);
-	    request.setCharacterEncoding("UTF-8");
-	    Collection<Part> parts = request.getParts();
-	    List<String> validFileNames = new ArrayList<>();
-	    
-	    List<String> allowedExtensions = Arrays.asList("jpg", "jpeg", "png", "gif", "pdf");
-	    long maxFileSize = 5 * 1024 * 1024;
-	    
-	    for (Part part : parts) {
-	        String originalFileName = getOriginalFileName(part);
-	        String fileExtension = getFileExtension(originalFileName);
-	        
-	        if (!allowedExtensions.contains(fileExtension.toLowerCase())) {
-	            System.out.println("업로드 실패: 허용되지 않은 파일 형식 (" + originalFileName + ")");
-	            continue;
-	        }
-	        if (part.getSize() > maxFileSize) {
-	            System.out.println("업로드 실패: 파일 크기 초과 (" + originalFileName + ")");
-	            continue;
-	        }
-
-	        String saveFileName = setAndGetSaveFileName(originalFileName);
-	        Path targetPath = Paths.get(sDirectory, saveFileName);
-	        Files.copy(part.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
-	        validFileNames.add(saveFileName);
-	    }
-	    return validFileNames.toArray(new String[0]);
-	}
-
-	private String getFileExtension(String fileName) {
-	    int lastIndex = fileName.lastIndexOf(".");
-	    if (lastIndex == -1) {
-	        return ""; // 확장자가 없는 경우
-	    }
-	    return fileName.substring(lastIndex + 1);
-	}
-	
 }

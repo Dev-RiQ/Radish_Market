@@ -109,4 +109,18 @@
 		WHERE user_no=#{user_no}
 	</update>
 	
+	<select id="getUserListByUserNoList" parameterType="int" resultType="User">
+		SELECT *
+		FROM users
+		WHERE user_no=#{user_no}
+		LIMIT 3 OFFSET 0
+	</select>
+	
+	<select id="getUserNicknameList" parameterType="int" resultType="String">
+		SELECT user_nickname
+		FROM users
+		WHERE user_no=#{user_no}
+		LIMIT 3 OFFSET 0
+	</select>
+	
 </mapper>

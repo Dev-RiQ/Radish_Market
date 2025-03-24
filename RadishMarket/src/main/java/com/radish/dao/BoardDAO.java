@@ -171,5 +171,25 @@ public class BoardDAO {
 		}
 		return size;
 	}
+	public List<Board> getMeetBoardLimitList(int meet_no) {
+		List<Board> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getMeetBoardLimitList", meet_no);
+		} catch (Exception e) {
+			System.out.println("getMeetBoardLimitList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public int getMeetBoardCount(int meet_no) {
+		int count = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			count = session.selectOne("getMeetBoardCount", meet_no);
+		} catch (Exception e) {
+			System.out.println("getMeetBoardCount fail");
+			e.printStackTrace();
+		}
+		return count;
+	}
 	
 }

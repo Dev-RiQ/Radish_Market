@@ -47,7 +47,7 @@ public class UpdateCalendarController implements Controller {
 		if (CalendarDAO.getInstance().insertACalenadr(calendar))
 			AlertUtil.getInstance().goUrlWithAlert(response, "일정 수정 완료", "mypageUser.do");
 		else
-			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 일정 수정에 실패했습니다.\\n다시 시도해주세요.");
+			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 일정 수정에 실패했습니다.\n다시 시도해주세요.");
 		return null;
 	}
 

@@ -102,4 +102,24 @@ public class MeetUserDAO {
 		}
 		return size;
 	}
+	public List<Integer> getUserNolimitListByMeetNo(int meet_no) {
+		List<Integer> list = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			list = session.selectList("getUserNolimitListByMeetNo", meet_no);
+		} catch (Exception e) {
+			System.out.println("getUserNolimitListByMeetNo fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public int getMeetMemeberCount(int meet_no) {
+		int cnt = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			cnt = session.selectOne("getMeetMemeberCount", meet_no);
+		} catch (Exception e) {
+			System.out.println("getMeetMemeberCount fail");
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 }

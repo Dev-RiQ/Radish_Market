@@ -73,4 +73,24 @@ public class CalendarDAO {
 		}
 		return calendar;
 	}
+	public List<Calendar> getMeetCalendarLimitList(int meet_no) {
+		List<Calendar> calendarList = null;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			calendarList = session.selectList("getMeetCalendarLimitList", meet_no);
+		} catch (Exception e) {
+			System.out.println("getMeetCalendarLimitList fail");
+			e.printStackTrace();
+		}
+		return calendarList;
+	}
+	public int getMeetCalendarCount(int meet_no) {
+		int count = 0;
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			count = session.selectOne("getMeetCalendarCount", meet_no);
+		} catch (Exception e) {
+			System.out.println("getMeetCalendarCount fail");
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

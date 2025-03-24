@@ -15,8 +15,8 @@
 	</div>
 
 	<form action="/updateItem.do" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="item_no" value="${item.item_no}"> 
-		<input type="hidden" id="user_itme_img" name="user_itme_img" />
+		<input type="hidden" class="item_no" name="item_no" value="${item.item_no}"> 
+		<input type="hidden" id="user_item_img" name="user_item_img" />
 		
 		<div class="post-list" id="post-list">
 			<c:choose>
@@ -29,7 +29,7 @@
 							<c:forEach var="i" begin="0" end="${itemImgList.size()-1}">
 								<div class="swiper-slide">
 									<img alt="item-images" src="/images/${itemImgList.get(i)}">
-									<input type="hidden" id="loadImage" value="${itemImgList.get(i)}">
+									<input type="hidden" class="loadImage" id="loadImage" value="${itemImgList.get(i)}">
 									<!-- 사진 들어오는 공간 -->
 								</div>
 							</c:forEach>

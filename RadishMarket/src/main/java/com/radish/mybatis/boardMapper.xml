@@ -123,4 +123,17 @@
 		LIMIT 101 OFFSET 0
 	</select>
 	
+	<select id="getMeetBoardLimitList" parameterType="int" resultType="Board">
+		SELECT *
+		FROM boards
+		WHERE meet_no=#{meet_no}
+		LIMIT 3 OFFSET 0
+	</select>
+	
+	<select id="getMeetBoardCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM boards
+		WHERE meet_no=#{meet_no}
+	</select>
+	
 </mapper>
