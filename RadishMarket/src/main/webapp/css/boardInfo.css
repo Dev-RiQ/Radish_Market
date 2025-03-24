@@ -1,0 +1,299 @@
+@charset "UTF-8";
+.board-info-box .propiltxtimg {
+	width:100%;
+}
+.board-info-box span {margin:0; padding:0;}
+.board-info-box td {
+	height:20px;
+}
+.board-info-box .propiltxtimg img {
+	width:100%;
+	object-fit:contain;
+}
+.board-info-box .lifethelook {
+	width: 83%;
+}
+.board-info-box #propilimg{
+	height:50px;
+	width:50px;
+	overflow:hidden;
+	border-radius:50%;
+	margin-top: 10px;
+}
+.board-info-box #propilimg img{
+	height:50px;
+	width:50px;
+	object-fit:cover;
+}
+.board-info-box .titlebox {
+	width: 100%;
+	height: 30px;
+	color: #ddd;
+}
+
+.board-info-box .lifethelooktxt {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content:center;
+}
+
+.board-info-box .besttexts {
+	width: 20%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.board-info-box .besttexts>a {
+	margin-top: 15px;
+	text-decoration: none;
+	color: grey;
+	font-size: 17px;
+}
+
+.board-info-box .pepoletxts {
+	width: 80%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.board-info-box .txtcald {
+	width: 99%;
+	height: 160px;
+	display: flex;
+	margin-top: 10px;
+	border-radius: 5px;
+	margin-left: 5px;
+	transition: 0.board-info-box .3;
+}
+
+.board-info-box .txtcald:hover {
+	border: 1px solid #ddd;
+}
+
+.board-info-box .txtbox {
+	flex: 8;
+}
+
+.board-info-box .imgbox {
+	flex: 1.board-info-box .5;
+}
+
+
+.board-info-box .propil {
+	width: 100%;
+	height: 100%;
+}
+
+.board-info-box .propil button {
+	color: white;
+	background-color: rgb(166, 235, 235);
+	border: none;
+	border-radius: 10px;
+	font-size: 13px;
+}
+
+#propilimg {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+span {
+	font-size: 12px;
+}
+
+.board-info-box .propiltxt {
+	width: 100%;
+}
+.board-info-box button{cursor: pointer;}
+.board-info-box{
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+}
+
+.board-info-box tr {
+	height:20px;
+	padding: 0px;
+}
+.board-info-box .propiltxtimg {
+	width: 100%;
+}
+
+.board-info-box .bestpoodimg {
+	width: 100%;
+}
+
+.board-info-box .likeandtxtbox {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.board-info-box .iconbox {
+	width: 180px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.board-info-box .iconbox>p {
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+.board-info-box .inquiry {
+	width: 100px;
+	height: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.board-info-box .inquiry>p {
+	font-size: 15px;
+	color: #aca9a9;
+}
+
+.board-info-box .comments {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.board-info-box .latestranking {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	border-top: 1px solid #ddd;
+}
+
+.board-info-box .comments-txt {
+	width: 90%;
+	margin-left: 50px;
+	margin-bottom: 10px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.board-info-box .comments-txt p {
+	margin-left: 10px;
+}
+
+a {
+	text-decoration: none;
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.board-info-box .bestcomments {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 40px;
+	border-top: 1px solid #ddd;
+}
+
+.board-info-box .writingout {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+#write {
+	width: 80%;
+	height: 28px;
+	border-radius: 15px;
+	margin: 15px;
+	border: 1px solid rgb(184, 179, 179);
+}
+
+.board-info-box .writingout button {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background-color: rgb(98, 212, 98);
+}
+
+.board-info-box .writingout button:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+/* The container */
+.board-info-box .container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 17px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.board-info-box .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.board-info-box .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+.board-info-box .container:hover input ~ .board-info-box .checkmark {
+	background-color: #ccc;
+}
+
+.board-info-box .container input:checked ~ .board-info-box .checkmark {
+	background-color: #2cd319;
+}
+
+.board-info-box .checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.board-info-box .container input:checked ~ .board-info-box .checkmark:after {
+	display: block;
+}
+
+.board-info-box .container .board-info-box .checkmark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.board-info-box textarea{
+	width:90%;
+	height:60px;
+	margin: 0 10px;
+}
+
+#btn-like-submit{
+	cursor: pointer;
+}

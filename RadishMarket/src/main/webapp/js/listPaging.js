@@ -42,7 +42,7 @@ if(btnMoreList){
 
 function getMoreList() {
 	if(isLoaded){
-		btnMoreList = event.target;
+		btnMoreList = event.currentTarget;
 	}
 	if(!btnMoreList || !btnMoreList.value){
 		btnMoreList = document.querySelector("#show-alarm-div");
@@ -140,7 +140,7 @@ function printList(data) {
 	if(type == 'alarm') listBox = document.querySelector("#alarm-list-box")
 	listBox.innerHTML += data;
 	if(type != 'alarm'){
-		btnMoreList.innerText = '더보기'
+		btnMoreList.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'
 		isClicked = false;
 	}
 }

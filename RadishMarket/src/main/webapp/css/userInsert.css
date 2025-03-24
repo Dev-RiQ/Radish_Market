@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	height: 100vh;
+}
+
+main {
+	width: 100%;
+	height: 1100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.insert {
+	width: 900px;
+	height: calc(100% - 50px);
+	border: 1px solid #b4b1b1;
+}
+
+.insert-check {
+	width: 100%;
+	height: 700px;
+}
+
+.insert-txt {
+	width: 100%;
+	height: 100px;
+}
+
+input {
+	width: 200px;
+	margin: 10px;
+	margin-left: 30px;
+}
+
+.insert-welcom {
+	display: flex;
+	width: 100%;
+	height: 180px;
+	background: rgb(56, 222, 205);
+	background: linear-gradient(0deg, rgba(56, 222, 205, 1) 31%,
+		rgba(15, 249, 15, 1) 94%);
+	align-items: center;
+}
+
+.insert-welcom>h1 {
+	font-size: 60px;
+	margin-left: 15px;
+	font-weight: 400;
+	color: white;
+}
+
+#cars {
+	width: 200px;
+}
+
+input {
+	width: 300px;
+	height: 25px;
+	border-radius: 5px;
+	border: 1.5px solid black;
+	margin-top: 16px;
+}
+
+span {
+	font-size: 13px;
+	margin-left: 90px;
+	color: #aba9a9;
+}
+
+#user_id {
+	width: 200px;
+	margin-left: 25px;
+}
+
+#user_pw {
+	width: 200px;
+	margin-left: 12px;
+}
+
+#user_name {
+	width: 200px;
+	margin-left: 39px;
+}
+
+#user_age {
+	width: 200px;
+	margin-left: 39px;
+}
+
+#user_email {
+	width: 200px;
+	margin-left: 29px;
+}
+
+#user_nickname {
+	width: 200px;
+	margin-left: 24px;
+}
+
+#user_phone {
+	width: 60px;
+	margin-left: 10px;
+}
+
+#user_address {
+	margin-left: 39px;
+}
+
+select {
+	width: 130px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1.5px solid black;
+}
+
+#user_img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+.insert-buttons {
+	width: 100%;
+	height: 80px;
+	margin-top: 85px;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+
+.insert-buttons>p {
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 20px;
+	font-weight: 1000;
+	color: #a3a1a1;
+}
+
+#id-btn, #img-btn, #btn_user_address {
+	width: 80px;
+	height: 30px;
+	color: white;
+	background-color: rgb(73, 72, 72);
+	border: none;
+	border-radius: 5px;
+}
+
+#insert-btn {
+	width: 40px;
+	height: 40px;
+	background-color: greenyellow;
+	border-radius: 50%;
+	margin-right: 35px;
+	margin-bottom: 15px;
+	border: none;
+	color: white;
+}
+
+#insert-btn:hover:active {
+	color: greenyellow;
+	background-color: white;
+	border: 1px solid greenyellow;
+}
+
+label {
+	margin-left: 10px;
+}
+
+b {
+	color: red;
+}
+
+abbr {
+	text-align: center;
+}
+
+.ab {
+	margin-left: 13px;
+}
+
+#img-btn:hover:active {
+	color: black;
+	border: 1px solid black;
+	background-color: white;
+}
+
+#id-btn:hover:active {
+	color: black;
+	border: 1px solid black;
+	background-color: white;
+}
+
+#btn_user_address:hover:active {
+	color: black;
+	border: 1px solid black;
+	background-color: white;
+}
+
+#post-list{
+	border-radius:50%;
+	width:150px;
+	height:150px;
+	overflow: hidden;
+	border:1px solid black;
+	margin-left:20px;
+}
+#post-list img{
+	width:150px;
+	height:150px;
+	overflow: hidden;
+	object-fit:cover;
+}
+
+#img-btn {
+	width:100px;
+}
+
+.img-box {
+	display:flex;
+	align-items:center;
+	gap: 10px;
+}

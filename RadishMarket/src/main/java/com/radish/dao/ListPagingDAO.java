@@ -339,22 +339,22 @@ public class ListPagingDAO {
 			int likeCount = likeCountList.get(i);
 			int commentCount = commentCountList.get(i);
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
-			if(board_img != null)
-				sb.append("<p><img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+board_img+"\"/></p>");
-			sb.append("<p>"+board_title+"</p>");
+			sb.append("<div class=\"txtcald\">");
+			sb.append("<div class=\"txtbox\" style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
+			sb.append("<h3>"+board_title+"</h3>");
 			sb.append("<p>"+board_content+"</p>");
 			sb.append("<div>");
 			sb.append("<span>"+board_dong+"</span>");
-			sb.append("<span> / "+board_category_name+"</span>");
-			sb.append("<span> / "+board_reg_datetime+"</span>");
+			sb.append("<span> · "+board_category_name+"</span>");
+			sb.append("<span> · "+board_reg_datetime+"</span>");
 			sb.append("</div>");
-			sb.append("<div>");
-			sb.append("<span>"+"종아요 : "+likeCount+"</span>");
-			sb.append("<span>"+" / 댓글 : "+commentCount+"</span>");
+			sb.append("<pre>");
+			sb.append("<span>"+"<i class=\"fa-solid fa-heart\" style=\"color: red;\"></i> "+likeCount+"</span>");
+			sb.append("<span>"+" · <i class=\"fa-solid fa-comment\"></i> "+commentCount+"</span>");
+			sb.append("</pre>");
 			sb.append("</div>");
-			sb.append("</div>");
+			if(board_img != null)
+				sb.append("<div class=\"imgbox\"><img alt=\"대표 이미지\" src=\"/images/"+board_img+"\"/></div>");
 			sb.append("</div>");
 		}
 		return sb;
@@ -600,8 +600,8 @@ public class ListPagingDAO {
 			String alarm_category_content = alarmCategoryList.get(i).getAlarm_category_content();
 			String alarm_date_ago = DateUtil.getInstance().getCalcDateAgo(((Alarm) list.get(i)).getAlarm_reg_datetime());
 			int alarm_check = ((Alarm) list.get(i)).getAlarm_check();
-			sb.append("<div>");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='"+alarm_location+"'\">");
+			sb.append("<div class=\"bell\" onclick=\"location.href='"+alarm_location+"'\">");
+			sb.append("<p>");
 			if(alarm_check == 1) {
 				sb.append("<span>"+alarm_category_content+" </span>");
 				sb.append("<span> "+alarm_date_ago+"</span><br>");
@@ -609,9 +609,8 @@ public class ListPagingDAO {
 				sb.append("<span><strong>"+alarm_category_content+" </strong></span>");
 				sb.append("<span><strong> "+alarm_date_ago+"</strong></span><br>");
 			}
-			sb.append("</div>");
+			sb.append("</p>");
 			sb.append("<button id=\"btn-deleteAlarm"+alarm_no+"\"onclick=\"deleteAlarm()\">X</button>");
-			sb.append("<hr>");
 			sb.append("</div>");
 		}
 		return sb;
