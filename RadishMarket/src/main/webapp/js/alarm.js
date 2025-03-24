@@ -105,15 +105,22 @@ const btn_alarm = document.querySelector("#show-alarm-div");
 let isOpenAlarm = false;
 let isLoad = false;
 let scrollH = 0;
+let isFirst = true;
 function showAlarmDiv(){
 	if(isOpenAlarm){
 		resetAlarmList()
 	}else{
+		if(scrollH == 0){
+			alarmList.innerHTML = `<div class="bellstxt">
+								      <h3>알림</h3>
+								    </div>`;
+		}
 		getMoreList();
 		isLoad = true;
 		alarmList.classList.remove('hide');
 		isOpenAlarm = true;
 		alarmList.addEventListener('scroll', infiniteScroll)
+		
 	}
 }
 
@@ -125,8 +132,11 @@ function infiniteScroll(){
 	const addListHeight = scrollH - alarmList.clientHeight - 90;
 	if(!isLoad && alarmList.scrollTop > addListHeight){
 		isLoad = true;
-		getMoreList();
+		if(!isFirst){
+			getMoreList();
+		}
 	}
+	isFirst = false;
 }
 
 document.addEventListener('click', (e)=>{
@@ -142,6 +152,7 @@ function resetAlarmList(){
 	isOpenAlarm = false;
 	alarmList.removeEventListener('scroll', infiniteScroll)
 	scrollH = 0;
+	isFirst = true;
 }
 
 function deleteAlarm(){

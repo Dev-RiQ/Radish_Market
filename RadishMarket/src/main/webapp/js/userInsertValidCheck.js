@@ -4,7 +4,7 @@ function idValidCheck () {
 	joinId = document.querySelector("#user_id")
 	checkId = joinId.value;
 	if(!checkId.trim()){
-		
+		alert('아이디를 입력해주세요.')
 		return
 	}
 	fetch('/insertUserAjax.do',{

@@ -1,13 +1,352 @@
 @charset "UTF-8";
 
-.hide{
+.hide {
 	display: none;
 }
 
-.alarm-bold>a{
+.alarm-bold>a {
 	font-weight: bold;
 }
 
-.insert-error{
+body {
+	max-width:1280px;
+	margin: 0;
+	width:100vw;
+	display:flex;
+	flex-direction:column;
+	justify-self:center;
+}
+
+body>.container {
+	width: 100%;
+	height: 1080px;
+}
+header{
+	position:fixed;
+	width: 100%;
+	height: 120px;
+	display:flex;
+	flex-direction:column;
+	background-color: white;
+	z-index:50;
+}
+.search-box{
+	width: 100%;
+	height: 40px;
+	display:flex;
+	justify-content: center;
+}
+.search-box .search{
+	height: 40px;
+}
+.gnb {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+section{
+	margin-top:150px;
+}
+
+button{
+ 	cursor: pointer;
+}
+
+.header-logo {
+	width: 200px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header-logo h1 {
+	font-size: 50px;
+}
+
+.header-box {
+	width: 200px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.header-box a {
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	background: #5fcc29;
+	color: white;
+	margin-right: 15px;
+}
+
+.header-box a:hover:active {
+	background: white;
+	color: #5fcc29;
+	border: 2px solid #5fcc29;
+}
+
+.home-box {
+	width: 100%;
+	height: 1000px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.txtbox {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: -400px;
+}
+
+.txtbox h1 {
+	font-size: 50px;
+}
+
+.search {
+	display: flex;
+	width: 100%;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+}
+
+.search>#local-btn {
+	width: 80px;
+	height: 40px;
+	background: red;
+	border-radius: 20px;
+	margin: 10px;
+	background: black;
+	border: none;
+	color: white;
+}
+
+.search>.search-input {
+	width: 500px;
+	height: 40px;
+	border-radius: 20px;
+	border: 1px solid #c5c7c7;
+}
+
+.search>#search-btn {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin: 10px;
+	border: none;
+	background: black;
+	color: white;
+}
+
+.linkbtn {
+	width: 100%;
+	height: 120px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.linkbtn>a {
+	width: 100px;
+	height: 90px;
+	border: 1px solid #c7c9c9;
+	margin: 15px;
+	display: flex;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	color: #bfbfc1;
+	font-size: 15px;
+	flex-direction: column;
+	transition: 0.2s;
+}
+
+.linkbtn>a:hover:active {
+	transform: scale(1.3);
+}
+
+footer {
+	width: 100%;
+	height: 180px;
+	background: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer h1 {
+	width: 200px;
+	height: 60px;
+	color: white;
+	font-size: 60px;
+	margin-left: 30px;
+}
+
+footer .textbox {
+	width: 380px;
+	height: 130px;
+	font-size: 15px;
+	display: flex;
+	flex-direction: column;
+	color: #ddd;
+	white-space: pre-line;
+}
+
+footer .sns {
+	width: 300px;
+	height: 60px;
+	display: flex;
+	justify-content: space-around;
+	margin-bottom:20px;
+}
+
+#show-alarm-div {
+	margin: 10px;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	background-color: white;
+	font-size: 25px;
+	border: none;
+	color: rgb(11, 248, 11);
+}
+
+.insert-error {
 	border: 1px solid crimson;
+}
+
+/*  테드 창  */
+.chang {
+	width: 200px;
+	height: 110px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid #ddd;
+	background-color:whith;
+}
+
+.chang button {
+	width: 100%;
+	height: 40px;
+	text-align: start;
+	border: none;
+	background-color: white;
+}
+
+.chang button:active:hover {
+	background-color: rgb(194, 232, 138);
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 28px;
+	margin-right: 5px;
+}
+
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: white; /* 기본 검은색 */
+	transition: 0.4s;
+	margin-left: 5px;
+	border-radius: 34px;
+	border: 1px solid gray;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 19px;
+	width: 19px;
+	left: 4px;
+	bottom: 4px;
+	background-color: black; /* 기본 흰색 (동그라미) */
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+.switch input:checked+.slider {
+	background-color: black; /* 토글 배경 흰색 */
+}
+
+.switch input:checked+.slider:before {
+	background-color: white; /* 동그라미 검은색 */
+	transform: translateX(26px);
+}
+
+.mode {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: 14px;
+}
+
+.mode p {
+	margin-left: 5px;
+}
+
+.chang a {
+	text-decoration: none;
+	color: black;
+}
+.chang.hide{
+	display: none;
+}
+
+.chang, .bells{
+	position:fixed;
+	z-index:100;
+	top:80px;
+	right:1%;
+	background-color:white;
+}
+@media(min-width:1280px){
+	.chang, .bells{
+		right:calc(50% - 625px);
+	}
+}
+
+.header-box button{
+	cursor: pointer;
+	border:none;
+	background-color:none;
+	border-radius:50%;
+	overflow:hidden;
+	width:50px;
+	height:50px;
+	margin-left: 10px;
+}
+.header-box img{
+	width:50px;
+	height:50px;
+	object-fit:cover;
 }

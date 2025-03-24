@@ -13,6 +13,9 @@
 <!-- CSS 추가 위치 -->
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
+<link rel="stylesheet" href="../../css/alarm.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <!--             -->
 
@@ -23,25 +26,60 @@
 	</c:if>
 
 	<header>
-		<a href='/listItem.do'>중고거래</a> 
-		<a href='/listBoard.do'>자유게시판</a> 
-		<a href='/listMeet.do'>모임</a>
-			<c:if test='${ log == -1 }'>
-				<a href='/siteInfo.do'>관리자테스트</a>
+		<div class="gnb">
+			<div class="header-logo" style="cursor:pointer;" onclick="location.href='/index.jsp'">
+		          <img src="/images/logo.png" style="width: 100px; height: 50px;"></img>
+	    	</div>
+			<c:set var="url" value="${ pageContext.request.requestURL }" />
+			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+		    	<div>
+					<a href='/listItem.do'>중고거래</a> 
+					<a href='/listBoard.do'>자유게시판</a> 
+					<a href='/listMeet.do'>모임</a>
+						<c:if test='${ log == -1 }'>
+							<a href='/siteInfo.do'>관리자테스트</a>
+						</c:if>
+		    	</div>
 			</c:if>
-			
-		<c:choose>
-			<c:when test='${ log eq null }'>
-				<a href='/login.do'>로그인</a>
-				<a href='/insertUser.do'>회원가입</a>
-			</c:when>
-			<c:otherwise>
-				<a href='/logout.do'>로그아웃</a>
-				<a href='/mypageUser.do'>마이페이지</a>
-				<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()">알람</button>
-				<div class="hide" style="max-height:300px; overflow-y:auto;" id="alarm-list-box"></div>
-			</c:otherwise>
-		</c:choose>
-			<input type="text" id="search_value" name="search_value" value="${ search_value }"/>
-			<button onclick="searchInItemList()">검색</button>
+			<div class="header-box">	
+				<c:choose>
+					<c:when test='${ log eq null }'>
+						<div class="header-box">
+							<a href='/login.do'>로그인</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()"><i class="fa-solid fa-bell"></i></button>
+						<button id="show-chang" onclick="showMyInfo()"><img alt="user" src="/images/${ my_img ne '' ? my_img : 'usersDefaultImg.png' }" /></button>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+		<div class="search-box">
+			<div class="search">
+	        <button id="local-btn">
+	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>위치
+	        </button>
+	        <input type="search" class="search-input" id="search_value" name="search_value" value="${ search_value }"/>
+	        <button id="search-btn" onclick="searchInItemList()"><i class="fa fa-search"></i></button>
+	      </div>
+		</div>
+		</c:if>
 	</header>
+	<c:if test='${ log ne null }'>
+		<div class="bells hide" id="alarm-list-box">
+		</div>
+		<div class="chang hide">
+	      <a href="/mypageUser.do"><button style="cursor:pointer;">내 정보</button></a>
+	      <a href="/logout.do"><button style="cursor:pointer;">로그아웃</button></a>
+	
+	      <div class="mode">
+	        <p>화면 모드</p>
+	        <label class="switch">
+	          <input type="checkbox" checked />
+	          <span class="slider round"></span>
+	        </label>
+	      </div>
+	    </div>
+	</c:if>
