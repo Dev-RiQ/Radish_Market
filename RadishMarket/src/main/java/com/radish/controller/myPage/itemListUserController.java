@@ -3,11 +3,13 @@ package com.radish.controller.myPage;
 import java.io.IOException;
 
 import com.radish.dao.AlarmDAO;
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ReviewDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -28,8 +30,9 @@ public class itemListUserController implements Controller {
 		if(user_no_str != null) {
 			log = Integer.parseInt(user_no_str);
 		}
-		request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
-
+		User user = UserDAO.getInstance().getAUserByLog(log);
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		String sellListSize = "";
 		int sellListSizeInt = ItemDAO.getInstance().getSellListSize(log);
 		if(sellListSizeInt > 100) {

@@ -11,7 +11,8 @@
 	${ user.user_img }<br>
 	${ user.user_nickname }<br>
 	${ user.user_dong }<br>
-	${ user.user_deg }<br>
+	${ user.user_deg }℃ ${emoji}<br>
+	<progress id="progress" value="${user.user_deg}" max="100"></progress><br>
 	${ board.board_category_no }<br>
 	${ board.meet_no }<br>
 	${ board.board_title }<br>

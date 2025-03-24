@@ -116,14 +116,14 @@ function setPrintLetterInfo(data){
 
 function setPopupWriteForSend(popupDocument){
 	popupDocument.write('<h2>쪽지 보내기</h2>');
-	popupDocument.write(`<input type="text" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" readonly/>`);
+	popupDocument.write(`받는 유저<input type="text" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" readonly/>`);
 	if(item_no){
 		popupDocument.write(`<input type="hidden" id="item_no" name="item_no" value="${item_no}" readonly/>`);
 	}
 	popupDocument.write('<hr>');
-	popupDocument.write(`<input type="text" id="letter_title" name="letter_title" />`);
+	popupDocument.write(`제목<input type="text" id="letter_title" name="letter_title" />`);
 	popupDocument.write('<hr>');
-	popupDocument.write(`<textarea id="letter_content" name="letter_content"></textarea>`);
+	popupDocument.write(`내용<textarea id="letter_content" name="letter_content"></textarea>`);
 	popupDocument.write('<button id="send-letter">전송</button>');
 	popupDocument.write('<button id="close-popup">취소</button>');
 	setEvents()

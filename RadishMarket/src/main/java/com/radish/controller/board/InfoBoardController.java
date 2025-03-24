@@ -6,11 +6,13 @@ import java.util.List;
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.BoardDAO;
 import com.radish.dao.CommentDAO;
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.LikeDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.vo.Board;
 import com.radish.vo.Comment;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,7 +27,9 @@ public class InfoBoardController implements Controller {
 		BoardDAO.getInstance().boardHitsUp(board_no);
 		Board board = BoardDAO.getInstance().getABoardByBoardNo(board_no);
 		request.setAttribute("board", board);
-		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(board.getUser_no()));
+		User user = UserDAO.getInstance().getAUserPortionInfo(board.getUser_no());
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		request.setAttribute("likeCount", LikeDAO.getInstance().getCountLikeByBoardNo(board_no));
 		List<Comment> commentList = CommentDAO.getInstance().getCommentListByBoard(board_no);
 		request.setAttribute("commentList", commentList);

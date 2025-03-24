@@ -10,7 +10,7 @@ btns.forEach((btn) => {
 		switch (e.target.id) {
 			case 'receive-btn': moreList.value = 'receiveLetter/0'; break;
 			case 'send-btn': moreList.value = 'sendLetter/0'; break;
-			case 'sell-btn': moreList.value = 'myItem/0'; break;
+			case 'sell-btn': moreList.value = 'myItem/0'; hiddenTag.value = "1"; break;
 			case 'reserve-btn': moreList.value = 'myItem/0'; hiddenTag.value = "2"; break;
 			case 'sold-btn': moreList.value = 'myItem/0'; hiddenTag.value = "3"; break;
 			case 'review-btn': moreList.value = 'review/0'; break;
@@ -33,8 +33,10 @@ function openList() {
 			case 'hostMeet/0': infoMsg.id = 'hostMeetList'; break;
 			case 'myMeet/0': infoMsg.id = 'meetList'; break;
 		}
-		if(hiddenTag){
-			if (hiddenTag.value === "2") {
+		if (hiddenTag) {
+			if (hiddenTag.value === "1") {
+				infoMsg.id = "sellList";
+			} else if (hiddenTag.value === "2") {
 				infoMsg.id = "reserveList";
 			} else if (hiddenTag.value === "3") {
 				infoMsg.id = "soldList";

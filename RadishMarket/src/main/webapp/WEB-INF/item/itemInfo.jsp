@@ -116,8 +116,8 @@
 						<p>${user.user_nickname}님은판매중인 물품이 없습니다.</p>
 					</c:when>
 					<c:otherwise>
-						<c:if test="${userAllItemListSize > 6}">
-							<a href='/userpageUser.do?user_no=${user.user_no}'>더 구경하기</a>
+						<c:if test="${checkInfoItemSize > 6}">
+							<a href='/itemListUser.do?user_no=${user.user_no}'>더 구경하기</a>
 						</c:if>
 						<c:forEach var="i" begin="0" end="${itemList.size()-1}">
 							<div class="seller-item-box" style="cursor: pointer;"
@@ -153,7 +153,7 @@
 		<div class="hot-item-box">
 			<div class="hot-item-info">
 				<h3>인기매물</h3>
-				<c:if test="${checkInfoHotItemSize > 18}">
+				<c:if test="${checkInfoItemSize > 18}">
 					<a href='/listItem.do'>더 구경하기</a>
 				</c:if>
 			</div>

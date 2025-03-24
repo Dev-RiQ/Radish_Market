@@ -3,12 +3,14 @@ package com.radish.controller.myPage;
 import java.io.IOException;
 import java.util.List;
 
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.UserDAO;
 import com.radish.dao.ZzimDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.vo.Item;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,7 +27,10 @@ public class zzimListUserController implements Controller {
 		}
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
+		
+		User user = UserDAO.getInstance().getAUserPortionInfo(log);
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		
 		int zzimListSizeInt = ZzimDAO.getInstance().getZzimListSize(log);
 		String zzimListSize = "";

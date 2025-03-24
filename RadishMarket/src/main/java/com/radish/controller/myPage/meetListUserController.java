@@ -2,11 +2,13 @@ package com.radish.controller.myPage;
 
 import java.io.IOException;
 
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetUserDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
+import com.radish.vo.User;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,7 +25,10 @@ public class meetListUserController implements Controller {
 		}
 		
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
-		request.setAttribute("user", UserDAO.getInstance().getAUserPortionInfo(log));
+		
+		User user = UserDAO.getInstance().getAUserPortionInfo(log);
+		request.setAttribute("user", user);
+		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 		
 		int hostMeetListSizeInt = MeetDAO.getInstance().getHostMeetListSize(log);
 		String hostMeetListSize = "";

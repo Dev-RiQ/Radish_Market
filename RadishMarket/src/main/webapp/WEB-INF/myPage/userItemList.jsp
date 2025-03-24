@@ -15,6 +15,11 @@
 	</c:choose>
 	<span>${user.user_nickname}</span>
 </div>
+	
+	<c:if test="${log ne user.user_no}">
+		<input type="hidden" id="receive_user_no" name="receive_no" value="${user.user_no}">
+		<button type="button" onclick="openPop('send')">쪽지 보내기</button>
+	</c:if>
 
 <div class="useritemlist-container">
 
@@ -22,7 +27,7 @@
 		<img alt="유저 이미지" src="/images/${user.user_img}">
 		<p>${user.user_nickname}</p>
 		<p>${user.user_dong}</p>
-		<p>${user.user_deg}℃${emoji}</p>
+		<p>${user.user_deg}℃ ${emoji}</p>
 		<progress id="progress" value="${user.user_deg}" max="100"></progress>
 		<p>매너온도</p>
 	</div>
@@ -42,4 +47,5 @@
 </div>
 
 <script src="../../js/mypageButtonToggle.js"></script>
+<script src="../../js/letter.js"></script>
 <%@ include file="../main/footer.jsp"%> 
