@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.radish.util.DBUtil;
 import com.radish.vo.Meet;
-import com.radish.vo.User;
 
 public class MeetDAO {
 	private static MeetDAO instance;
