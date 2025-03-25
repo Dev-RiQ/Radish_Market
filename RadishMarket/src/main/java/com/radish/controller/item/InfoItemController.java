@@ -1,6 +1,7 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,13 @@ public class InfoItemController implements Controller {
 
 		List<Item> itemList = ItemDAO.getInstance().getItemInfoList(item.getUser_no());
 		request.setAttribute("itemList", itemList);
+		DecimalFormat df = new DecimalFormat("###,###");
+		List<String> itemPriceList = new ArrayList<>();
+		for(Item e : itemList) {
+			String itemPrice = df.format(e.getItem_price());
+			itemPriceList.add(itemPrice);
+		}
+		request.setAttribute("itemPriceList", itemPriceList);
 		
 		request.setAttribute("checkInfoItemSize", ItemDAO.getInstance().checkInfoItemSize(item.getUser_no()));
 
@@ -62,6 +70,12 @@ public class InfoItemController implements Controller {
 
 		List<Item> hotItemList = ItemDAO.getInstance().getHotItemInfoList();
 		request.setAttribute("hotItemList", hotItemList);
+		List<String> hotItemPriceList = new ArrayList<>();
+		for(Item e : hotItemList) {
+			String itemPrice = df.format(e.getItem_price());
+			hotItemPriceList.add(itemPrice);
+		}
+		request.setAttribute("hotItemPriceList", hotItemPriceList);
 		
 		request.setAttribute("checkInfoHotItemSize", ItemDAO.getInstance().checkInfoHotItemSize());
 

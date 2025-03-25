@@ -307,4 +307,30 @@ public class UserDAO {
 		return list;
 	}
 
+	public List<String> getUserDongListByUserNoList(List<Integer> commentUserNoList) {
+		List<String> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			for (Integer user_no : commentUserNoList) {
+				list.add((session.selectOne("getUserDongListByUserNoList", user_no)));
+			}
+		} catch (Exception e) {
+			System.out.println("getUserDongListByUserNoList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<String> getUserImgList(List<Integer> commentUserNoList) {
+		List<String> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()) {
+			for (Integer user_no : commentUserNoList) {
+				list.add((session.selectOne("getUserImgList", user_no)));
+			}
+		} catch (Exception e) {
+			System.out.println("getUserImgList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

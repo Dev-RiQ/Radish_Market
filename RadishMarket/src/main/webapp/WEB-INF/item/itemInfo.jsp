@@ -136,7 +136,7 @@
 										판매 완료
 									</c:when>
 											</c:choose>
-										</span> ${itemList.get(i).item_price}원
+										</span> ${itemPriceList.get(i)}원
 									</p>
 									<p>${user.user_dong}</p>
 									<hr>
@@ -174,7 +174,7 @@
 										판매 완료
 									</c:when>
 								</c:choose>
-							</span> ${hotItemList.get(i).item_price}원
+							</span> ${hotItemPriceList.get(i)}원
 						</p>
 						<p>${hotUserNicknameList.get(i)}</p>
 						<hr>

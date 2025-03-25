@@ -1,5 +1,5 @@
-function commentUpdate(e){
-	const comment_no = e.id.replace("btn-comment-update","");
+function commentUpdate(e) {
+	const comment_no = e.id.replace("btn-comment-update", "");
 	const comment_content_box = document.querySelector(`#comment_content_box${comment_no}`);
 	comment_content_box.innerHTML = `<form action="/updateComment.do" method="post">
 										<textarea name="comment_content" id="comment_content">${document.querySelector(`#comment_content${comment_no}`).innerText}</textarea>
