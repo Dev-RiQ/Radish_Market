@@ -29,9 +29,12 @@ function openPop(type) {
 			break;
 		case 'read' : 
 			fetchReadLetter();
-			let check = document.querySelector(`#check-letter${letter_no}`);
-			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check.innerText == '안읽음')
-				check.innerText = '읽음';
+			let check = document.querySelector(`#show-letter${letter_no}`);
+			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check && !check.value){
+				check.value = '1'
+				check.innerHTML = check.innerHTML.replace('<strong><i class="fa-solid fa-envelope" style="color: greenyellow">'
+												,'<i class="fa-solid fa-envelope-open" style="color: rgb(148, 140, 140)">') + '<strong style="width:0;">'
+			}
 			break;
 	}
 }

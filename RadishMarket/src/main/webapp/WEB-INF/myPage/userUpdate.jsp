@@ -2,12 +2,123 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
 <link rel="stylesheet" href="../../css/userInsert.css">
-<section>
-<div class="dir-history">
-	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>프로필 수정</span>
-</div>
+<link rel="stylesheet" href="../../css/userMypage.css">
 
-<main>
+<section>
+	<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>프로필 수정</span>
+	</div>
+	
+	<div class="user-mypage-box">
+    <div class="mypag">
+      <div class="myprofil">
+        <table style="margin-left: 15px">
+          <tr>
+            <td rowspan="2">
+            	<div class="user-img">
+            		<img alt="대표이미지" src="/images/${ user.user_img ne '' ? user.user_img : 'usersDefaultImg.png' }">
+            	</div>
+            </td><!--프로필-->
+          </tr>
+          <tr>
+            <td>
+              <h3 style="font-size: 30px; margin-left: 5px">${user.user_nickname}</h3><!--이름-->
+              <br />
+              <span style="font-size: 13px; color: #5a5656; margin-left: 9px">${user.user_dong}</span><!--상태 메세지-->
+            </td>
+          </tr>
+        </table>
+
+        <div class="friend">
+          <div class="temperature">
+			<p>${user.user_deg}℃${emoji}</p>
+            <progress id="file" value="${user.user_deg}" max="100"></progress>
+            <p style="font-size: 40px; margin-left: 15px;">${emoji}</p><!--온도-->
+            <p>매너온도</p>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      <div class="menu">
+
+
+        <div class="cartegory">
+          <button class="tablinks" id="defaultOpen" onclick="location.href='/mypageUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-home" style="font-size: 20px; color: #000"></i>
+              </div><span>마이페이지</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/updateUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-user" style="font-size: 20px; color: #000"></i>
+              </div><span>프로필 수정</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" onclick="location.href='/boardListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-folder" style="font-size: 20px; color:  #F7D358 "></i>
+              </div><span>내 게시글</span>
+            </div>
+            <!--  내 게시글-->
+          </button>
+          <button class="tablinks" onclick="location.href='/listLetter.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-envelope" style="font-size: 20px;  color: #FF0080"></i>
+              </div><span>쪽지함</span>
+            </div>
+            <!--  쪽지함-->
+          </button>
+          <button class="tablinks" onclick="location.href='/zzimListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bookmark" style="font-size: 20px;  color: gray"></i>
+              </div><span>찜목록</span>
+            </div>
+            <!--  찜목록-->
+          </button>
+          <button class="tablinks" onclick="location.href='/itemListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-gift" style="font-size: 20px;  color: skyblue"></i>
+              </div><span>내 상품</span>
+            </div>
+            <!--  내 상품-->
+          </button>
+          <button class="tablinks" onclick="location.href='/cartListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bag-shopping" style="font-size: 20px; color: pink"></i>
+              </div><span>구매 내역</span>
+            </div>
+            <!--   구매 내역 -->
+          </button>
+          <button class="tablinks" onclick="location.href='/sellListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-piggy-bank" style="font-size: 20px; color: #5fcc29"></i>
+              </div><span>판매 내역</span>
+            </div>
+            <!--    판매 내역-->
+          </button>
+
+          <button class="tablinks" onclick="location.href='/meetListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa fa-users" style="font-size: 20px;color: yellowgreen"></i>
+              </div><span>내 모임</span>
+            </div>
+            <!--   내 모임<-->
+          </button>
+        </div>
+
+
+        <div class="menulist">
+          <div class="menulistbtn">
+				<button>회원 정보 수정</button>
+          </div>
+          <div class="cartegorymenue">
+          		<main>
       <div class="insert">
         <div class="insert-welcom">
           <h1>Welcom</h1>
@@ -63,7 +174,7 @@
           <label for="user_img">프로필<b>*</b></label
           ><!---->
           <div id="post-list">
-          	<img alt="프로필" src="/images/${ user.user_img ne null || user.user_img.isBlank() ? usersDefaultImg.png : user.user_img }">
+          	<img alt="프로필" src="/images/${ user.user_img ne '' ? user.user_img : 'usersDefaultImg.png' }">
           </div>
           <br />
           <input type="hidden" name="user_img" id="user_img"  value="${ user.user_img }" readonly />
@@ -114,6 +225,20 @@
         </div>
       </div>
     </main>
+          </div><!-- 내용-->
+        </div>
+      </div>
+  </div>
+ 	 <button onclick="topFunction()" id="headerBtn" title="Go to top">
+       <i class="fa-solid fa-angle-up"></i>
+     </button>
+  </div>
+</section>
+
+
+<section>
+
+
 </section>
 <%@ include file="../main/footer.jsp" %>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
