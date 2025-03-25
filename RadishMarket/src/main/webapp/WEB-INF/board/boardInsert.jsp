@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../../css/boardInsert.css">
 
 <section>
-<main>
+<div class="board-insert-box">
       <div class="productsts">
       	<form action="/insertBoard.do" method="post">
 	        <div class="txt" style="border-bottom: 1px solid #ddd">
@@ -47,7 +47,7 @@
 	
 	        <div class="imguplod">
 				<div id="post-list"></div><br>
-				<input type="text" name="board_img" id="board_img" placeholder="이미지" readonly>
+				<input type="hidden" name="board_img" id="board_img" placeholder="이미지" readonly>
 				<button type="button" onclick="openPop()">이미지 업로드</button>
 	        </div>
 	
@@ -60,7 +60,7 @@
 	        </div>
         </form>
       </div>
-    </main>
+    </div>
 </section>
 
 <%@ include file="../main/footer.jsp" %>

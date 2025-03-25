@@ -182,3 +182,8 @@ function validCheck() {
 			console.error("폼 제출 중 오류:", error);
 		});
 }
+
+
+function fileUpload(){
+	document.querySelector('#ofile').click();
+}

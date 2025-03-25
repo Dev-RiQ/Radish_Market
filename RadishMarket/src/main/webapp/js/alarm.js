@@ -70,12 +70,6 @@ function sendAlarm () {
 		.catch(error => console.log(error))
 		return;
 	}
-	if(alarm_category_no != '6'){
-		const form = document.querySelector('form');
-		if(form){
-			form.submit();
-		}
-	}
 	if(alarm_category_no == '1'){
 		fetch(`/insertLike.do?board_no=${ link_no }`)
 		.then(response => response.text())
@@ -85,6 +79,7 @@ function sendAlarm () {
 			isLike.value = '1'
 		})
 		.catch(error => console.log(error))
+		return;
 	}
 	if(alarm_category_no == '2'){
 		const comment = document.querySelector('#comment_content');
@@ -94,6 +89,14 @@ function sendAlarm () {
 			location.href=`infoBoard.do?board_no=${link_no}`
 		})
 		.catch(error => console.log(error))
+		location.reload();
+		return;
+	}
+	if(alarm_category_no != '6'){
+		const form = document.querySelector('form');
+		if(form){
+			form.submit();
+		}
 	}
 	if(alarm_category_no == '9'){
 		location.href=`/insertMeetUser.do?meet_no=${link_no}&user_no=${user_no}`;

@@ -221,7 +221,7 @@ pre {
 	transition: transform 0.3s ease-in-out; /* 부드러운 확대 효과 */
 }
 
-.board-list-box .txtcald .imgbox:hover img {
+.board-list-box .txtcald:hover img {
 	transform: scale(1.2); /* 마우스를 올리면 1.2배 확대 */
 }
 

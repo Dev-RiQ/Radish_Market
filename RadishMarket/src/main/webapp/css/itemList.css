@@ -1,0 +1,362 @@
+@charset "UTF-8";
+
+.item-list-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.item-list-box .transaction {
+	width: 85%;
+}
+
+.item-list-box .homt-transaction-txt {
+	display: flex;
+	height: 120px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item-list-box .categoryandproduct {
+	width: 100%;
+	display: flex;
+}
+
+.item-list-box .category {
+	width: 290px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.item-list-box .local {
+	width: 100%;
+	margin-left: 5px;
+}
+
+.item-list-box .categorys {
+	width: 100%;
+	height: 300px;
+	margin-left: 5px;
+}
+
+.item-list-box .product {
+	width: 100%;
+	flex-direction: column;
+	margin-left: 10px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	padding: 10px; /* 안쪽 여백 추가 */
+}
+
+.item-list-box .price {
+	width: 90%;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+}
+
+.item-list-box .salesstatus {
+	width: 100%;
+	height: 400px;
+	margin-left: 5px;
+}
+
+.item-list-box .money {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-left: 5px;
+}
+
+.item-list-box .proce-input {
+	width: 100%;
+	height: 80px;
+	margin-left: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-list-box .price-mbtn {
+	width: 100%;
+	height: t0px;
+	text-align: center;
+}
+
+.item-list-box .price-mbtn .mbtn {
+	background-color: greenyellow;
+	border: none;
+	color: rgb(244, 237, 237);
+}
+
+.item-list-box .cash {
+	width: 110px;
+	height: 30px;
+	margin: 10px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+}
+
+.item-list-box button {
+	width: 100px;
+	height: 40px;
+	margin: 5px;
+}
+
+.item-list-box p {
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.item-list-box .more-btn {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+.item-list-box .more-btn> .more {
+	margin-right: 30px;
+	border: none;
+	font-size: 20px;
+	background-color: white;
+	color: black;
+}
+
+.item-list-box .mbtn {
+	width: 100px;
+	border-radius: 15px;
+	border: 1px solid #ddd;
+	background-color: white;
+	color: gray;
+}
+
+.item-list-box .product-child {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: stretch; /* 높이 균일하게 조정 */
+}
+
+.item-list-box .child {
+	width: calc(25% - 10px); /* 한 줄에 4개씩 정렬 */
+	height: 350px;
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	background: #fff;
+	cursor: pointer;
+}
+
+.item-list-box .child .itemimg {
+	width: 100%;
+	height: 210px;
+	background-color: blue;
+	overflow: hidden; /* 이미지가 밖으로 나가지 않도록 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-list-box .child .itemimg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 박스를 꽉 채우도록 설정 */
+	transition: transform 0.3s ease-in-out; /* 부드러운 확대 효과 */
+}
+
+.item-list-box .child:hover img {
+	transform: scale(1.2); /* 마우스를 올리면 1.item-list-box .2배 확대 */
+}
+
+.item-list-box .child .itemtxt {
+	width: 100%;
+	height: 140px;
+	line-height: 10px;
+	border: 1px solid #ddd;
+	color: black;
+}
+
+.item-list-box .child .itemtxt>h5 {
+	margin-left: 5px;
+	font-size: 20px;
+}
+
+.item-list-box .child .itemtxt>p {
+	font-size: 18px;
+	height:18px;
+	margin-left: 5px;
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	line-height:18px;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+}
+
+.item-list-box .child .itemtxt span {
+	margin-left: 5px;
+	font-size: 12px;
+	color: #888585;
+}
+
+.item-list-box hr {
+	border: 1px solid #f8f2f2;
+}
+
+.item-list-box .locallifetxt {
+	width: 350px;
+}
+
+.item-list-box .lbtns {
+	width: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.item-list-box .lbtns button {
+	width: 150px;
+	height: 40px;
+	border-radius: 15px;
+	background-color: greenyellow;
+	border: none;
+	color: white;
+}
+
+.item-list-box #headerBtn {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	bottom: 70px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: rgb(154, 150, 150);
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 4px;
+	border-radius: 50%;
+}
+
+.item-list-box #myBtn {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	bottom: 10px; /* Top 버튼 위로 이동 */
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: greenyellow;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 50%;
+}
+
+.item-list-box .lbtns button:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+
+.item-list-box #myBtn:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+
+.item-list-box #headerBtn:hover:active {
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+}
+
+.item-list-box .mbtn:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+
+.item-list-box .container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 17px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.item-list-box .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.item-list-box .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+.item-list-box .container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+.item-list-box .container input:checked ~ .checkmark {
+	background-color: #2cd319;
+}
+
+.item-list-box .checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.item-list-box .container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.item-list-box .container .checkmark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.item-list-box .addbtn {
+	width: 100px;
+	height: 50px;
+	font-size: 35px;
+	background-color: white;
+	border: none;
+}
+
+@media(min-width:1280px){
+	.item-list-box #myBtn, .item-list-box #headerBtn{
+		right:calc(50% - 625px);
+	}
+}
