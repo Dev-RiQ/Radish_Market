@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+.letter-list-box .mails {
+	width: 100%;
+	height: 100%;
+}
+
+.letter-list-box .mail {
+	width: 94%;
+	height: 35px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 20px;
+	align-items: center;
+	font-size: 17px;
+	border-bottom: 1px solid #dad2d2;
+	color: rgb(135, 132, 132);
+}
+
+.letter-list-box .mail>div {
+	display:flex;
+	width:100%;
+	justify-content: space-between;
+}
+
+.letter-list-box .mail button {
+	border: none;
+	color: gray;
+	background-color: white;
+}
+
+.letter-list-box .state {
+	width: 100%;
+	height: 35px;
+	background-color: rgb(174, 229, 140);
+	display: flex;
+	align-items: center;
+	font-size: 17px;
+	color: rgb(135, 132, 132);
+}
+
+.letter-list-box tr, td, table {
+	text-align: center;
+}
+
+.letter-list-box table {
+	width: 100%;
+}
+
+.letter-list-box strong {
+	width: 100%;
+	height: 35px;
+	gap:12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 17px;
+	border-bottom: 1px solid #dad2d2;
+	color: rgb(79, 78, 78);
+}
+
+.letter-list-box p {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+}
+.letter-list-box strong i {
+	margin-top: 5px;
+}
+.letter-list-box i {
+	margin-top: 20px;
+}
+.letter-list-box .letter-nickname {
+	min-width: 130px;
+	margin-left : 55px;
+}
+.letter-list-box .letter-title {
+	width: 500px;
+	margin-left : 40px;
+}
+.letter-list-box .letter-reg-datetime {
+	width: 170px;
+}

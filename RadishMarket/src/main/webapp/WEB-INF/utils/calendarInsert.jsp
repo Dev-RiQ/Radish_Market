@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp" %>
-
+<section>
 <div class="dir-history">
 	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span> 일정 등록 </span>
 </div>
@@ -48,6 +48,7 @@
 	<button type="button" onclick="validCheck()">일정 등록</button>
 </form>
 
+</section>
 <%@ include file="../main/footer.jsp" %>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

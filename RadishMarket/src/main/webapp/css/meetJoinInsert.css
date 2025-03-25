@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+.meet-join-insert-box {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.meet-join-insert-box .lettergoings {
+	width: 400px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.meet-join-insert-box .lettertxt {
+	width: 100%;
+	background-color: greenyellow;
+	display: flex;
+	border-radius: 10px 10px 0px 0px;
+	align-items: center;
+}
+
+.meet-join-insert-box .lettertxt h2 {
+	margin-left: 10px;
+}
+
+.meet-join-insert-box .text {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.meet-join-insert-box .going {
+	width: 100%;
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.meet-join-insert-box .going button {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: greenyellow;
+	border: none;
+	margin: 10px;
+}
+
+.meet-join-insert-box .title {
+	width: 100%;
+	height: 50px;
+}
+
+.meet-join-insert-box input {
+	width: 80%;
+	height: 30px;
+	border-radius: 10px;
+	border: 1px solid #a89494;
+}
+
+.meet-join-insert-box textarea {
+	width: 80%;
+	height: 180px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	resize: none;
+}
+
+.meet-join-insert-box h3 {
+	margin-left: 10px;
+}
+
+.meet-join-insert-box span {
+	color: red;
+}
+
+.meet-join-insert-box .going .delect {
+	width: 60px;
+	background-color: #ddd;
+}
+
+.meet-join-insert-box .propilreview .img-box-td {
+	justify-content:center;
+}
+.meet-join-insert-box .propilreview .img-box {
+	justify-self:center;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	overflow:hidden;
+	
+}
+.meet-join-insert-box .propilreview img {
+	width: 90px;
+	height: 90px;
+	object-fit:cover;
+	
+}
+.meet-join-insert-box .propilreview {
+	width: 100%;
+	height: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: greenyellow;
+}
+
+.meet-join-insert-box .propilreview input {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+}
+
+.meet-join-insert-box table {
+	text-align: center;
+}
+
+.meet-join-insert-box .going button:hover:active {
+	background-color: white;
+	color: greenyellow;
+	border: 1px solid greenyellow;
+}
+
+.meet-join-insert-box .going .delect:hover:active {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+}

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+.meet-user-list-box  {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.meet-user-list-box .memberlist {
+	width: 80%;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.meet-user-list-box .mtlogo {
+	width: 100%;
+	height: 200px;
+	background-color: rgb(202, 249, 131);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.meet-user-list-box .mtlogo input {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.meet-user-list-box .members {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 15px;
+}
+
+.meet-user-list-box .mbprofile {
+	height: 90px;
+	margin: 4px;
+	width: calc(100%/ 3 - 5px * 2);
+	display: flex;
+	align-items: center;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.meet-user-list-box .m img {
+	width: 60px;
+	height: 60px;
+	object-fit: cover;	
+}
+.meet-user-list-box .img-box {
+	width: 150px;
+	height: 60px;
+	overflow: hidden;
+	border-radius:50%;
+}
+.meet-user-list-box .m {
+	width: 100%;
+	height: 60px;
+	display: flex;
+	padding: 0 10px;
+	justify-content:space-between;
+}
+
+.meet-user-list-box .mname {
+	width: 100%;
+	margin-left: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.meet-user-list-box .mname p {
+	line-height: normal;
+	font-size: 20px;
+	margin-left: 5px;
+}
+
+.meet-user-list-box span {
+	font-size: 15px;
+	color: #ddd;
+	margin-left: 2px;
+}
+
+.meet-user-list-box .ondo {
+	width: 100%; /* 너비 조정 */
+	height: 50px;
+	font-size: 16px;
+	display: flex;
+	margin-top: 10px;
+}
+
+.meet-user-list-box table, tr, td {
+	text-align: center;
+	border: 1px solid #ddd;
+	margin: auto;
+}
+
+.meet-user-list-box .ondos {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+}
+
+.meet-user-list-box .empticon {
+	width: 30%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.meet-user-list-box progress {
+	width: 70px;
+	height: 15px;
+}

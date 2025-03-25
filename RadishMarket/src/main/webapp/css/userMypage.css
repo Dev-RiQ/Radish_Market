@@ -1,0 +1,283 @@
+@charset "UTF-8";
+
+.user-mypage-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.user-mypage-box .user-img {
+	width:100px;
+	height:100px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-mypage-box .user-img img{
+	width:100px;
+	height:100px;
+	object-fit: cover;
+}
+.user-mypage-box .mypag {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px 10px 0px 0px;
+}
+body footer{
+	margin: 0;
+	display: flex;
+}
+
+.user-mypage-box .myprofil {
+	width: 100%;
+	height: 200px;
+	background-color: #d9f0d0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 10px 10px 0px 0px;
+}
+
+.user-mypage-box .menu {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.user-mypage-box .cartegory {
+	border: 1px solid #ccc;
+	width: 20%;
+}
+
+.user-mypage-box .btn-inner-box {
+	display: flex;
+}
+
+/* Style the buttons inside the tab */
+.user-mypage-box .cartegory button {
+	display: block;
+	background-color: inherit;
+	color: black;
+	padding: 12px 15px;
+	width: 100%;
+	height: 50px;
+	border: none;
+	text-align: start;
+	outline: none;
+	cursor: pointer;
+	transition: 0.3s;
+	font-size: 15px;
+}
+
+.user-mypage-box .cartegory button:hover {
+	background-color: #d9f0d0;
+}
+
+.user-mypage-box .cartegory button.active {
+	background-color: #d9f0d0;
+}
+
+.user-mypage-box .tabcontent {
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+.user-mypage-box .myprofil input {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+.user-mypage-box .friend {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-mypage-box .temperature {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.user-mypage-box .friends {
+	width: 100%;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-mypage-box progress {
+	accent-color: rgb(34, 233, 147);
+	height: 25px;
+}
+
+.user-mypage-box .import {
+	width: 98%;
+	height: 100%;
+	margin-left: 10px;
+}
+
+.user-mypage-box .menulist {
+	width: calc(100% - 200px);
+	height: 100%;
+}
+
+.user-mypage-box .menulistbtn {
+	width: 100%;
+	display: flex;
+	border-right: 1px solid #ddd;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+
+.user-mypage-box .menulistbtn button {
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	border: none;
+}
+
+.user-mypage-box .menulistbtn button:hover {
+	background-color: #d9f0d0;
+}
+
+.user-mypage-box .cartegorymenue {
+	width: 100%;
+	height: calc(100% - 50px);
+	border: 1px solid #ddd;
+	margin-top: -2px;
+}
+
+.user-mypage-box span{
+	color: black;
+	font-size:14px;
+}
+
+.user-mypage-box .container{
+	width: 100%;
+}
+
+.user-mypage-box .menu-box {
+	width: 30px;
+	text-align: center;
+}
+
+.user-mypage-box .cartegory span {
+	margin-left: 5px;
+}
+
+.user-mypage-box .cartegorymenue #btn-more-list{
+	width: 100%;
+	height: 50px;
+	font-size: 35px;
+	background-color: white;
+	border: none;
+}
+.user-mypage-box #headerBtn{
+	right: 15px;
+	bottom: 30px;
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: rgb(154, 150, 150);
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 4px;
+	border-radius: 50%;
+}
+@media(min-width:1280px){
+	section .user-mypage-box #headerBtn{
+		right:calc(50% - 725px);
+	}
+}
+
+.user-mypage-box #list-box{
+	width:100%;
+	padding: 0 10px;
+}
+.user-mypage-box .review-btn-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.user-mypage-box .btn-reviewing{
+	width:90%;
+	height: 50px;
+	border-radius:10px;
+	background-color: #5FCC29;
+	color:#fff;
+	border: none;
+	font-size: 18px;
+	margin: 5px 0;
+}
+.user-mypage-box .btn-reviewed{
+	margin: 5px 0;
+	width:90%;
+	height: 50px;
+	border-radius:10px;
+	background-color: #ddd;
+	font-size: 18px;
+	border: none;
+	cursor: default;
+}
+.user-mypage-box .bought-box>.child{
+	width:100%;
+	border:none;
+	
+}
+.user-mypage-box .bought-box{
+	min-width: 243px;
+	border: 1px solid #ddd;
+	border-radius:15px;
+}
+.user-mypage-box .review-user-img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.user-mypage-box .review-user-img img{
+	width: 50px;
+	height: 50px;
+	object-fit:cover;
+}
+.user-mypage-box .review-item-img{
+	width: 50px;
+	height: 50px;
+	overflow: hidden;
+	margin:10px;
+}
+.user-mypage-box .review-item-img img{
+	width: 50px;
+	height: 50px;
+	object-fit:cover;
+}
+.user-mypage-box .review-content{
+	width: 100%;
+	display:flex;
+	justify-content: space-between;
+}
+.user-mypage-box .review-table{
+	width: calc(100% - 70px);
+}
+.user-mypage-box .review-content-box{
+	font-size: 15px;
+	margin-left: 9px;
+	
+}
+.user-mypage-box .review-hr{
+	width: 98%;
+	border:1px solid #ddd;
+}
+

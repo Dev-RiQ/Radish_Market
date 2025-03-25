@@ -2,36 +2,151 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../main/header.jsp"%>
+<link rel="stylesheet" href="../../css/userMypage.css">
+<link rel="stylesheet" href="../../css/letterList.css">
 
-<input type="hidden" id="log" value="${ log }" />
-
-<div class="dir-history">
-	<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>쪽지함</span>
-</div>
-
-<div class="useritemlist-container">
-
-	<div class="user-profile">
-		<img alt="유저 이미지" src="/images/${user.user_img}">
-		<p>${user.user_nickname}</p>
-		<p>${user.user_dong}</p>
-		<p>${user.user_deg}℃${emoji}</p>
-		<progress id="progress" value="${user.user_deg}" max="100"></progress>
-		<p>매너온도</p>
+<section>
+	<div class="dir-history">
+		<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 > </a> <span>쪽지함</span>
 	</div>
+	
+	<div class="user-mypage-box">
+    <div class="mypag">
+      <div class="myprofil">
+        <table style="margin-left: 15px">
+          <tr>
+            <td rowspan="2">
+            	<div class="user-img">
+            		<img alt="대표이미지" src="/images/${ user.user_img ne '' ? user.user_img : 'usersDefaultImg.png' }">
+            	</div>
+            </td><!--프로필-->
+          </tr>
+          <tr>
+            <td>
+              <h3 style="font-size: 30px; margin-left: 5px">${user.user_nickname}</h3><!--이름-->
+              <br />
+              <span style="font-size: 13px; color: #5a5656; margin-left: 9px">${user.user_dong}</span><!--상태 메세지-->
+            </td>
+          </tr>
+        </table>
 
-	<div class="btn-box">
-		<button class="list-btn" id="receive-btn" onclick="openList()">받은 쪽지 (${receiveLetterListSize})</button>
+        <div class="friend">
+          <div class="temperature">
+			<p>${user.user_deg}℃${emoji}</p>
+            <progress id="file" value="${user.user_deg}" max="100"></progress>
+            <p style="font-size: 40px; margin-left: 15px;">${emoji}</p><!--온도-->
+            <p>매너온도</p>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="menu">
+
+
+        <div class="cartegory">
+          <button class="tablinks" id="defaultOpen" onclick="location.href='/mypageUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-home" style="font-size: 20px; color: #000"></i>
+              </div><span>마이페이지</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" onclick="location.href='/updateUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-user" style="font-size: 20px; color: #000"></i>
+              </div><span>프로필 수정</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" onclick="location.href='/boardListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-folder" style="font-size: 20px; color:  #F7D358 "></i>
+              </div><span>내 게시글</span>
+            </div>
+            <!--  내 게시글-->
+          </button>
+          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/listLetter.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-envelope" style="font-size: 20px;  color: #FF0080"></i>
+              </div><span>쪽지함</span>
+            </div>
+            <!--  쪽지함-->
+          </button>
+          <button class="tablinks" onclick="location.href='/zzimListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bookmark" style="font-size: 20px;  color: gray"></i>
+              </div><span>찜목록</span>
+            </div>
+            <!--  찜목록-->
+          </button>
+          <button class="tablinks" onclick="location.href='/itemListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-gift" style="font-size: 20px;  color: skyblue"></i>
+              </div><span>내 상품</span>
+            </div>
+            <!--  내 상품-->
+          </button>
+          <button class="tablinks" onclick="location.href='/cartListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bag-shopping" style="font-size: 20px; color: pink"></i>
+              </div><span>구매 내역</span>
+            </div>
+            <!--   구매 내역 -->
+          </button>
+          <button class="tablinks" onclick="location.href='/sellListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-piggy-bank" style="font-size: 20px; color: #5fcc29"></i>
+              </div><span>판매 내역</span>
+            </div>
+            <!--    판매 내역-->
+          </button>
+
+          <button class="tablinks" onclick="location.href='/meetListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa fa-users" style="font-size: 20px;color: yellowgreen"></i>
+              </div><span>내 모임</span>
+            </div>
+            <!--   내 모임<-->
+          </button>
+        </div>
+
+
+        <div class="menulist">
+          <div class="menulistbtn">
+				<button class="list-btn" id="receive-btn" onclick="openList()">받은 쪽지 (${receiveLetterListSize})</button>
 		<button class="list-btn" id="send-btn" onclick="openList()">보낸 쪽지 (${sendLetterListSize})</button>
-	</div>
-
-	<p class="empty-info" id=""></p>
-	<div id="list-box">
-		<!-- 여기 리스트 출력 -->
-	</div>
-	<button id="btn-more-list" value="receiveLetter/0" onclick="getMoreList()">더보기</button>
-
-</div>
+          </div>
+          <div class="cartegorymenue">
+          		<p class="empty-info" id="boardList"></p>
+          		<div class="letter-list-box">
+          			<div class="mails">
+				      <div class="state">
+				        <table>
+				          <tr>
+				            <td style="width: 7%">상태</td>
+				            <td style="width: 15%">보낸 사람</td>
+				            <td style="width: 60%">내용</td>
+				            <td style="width: 10%">날짜</td>
+				            <td id="remove-letter-th">지우기</td>
+				          </tr>
+				        </table>
+				      </div>
+					<div id="list-box">
+						<!-- 여기 리스트 출력 -->
+					</div>
+          		</div>
+				<button class="addbtn" id="btn-more-list" value="receiveLetter/0" onclick="getMoreList()">더보기</button>
+				</div>
+          </div><!-- 내용-->
+        </div>
+      </div>
+  </div>
+ 	 <button onclick="topFunction()" id="headerBtn" title="Go to top">
+       <i class="fa-solid fa-angle-up"></i>
+     </button>
+  </div>
+</section>
 
 <script src="../../js/mypageButtonToggle.js"></script>
 <script src="../../js/letter.js"></script>

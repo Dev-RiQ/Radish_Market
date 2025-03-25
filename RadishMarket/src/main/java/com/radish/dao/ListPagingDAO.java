@@ -373,14 +373,12 @@ public class ListPagingDAO {
 			int memberCount = memberCountList.get(i);
 			String meet_category_name = meetCategoryList.get(i).getMeet_category_name();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+meet_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
-			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+meet_img+"\"/>");
-			sb.append("<br><p>"+meet_title+"</p>");
-			sb.append("<p>"+meet_content+"</p>");
-			sb.append("<span>"+meet_dong+"</span>");
-			sb.append("<span> / "+"회원수 : "+memberCount+"</span>");
-			sb.append("<span> / "+meet_category_name+"</span>");
+			sb.append("<div class=\"txtcald\" style=\"cursor: pointer;\" onclick=\"location.href='/infoMeet.do?meet_no="+meet_no+"&meet_dong="+meet_dong+"&meet_user_count="+memberCount+"&meet_category_name="+meet_category_name+"'\">");
+			sb.append("<div class=\"imgbox\"><img src=\"/images/"+meet_img+"\" alt=\"대표이미지\" /></div>");
+			sb.append("<div class=\"txtbox\">");
+			sb.append("<h3>"+meet_title+"</h3>");
+			sb.append("<span>"+meet_content+"</span>");
+			sb.append("<pre> <i class=\"fa-solid fa-location-dot\"></i> "+meet_dong+"  <i class=\"fa-solid fa-user\"></i> "+memberCount+" "+meet_category_name+"</pre>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -391,19 +389,24 @@ public class ListPagingDAO {
 		for(int i = 0 ; i < list.size() ; i++) {
 			int letter_no = ((Letter) list.get(i)).getLetter_no();
 			int letter_check = ((Letter) list.get(i)).getLetter_check();
-			String check = letter_check == 0? "안읽음" : "읽음";
 			String user_nickname = userList.get(i).getUser_nickname();
 			String letter_title = ((Letter) list.get(i)).getLetter_title();
 			String letter_reg_datetime = ((Letter) list.get(i)).getLetter_reg_datetime();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
+			sb.append("<div class=\"mail\">");
 			sb.append("<div id=\"show-letter"+letter_no+"\" style=\"cursor: pointer;\" onclick=\"openPop('read')\">");
-			sb.append("<span id=\"check-letter"+letter_no+"\">"+check+"</span>");
-			sb.append("<span> "+user_nickname+" </span>");
-			sb.append("<span> "+letter_title+" </span>");
-			sb.append("<span> "+letter_reg_datetime+" </span>");
+			if(letter_check == 0)
+				sb.append("<strong><i class=\"fa-solid fa-envelope\" style=\"color: greenyellow\"></i>");
+			else
+				sb.append("</strong><i class=\"fa-solid fa-envelope-open\" style=\"color: rgb(148, 140, 140)\"></i>");
+			sb.append("<p class=\"letter-nickname\"> "+user_nickname+" </p>");
+			sb.append("<p class=\"letter-title\"> "+letter_title+" </p>");
+			sb.append("<p class=\"letter-reg-datetime\"> "+letter_reg_datetime+" </p>");
+			if(letter_check == 0)
+				sb.append("</strong>");
 			sb.append("</div>");
-			sb.append("<button onclick=\"location.href='deleteLetter.do?letter_no="+letter_no+"'\">삭제</button>");
+			if(((Letter) list.get(i)).getReceive_user_no() != userList.get(i).getUser_no())
+				sb.append("<button onclick=\"location.href='deleteLetter.do?letter_no="+letter_no+"'\">X</button>");
 			sb.append("</div>");
 		}
 		return sb;
@@ -420,12 +423,12 @@ public class ListPagingDAO {
 			String price = getPrintPrice(item_price);
 			String item_dong = itemList.get(i).getItem_dong();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
-			sb.append("<br><p>"+item_name+"</p>");
-			sb.append("<p>"+price+"</p>");
-			sb.append("<p>"+item_dong+"</p>");
+			sb.append("<div class=\"child\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
+			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
+			sb.append(" <div class=\"itemtxt\">");
+			sb.append("<p>"+item_name+"</p>");
+			sb.append("<p> "+price+"</p>");
+			sb.append("<span>"+item_dong+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -442,23 +445,23 @@ public class ListPagingDAO {
 			String item_name = itemList.get(i).getItem_name();
 			int item_price = itemList.get(i).getItem_price();
 			String price = getPrintPrice(item_price);
-			String user_nickname = userList.get(i).getUser_nickname();
 			String item_dong = itemList.get(i).getItem_dong();
 			int check_reviewed = ((Cart) list.get(i)).getCheck_reviewed();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
-			sb.append("<br><p>"+item_name+"</p>");
-			sb.append("<p>"+price+"</p>");
-			sb.append("<p>"+user_nickname+"</p>");
-			sb.append("<p>"+item_dong+"</p>");
+			sb.append("<div class=\"bought-box\">");
+			sb.append("<div class=\"child\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
+			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
+			sb.append(" <div class=\"itemtxt\">");
+			sb.append("<p>"+item_name+"</p>");
+			sb.append("<p> "+price+"</p>");
+			sb.append("<span>"+item_dong+"</span>");
 			sb.append("</div>");
-			sb.append("<div>");
+			sb.append("</div>");
+			sb.append("<div class=\"review-btn-box\">");
 			if(check_reviewed == 0) {
-				sb.append("<button onclick=\"location.href='/insertReview.do?item_no="+item_no+"'\">리뷰 작성하기</button>");
+				sb.append("<button class=\"btn-reviewing\" onclick=\"location.href='/insertReview.do?item_no="+item_no+"'\">리뷰 작성하기</button>");
 			}else {
-				sb.append("<button>리뷰 작성완료</button>");
+				sb.append("<button class=\"btn-reviewed\">리뷰 작성완료</button>");
 			}
 			sb.append("</div>");
 			sb.append("</div>");
@@ -479,13 +482,20 @@ public class ListPagingDAO {
 			if(itemImgList != null && itemImgList.size() > 0 && itemImgList.get(i).getItem_img() != null && !itemImgList.get(i).getItem_img().isBlank())
 				item_img = itemImgList.get(i).getItem_img();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+buy_user_img+"\">");
-			sb.append("<br><span>"+buy_user_nickname+"</span>");
-			sb.append("<span>"+buy_user_dong+"</span>");
-			sb.append("<p>"+review_content+"</p>");
-			sb.append("<img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
+			sb.append("<div class=\"review-content\">");
+			sb.append("<div class=\"review-table\">");
+			sb.append("<table style=\"margin-left: 15px\">");
+			sb.append("<tr><td rowspan=\"2\"><div class=\"review-user-img\">");
+			sb.append("<img alt=\"대표이미지\" src=\"/images/"+buy_user_img+"\"></div></td>");
+			sb.append("<td><span style=\"font-size: 15px; margin-left: 5px\">"+buy_user_nickname+"</span>");
+			sb.append("<span style=\"font-size: 13px; color: #5a5656; margin-left: 9px\">"+buy_user_dong+"</span></td></tr>");
+			sb.append("<tr><td><span class=\"review-content-box\">"+review_content+"</span></td></tr></table>");
 			sb.append("</div>");
+			sb.append("<div class=\"review-item-img\">");
+			sb.append("<img alt=\"대표 이미지\" src=\"/images/"+item_img+"\">");
+			sb.append("</div>");
+			sb.append("</div>");
+			sb.append("<hr class=\"review-hr\">");
 		}
 		return sb;
 	}

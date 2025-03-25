@@ -4,8 +4,13 @@ function sendAlarm () {
 		return;
 	}
 	
-	const user_no = document.querySelector('#user_no').value;
+	let user_no = null;
+	if(document.querySelector('#user_no')) 
+		user_no = document.querySelector('#user_no').value;
 	let alarm_category_no = document.querySelector('#alarm_category_no').value;
+	if(alarm_category_no == '9'){
+		user_no = event.target.id;
+	}
 	const link_no = document.querySelector('#link_no').value;
 	const isLike = document.querySelector('#isLike');
 	const isZzim = document.querySelector('#isZzim');
@@ -99,7 +104,8 @@ function sendAlarm () {
 		}
 	}
 	if(alarm_category_no == '9'){
-		location.href=`/insertMeetUser.do?meet_no=${link_no}&user_no=${user_no}`;
+		let meet_join_no = event.target.value;
+		location.href=`/insertMeetUser.do?meet_no=${link_no}&user_no=${user_no}&meet_join_no=${meet_join_no}`;
 	}
 }
 

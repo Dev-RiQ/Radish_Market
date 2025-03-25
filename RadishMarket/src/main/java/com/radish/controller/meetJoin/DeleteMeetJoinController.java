@@ -16,9 +16,9 @@ public class DeleteMeetJoinController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int meet_join_no = Integer.parseInt(request.getParameter("meet_join_no"));
-		
+		int meet_no = Integer.parseInt(request.getParameter("meet_no"));
 		if(MeetJoinDAO.getInstance().deleteMeetJoin(meet_join_no))
-			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 취소 완료", "listMeet.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 취소 완료", "listMeetJoin.do?meet_no="+meet_no);
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 모임 가입 취소에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

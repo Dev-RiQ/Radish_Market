@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+.meet-list-box .t {
+	margin: 0px;
+	color: #888383;
+}
+
+.meet-list-box p {
+	margin-top: -10px;
+	margin-left: 5px;
+}
+
+.meet-list-box span {
+	color: grey;
+	font-size: 12px;
+}
+
+.meet-list-box pre {
+	color: grey;
+	font-size: 13px;
+}
+
+.meet-list-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.meet-list-box .life {
+	width: 83%;
+	height: 100%;
+}
+
+.meet-list-box .locallife {
+	width: 100%;
+	height: 90px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.meet-list-box .texts {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.meet-list-box .besttexts {
+	width: 20%;
+	height: 100%;
+	font-size: 16px;
+}
+
+.meet-list-box .pepoletxts {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.meet-list-box .txtcald {
+	width: 99%;
+	height: 160px;
+	display: flex;
+	margin-top: 10px;
+	border-radius: 5px;
+	margin-left: 5px;
+	transition: 0.3;
+	display: flex;
+	align-items: center;
+}
+
+.meet-list-box .txtcald:hover {
+	border: 1px solid black;
+}
+
+.meet-list-box .txtbox {
+	margin: 0 10px;
+	flex: 8;
+}
+.meet-list-box .txtbox>* {
+	width:100%;
+}
+
+
+.meet-list-box .imgbox {
+	width: 120px;
+	height: 120px;
+	background-color: red;
+	border-radius: 10px;
+	margin-left: 7px;
+	overflow: hidden; /* 이미지가 밖으로 나가지 않도록 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.meet-list-box .txtcald .imgbox img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 박스를 꽉 채우도록 설정 */
+	transition: transform 0.3s ease-in-out; /* 부드러운 확대 효과 */
+}
+
+.meet-list-box .txtcald:hover img {
+	transform: scale(1.2); /* 마우스를 올리면 1.2배 확대 */
+}
+
+.meet-list-box .txtbox span {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+	margin-left: 5px;
+}
+
+.meet-list-box .txtbox h3 {
+	margin-left: 5px;
+}
+
+.meet-list-box .txtbox pre {
+	margin-left: 5px;
+}
+
+.meet-list-box .txtbox span {
+	margin-left: 10px;
+}
+
+.meet-list-box .more {
+	width: 100%;
+	height: 24px;
+	margin-top: 15px;
+	text-align: center;
+}
+
+.meet-list-box .more>a {
+	text-decoration: none;
+	color: black;
+}
+
+.meet-list-box input[type='radio'] {
+	margin-top: 10px;
+	accent-color: green;
+}
+
+.meet-list-box .hr {
+	border-top: 1px solid #ddd;
+}
+
+.meet-list-box .pirter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.meet-list-box .pirter>a {
+	margin-right: 10px;
+	color: grey;
+}
+
+.meet-list-box #headerBtn {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	bottom: 70px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: rgb(154, 150, 150);
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 4px;
+	border-radius: 50%;
+}
+
+.meet-list-box #myBtn {
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	bottom: 10px; /* Top 버튼 위로 이동 */
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: greenyellow;
+	color: white;
+	cursor: pointer;
+	padding: 15px;
+	border-radius: 50%;
+}
+
+.meet-list-box .locallifetxt {
+	width: 350px;
+}
+
+.meet-list-box .lbtns {
+	width: 100px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.meet-list-box .lbtns button {
+	width: 150px;
+	height: 40px;
+	border-radius: 15px;
+	background-color: greenyellow;
+	border: none;
+	color: white;
+}
+
+.meet-list-box p {
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.meet-list-box .lbtns button:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+
+.meet-list-box #myBtn:hover:active {
+	border: 1px solid yellowgreen;
+	background-color: white;
+	color: yellowgreen;
+}
+
+.meet-list-box #headerBtn:hover:active {
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+}
+
+/* The container */
+.meet-list-box .container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 17px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.meet-list-box .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.meet-list-box .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+.meet-list-box .container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+.meet-list-box .container input:checked ~ .checkmark {
+	background-color: #2cd319;
+}
+
+.meet-list-box .checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+.meet-list-box .container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.meet-list-box .container .checkmark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.meet-list-box .addbtn {
+	width: 100px;
+	height: 50px;
+	font-size: 35px;
+	background-color: white;
+	border: none;
+}
+@media(min-width:1280px){
+	.meet-list-box #myBtn, .meet-list-box #headerBtn{
+		right:calc(50% - 625px);
+	}
+}

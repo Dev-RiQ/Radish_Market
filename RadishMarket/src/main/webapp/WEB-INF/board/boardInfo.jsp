@@ -135,44 +135,6 @@
 											<!--좋아요-->
 											<i class="fa-solid fa-pen" style="color: greenyellow;"></i> ${ commentList.size() }
 											<!--댓글-->
-
-											<div class="comments">
-												<c:if test="${commentList.size() != 0}">
-													<c:forEach var="i" begin="0" end="${commentList.size() - 1}">
-														<table class="comment-img-table">
-															<tr>
-																<td rowspan="2">
-																	<div id="propilimg"><img alt="이미지" src="/images/usersDefaultImg.png" /></div>
-																</td> <!--댓글 프로필-->
-																<td>${ commentNickname.get(i) }</td> <!--이름-->
-															</tr>
-															<tr>
-																<td colspan="5"><span>${ commentList.get(i).comment_reg_datetime } ${
-																		commentList.get(i).check_update == 1 ? '수정됨' : '' }</span></td>
-															</tr> <!--온도-->
-														</table>
-														<div class="comments-txt" id="comment_content_box${ commentList.get(i).comment_no }">
-															<div id="comment_content${ commentList.get(i).comment_no }">${
-																commentList.get(i).comment_content }</div>
-															<c:if test="${ log == commentList.get(i).user_no }">
-																<button id="btn-comment-update${ commentList.get(i).comment_no }"
-																	onclick="commentUpdate(this)">수정</button>
-															</c:if>
-															<c:if test="${ log == commentList.get(i).user_no || log == board.user_no }">
-																<button
-																	onclick="location.href='/deleteComment.do?user_no=${ board.user_no }&board_no=${ board.board_no }&comment_no=${commentList.get(i).comment_no}'">삭제</button>
-															</c:if>
-														</div>
-													</c:forEach>
-												</c:if>
-
-											</div>
-
-											<div class="writingout">
-												<textarea name="comment_content" id="comment_content" placeholder="내용을 입력하세요."></textarea>
-												<button id="btn-comment-submit" onclick="sendAlarm()"><i
-														class="fa-solid fa-paper-plane"></i></button>
-											</div>
 										</div>
 										<div class="inquiry">
 											<p>조회 ${ board.board_hits }</p>

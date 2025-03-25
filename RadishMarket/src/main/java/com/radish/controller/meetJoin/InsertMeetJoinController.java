@@ -32,6 +32,7 @@ public class InsertMeetJoinController implements Controller {
 		int user_age = UserDAO.getInstance().getAUserByLog(log).getUser_age();
 		if(user_age < meet.getAge_min() || user_age > meet.getAge_max()) {
 			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 나이 제한에 해당하지 않습니다. \\n다른 모임을 찾아주세요!", "listMeet.do");
+			return null;
 		}
 		if(meet_join_content == null) {
 			request.setAttribute("meet", meet);

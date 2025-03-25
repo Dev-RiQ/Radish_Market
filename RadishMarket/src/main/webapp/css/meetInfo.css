@@ -1,0 +1,283 @@
+@charset "UTF-8";
+
+.joined-meet-info-box a {
+	text-decoration: none;
+	color: rgb(171, 217, 103);
+}
+
+.joined-meet-info-box .meet-date-box {
+	width:60px;
+	height: 60px;
+}
+.joined-meet-info-box  {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.joined-meet-info-box .meetingthelooks {
+	width: 80%;
+}
+
+.joined-meet-info-box .meetingsactives {
+	width: 100%;
+	display: flex;
+}
+
+.joined-meet-info-box .meetingtext {
+	width: 30%;
+}
+
+.joined-meet-info-box .meetingtext>button {
+	width: 100%;
+	height: 50px;
+	border-radius: 10px;
+	border: none;
+	color: white;
+	font-size: 20px;
+	margin-top: 10px;
+	background-color: #5FCC29;
+}
+
+.joined-meet-info-box .meetingactive {
+	width: 70%;
+	margin-left: 30px;
+}
+
+.joined-meet-info-box .meetingpropil img {
+	width: 80px;
+	height: 80px;
+	object-fit:cover;
+	border-radius:50%;
+	overflow: hidden;
+}
+.joined-meet-info-box .meetingpropil span{
+	color: #aaa;
+}
+.joined-meet-info-box .meetingpropil h3{
+	margin: 5px 0;
+}
+.joined-meet-info-box .meetingpropil {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+}
+
+.joined-meet-info-box .meetingpropiltxt {
+	width: 100%;
+	height: 400px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	margin-top: 10px;
+}
+
+.joined-meet-info-box .meetinglocalbtns {
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.joined-meet-info-box .meetinglocal {
+	width: 100%;
+	height: 150px;
+	background: blue;
+	margin-top: -20px;
+}
+
+.joined-meet-info-box .pepoles {
+	width: 100%;
+	height: 260px;
+}
+
+.joined-meet-info-box .pepoles-num {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #ddd;
+}
+
+.joined-meet-info-box .members {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;;
+	justify-content: center;
+	align-items: center;
+}
+
+.joined-meet-info-box .pepole .user-img-box{
+	width:50px;
+	height:50px;
+	overflow: hidden;
+	border-radius:50%;
+}
+.joined-meet-info-box .pepole img{
+	width:50px;
+	height:50px;
+	object-fit:cover;
+}
+.joined-meet-info-box .pepole {
+	height: 90px;
+	margin: 1px;
+	width: calc(100%/ 2 - 10px * 2);
+	display: flex;
+	align-items: center;
+}
+
+.joined-meet-info-box .mebertxt {
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #ddd;
+}
+
+.joined-meet-info-box .meberactivetxt {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.joined-meet-info-box .txtcald {
+	width: 99%;
+	display: flex;
+	margin-top: 10px;
+	border-radius: 10px;
+	margin-left: 5px;
+	transition: 0.3;
+}
+
+.joined-meet-info-box .txtcald:hover {
+	border: 1px solid #ddd;
+}
+
+.joined-meet-info-box .txtbox {
+	margin: 0 10px;
+	flex: 8;
+}
+
+.joined-meet-info-box .txtbox p{
+	margin: 5px 0;
+}
+.joined-meet-info-box .txtbox h3{
+	margin: 5px 0;
+}
+.joined-meet-info-box .imgbox img{
+	width:150px;
+	height:150px;
+	object-fit:cover;
+}
+.joined-meet-info-box .imgbox {
+	flex: 1.5;
+	width: 150px;
+	height: 150px;
+	margin-right:10px;
+	align-self:center;
+}
+.joined-meet-info-box .txtbox>* {
+	width:100%;
+}
+
+.joined-meet-info-box .txtbox p {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox h3 {
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox pre {
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox span {
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .meetingpropil input {
+	width: 80px;
+	height: 80px;
+}
+
+.joined-meet-info-box .meetingpropil h {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+	font-weight: bold;
+	font-size: 21px;
+}
+
+.joined-meet-info-box .meetinglocalbtns>button {
+	width: 70px;
+	height: 35px;
+	border-radius: 10px;
+	margin: 5px;
+	border: none;
+	color: #3e3b3b;
+}
+
+.joined-meet-info-box .meetingtext>h4 {
+	margin-top: 10px;
+}
+
+.joined-meet-info-box .m {
+	width: 100%;
+	height: 60px;
+	display: flex;
+}
+
+.joined-meet-info-box .m input {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.joined-meet-info-box .mname {
+	width: 100%;
+	margin-left: 5px;
+	display: flex;
+	align-items: center;
+}
+
+.joined-meet-info-box .mname p {
+	line-height: normal;
+	font-size: 20px;
+	margin-left: 5px;
+}
+
+.joined-meet-info-box span {
+	font-size: 15px;
+	color: #ddd;
+	margin-left: 2px;
+}
+
+.joined-meet-info-box .meetingtext button:hover:active {
+	background-color: white;
+	border: 1px solid #5FCC29;
+	color: #5FCC29;
+}
+
+
+
+
+/* 미가입자  */
