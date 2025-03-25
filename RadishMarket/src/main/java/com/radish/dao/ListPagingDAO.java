@@ -297,12 +297,12 @@ public class ListPagingDAO {
 			String price = getPrintPrice(item_price);
 			String item_dong = ((Item) list.get(i)).getItem_dong();
 			
-			sb.append("<div style=\"width:180px; margin:10px; border:1px solid black;\">");
-			sb.append("<div style=\"cursor: pointer;\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
-			sb.append("<p><img style=\"width:150px; height:150px; object-fit:cover;\" alt=\"대표 이미지\" src=\"/images/"+item_img+"\"/></p>");
+			sb.append("<div class=\"child\" onclick=\"location.href='/infoItem.do?item_no="+item_no+"'\">");
+			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
+			sb.append(" <div class=\"itemtxt\">");
 			sb.append("<p>"+item_name+"</p>");
-			sb.append("<p><span>"+status+"</span> "+price+"</p>");
-			sb.append("<p>"+item_dong+"</p>");
+			sb.append("<p> "+price+"</p>");
+			sb.append("<span>"+item_dong+"</span> <span>"+status+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}

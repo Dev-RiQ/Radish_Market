@@ -1,25 +1,20 @@
 @charset "UTF-8";
 
-body {
-	height: 100vh;
-	margin: auto;
-}
-
-main {
+.board-insert-box {
 	width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 }
 
-.productsts {
+.board-insert-box .productsts {
 	width: 80%;
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-form {
+.board-insert-box form {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -27,34 +22,34 @@ form {
 	align-items: center;
 }
 
-input[type='text'] {
-	width: 98%;
-	height: 120px;
+.board-insert-box input[type='text'] {
+	width: 94%;
+	height: 40px;
 	border-radius: 10px;
 	border: 1px solid #ddd;
 }
 
-label {
+.board-insert-box label {
 	margin-left: 2px;
 }
 
-.txt {
+.board-insert-box .txt {
 	width: 100%;
 	margin-top: 30px;
 }
 
-.category {
+.board-insert-box .category {
 	width: 98%;
-	height: 120px;
+	height: 40px;
 	border-radius: 10px;
 	border: 1px solid #ddd;
 }
 
-span {
+.board-insert-box span {
 	color: red;
 }
 
-.registrationbtn {
+.board-insert-box .registrationbtn {
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -62,7 +57,7 @@ span {
 	margin-bottom: 30px;
 }
 
-.registrationbtn>button {
+.board-insert-box .registrationbtn>button {
 	width: 80px;
 	height: 35px;
 	border-radius: 5px;
@@ -73,35 +68,35 @@ span {
 	margin-top: 30px;
 }
 
-.registrationbtn>button:hover:active {
+.board-insert-box .registrationbtn>button:hover:active {
 	border: 1px solid #ddd;
 	background-color: white;
 }
 
-.rbtn:hover:active {
+.board-insert-box .rbtn:hover:active {
 	border: 1px solid yellowgreen;
 	background-color: white;
 	color: yellowgreen;
 }
 
-.rbtn {
+.board-insert-box .rbtn {
 	background-color: greenyellow;
 	color: white;
 }
 
-textarea {
-	width: 98%;
-	height: 500px;
+.board-insert-box textarea {
+	width: 94%;
+	height: 300px;
 	border: 1px solid #ddd;
 	resize: none;
 }
 
-.imguplod {
+.board-insert-box .imguplod {
 	width: 100%;
 	height: 200px;
 }
 
-.imguplod>button {
+.board-insert-box .imguplod>button {
 	width: 100px;
 	height: 40px;
 	border: none;
@@ -111,13 +106,13 @@ textarea {
 	color: white;
 }
 
-.imguplod>button:hover:active {
+.board-insert-box .imguplod>button:hover:active {
 	border: 1px solid black;
 	background-color: white;
 	color: black;
 }
 
-#post-list > img {
+.board-insert-box #post-list > img {
 	width: 150px;
 	height: 150px;
 	object-fit: cover;

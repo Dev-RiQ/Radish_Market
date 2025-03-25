@@ -44,9 +44,7 @@
 			<div class="header-box">	
 				<c:choose>
 					<c:when test='${ log eq null }'>
-						<div class="header-box">
-							<a href='/login.do'>로그인</a>
-						</div>
+						<a href='/login.do'>로그인</a>
 					</c:when>
 					<c:otherwise>
 						<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()"><i class="fa-solid fa-bell"></i></button>

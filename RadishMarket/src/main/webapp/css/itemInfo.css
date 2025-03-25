@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+.item-info-box  {
+	margin-top:160px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.item-info-box .thelook {
+	width: 1050px;
+	height: 100%;
+}
+
+.item-info-box .itemandtxt {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.item-info-box .itemimg {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.item-info-box .itemimg .imgs {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(225, 99, 9);
+}
+
+.item-info-box .itemimg .txts {
+	width: 100%;
+	height: 20%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.item-info-box .txts .propir {
+	width: 150px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.item-info-box .propir .propir-img img{
+	width: 60px;
+	height: 60px;
+}
+.item-info-box .propir .propir-img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+	object-fit: cover;
+}
+
+.item-info-box .txts .ondobox {
+	width: 180px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.item-info-box .ondobox .ondo {
+	width: 100%;
+	height: 100%;
+}
+
+.item-info-box table {
+	width: 100%;
+	height: 100%;
+}
+.item-info-box table tr{
+	text-align:right;
+}
+
+.item-info-box .ondobox .ondotxt {
+	width: 100%;
+	height: 30%;
+	text-align: end;
+}
+
+.item-info-box .itemtxt {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.item-info-box .itemtxt .text {
+	width: 90%;
+	height: 85%;
+}
+
+.item-info-box .text .btn-box button {
+	text-align: center;
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
+	border-radius: 10px;
+	border: none;
+	background-color: greenyellow;
+	color: white;
+}
+
+.item-info-box .salelist {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-info-box hr {
+	margin: 60px 0;
+}
+.item-info-box .salelist .saletxt {
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item-info-box .salelist .saleitems {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item-info-box .saleimg {
+	width: 100%;
+	height: 180px;
+	background-color: blue;
+	border-radius: 5px;
+	overflow: hidden; /* 이미지가 박스를 벗어나지 않도록 설정 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item-info-box .saleimg img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 박스를 꽉 채우도록 설정 */
+	transition: transform 0.3s ease-in-out; /* 부드러운 확대 효과 */
+}
+
+.item-info-box .child:hover img {
+	transform: scale(1.2); /* 마우스를 올리면 1.2배 확대 */
+}
+
+.item-info-box .child {
+	margin: 5px;
+	height: 280px;
+	width: calc(100%/ 6 - 5px * 2);
+	font-size: 2em;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+}
+
+.item-info-box .child .saleimg {
+	width: 100%;
+	height: 180px;
+	background-color: blue;
+	border-radius: 5px;
+}
+
+.item-info-box .child .saleprice {
+	width: 100%;
+	height: 110px;
+	line-height: 10px;
+	color: black;
+}
+
+.item-info-box .child .saleprice>h5 {
+	margin-left: 4px;
+	font-size: 16px;
+}
+
+.item-info-box .child .saleprice>p {
+	font-size: 14px;
+	margin-left: 5px;
+}
+
+.item-info-box .child .saleprice>span {
+	margin-left: 5px;
+	font-size: 13px;
+	color: #888585;
+}
+
+.item-info-box .bestitems {
+	width: 100%;
+	height: 100%;
+}
+
+.item-info-box .besttxt {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	margin: auto;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.item-info-box .besttxt>a, .item-info-box .saletxt a {
+	font-size: 20px;
+	text-decoration: none;
+	color: greenyellow;
+}
+
+.item-info-box .bestitem {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item-info-box .lookbtn:hover:active {
+	background-color: white;
+	color: greenyellow;
+	border: 1px solid greenyellow;
+}
+
+.item-info-box span {
+	color: #969393dd;
+}

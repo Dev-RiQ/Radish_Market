@@ -124,9 +124,9 @@
 									<div class="comments">
 										<c:if test="${commentList.size() != 0}">
 											<c:forEach var="i" begin="0" end="${commentList.size() - 1}">
-												<table>
+												<table class="comment-img-table">
 													<tr>
-														<td rowspan="2" style="width: 40%;">
+														<td rowspan="2">
 															<div id="propilimg"><img alt="이미지" src="/images/usersDefaultImg.png" /></div>
 														</td> <!--댓글 프로필-->
 														<td>${ commentNickname.get(i) }</td> <!--이름-->

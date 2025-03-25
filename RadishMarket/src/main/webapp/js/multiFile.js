@@ -118,7 +118,8 @@ async function saveImg() {
     }
 }
 
-document.getElementById('itemUpdateForm').addEventListener('submit', async function (e) {
+if(document.getElementById('itemUpdateForm')){
+    document.getElementById('itemUpdateForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     try {
         await saveImg();
@@ -128,4 +129,5 @@ document.getElementById('itemUpdateForm').addEventListener('submit', async funct
         alert('이미지 업로드 중 오류 발생');
         console.error(err);
     }
-});
+    });
+}

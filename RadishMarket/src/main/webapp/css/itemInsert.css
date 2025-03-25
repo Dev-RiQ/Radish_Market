@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+.item-insert-box .swiper img{
+	width:180px;
+	height:180px;
+	padding:10px;
+	object-fit:cover;
+}
+
+.item-insert-box form{
+	width: 80%;
+	justify-content:center;
+}
+.item-insert-box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.item-insert-box .productsts {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.item-insert-box input[type='text'], .item-insert-box input[type='number'] {
+	width: 94%;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+}
+
+.item-insert-box h3 {
+	margin-left: 2px;
+}
+
+.item-insert-box .txt {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.item-insert-box .category {
+	width: 98%;
+	height: 50px;
+	border-radius: 10px;
+	border: 1px solid #ddd;
+	size: 5;
+}
+
+.item-insert-box .checkboxtxt {
+	width: 100%;
+	margin-top: 10px;
+}
+
+.item-insert-box span {
+	color: red;
+}
+
+.item-insert-box .priducts {
+	width: 98%;
+	height: 200px;
+	display: flex;
+	border: 1px solid #ddd;
+}
+
+.item-insert-box .imgbtn {
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 1px solid #ddd;
+}
+
+.item-insert-box .priductsimg {
+	width: 90%;
+	height: 200px;
+	display: flex;
+	align-items: center;
+}
+
+.item-insert-box .imgbtn>button {
+	width: 70px;
+	height: 70px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.item-insert-box .imgbox {
+	width: 70px;
+	height: 70px;
+	background-color: red;
+	margin-left: 10px;
+}
+
+.item-insert-box .registrationbtn {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	margin: 30px 0;
+}
+
+.item-insert-box .registrationbtn>button, .item-insert-box .rsbtn {
+	width: 80px;
+	height: 35px;
+	border-radius: 5px;
+	border: none;
+	margin-right: 10px;
+	color: rgb(20, 19, 19);
+	font-size: 15px;
+}
+
+.item-insert-box .rsbtn {
+	margin-bottom:20px;
+}
+.item-insert-box .rbtn {
+	background-color: greenyellow;
+}
+
+.item-insert-box textarea {
+	width: 94%;
+	height: 200px;
+	border: 1px solid #ddd;
+	resize: none;
+	border-radius: 10px;
+}
+.item-insert-box #post-list {
+	width:100%;
+}
