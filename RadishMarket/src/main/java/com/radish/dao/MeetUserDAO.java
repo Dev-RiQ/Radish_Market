@@ -1,7 +1,9 @@
 package com.radish.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -102,10 +104,13 @@ public class MeetUserDAO {
 		}
 		return size;
 	}
-	public List<Integer> getUserNolimitListByMeetNo(int meet_no) {
+	public List<Integer> getUserNolimitListByMeetNo(int meet_no, int host_user_no) {
+		Map<String, Integer> param = new HashMap<>();
+		param.put("meet_no", meet_no);
+		param.put("host_user_no", host_user_no);
 		List<Integer> list = null;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
-			list = session.selectList("getUserNolimitListByMeetNo", meet_no);
+			list = session.selectList("getUserNolimitListByMeetNo", param);
 		} catch (Exception e) {
 			System.out.println("getUserNolimitListByMeetNo fail");
 			e.printStackTrace();

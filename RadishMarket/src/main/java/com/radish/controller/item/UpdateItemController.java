@@ -47,24 +47,19 @@ public class UpdateItemController implements Controller {
 				item_update_datetime, item_status);
 
 		String uploadFileNames = request.getParameter("user_item_img");
-		System.out.println("uploadFileNames: " + uploadFileNames);
 		String[] uploadFileName = uploadFileNames.split(",");
-		System.out.println("uploadFileName: " + uploadFileName);
 
 		String[] deleteArr = request.getParameterValues("deleteArr");
-		System.out.println("deleteArr: " + deleteArr);
 		if (deleteArr != null) {
 			String imgPath = request.getServletContext().getRealPath("/images");
-			System.out.println("imgPath: " + imgPath);
 			for (String fileName : deleteArr) {
 				File file = new File(imgPath, fileName);
-				System.out.println("fileName: " + fileName);
 				if (file.exists()) {
 					file.delete();
 				}
 			}
 		}
-		
+
 		if (!uploadFileNames.isBlank()) {
 			ItemImgDAO.getInstance().deleteItemImg(item_no);
 
@@ -74,9 +69,9 @@ public class UpdateItemController implements Controller {
 			}
 			ItemImgDAO.getInstance().insertItemImg(list);
 		}
-		
+
 		if (ItemDAO.getInstance().updateItem(item)) {
-			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "mypageUser.do?item_no=" + item_no);
+			AlertUtil.getInstance().goUrlWithAlert(response, "상품 정보 수정 완료.", "infoItem.do?item_no="+item_no);
 			return null;
 		} else {
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 상품 정보 수정에 실패했습니다.\n다시 시도해주세요.");

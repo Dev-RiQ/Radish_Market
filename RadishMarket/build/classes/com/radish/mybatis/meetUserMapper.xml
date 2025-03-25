@@ -51,10 +51,10 @@
 		LIMIT 101 OFFSET 0
 	</select>
 	
-	<select id="getUserNolimitListByMeetNo" parameterType="int" resultType="int">
+	<select id="getUserNolimitListByMeetNo" parameterType="map" resultType="int">
 		SELECT user_no
 		FROM meet_users
-		WHERE meet_no=#{meet_no}
+		WHERE meet_no=#{meet_no} AND user_no!=#{host_user_no}
 		LIMIT 3 OFFSET 0
 	</select>
 	

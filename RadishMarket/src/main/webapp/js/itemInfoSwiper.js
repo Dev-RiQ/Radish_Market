@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var swiper = new Swiper(".mySwiper", {
             loop: true,
 			slidesPerView: "auto",
+			watchOverflow : true,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",

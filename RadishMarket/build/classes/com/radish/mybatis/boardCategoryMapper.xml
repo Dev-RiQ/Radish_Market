@@ -31,4 +31,10 @@
 		WHERE board_category_no=#{board_category_no}
 	</delete>
 	
+	<select id="getBoardCategoryNameList" parameterType="int" resultType="String">
+		SELECT board_category_name
+		FROM board_category
+		WHERE board_category_no=#{board_category_no}
+	</select>
+	
 </mapper>

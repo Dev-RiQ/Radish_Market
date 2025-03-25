@@ -46,3 +46,14 @@ document.addEventListener('click', (e) => {
 		isOpenChang = false;
 	}
 })
+
+const flow_word = document.querySelector('.flow-word');
+function runFlowWord() {
+	const words = ['아이폰', '동네친구', '러닝 모임', '카페', '맛집', '티켓', '독서 모임'];
+	let idx = 0;
+	setInterval(() => {
+		flow_word.innerHTML = words[idx++];
+		idx = (idx + 1) % words.length;
+	}, 2500);
+}
+runFlowWord();

@@ -26,8 +26,8 @@
 												</div>
 											</c:forEach>
 											<div class="swiper-pagination"></div>
-											<div class="swiper-button-next"></div>
 											<div class="swiper-button-prev"></div>
+											<div class="swiper-button-next"></div>
 										</c:otherwise>
 									</c:choose>
 								</div>
@@ -67,7 +67,7 @@
 							<h2>${item.item_name}</h2>
 							<span><a
 									href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>∙${updateTime}</span>
-							<h3>${item.item_price}원</h3>
+							<h3>${infoItemPrice}원</h3>
 							<p>${ item.item_content }</p>
 							<span>찜 <span id="zzim-count">${zzimCount}</span></span>
 							<span> · 조회수 ${item.item_hits}</span>

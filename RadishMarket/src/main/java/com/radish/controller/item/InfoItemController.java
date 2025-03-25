@@ -32,11 +32,16 @@ public class InfoItemController implements Controller {
 			AlertUtil.getInstance().goBackWithAlert(response, "\"서버 오류로 인해 아이템 정보를 가져오지 못했습니다.\\\\\\\\n다시 시도해주세요.\"");
 			return null;
 		}
-
+		
+		DecimalFormat df = new DecimalFormat("###,###");
+		
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		
 		Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 		request.setAttribute("item", item);
+		
+		String infoItemPrice = df.format(item.getItem_price());
+		request.setAttribute("infoItemPrice", infoItemPrice);
 		request.setAttribute("item_category_name", ItemCategoryDAO.getInstance().getAitemCategoryName(item_no));
 		request.setAttribute("updateTime", DateUtil.getInstance().getCalcDateAgo(item.getItem_update_datetime()));
 
@@ -48,7 +53,6 @@ public class InfoItemController implements Controller {
 
 		List<Item> itemList = ItemDAO.getInstance().getItemInfoList(item.getUser_no());
 		request.setAttribute("itemList", itemList);
-		DecimalFormat df = new DecimalFormat("###,###");
 		List<String> itemPriceList = new ArrayList<>();
 		for(Item e : itemList) {
 			String itemPrice = df.format(e.getItem_price());

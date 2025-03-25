@@ -60,20 +60,20 @@
 		</select> 
 
         <div class="txt">
-          <h3>상품명<span> *</span></h3>
+          <h3>제목<span> *</span></h3>
         </div>
         <input type="text" id="item_name" name="item_name" placeholder="제목"> 
 		<span id="title_check"></span>
 
         <div class="txt">
-          <h3>내용<span> *</span></h3>
+          <h3>자세한 설명<span> *</span></h3>
         </div>
         <textarea id="item_content" name="item_content" style="height: 200px; width: 800"
 			placeholder="${user.user_dong}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.) 신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요."></textarea>
 		<span id="content_check"></span> 
         
         <div class="txt">
-          <h3>판매 가격<span> *</span></h3>
+          <h3>거래방식<span> *</span></h3>
         </div>
         <button class="rsbtn" type="button" id="sell-btn">판매하기</button>
 		<button class="rsbtn" type="button" id="free-btn">나눔하기</button><br>

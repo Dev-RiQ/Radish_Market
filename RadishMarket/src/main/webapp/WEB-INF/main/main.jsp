@@ -8,7 +8,7 @@
 		<div class="home-box">
 	      <div class="txtbox">
 	        <h1>Radish</h1>
-	        <h2>??역 근처에 무엇을 찾으시나요?</h2>
+	        <h2>${dong}에서 <span class="flow-word"></span> 찾고 계신가요?</h2>
 	      </div>
 	
 	      <div class="search">

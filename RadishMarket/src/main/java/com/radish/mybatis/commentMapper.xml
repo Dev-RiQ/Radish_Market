@@ -32,4 +32,10 @@
 		WHERE comment_no=#{comment_no}
 	</update>
 	
+	<select id="getCommentListByBoardNoList" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM comments
+		WHERE board_no=#{board_no}
+	</select>
+	
 </mapper>

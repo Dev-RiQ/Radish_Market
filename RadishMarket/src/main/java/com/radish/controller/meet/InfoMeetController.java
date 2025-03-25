@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.radish.dao.AlarmDAO;
+import com.radish.dao.BoardCategoryDAO;
 import com.radish.dao.BoardDAO;
 import com.radish.dao.CalendarDAO;
+import com.radish.dao.CommentDAO;
 import com.radish.dao.LikeDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetJoinDAO;
@@ -55,7 +57,7 @@ public class InfoMeetController implements Controller {
 		User host_user = UserDAO.getInstance().getAUserPortionInfo(host_user_no);
 		request.setAttribute("host_user", host_user);
 
-		List<Integer> memberUserNoList = MeetUserDAO.getInstance().getUserNolimitListByMeetNo(meet_no);
+		List<Integer> memberUserNoList = MeetUserDAO.getInstance().getUserNolimitListByMeetNo(meet_no, host_user_no);
 		List<User> memberUserList = UserDAO.getInstance().getUserListByUserNoList(memberUserNoList, host_user_no);
 		request.setAttribute("memberUserList", memberUserList);
 
@@ -112,6 +114,16 @@ public class InfoMeetController implements Controller {
 		}
 		List<Integer> boardLikeList = LikeDAO.getInstance().getCountLikeByBoardNoList(boardNoList);
 		request.setAttribute("boardLikeList", boardLikeList);
+		
+		List<Integer> boardCategoryNoList = new ArrayList<>();
+		for(Board e : boardList) {
+			boardCategoryNoList.add(e.getBoard_category_no());
+		}
+		List<String> boardCategoryNameList = BoardCategoryDAO.getInstance().getBoardCategoryNameList(boardCategoryNoList);
+		request.setAttribute("boardCategoryNameList", boardCategoryNameList);
+		
+		List<Integer> boardCommentCountList = CommentDAO.getInstance().getCommentListByBoardNoList(boardNoList);
+		request.setAttribute("boardCommentCountList", boardCommentCountList);
 		
 		return "meet/meetInfo";
 	}

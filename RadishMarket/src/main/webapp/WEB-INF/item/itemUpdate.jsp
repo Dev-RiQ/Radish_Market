@@ -75,13 +75,13 @@
 		</select> 
 
         <div class="txt">
-          <h3>상품명<span> *</span></h3>
+          <h3>제목<span> *</span></h3>
         </div>
         <input type="text" id="item_name" name="item_name" placeholder="제목" value="${item.item_name}" > 
 		<span id="title_check"></span>
 
         <div class="txt">
-          <h3>내용<span> *</span></h3>
+          <h3>자세한 설명<span> *</span></h3>
         </div>
         <textarea id="item_content" name="item_content"
 			style="height: 200px; width: 800"
@@ -90,7 +90,7 @@
 		<span id="content_check"></span> 
         
         <div class="txt">
-          <h3>판매 가격<span> *</span></h3>
+          <h3>거래방식<span> *</span></h3>
         </div>
         <button class="rsbtn" type="button" id="sell-btn">판매하기</button>
 		<button class="rsbtn" type="button" id="free-btn">나눔하기</button><br>

@@ -72,4 +72,16 @@ public class CommentDAO {
 		}
 		return action != 0;
 	}
+	public List<Integer> getCommentListByBoardNoList(List<Integer> boardNoList) {
+		List<Integer> list = new ArrayList<>();
+		try (SqlSession session = DBUtil.getInstance().openSession()){
+			for(Integer board_no : boardNoList) {
+			list.add(session.selectOne("getCommentListByBoardNoList", board_no));
+			}
+		} catch (Exception e) {
+			System.out.println("getCommentListByBoardNoList fail");
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
