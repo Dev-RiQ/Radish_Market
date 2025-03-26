@@ -3,7 +3,7 @@
 <%@ include file="../main/header.jsp" %>
 <link rel="stylesheet" href="../../css/boardInsert.css">
 <section>
-<main>
+<div class="board-insert-box">
       <div class="productsts">
       	<form action="/updateBoard.do?board_no=${ board.board_no }" method="post">
 	        <div class="txt" style="border-bottom: 1px solid #ddd">
@@ -46,11 +46,10 @@
 	
 	        <div class="imguplod">
 				<div id="post-list">
-				<c:if test="${ meet_img ne null && !meet_img.isBlank() }">
+				<c:if test="${ board.board_img ne null && board.board_img ne '' }">
 					<img alt="프로필" src="/images/${ board.board_img }">
 				</c:if>
 				</div><br>
-				<input type="text" name="board_img" id="board_img" ${ board.board_img eq null or board.board_img.isBlank() ? 'placeholder=' : 'value=' }"${ board.board_img eq null or board.board_img.isBlank() ? '이미지' : board.board_img }" readonly>
 				<button type="button" onclick="openPop()">이미지 업로드</button>
 	        </div>
 	
@@ -59,11 +58,11 @@
 	
 	        <div class="registrationbtn">
 	            <button onclick="history.back()">취소</button>
-				<button class="rbtn" type="button" onclick="validCheck()">등록하기</button>
+				<button class="rbtn" type="button" onclick="validCheck()">수정하기</button>
 	        </div>
         </form>
       </div>
-    </main>
+    </div>
 </section>
 
 

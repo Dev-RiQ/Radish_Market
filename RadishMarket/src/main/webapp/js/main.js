@@ -1,3 +1,11 @@
+const searchBox = document.querySelector('#search_value');
+if(searchBox)
+	searchBox.addEventListener('keypress', () => {
+		if(event.key == 'Enter'){
+			searchInItemList();
+		}
+	})
+
 function searchInItemList() {
 	const searchValue = document.querySelector("#search_value").value;
 	if (!searchValue) {
@@ -51,11 +59,35 @@ const flow_word = document.querySelector('.flow-word');
 function runFlowWord() {
 	const words = ['아이폰', '동네친구', '러닝 모임', '카페', '맛집', '티켓', '독서 모임'];
 	let idx = 0;
+	flow_word.innerHTML = words[idx++];
 	setInterval(() => {
-		flow_word.innerHTML = words[idx++];
-		idx = (idx + 1) % words.length;
+		flow_word.classList.add('trans');
+		setTimeout(()=>{
+			flow_word.classList.remove('trans');
+			flow_word.innerHTML = words[idx++];
+		}, 300)
+		idx = idx % words.length;
 	}, 2500);
 }
 if(flow_word){
 	runFlowWord();
 }
+
+const progress = document.querySelectorAll("progress");
+if(progress)
+	progress.forEach((i) => {
+		i.classList.add('basic-progress')
+		if(parseInt(i.value) <= 20){
+			i.classList.add('basic-progress1')
+		}else if(parseInt(i.value) <= 35){
+			i.classList.add('basic-progress2')
+		}else if(parseInt(i.value) <= 48){
+			i.classList.add('basic-progress3')
+		}else if(parseInt(i.value) <= 63){
+			i.classList.add('basic-progress4')
+		}else if(parseInt(i.value) <= 80){
+			i.classList.add('basic-progress5')
+		}else if(parseInt(i.value) <= 100){
+			i.classList.add('basic-progress6')
+		}
+	})

@@ -125,7 +125,7 @@
 				        <table>
 				          <tr>
 				            <td style="width: 7%">상태</td>
-				            <td style="width: 15%">보낸 사람</td>
+				            <td id="for-user-th" style="width: 15%">보낸 사람</td>
 				            <td style="width: 60%">내용</td>
 				            <td style="width: 10%">날짜</td>
 				            <td id="remove-letter-th">지우기</td>

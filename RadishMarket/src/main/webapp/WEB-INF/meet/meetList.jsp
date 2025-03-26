@@ -5,19 +5,23 @@
 
 <section>
 
-<div class="dir-history">
-	<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
-</div>
-
  <div class="meet-list-box">
       <div class="life">
-
+		<div class="locallife">
+          <div class="locallifetxt">
+            <a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
+            <h2>${ address } 모임</h2>
+          </div>
+          <div class="lbtns">
+          </div>
+        </div>
         <div class="texts">
           <div class="besttexts">
           	<form action="/listMeet.do?filter=true" method="post">
 			<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }" />
 			<input type="hidden" id="gu" name="gu" value="${ gu }" />
-			<label for="user_dong">위치</label><br> <label class="container"><input
+			<hr>
+			<label class="filter-label" for="user_dong">위치</label><br> <label class="container"><input
 				type="radio" name="dong" id="dong" value="전체"
 				${ userDong eq '전체' ? 'checked' : '' } />전체보기
 				<span class="checkmark"></span>
@@ -32,7 +36,7 @@
 		
 			<hr>
 		
-			<label for="category_no">카테고리</label><br> <label class="container"><input
+			<label class="filter-label" for="category_no">카테고리</label><br> <label class="container"><input
 				type="radio" name="category_no" id="category_no" value="0"
 				${ categoryNo eq null || categoryNo eq 0 ? 'checked' : '' } />전체보기
 				<span class="checkmark"></span>
@@ -47,7 +51,7 @@
 		
 			<hr>
 		
-			<label for="order_by">정렬</label><br> <label class="container"><input
+			<label class="filter-label" for="order_by">정렬</label><br> <label class="container"><input
 				type="radio" name="order_by" id="order_by" value=0
 				${ order_by eq null || order_by == 0 ? 'checked' : '' } />최신순
 				<span class="checkmark"></span>

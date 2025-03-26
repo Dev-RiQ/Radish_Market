@@ -2,14 +2,16 @@ const moreList = document.querySelector('#btn-more-list');
 const btns = document.querySelectorAll('.list-btn');
 
 const hiddenTag = document.querySelector('input#item_status');
+const letterFor = document.querySelector('#for-user-th')
+const letterRemove = document.querySelector('#remove-letter-th')
 
 btns.forEach((btn) => {
 	btn.addEventListener('click', (e) => {
 		console.log(e.target);
 		document.querySelector('#list-box').innerHTML = '';
 		switch (e.target.id) {
-			case 'receive-btn': moreList.value = 'receiveLetter/0'; break;
-			case 'send-btn': moreList.value = 'sendLetter/0'; break;
+			case 'receive-btn': moreList.value = 'receiveLetter/0'; letterFor.innerText = '보낸 사람'; letterRemove.innerText = '지우기'; break;
+			case 'send-btn': moreList.value = 'sendLetter/0'; letterFor.innerText = '받는 사람'; letterRemove.innerText = ''; break;
 			case 'sell-btn': moreList.value = 'myItem/0'; hiddenTag.value = "1"; break;
 			case 'reserve-btn': moreList.value = 'myItem/0'; hiddenTag.value = "2"; break;
 			case 'sold-btn': moreList.value = 'myItem/0'; hiddenTag.value = "3"; break;

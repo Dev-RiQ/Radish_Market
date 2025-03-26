@@ -66,11 +66,6 @@ function validCheck(){
 			return;		
 		}
 	}
-	if(checkId == null || joinId == null || joinId.value != checkId){
-		const span = document.querySelector("#id_check");
-		span.innerText = '중복체크 해주세요.';
-		return;
-	}
 	document.querySelector("form").submit()
 }
 

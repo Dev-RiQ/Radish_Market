@@ -23,6 +23,27 @@
 	flex-direction: column;
 	border-radius: 10px 10px 0px 0px;
 }
+.user-mypage-box .user-calendar .container .btn-cal-box{
+	width: 100%;
+	display:flex;
+	justify-content: space-between;
+	margin: 20px 0;
+}
+.user-mypage-box .user-calendar .container .btn-cal-sub{
+	border:none;
+	width:130px;
+	font-size:18px;
+	padding:10px;
+	color:white;
+	background-color:#5FCC29;
+	border-radius:10px; 
+}
+.user-mypage-box .user-calendar .container .btn-cal-sub:hover{
+	opacity: 0.7;
+}
+.user-mypage-box .user-calendar .container .btn-cal-sub:active{
+	opacity: 0.5;
+}
 body footer{
 	margin: 0;
 	display: flex;
@@ -38,6 +59,9 @@ body footer{
 	border-radius: 10px 10px 0px 0px;
 }
 
+.user-mypage-box .menu .category{
+	width: 200px;
+}
 .user-mypage-box .menu {
 	width: 100%;
 	height: 100%;
@@ -46,7 +70,6 @@ body footer{
 
 .user-mypage-box .cartegory {
 	border: 1px solid #ccc;
-	width: 20%;
 }
 
 .user-mypage-box .btn-inner-box {
@@ -59,7 +82,7 @@ body footer{
 	background-color: inherit;
 	color: black;
 	padding: 12px 15px;
-	width: 100%;
+	width: 200px;
 	height: 50px;
 	border: none;
 	text-align: start;
@@ -237,7 +260,8 @@ body footer{
 	
 }
 .user-mypage-box .bought-box{
-	min-width: 243px;
+	flex:1;
+	min-width: 200px;
 	border: 1px solid #ddd;
 	border-radius:15px;
 }

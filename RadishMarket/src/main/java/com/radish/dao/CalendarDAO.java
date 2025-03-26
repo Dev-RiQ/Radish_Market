@@ -17,7 +17,7 @@ public class CalendarDAO {
 		return instance;
 	}
 	
-	public boolean insertACalenadr(Calendar calendar) {
+	public boolean insertACalendar(Calendar calendar) {
 		int action = 0;
 		try (SqlSession session = DBUtil.getInstance().openSession()){
 			action = session.insert("insertACalenadr", calendar);

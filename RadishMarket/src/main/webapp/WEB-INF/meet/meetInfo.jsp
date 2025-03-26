@@ -95,7 +95,7 @@
                     </div>
                      <div class="members">
 						<c:choose>
-							<c:when test="${empty calendarList or empty calendarDateList or empty calendarTimeList}">
+							<c:when test="${empty calendarList or empty calendarMonth or empty calendarDay or empty calendarTimeList}">
 								<p>현재 모임의 일정이 없습니다.</p>
 							</c:when>
 							<c:otherwise>
@@ -103,7 +103,8 @@
 		                            <div class="pepole">
 		                                <div class="m">
 			                                <div class="meet-date-box">
-			                              	  <p>${ calendarDateList[i] }</p>
+			                              	  <p>${ calendarMonth[i] }월</p>
+			                              	  <p>${ calendarDay[i] }</p>
 			                                </div>
 		                                     <div class="mname">
 		                                     <p>${calendarList.get(i).calendar_content}   
@@ -136,8 +137,8 @@
 			                              <p>
 			                                ${boardUserNickNameList.get(i)}
 			                              </p><!--게시글 내용-->
-			                              <span>${boardList.get(i).board_dong} · ${boardTime[i]}</span><!--게시글 위치, 유형 , 시간-->
-			                              <pre>❤️ ${boardLikeList.get(i)} · 댓글 1</pre><!---->
+			                              <span>${boardList.get(i).board_dong} · ${boardCategoryNameList.get(i)} · ${boardTime[i]}</span><!--게시글 위치, 유형 , 시간-->
+			                              <pre>❤️ ${boardLikeList.get(i)} · <i class="fa-solid fa-comment"></i> ${ boardCommentCountList.get(i) }</pre><!---->
 			                            </div>
 			                            <c:if test="${ boardList.get(i).board_img ne null && boardList.get(i).board_img ne '' }">
 				                            <div class="imgbox"><img alt="대표 이미지" src="/images/${ boardList.get(i).board_img }"/></div><!--게시글 이미지-->

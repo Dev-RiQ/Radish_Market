@@ -54,6 +54,18 @@ public class Calendar {
 		this.calendar_content = calendar_content;
 	}
 
+	public Calendar(int calendar_no, int main_user_no, String address, String calendar_dir_x,
+			String calendar_dir_y, String calendar_datetime, String calendar_title, String calendar_content) {
+		super();
+		this.calendar_no = calendar_no;
+		this.main_user_no = main_user_no;
+		this.address = address;
+		this.calendar_dir_x = calendar_dir_x;
+		this.calendar_dir_y = calendar_dir_y;
+		this.calendar_datetime = calendar_datetime;
+		this.calendar_title = calendar_title;
+		this.calendar_content = calendar_content;
+	}
 	public int getCalendar_no() {
 		return calendar_no;
 	}

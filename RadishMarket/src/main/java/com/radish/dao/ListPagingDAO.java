@@ -340,7 +340,7 @@ public class ListPagingDAO {
 			int commentCount = commentCountList.get(i);
 			
 			sb.append("<div class=\"txtcald\">");
-			sb.append("<div class=\"txtbox\" style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"'\">");
+			sb.append("<div class=\"txtbox\" style=\"cursor: pointer;\" onclick=\"location.href='/infoBoard.do?board_no="+board_no+"&filter=true&dong="+board_dong+"&category_no="+((Board) list.get(i)).getBoard_category_no()+"&order_by="+0+"'\">");
 			sb.append("<h3>"+board_title+"</h3>");
 			sb.append("<p>"+board_content+"</p>");
 			sb.append("<div>");
@@ -394,7 +394,7 @@ public class ListPagingDAO {
 			String letter_reg_datetime = ((Letter) list.get(i)).getLetter_reg_datetime();
 			
 			sb.append("<div class=\"mail\">");
-			sb.append("<div id=\"show-letter"+letter_no+"\" style=\"cursor: pointer;\" onclick=\"openPop('read')\">");
+			sb.append("<div id=\"show-letter"+letter_no+"\" style=\"cursor: pointer;\" class=\""+letter_check+"\" onclick=\"openPop('read')\">");
 			if(letter_check == 0)
 				sb.append("<strong><i class=\"fa-solid fa-envelope\" style=\"color: greenyellow\"></i>");
 			else
