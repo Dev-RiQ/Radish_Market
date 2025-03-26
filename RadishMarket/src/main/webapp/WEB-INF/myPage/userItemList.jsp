@@ -59,7 +59,7 @@
 
       <div class="menu">
 
-
+		<c:if test="${ user.user_no == log }">
         <div class="cartegory">
           <button class="tablinks" id="defaultOpen" onclick="location.href='/mypageUser.do'">
             <div class="btn-inner-box">
@@ -124,7 +124,7 @@
             <!--   내 모임<-->
           </button>
         </div>
-
+		</c:if>
 
         <div class="menulist">
           <div class="menulistbtn">

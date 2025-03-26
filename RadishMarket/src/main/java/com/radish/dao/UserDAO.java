@@ -273,6 +273,7 @@ public class UserDAO {
 	public void setReviewDegree(User user) {
 		try (SqlSession session = DBUtil.getInstance().openSession()) {
 			session.update("setReviewDegree", user);
+			session.commit();
 		} catch (Exception e) {
 			System.out.println("setReviewDegree fail");
 			e.printStackTrace();

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.CartDAO;
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.ItemDAO;
 import com.radish.dao.ItemImgDAO;
 import com.radish.dao.ReviewDAO;
@@ -37,6 +38,9 @@ public class InsertReviewController implements Controller {
 			Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 			request.setAttribute("item", item);
 			request.setAttribute("item_img", ItemImgDAO.getInstance().getAItemImg(item_no));
+			User user = UserDAO.getInstance().getAUserByLog(ItemDAO.getInstance().getAItemByItemNo(item_no).getUser_no());
+			request.setAttribute("user", user);
+			request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 			return "utils/reviewInsert";
 		}
 		
