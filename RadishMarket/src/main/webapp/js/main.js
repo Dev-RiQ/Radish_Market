@@ -56,4 +56,6 @@ function runFlowWord() {
 		idx = (idx + 1) % words.length;
 	}, 2500);
 }
-runFlowWord();
+if(flow_word){
+	runFlowWord();
+}

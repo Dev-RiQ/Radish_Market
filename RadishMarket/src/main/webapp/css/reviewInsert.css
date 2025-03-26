@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+.review-insert-box {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.review-insert-box .lettergoings {
+	width: 400px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+}
+
+.review-insert-box .lettertxt {
+	width: 100%;
+	height: 15%;
+	background-color: greenyellow;
+	display: flex;
+	border-radius: 10px 10px 0px 0px;
+	align-items: center;
+}
+
+.review-insert-box .lettertxt h2 {
+	margin-left: 10px;
+}
+
+.review-insert-box .text {
+	width: 100%;
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.review-insert-box .going {
+	width: 100%;
+	height: 15%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.review-insert-box .going button {
+	width: 130px;
+	height: 40px;
+	border-radius: 10px;
+	background-color: greenyellow;
+	border: none;
+	margin: 10px;
+}
+
+.review-insert-box .title {
+	width: 100%;
+	height: 50px;
+}
+
+.review-insert-box input {
+	width: 80%;
+	height: 30px;
+	border-radius: 10px;
+	border: 1px solid #a89494;
+}
+
+.review-insert-box textarea {
+	width: 80%;
+	height: 180px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	resize: none;
+}
+
+.review-insert-box h3 {
+	margin-left: 10px;
+}
+
+.review-insert-box span {
+	color: red;
+}
+
+.review-insert-box .going .delect {
+	width: 60px;
+	background-color: #ddd;
+}
+
+.review-insert-box .stars {
+	width: 100%;
+	height: 110px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+.review-insert-box .star {
+	width: 100%;
+	height: 55px;
+	display: flex;
+	justify-content: center;
+	gap: 5px;
+	align-items: center;
+	margin-top: -20px;
+}
+
+.review-insert-box .star-radio {
+	display: none;
+	/* 기본 라디오 버튼 숨김 */
+}
+
+.review-insert-box .star-label {
+	font-size: 40px;
+	color: gray;
+	cursor: pointer;
+	transition: color 0.3s;
+	margin: 10px;
+}
+
+.review-insert-box .star-radio:checked+.star-label {
+	color: gold;
+}
+
+.review-insert-box .star-label.active {
+	color: gold;
+	/* 클릭한 별은 노란색 유지 */
+}
+
+.review-insert-box .productReview {
+	width: calc(100% - 20px);
+	height: 50px;
+	display: flex;
+	margin-top: 10px;
+	margin-left: 10px;
+	border:1px solid #ddd;
+}
+.review-insert-box .user-img-box img{
+	width:50px;
+	height:50px;
+	object-fit:cover;
+}
+.review-insert-box .user-img-box {
+	width:50px;
+	height:50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.review-insert-box .reviewimg img{
+	width:50px;
+	height:50px;
+	object-fit:cover;
+}
+.review-insert-box .reviewimg {
+	width:50px;
+	height:50px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.review-insert-box .propilreview {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: greenyellow;
+}
+
+.review-insert-box .propilreview input {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.review-insert-box .letterimg {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.review-insert-box .letterimg input {
+	width: 60px;
+	height: 60px;
+	border: 1px solid #ddd;
+}
+
+.review-insert-box .going button:hover:active {
+	background-color: white;
+	color: greenyellow;
+	border: 1px solid greenyellow;
+}
+
+.review-insert-box .going .delect:hover:active {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+}

@@ -21,3 +21,20 @@ content.addEventListener('input', ()=> {
 		content.value = content.value.substring(0, 100);
 	}
 })
+
+const labels = document.querySelectorAll(".star-label");
+const radios = document.querySelectorAll(".star-radio");
+if(labels){
+	labels.forEach((label) => {
+	  label.addEventListener("click", () => {
+	    radios.forEach((i, idx) => {
+			if(document.querySelector('input[id="review_deg"]:checked')){
+		      if (idx <= parseInt(document.querySelector('input[id="review_deg"]:checked').value) + 2)
+		        labels[idx].classList.add("active");
+		      else
+		        labels[idx].classList.remove("active");
+			}
+	    })
+	  });
+	});
+}

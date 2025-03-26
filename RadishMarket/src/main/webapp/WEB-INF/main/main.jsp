@@ -13,10 +13,10 @@
 	
 	      <div class="search">
 	        <button id="local-btn">
-	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>위치
+	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>${dong}
 	        </button>
-	        <input type="search" class="search-input" />
-	        <button id="search-btn"><i class="fa fa-search"></i></button>
+	        <input type="search" id="search_value" class="search-input" />
+	        <button id="search-btn" onclick="searchInItemList()"><i class="fa fa-search"></i></button>
 	      </div>
 	
 	      <div class="linkbtn">

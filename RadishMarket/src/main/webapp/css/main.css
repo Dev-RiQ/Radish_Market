@@ -247,6 +247,7 @@ footer .sns {
 }
 
 /*  테드 창  */
+#show-chang {padding:0;}
 .chang {
 	width: 200px;
 	height: 130px;

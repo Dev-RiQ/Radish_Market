@@ -9,6 +9,15 @@ let send_user_nickname;
 let popupWindow;
 let popupDocument;
 let log = document.querySelector("#log");
+let send_user_img;
+let send_user_dong;
+let send_user_deg;
+let send_user_emoji;
+let item_img;
+let item_name;
+let item_price;
+
+
 
 function openPop(type) {
 	
@@ -33,7 +42,7 @@ function openPop(type) {
 			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check && !check.value){
 				check.value = '1'
 				check.innerHTML = check.innerHTML.replace('<strong><i class="fa-solid fa-envelope" style="color: greenyellow">'
-												,'<i class="fa-solid fa-envelope-open" style="color: rgb(148, 140, 140)">') + '<strong style="width:0;">'
+												,'<i class="fa-solid fa-envelope-open" style="color: rgb(148, 140, 140)">') + '<strong style="width:0; margin-right:-12.5px;">'
 			}
 			break;
 	}
@@ -65,7 +74,7 @@ function setEvents(){
 	if(btnWrite){
 		btnWrite.addEventListener('click', () => {
 			receive_user_no = send_user_no;
-			popupDocument.getElementById('letter-box').innerText = '';
+			popupDocument.getElementById('letter-info-box').innerText = '';
 			setSendLetterInfo();
 		});
 	}
@@ -113,7 +122,16 @@ function setPrintLetterInfo(data){
 	item_no = datas[2];
 	letter_reg_datetime = datas[3];
 	letter_content = datas[4];
-	send_user_nickname = datas[5];
+	send_user_img = datas[5];
+	send_user_nickname = datas[6];
+	send_user_dong = datas[7];
+	send_user_deg = datas[8];
+	send_user_emoji = datas[9];
+	if(datas.length > 10){
+		item_img = datas[10];
+		item_name = datas[11];
+		item_price = datas[12];
+	}
 	setPopupWriteForRead(popupDocument);
 }
 
@@ -133,25 +151,41 @@ function setPopupWriteForSend(popupDocument){
 }
 
 function setPopupWriteForRead(popupDocument){
-	popupDocument.write('<div id="letter-box">');
-	popupDocument.write('<h2>쪽지</h2>');
-	popupDocument.write(`<h3>${letter_title}</h3>`);
-	if(item_no){
-		popupDocument.write('<hr>');
-		popupDocument.write(`<p>${item_no}</p>`);
+	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
+	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
+	popupDocument.write('<div class="lettergoings">');
+	popupDocument.write('<div class="propile">');
+	popupDocument.write('<table style="margin-left: 5px;">');
+	popupDocument.write(`<tr><td rowspan="2"><div class="user-img-box"><img alt="대표이미지" src="/images/${send_user_img}"></div></td><td></td>`);
+	popupDocument.write(`<td rowspan="2">	<div class="friend">
+	          <div class="temperature">
+				<p>${send_user_deg}℃${send_user_emoji}</p>
+	            <progress id="file" style="width:100px;" value="${send_user_deg}" max="100"></progress>
+	          </div></td></tr>`);
+	popupDocument.write(`<tr><td><p style="text-align:left; width: 100px; font-size: 15px; margin-left: 5px">${send_user_nickname}</p>`);
+	popupDocument.write(`<p style="text-align:left;"><span style="font-size: 13px; color: #5a5656; margin-left: 5px">${send_user_dong}</span></p></td></tr></table>`);
+	popupDocument.write(`<div class="times"><p>${letter_reg_datetime}</p></div></div>`);
+	if(item_no && item_no != '0'){
+	popupDocument.write(`	<div class="productletter">
+						        <div class="letterimg">
+									<img alt="대표이미지" src="/images/${item_img}">
+						          <p style="margin-left: 10px; font-size: 15px; margin-bottom: 0px;">${item_name}<br>${item_price}원</p>
+						        </div>
+						      </div>`);
 	}
-	popupDocument.write('<hr>');
-	popupDocument.write(`<h3>${send_user_nickname}</h3>`);
-	popupDocument.write('<hr>');
-	popupDocument.write(`<p>${letter_reg_datetime}</p>`);
-	popupDocument.write('<hr>');
-	popupDocument.write(`<p>${letter_content}</p>`);
-	if(item_no && log && log.value != send_user_no){
-		popupDocument.write(`<button id="set-trade">약속잡기</button>`);
+	popupDocument.write('<div class="text">');
+	popupDocument.write(`<div class="title"><h3>제목 <br> ${letter_title}</h3></div>`);
+	popupDocument.write(`<div class="title"><h3>내용</h3><p>${letter_content}</p></div>`);
+	popupDocument.write('<div class="going">');
+	if(item_no && item_no != '0' && log && log.value != send_user_no){
+		popupDocument.write('<button id="set-trade">약속잡기</button>');
 	}
-	popupDocument.write(`<button id="write-letter">답장</button>`);
-	popupDocument.write('<button id="close-popup">닫기</button>');
+	popupDocument.write('<button id="write-letter">답장</button>');
+	popupDocument.write('<button class="delect" id="close-popup">취소</button>');
 	popupDocument.write('</div>');
+	popupDocument.write('</div>');
+	popupDocument.write('</div>');
+	
 	setEvents()
 }
 
@@ -208,4 +242,11 @@ function resetValues(){
 	 send_user_nickname = null;
 	 popupWindow = null;
 	 popupDocument = null;
+	 send_user_img = null;
+	 send_user_dong = null;
+	 send_user_deg = null;
+	 send_user_emoji = null;
+	 item_img = null;
+	 item_name = null;
+	 item_price = null;
 }
