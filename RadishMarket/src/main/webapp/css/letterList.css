@@ -97,7 +97,8 @@ body{
 	margin:0;
 }
 .letter-info-box {
-	width: 384px;
+	width: 400px;
+	overflow-x: hidden;
 	height: 100%;
 	display: flex;
 	justify-content: center;
@@ -261,4 +262,20 @@ body{
 	background-color: white;
 	color: black;
 	border: 1px solid black;
+}
+
+.letter-info-box .title input{
+	width:90%;
+	margin: 0 5px;
+}
+
+.letter-info-box .title h3{
+	margin-top: 5px;
+}
+.letter-info-box .title textarea{
+	width:90%;
+	height: 150px;
+	margin: -5px 10px;
+	border-radius:10px;
+	border:1px solid #ddd;
 }

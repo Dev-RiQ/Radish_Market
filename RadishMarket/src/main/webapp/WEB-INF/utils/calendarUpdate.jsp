@@ -10,7 +10,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">일정 추가</h4>
+				<h4 class="modal-title">일정 수정</h4>
 				<button type="button" class="close" id="close-Btn"
 					data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>

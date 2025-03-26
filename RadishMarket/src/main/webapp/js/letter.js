@@ -136,17 +136,25 @@ function setPrintLetterInfo(data){
 }
 
 function setPopupWriteForSend(popupDocument){
+	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
+	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
+	popupDocument.write('<div class="lettergoings">');
+	popupDocument.write('<div class="propile">');
 	popupDocument.write('<h2>쪽지 보내기</h2>');
-	popupDocument.write(`받는 유저<input type="text" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" readonly/>`);
-	if(item_no){
-		popupDocument.write(`<input type="hidden" id="item_no" name="item_no" value="${item_no}" readonly/>`);
+	popupDocument.write(`<input type="hidden" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" />`);
+	popupDocument.write('</div>');
+	if(item_no && item_no != '0'){
+		popupDocument.write(`<input type="hidden" id="item_no" name="item_no" value="${item_no}" />`);
 	}
-	popupDocument.write('<hr>');
-	popupDocument.write(`제목<input type="text" id="letter_title" name="letter_title" />`);
-	popupDocument.write('<hr>');
-	popupDocument.write(`내용<textarea id="letter_content" name="letter_content"></textarea>`);
+	popupDocument.write('<div class="text">');
+	popupDocument.write(`<div class="title"><h3>제목 <br><input type="text" id="letter_title" name="letter_title" /></h3></div>`);
+	popupDocument.write(`<div class="title"><h3>내용</h3><textarea id="letter_content" name="letter_content"></textarea></div>`);
+	popupDocument.write('<div class="going">');
 	popupDocument.write('<button id="send-letter">전송</button>');
-	popupDocument.write('<button id="close-popup">취소</button>');
+	popupDocument.write('<button class="delect" id="close-popup">취소</button>');
+	popupDocument.write('</div>');
+	popupDocument.write('</div>');
+	popupDocument.write('</div>');
 	setEvents()
 }
 
@@ -180,7 +188,9 @@ function setPopupWriteForRead(popupDocument){
 	if(item_no && item_no != '0' && log && log.value != send_user_no){
 		popupDocument.write('<button id="set-trade">약속잡기</button>');
 	}
-	popupDocument.write('<button id="write-letter">답장</button>');
+	if(log && log.value != send_user_no){
+		popupDocument.write('<button id="write-letter">답장</button>');
+	}
 	popupDocument.write('<button class="delect" id="close-popup">취소</button>');
 	popupDocument.write('</div>');
 	popupDocument.write('</div>');
