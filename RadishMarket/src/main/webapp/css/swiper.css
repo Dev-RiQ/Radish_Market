@@ -19,5 +19,13 @@ div.swiper-slide img {
 
 div.swiper-button-prev,
 div.swiper-button-next{
-	color: yellowgreen;
+	color: white;
+}
+
+.swiper .swiper-pagination-bullet {
+  background-color: white;
+}
+
+img.load-img{
+	border-radius: 5px;
 }
