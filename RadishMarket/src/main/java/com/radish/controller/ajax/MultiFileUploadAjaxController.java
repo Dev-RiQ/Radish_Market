@@ -30,6 +30,8 @@ public class MultiFileUploadAjaxController implements Controller {
 
 		String savePath = request.getServletContext().getRealPath("/images");
 		File uploadDir = new File(savePath);
+		System.out.println("savePath : " + savePath);
+		System.out.println("uploadDir : " + uploadDir);
 		if (!uploadDir.exists()) {
 			uploadDir.mkdirs();
 		}
@@ -38,7 +40,6 @@ public class MultiFileUploadAjaxController implements Controller {
 			if (part.getName().equals("img") && part.getSize() > 0) {
 				String originalFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 				String saveFileName = System.currentTimeMillis() + "_" + originalFileName;
-
 				part.write(savePath + File.separator + saveFileName);
 				fileNameList.add(saveFileName);
 			}
