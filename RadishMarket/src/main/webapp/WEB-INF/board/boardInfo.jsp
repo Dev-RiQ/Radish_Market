@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<%@ include file="../main/header.jsp" %>
 		<link rel="stylesheet" href="../../css/boardInfo.css">
+		<link rel="stylesheet" href="../../css/boardList.css">
 
 		<section>
 			<div class="board-info-box">
@@ -90,12 +91,12 @@
 										</td>
 										<!--프로필-->
 
-										<td><a href="/userItemList.do?user_no=${ user.user_no }">${ user.user_nickname }</a></td>
+										<td><a href="/itemListUser.do?user_no=${ user.user_no }">${ user.user_nickname }</a></td>
 										<!--이름-->
 										<td>${ user.user_deg }℃${emoji}</td>
+										<td><progress id="progress" value="${user.user_deg}" max="100"></progress></td>
 									</tr>
 									<!--온도-->
-									<td><progress id="progress" value="${user.user_deg}" max="100"></progress></td>
 									<tr>
 										<td colspan="5">
 											<span>
@@ -153,7 +154,7 @@
 															</div>
 														</td>
 														<!--댓글 프로필-->
-														<td>${ commentNickname.get(i) }</td>
+														<td><a href="/itemListUser.do?user_no=${commentList.get(i).user_no}">${ commentNickname.get(i) }</a></td>
 														<!--이름-->
 													</tr>
 													<tr>

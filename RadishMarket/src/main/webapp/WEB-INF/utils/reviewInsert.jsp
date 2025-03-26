@@ -37,7 +37,7 @@
 		        <div class="reviewimg">
 					<img alt="대표이미지" src="/images/${item_img}">
 		        </div>
-		          <p style="margin-left: 10px; font-size: 15px; margin-bottom: 0px;">${item.item_name}<br>${item.item_price}원</p>
+		          <p style="margin-left: 10px; font-size: 15px; margin-bottom: 0px;">${item.item_name}<br>${infoItemPrice}원</p>
 		      </div>
 			<input type="hidden" name="item_no" id="item_no" value="${ item.item_no }">
 			<input type="hidden" name="sell_user_no" id="sell_user_no" value="${ item.user_no }">
@@ -72,7 +72,7 @@
 	            </label>
 	
 	            <label class="star-label">
-	              <input type="radio" id="review_deg" name="review_deg" class="star-radio" value="2">
+	              <input type="radio" id="review_deg" name="review_deg" class="star-radio" value="2" checked>
 	              &#9733;</label>
 	
 	          </div>

@@ -42,12 +42,12 @@ public class UpdateCalendarController implements Controller {
 
 		String calendar_content = request.getParameter("calendar_content");
 
-		Calendar calendar = new Calendar(main_user_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime,
+		Calendar calendar = new Calendar(calendar_no, main_user_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime,
 				calendar_title, calendar_content);
-		if (CalendarDAO.getInstance().insertACalenadr(calendar))
+		if (CalendarDAO.getInstance().updateACalendar(calendar))
 			AlertUtil.getInstance().goUrlWithAlert(response, "일정 수정 완료", "mypageUser.do");
 		else
-			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 일정 수정에 실패했습니다.\n다시 시도해주세요.");
+			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 일정 수정에 실패했습니다.\\n다시 시도해주세요.");
 		return null;
 	}
 

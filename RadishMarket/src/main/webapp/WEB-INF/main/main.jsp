@@ -7,13 +7,16 @@
 		<section>
 		<div class="home-box">
 	      <div class="txtbox">
-	        <h1>Radish</h1>
-	        <h2>${dong}에서 <span class="flow-word"></span> 찾고 계신가요?</h2>
+	        <div class="home-text">
+	        	<h2><i class="fa-solid fa-location-dot"></i> ${dong}에서 </h2>
+	        	<h2 class="flow-word"></h2>
+	        	<h2> 찾고 계신가요?</h2>
+	        </div>
 	      </div>
 	
 	      <div class="search">
 	        <button id="local-btn">
-	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>${dong}
+	          <i class="fa-solid fa-location-dot"></i> ${dong}
 	        </button>
 	        <input type="search" id="search_value" class="search-input" />
 	        <button id="search-btn" onclick="searchInItemList()"><i class="fa fa-search"></i></button>

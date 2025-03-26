@@ -15,7 +15,8 @@ function domLoadEvent(data) {
 		let start = date + 'T' + time;
 		let id = dateInfo[0];
 
-		$('#calendar').fullCalendar('renderEvent', { id: id, title: title, start: start }, true);
+		$('#calendar').fullCalendar('renderEvent', { id: id, title: title, start: start,
+			 		color: "#5FCC29"}, true);
 
 
 	})

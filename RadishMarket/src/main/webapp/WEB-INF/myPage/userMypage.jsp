@@ -119,8 +119,9 @@
           <div class="cartegorymenue">
           		<div class="user-calendar">
 					<div class="container">
-						<div>
-							<button onclick="location.href='/insertCalendar.do'">일정 등록</button>
+						<div class="btn-cal-box">
+							<div></div>
+							<button class="btn-cal-sub" onclick="location.href='/insertCalendar.do'">일정 등록</button>
 						</div>
 						<div id="calendar"></div>
 					</div>

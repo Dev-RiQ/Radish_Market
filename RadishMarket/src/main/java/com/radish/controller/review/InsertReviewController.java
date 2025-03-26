@@ -1,6 +1,7 @@
 package com.radish.controller.review;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import com.radish.dao.AlarmDAO;
 import com.radish.dao.CartDAO;
@@ -38,6 +39,9 @@ public class InsertReviewController implements Controller {
 			Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 			request.setAttribute("item", item);
 			request.setAttribute("item_img", ItemImgDAO.getInstance().getAItemImg(item_no));
+			DecimalFormat df = new DecimalFormat("###,###");
+			String infoItemPrice = df.format(item.getItem_price());
+			request.setAttribute("infoItemPrice", infoItemPrice);
 			User user = UserDAO.getInstance().getAUserByLog(ItemDAO.getInstance().getAItemByItemNo(item_no).getUser_no());
 			request.setAttribute("user", user);
 			request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));

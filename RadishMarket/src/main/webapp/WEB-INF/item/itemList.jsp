@@ -13,14 +13,7 @@
 				<div class="dir-history">
 					<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래</a>
 				</div>
-				<c:choose>
-					<c:when test="${log ne null}">
-						<h1>${user.user_city} ${user.user_gu} ${user.user_dong} 중고거래</h1>
-					</c:when>
-					<c:otherwise>
-						<h1>${address} 중고거래</h1>
-					</c:otherwise>
-				</c:choose>
+				<h1>${address} 중고거래</h1>
 			</div>
           </div>
         </div>
@@ -29,7 +22,7 @@
         	<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
 		
 			<hr>
-			<label for="item_status">필터</label><br>
+			<label class="filter-label" for="item_status">필터</label><br>
 			<label class="container"><input type="radio" name="item_status" id="item_status" value=0
 				${ item_status eq null || item_status == 0 ? 'checked' : '' } />전체보기
 				<span class="checkmark"></span>
@@ -51,7 +44,7 @@
 			<hr>
 			
 			<input type="hidden" id="gu" name="gu" value="${ gu }"/>
-			<label for="user_dong">위치</label><br> <label class="container"><input
+			<label class="filter-label" for="user_dong">위치</label><br> <label class="container"><input
 				type="radio" name="dong" id="dong" value="전체"
 				${ userDong eq '전체' ? 'checked' : '' } />전체보기
 				<span class="checkmark"></span>
@@ -66,7 +59,7 @@
 		
 			<hr>
 		
-			<label for="category_no">카테고리</label><br> <label class="container"><input
+			<label class="filter-label" for="category_no">카테고리</label><br> <label class="container"><input
 				type="radio" name="category_no" id="category_no" value="0"
 				${ categoryNo eq null || categoryNo eq 0 ? 'checked' : '' } />전체보기
 				<span class="checkmark"></span>
@@ -81,14 +74,14 @@
 		
 			<hr>
 			
-			<label for="price_min">최소 가격</label><br>
+			<label class="filter-label" for="price_min">최소 가격</label><br>
 			<input type="number" name="price_min" id="price_min" value=${ price_min ne null ? price_min : 0 } /><br>
-			<label for="price_max">최대 가격</label><br>
+			<label class="filter-label" for="price_max">최대 가격</label><br>
 			<input type="number" name="price_max" id="price_max" value=${ price_max ne null ? price_max : 0 } /><br>
 			
 			<hr>
 		
-			<label for="order_by">정렬</label><br> <label class="container"><input
+			<label class="filter-label" for="order_by">정렬</label><br> <label class="container"><input
 				type="radio" name="order_by" id="order_by" value=0
 				${ order_by eq null || order_by == 0 ? 'checked' : '' } />최신순
 				<span class="checkmark"></span>

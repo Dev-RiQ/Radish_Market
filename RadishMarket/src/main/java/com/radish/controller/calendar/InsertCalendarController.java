@@ -69,7 +69,7 @@ public class InsertCalendarController implements Controller {
 		String calendar_content = request.getParameter("calendar_content");
 		
 		Calendar calendar = new Calendar(main_user_no, sub_user_no, meet_no, address, calendar_dir_x, calendar_dir_y, calendar_datetime, calendar_title, calendar_content);
-		if(CalendarDAO.getInstance().insertACalenadr(calendar)) {
+		if(CalendarDAO.getInstance().insertACalendar(calendar)) {
 			AlertUtil.getInstance().goUrlWithAlert(response, "일정 추가 완료", "mypageUser.do");
 			Cart cart = new Cart(item_no, sub_user_no, 0);
 			CartDAO.getInstance().cartInsert(cart);

@@ -244,5 +244,6 @@
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d1caf6cb5052d4cc130fc975732c5c15&libraries=services,clusterer"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../../js/userJusoSearch.js"></script>
+<script src="../../js/singleFileUpload.js"></script>
 <script src="../../js/userUpdateValidCheck.js"></script>
 <script src="../../js/user.js"></script>

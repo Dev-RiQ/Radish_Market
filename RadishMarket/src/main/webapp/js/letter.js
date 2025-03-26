@@ -39,10 +39,12 @@ function openPop(type) {
 		case 'read' : 
 			fetchReadLetter();
 			let check = document.querySelector(`#show-letter${letter_no}`);
-			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check && !check.value){
-				check.value = '1'
+			console.log(check)
+			console.log(check.className)
+			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check && check.className == '0'){
+				check.className = '1'
 				check.innerHTML = check.innerHTML.replace('<strong><i class="fa-solid fa-envelope" style="color: greenyellow">'
-												,'<i class="fa-solid fa-envelope-open" style="color: rgb(148, 140, 140)">') + '<strong style="width:0; margin-right:-12.5px;">'
+												,'<i class="fa-solid fa-envelope-open" style="color: rgb(148, 140, 140)">') + '<strong style="width:0; margin-right:-22.5px;">'
 			}
 			break;
 	}
@@ -136,6 +138,7 @@ function setPrintLetterInfo(data){
 }
 
 function setPopupWriteForSend(popupDocument){
+	popupDocument.write(`<link rel="stylesheet" href="../../css/main.css">`);
 	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
 	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
 	popupDocument.write('<div class="lettergoings">');
@@ -155,10 +158,12 @@ function setPopupWriteForSend(popupDocument){
 	popupDocument.write('</div>');
 	popupDocument.write('</div>');
 	popupDocument.write('</div>');
+	popupDocument.write(`<script src="../../js/main.js"></script>`);
 	setEvents()
 }
 
 function setPopupWriteForRead(popupDocument){
+	popupDocument.write(`<link rel="stylesheet" href="../../css/main.css">`);
 	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
 	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
 	popupDocument.write('<div class="lettergoings">');
@@ -195,6 +200,7 @@ function setPopupWriteForRead(popupDocument){
 	popupDocument.write('</div>');
 	popupDocument.write('</div>');
 	popupDocument.write('</div>');
+	popupDocument.write(`<script src="../../js/main.js"></script>`);
 	
 	setEvents()
 }

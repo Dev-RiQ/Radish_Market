@@ -8,8 +8,9 @@
 
 <head>
 <meta charset="UTF-8">
+<link rel="shortcut icon" href="../../images/fav.ico" type="image/x-icon">
+<link rel="icon" href="../../images/fav.ico" type="image/x-icon">
 <title>무엇이든 우리동네 무우</title>
-
 <!-- CSS 추가 위치 -->
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
@@ -21,6 +22,10 @@
 
 </head>
 <body>
+	<div id="loading-page" class="loading-page hide">
+		<jsp:include page="/pageLoading.jsp"></jsp:include>
+	</div>
+	<script src="../../js/pageLoading.js"></script>
 	<c:if test="${ log ne null }">
 		<input type="hidden" id="log" value="${log}">
 	</c:if>
@@ -32,7 +37,7 @@
 	    	</div>
 			<c:set var="url" value="${ pageContext.request.requestURL }" />
 			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
-		    	<div>
+		    	<div class="gnb-category">
 					<a href='/listItem.do'>중고거래</a> 
 					<a href='/listBoard.do'>자유게시판</a> 
 					<a href='/listMeet.do'>모임</a>
@@ -57,7 +62,7 @@
 		<div class="search-box">
 			<div class="search">
 	        <button id="local-btn">
-	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>위치
+	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>${ dong }
 	        </button>
 	        <input type="search" class="search-input" id="search_value" name="search_value" value="${ search_value }"/>
 	        <button id="search-btn" onclick="searchInItemList()"><i class="fa fa-search"></i></button>

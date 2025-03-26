@@ -1,6 +1,7 @@
 package com.radish.controller.letter;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 import com.radish.dao.EmojiDAO;
 import com.radish.dao.ItemDAO;
@@ -56,7 +57,9 @@ public class InfoLetterAjaxController implements Controller {
 			sb.append("/devide/");
 			sb.append(item.getItem_name());
 			sb.append("/devide/");
-			sb.append(item.getItem_price());
+			DecimalFormat df = new DecimalFormat("###,###");
+			String infoItemPrice = df.format(item.getItem_price());
+			sb.append(infoItemPrice);
 		}
 		response.getWriter().print(sb.toString());
 		

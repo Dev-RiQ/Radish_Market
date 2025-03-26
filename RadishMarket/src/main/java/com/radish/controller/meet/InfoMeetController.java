@@ -72,14 +72,17 @@ public class InfoMeetController implements Controller {
 		request.setAttribute("calendarCount", calendarCount);
 		
 		List<Calendar> calendarList = CalendarDAO.getInstance().getMeetCalendarLimitList(meet_no);
-		String[] calendarDate = new String[calendarList.size()];
+		String[] calendarMonth = new String[calendarList.size()];
+		String[] calendarDay = new String[calendarList.size()];
 		String[] calendarTime = new String[calendarList.size()];
 		for(int i = 0; i < calendarList.size(); i++) {
-			calendarDate[i] = calendarList.get(i).getCalendar_datetime().split(" ")[0];
+			calendarMonth[i] = calendarList.get(i).getCalendar_datetime().split(" ")[0].split("-")[1];
+			calendarDay[i] = calendarList.get(i).getCalendar_datetime().split(" ")[0].split("-")[2];
 			calendarTime[i] = calendarList.get(i).getCalendar_datetime().split(" ")[1];
 		}
 		request.setAttribute("calendarList", calendarList);
-		request.setAttribute("calendarDateList", calendarDate);
+		request.setAttribute("calendarMonth", calendarMonth);
+		request.setAttribute("calendarDay", calendarDay);
 		request.setAttribute("calendarTimeList", calendarTime);
 		
 		// 게시글
