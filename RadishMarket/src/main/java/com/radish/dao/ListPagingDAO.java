@@ -292,7 +292,7 @@ public class ListPagingDAO {
 				item_img = itemImgList.get(i).getItem_img();
 			String item_name = ((Item) list.get(i)).getItem_name();
 			int item_status = ((Item) list.get(i)).getItem_status();
-			String status = item_status == 2 ? "예약중 " : item_status == 3 ? "판매완료 " : "";
+			String status = item_status == 2 ? "예약중" : item_status == 3 ? "판매완료" : "";
 			int item_price= ((Item) list.get(i)).getItem_price();
 			String price = getPrintPrice(item_price);
 			String item_dong = ((Item) list.get(i)).getItem_dong();
@@ -301,8 +301,8 @@ public class ListPagingDAO {
 			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
 			sb.append(" <div class=\"itemtxt\">");
 			sb.append("<p>"+item_name+"</p>");
-			sb.append("<p> "+price+"</p>");
-			sb.append("<span>"+item_dong+"</span> <span>"+status+"</span>");
+			sb.append("<p class=\"item-price\"> "+price+"</p>");
+			sb.append("<span>"+item_dong+"</span> <span class=\"item-status\">"+status+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -427,7 +427,7 @@ public class ListPagingDAO {
 			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
 			sb.append(" <div class=\"itemtxt\">");
 			sb.append("<p>"+item_name+"</p>");
-			sb.append("<p> "+price+"</p>");
+			sb.append("<p class=\"item-price\"> "+price+"</p>");
 			sb.append("<span>"+item_dong+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");
@@ -453,7 +453,7 @@ public class ListPagingDAO {
 			sb.append("<div class=\"itemimg\"><img src=\"/images/"+item_img+"\" alt=\"이미지\" /></div>");
 			sb.append(" <div class=\"itemtxt\">");
 			sb.append("<p>"+item_name+"</p>");
-			sb.append("<p> "+price+"</p>");
+			sb.append("<p class=\"item-price\"> "+price+"</p>");
 			sb.append("<span>"+item_dong+"</span>");
 			sb.append("</div>");
 			sb.append("</div>");

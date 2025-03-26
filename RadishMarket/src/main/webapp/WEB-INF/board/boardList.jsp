@@ -65,6 +65,7 @@
           </div>
 
           <div class="pepoletxts">
+          	<p class="empty-info" id="boardList"></p>
           	<div id="list-box"></div>
 	          <button class="addbtn" id="btn-more-list" value="board/0" onclick="getMoreList()">
 	            <i class="fa-solid fa-chevron-down"></i>

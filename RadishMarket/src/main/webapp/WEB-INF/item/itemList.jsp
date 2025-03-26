@@ -102,7 +102,9 @@
 		</form>
 
           <div class="product">
+          	<p class="empty-info" id="itemList"></p>
             <div class="product-child" id="list-box">
+            
             </div>
             <button class="addbtn" id="btn-more-list" value="item/0" onclick="getMoreList()">
               <i class="fa-solid fa-chevron-down"></i>

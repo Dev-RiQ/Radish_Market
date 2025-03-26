@@ -33,27 +33,27 @@ let isLoaded = false;
 let isClicked = false;
 let btnMoreList = document.querySelector("#btn-more-list")
 let type = null;
-if(btnMoreList){
+if (btnMoreList) {
 	getMoreList();
 	setTimeout(() => {
 		isLoaded = true;
-	},1000)
+	}, 1000)
 }
 
 function getMoreList() {
-	if(isLoaded){
+	if (isLoaded) {
 		btnMoreList = event.currentTarget;
 	}
-	if(!btnMoreList || !btnMoreList.value){
+	if (!btnMoreList || !btnMoreList.value) {
 		btnMoreList = document.querySelector("#show-alarm-div");
 	}
 	const typeAndStart = btnMoreList.value.split("/");
 	type = typeAndStart[0];
 	let start = typeAndStart[1];
-	if(type != 'alarm'){
-		if(isClicked){
+	if (type != 'alarm') {
+		if (isClicked) {
 			return;
-		}else{
+		} else {
 			isClicked = true;
 			btnMoreList.innerHTML = '<img alt="로딩중" src="/images/loading.gif" style="width:50px; height: 50px; object-fit:cover;"/>'
 		}
@@ -129,7 +129,7 @@ function getFilter() {
 
 function printList(data) {
 	if (data == 'noMoreList') {
-		if(type == 'alarm') return;
+		if (type == 'alarm') return;
 		btnMoreList.classList.add('hide');
 		if (btnMoreList.value.split("/")[1] == '30') {
 			printNoData();
@@ -137,12 +137,13 @@ function printList(data) {
 		return;
 	}
 	let listBox = document.querySelector("#list-box");
-	if(type == 'alarm') listBox = document.querySelector("#alarm-list-box")
+	if (type == 'alarm') listBox = document.querySelector("#alarm-list-box")
 	listBox.innerHTML += data;
-	if(type != 'alarm'){
+	if (type != 'alarm') {
 		btnMoreList.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'
 		isClicked = false;
 	}
+	load_item_status_color();
 }
 
 function printNoData() {
@@ -160,6 +161,19 @@ function printNoData() {
 			case 'meetList': word.innerHTML = '참여중인 모임이 없습니다.'; break;
 			case 'receiveLetterList': word.innerHTML = '받은 쪽지가 없습니다.'; break;
 			case 'sendLetterList': word.innerHTML = '보낸 쪽지가 없습니다.'; break;
+			case 'itemList': word.innerHTML = '등록된 상품이 없습니다.'; break;
 		}
 	}
+}
+
+function load_item_status_color() {
+	const item_status = document.querySelectorAll("span.item-status");
+	if (item_status)
+		item_status.forEach((e) => {
+			if (e.innerHTML === '예약중') {
+				e.style.color = '#4CAF50';
+			} else if (e.innerHTML === '판매완료') {
+				e.style.color = '#EF6C00';
+			}
+		})
 }
