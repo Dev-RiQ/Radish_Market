@@ -17,11 +17,6 @@ div.swiper-slide img {
     object-fit: contain;
 }
 
-div.swiper-button-prev,
-div.swiper-button-next{
-	color: white;
-}
-
 .swiper .swiper-pagination-bullet {
   background-color: white;
 }
@@ -29,3 +24,4 @@ div.swiper-button-next{
 img.load-img{
 	border-radius: 5px;
 }
+

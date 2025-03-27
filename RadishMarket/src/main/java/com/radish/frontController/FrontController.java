@@ -11,8 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("*.do")
 @MultipartConfig(
-	maxFileSize = 1024 * 1024 * 1,  //1MB
-	maxRequestSize = 1024 * 1024 * 10  //10MB
+    maxFileSize = 1024 * 1024 * 5,
+    maxRequestSize = 1024 * 1024 * 40
 )
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

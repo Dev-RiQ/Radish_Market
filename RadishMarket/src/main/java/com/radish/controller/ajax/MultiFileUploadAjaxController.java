@@ -44,7 +44,7 @@ public class MultiFileUploadAjaxController implements Controller {
 				fileNameList.add(saveFileName);
 			}
 		}
-		
+
 		Gson gson = new Gson();
 		String json = gson.toJson(fileNameList);
 		PrintWriter out = response.getWriter();

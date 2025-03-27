@@ -2,7 +2,7 @@
 
 	<%@ include file="../main/header.jsp" %>
 		<link rel="stylesheet" href="../../css/itemInfo.css">
-		<link rel="stylesheet" type="text/css" href="../../css/swiper.css">
+		<link rel="stylesheet" type="text/css" href="../../css/itemInfoSwiper.css">
 		<section>
 			<div class="item-info-box">
 				<div class="thelook">
@@ -77,9 +77,18 @@
 						<div class="itemtxt">
 							<div class="text">
 								<h2>${item.item_name}</h2>
-								<span><a
-										href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>∙${updateTime}</span>
-								<h3>${infoItemPrice}원</h3>
+								<span><a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>∙${updateTime}</span>
+								<c:choose>
+									<c:when test="${item.item_status == 2}">
+										<h3><span class="item-status">예약중</span>&nbsp;${infoItemPrice}원</h3>
+									</c:when>
+									<c:when test="${item.item_status == 3}">
+										<h3><span class="item-status">판매완료</span>&nbsp;${infoItemPrice}원</h3>
+									</c:when>
+									<c:otherwise>
+										<h3>${infoItemPrice}원</h3>	
+									</c:otherwise>
+								</c:choose>
 								<p>${ item.item_content }</p>
 								<span>찜 <span id="zzim-count">${zzimCount}</span></span> <span>
 									· 조회수 ${item.item_hits}</span> <br />

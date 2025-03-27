@@ -21,7 +21,7 @@ public class itemListUserController implements Controller {
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		if (request.getSession().getAttribute("log") == null || request.getSession() == null) {
+		if (request.getSession() == null || request.getSession().getAttribute("log") == null) {
 			AlertUtil.getInstance().goHomeWithAlert(response, "로그인 후 이용해주세요.");
 		}
 		
@@ -30,25 +30,17 @@ public class itemListUserController implements Controller {
 		if(user_no_str != null) {
 			log = Integer.parseInt(user_no_str);
 		}
+		
 		User user = UserDAO.getInstance().getAUserByLog(log);
 		request.setAttribute("user", user);
 		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
-		String sellListSize = "";
+		
 		int sellListSizeInt = ItemDAO.getInstance().getSellListSize(log);
-		if(sellListSizeInt > 100) {
-			sellListSize = "100+";
-		}else {
-			sellListSize = sellListSizeInt + "";
-		}
+		String sellListSize = (sellListSizeInt > 100) ? "100+" : sellListSizeInt+"";
 		request.setAttribute("sellListSize", sellListSize);
 		
-		String reviewListSize = "";
 		int reviewListSizeInt = ReviewDAO.getInstance().getReviewListSize(log);
-		if(reviewListSizeInt > 100) {
-			reviewListSize = "100+";
-		}else {
-			reviewListSize = reviewListSizeInt + "";
-		}
+		String reviewListSize = (reviewListSizeInt > 100) ? "100+" : reviewListSizeInt + "";
 		request.setAttribute("reviewListSize", reviewListSize);
 		
 		String alarm_no_str = request.getParameter("alarm_no");
@@ -58,7 +50,6 @@ public class itemListUserController implements Controller {
 			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
 		}
 		
-
 		return "myPage/userItemList";
 	}
 

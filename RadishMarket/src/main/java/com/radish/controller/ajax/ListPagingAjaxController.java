@@ -31,11 +31,15 @@ public class ListPagingAjaxController implements Controller {
 
 		String type = queryString.get("type")[0];
 		switch (type) {
-		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", "myBoard", "hostMeet", "myMeet",
-				"alarm":
-			filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString()));
+		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", "myBoard", "hostMeet", "myMeet", "alarm":
+			String user_no = request.getParameter("user_no");
+			if (user_no != null && !user_no.isEmpty()) {
+				filter.setUser_no(Integer.parseInt(user_no));
+			} else {
+				filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString()));
+			}
 			break;
-		}
+	}
 
 		List<?> list = ListPagingDAO.getInstance().getListByFilter(type, filter);
 		if (list != null && list.size() != 0) {

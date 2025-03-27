@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.swiper{
+	position: relative;
+}
+
+div.swiper-slide {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+div.swiper-slide img {
+    width: auto; 
+    max-width: 100%; 
+    max-height: 500px; 
+    object-fit: contain;
+}
+
+
+div.swiper-button-prev,
+div.swiper-button-next{
+	color: white;
+}
+
+.swiper .swiper-pagination-bullet {
+  background-color: white;
+}
+
+img.load-img{
+	border-radius: 5px;
+}

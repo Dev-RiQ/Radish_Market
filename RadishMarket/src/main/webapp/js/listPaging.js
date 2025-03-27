@@ -40,89 +40,85 @@ if (btnMoreList) {
 	}, 1000)
 }
 
-function getMoreList() {
-	if (isLoaded) {
+function getMoreList(event) {
+	if (isLoaded && event) {
 		btnMoreList = event.currentTarget;
 	}
 	if (!btnMoreList || !btnMoreList.value) {
 		btnMoreList = document.querySelector("#show-alarm-div");
 	}
+
 	const typeAndStart = btnMoreList.value.split("/");
 	type = typeAndStart[0];
 	let start = typeAndStart[1];
-	if (type != 'alarm') {
-		if (isClicked) {
-			return;
-		} else {
-			isClicked = true;
-			btnMoreList.innerHTML = '<img alt="로딩중" src="/images/loading.gif" style="width:50px; height: 50px; object-fit:cover;"/>'
-		}
-	}
-	btnMoreList.value = `${type}/${parseInt(start) + parseInt(30)}`;
 
+	if (type != 'alarm') {
+		if (isClicked) return;
+		isClicked = true;
+		btnMoreList.innerHTML = '<img alt="로딩중" src="/images/loading.gif" style="width:50px; height: 50px; object-fit:cover;"/>';
+	}
+
+	btnMoreList.value = `${type}/${parseInt(start) + 30}`;
 	let queryString = `start=${start}&type=${type}`;
-	if (type == 'item' || type == 'board' || type == 'meetBoard' || type == 'meet'
-		|| type == 'myItem' || type == 'adminUser' || type == 'adminBoard'
-		|| type == 'adminItem' || type == 'adminMeet') {
+
+	if (
+		type == 'item' || type == 'board' || type == 'meetBoard' || type == 'meet' ||
+		type == 'myItem' || type == 'adminUser' || type == 'adminBoard' ||
+		type == 'adminItem' || type == 'adminMeet'
+	) {
 		queryString += getFilter();
 	}
-	console.log(queryString)
-	let url = `/listPagingAjax.do`;
-	fetch(url, {
-		method: "post",
-		headers: { "Content-type": "application/x-www-form-urlencoded; charset=UFT-8" },
+
+	const target_user_no = document.querySelector('#target_user_no');
+	const user_no = target_user_no ? target_user_no.value : 0;
+	queryString += `&user_no=${user_no}`;
+
+	fetch("/listPagingAjax.do", {
+		method: "POST",
+		headers: { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" },
 		body: queryString
 	})
 		.then(response => response.text())
 		.then(printList)
-		.catch(error => console.log(error))
+		.catch(error => console.log(error));
 }
-
 function getFilter() {
 	let queryString = '';
+
 	let itemStatus = document.querySelector('input[id="item_status"]:checked');
-	if (!itemStatus)
-		itemStatus = document.querySelector('#item_status');
-	queryString += `&item_status=${itemStatus ? itemStatus.value ? itemStatus.value : 0 : 0}`
+	if (!itemStatus) itemStatus = document.querySelector('#item_status');
+	queryString += `&item_status=${itemStatus ? itemStatus.value || 0 : 0}`;
 
 	let categoryNo = document.querySelector('input[id="category_no"]:checked');
-	if (!categoryNo)
-		categoryNo = document.querySelector('#category_no');
-	queryString += `&category_no=${categoryNo ? categoryNo.value ? categoryNo.value : 0 : 0}`
+	if (!categoryNo) categoryNo = document.querySelector('#category_no');
+	queryString += `&category_no=${categoryNo ? categoryNo.value || 0 : 0}`;
 
 	let priceMin = document.querySelector('input[id="price_min"]:checked');
-	if (!priceMin)
-		priceMin = document.querySelector('#price_min');
-	queryString += `&price_min=${priceMin ? priceMin.value ? priceMin.value : 0 : 0}`
+	if (!priceMin) priceMin = document.querySelector('#price_min');
+	queryString += `&price_min=${priceMin ? priceMin.value || 0 : 0}`;
 
 	let priceMax = document.querySelector('input[id="price_max"]:checked');
-	if (!priceMax)
-		priceMax = document.querySelector('#price_max');
-	queryString += `&price_max=${priceMax ? priceMax.value ? priceMax.value : 0 : 0}`
+	if (!priceMax) priceMax = document.querySelector('#price_max');
+	queryString += `&price_max=${priceMax ? priceMax.value || 0 : 0}`;
 
 	let gu = document.querySelector('input[id="gu"]:checked');
-	if (!gu)
-		gu = document.querySelector('#gu');
-	queryString += `&gu=${gu ? gu.value ? gu.value : "강남구" : "강남구"}`
+	if (!gu) gu = document.querySelector('#gu');
+	queryString += `&gu=${gu ? gu.value || "강남구" : "강남구"}`;
 
 	let dong = document.querySelector('input[id="dong"]:checked');
-	if (!dong)
-		dong = document.querySelector('#dong');
-	queryString += `&dong=${dong ? dong.value ? dong.value : "전체" : "전체"}`
+	if (!dong) dong = document.querySelector('#dong');
+	queryString += `&dong=${dong ? dong.value || "전체" : "전체"}`;
 
 	let orderBy = document.querySelector('input[id="order_by"]:checked');
-	if (!orderBy)
-		orderBy = document.querySelector('#order_by');
-	queryString += `&order_by=${orderBy ? orderBy.value ? orderBy.value : 0 : 0}`
+	if (!orderBy) orderBy = document.querySelector('#order_by');
+	queryString += `&order_by=${orderBy ? orderBy.value || 0 : 0}`;
 
 	let meetNo = document.querySelector('input[id="meet_no"]:checked');
-	if (!meetNo)
-		meetNo = document.querySelector('#meet_no');
-	queryString += `&meet_no=${meetNo ? meetNo.value ? meetNo.value : 0 : 0}`
+	if (!meetNo) meetNo = document.querySelector('#meet_no');
+	queryString += `&meet_no=${meetNo ? meetNo.value || 0 : 0}`;
 
 	let searchValue = document.querySelector('#search_value');
-	queryString += `&search_value=${searchValue.value}`
-	console.log(queryString)
+	queryString += `&search_value=${searchValue ? searchValue.value : ''}`;
 
 	return queryString;
 }
