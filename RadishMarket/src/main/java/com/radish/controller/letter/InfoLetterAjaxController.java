@@ -45,6 +45,8 @@ public class InfoLetterAjaxController implements Controller {
 		String send_user_nickname = send_user_portion_info.getUser_nickname();
 		sb.append(send_user_nickname);
 		sb.append("/devide/");
+		sb.append(send_user_portion_info.getUser_gu());
+		sb.append("/devide/");
 		sb.append(send_user_portion_info.getUser_dong());
 		sb.append("/devide/");
 		int user_deg = send_user_portion_info.getUser_deg();

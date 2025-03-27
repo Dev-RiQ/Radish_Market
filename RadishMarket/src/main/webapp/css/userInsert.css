@@ -14,14 +14,13 @@ main {
 }
 
 .insert {
-	width: 900px;
-	height: calc(100% - 50px);
+	width: 600px;
 	border: 1px solid #b4b1b1;
+	padding:40px;
 }
 
 .insert-check {
 	width: 100%;
-	height: 700px;
 }
 
 .insert-txt {
@@ -29,27 +28,12 @@ main {
 	height: 100px;
 }
 
-input {
+.insert input {
 	width: 200px;
 	margin: 10px;
+	padding: 5px 15px;
 	margin-left: 30px;
-}
-
-.insert-welcom {
-	display: flex;
-	width: 100%;
-	height: 180px;
-	background: rgb(56, 222, 205);
-	background: linear-gradient(0deg, rgba(56, 222, 205, 1) 31%,
-		rgba(15, 249, 15, 1) 94%);
-	align-items: center;
-}
-
-.insert-welcom>h1 {
-	font-size: 60px;
-	margin-left: 15px;
-	font-weight: 400;
-	color: white;
+	border-radius: 10px;
 }
 
 #cars {
@@ -64,7 +48,7 @@ input {
 	margin-top: 16px;
 }
 
-span {
+.insert span {
 	font-size: 13px;
 	margin-left: 90px;
 	color: #aba9a9;
@@ -109,10 +93,13 @@ span {
 	margin-left: 39px;
 }
 
+select#user_phone {
+	width:80px;
+}
 select {
 	width: 130px;
-	height: 30px;
-	border-radius: 5px;
+	height: 34px;
+	border-radius: 10px;
 	border: 1.5px solid black;
 }
 
@@ -125,7 +112,6 @@ select {
 .insert-buttons {
 	width: 100%;
 	height: 80px;
-	margin-top: 85px;
 	display: flex;
 	justify-content: end;
 	align-items: end;

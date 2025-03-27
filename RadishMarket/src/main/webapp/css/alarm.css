@@ -22,9 +22,22 @@
 	color: black;
 }
 
+.bell span {
+	font-size: 15px;
+	color: black;
+}
+.bell>div>div:nth-child(1) span {
+	width:100%;
+}
+.bell>div>div:nth-child(2) span {
+	color:#999;		
+}
+.bell>div {
+	flex:1;
+	padding: 8px 0;
+}
 .bell {
 	width: 90%;
-	height: 35px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -38,7 +51,7 @@
 	background-color: white;
 	color: gray;
 	margin-bottom: 10px;
-	font-size: 10px;
+	font-size: 14px;
 }
 
 .bellstxt {
@@ -50,10 +63,6 @@
 	border-radius: 10px 10px 0px 0px;
 }
 
-.bell p {
-	font-size: 13px;
-	color: gray;
-}
 
 .bellstxt h3 {
 	margin-left: 10px;

@@ -9,7 +9,9 @@
       <div class="life">
 		<div class="locallife">
           <div class="locallifetxt">
+          	<div class="dir-history">
             <a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
+            </div>
             <h2>${ address } 모임</h2>
           </div>
           <div class="lbtns">

@@ -5,15 +5,11 @@
 
 <section>
 <div class="dir-history">
-	<a href='/index.jsp'>홈 > </a>  <span>회원가입</span>
+	<a href='/index.jsp'>홈 > </a><span>회원가입</span>
 </div>
 
 <main>
       <div class="insert">
-        <div class="insert-welcom">
-          <h1>Welcom</h1>
-          <br />
-        </div>
         <div class="insert-check">
         <form action="/insertUser.do" method="post">
           <label for="user_id">아이디 <b>*</b></label>
@@ -74,7 +70,7 @@
           <span id="nickname_check"></span>
           <br />
 		<div class="img-box">
-          <label for="user_img">프로필<b>*</b></label
+          <label for="user_img">프로필 <b>*</b></label
           ><!---->
           <div id="post-list"></div>
           <br />

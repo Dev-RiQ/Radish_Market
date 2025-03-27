@@ -11,6 +11,7 @@ import com.radish.controller.ajax.FileUploadAjaxController;
 import com.radish.controller.ajax.ListPagingAjaxController;
 import com.radish.controller.ajax.MainAjaxController;
 import com.radish.controller.ajax.MultiFileUploadAjaxController;
+import com.radish.controller.ajax.ViewModeAjaxController;
 import com.radish.controller.alarm.DeleteAlarmAjaxController;
 import com.radish.controller.alarm.InsertAlarmAjaxController;
 import com.radish.controller.alarm.ListAlarmAjaxController;
@@ -188,6 +189,7 @@ public class HandlerMapping {
 		mappings.put("/fileUploadAjax.do", new FileUploadAjaxController());
 		mappings.put("/main.do", new MainAjaxController());
 		mappings.put("/multiFileUploadAjax.do", new MultiFileUploadAjaxController());
+		mappings.put("/viewModeAjax.do", new ViewModeAjaxController());
 		
 		// BoardCategory
 		mappings.put("/listBoardCategory.do", new ListBoardCategoryController());

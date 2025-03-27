@@ -32,12 +32,18 @@ function openPop() {
 }
 
 function setPopupWrite(popupDocument){
-	popupDocument.write('<h2>이미지 업로드</h2>');
-	popupDocument.write('<img id="image-preview" style="max-width: 100%; max-height: 200px;"><br>');
-	popupDocument.write('<input type="file" id="image-upload" accept="image/*"><br>');
-	popupDocument.write('<button id="save-post">저장</button>');
+	popupDocument.write('<link rel="stylesheet" href="../../css/singleFileUpload.css">');
+	popupDocument.write('<div class="imguplode">');
+	popupDocument.write('<h1>이미지 업로드</h1>');
+	popupDocument.write('<div class="img">');
+	popupDocument.write('<img id="image-preview">');
+	popupDocument.write('</div>');
+	popupDocument.write('<div class="imgchose">');
+	popupDocument.write('<input type="file" id="image-upload" accept="image/*">');
+	popupDocument.write('<button id="save-post">등록</button>');
+	popupDocument.write('</div>');
+	popupDocument.write('</div>');
 }
-
 function fetchFileUpload(inData){
 	if(fileName != null){
 		fetch('/fileUploadAjax.do',{

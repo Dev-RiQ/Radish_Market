@@ -10,9 +10,9 @@ section p {
 	margin-left: 5px;
 }
 
-section span {
+ span {
 	color: grey;
-	font-size: 12px;
+	font-size: 15px;
 }
 
 pre {
@@ -91,7 +91,7 @@ pre {
 }
 .board-list-box .txtcald {
 	width: 99%;
-	height: 160px;
+	height: 140px;
 	margin-top: 10px;
 	border-radius: 5px;
 	margin-left: 5px;

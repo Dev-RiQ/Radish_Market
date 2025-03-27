@@ -12,6 +12,9 @@
 <link rel="icon" href="../../images/fav.ico" type="image/x-icon">
 <title>무엇이든 우리동네 무우</title>
 <!-- CSS 추가 위치 -->
+<c:if test="${ mode ne null && mode ne '' }">
+	<link rel="stylesheet" href="../../css/darkMode.css">
+</c:if>
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
 <link rel="stylesheet" href="../../css/alarm.css">
@@ -25,7 +28,6 @@
 	<div id="loading-page" class="loading-page hide">
 		<jsp:include page="/pageLoading.jsp"></jsp:include>
 	</div>
-	<script src="../../js/pageLoading.js"></script>
 	<c:if test="${ log ne null }">
 		<input type="hidden" id="log" value="${log}">
 	</c:if>
@@ -80,7 +82,7 @@
 	      <div class="mode">
 	        <p>화면 모드</p>
 	        <label class="switch">
-	          <input type="checkbox" checked />
+	          <input type="checkbox" id="change-view-mode" ${ mode ne null && mode ne '' ? 'checked' : '' }/>
 	          <span class="slider round"></span>
 	        </label>
 	      </div>

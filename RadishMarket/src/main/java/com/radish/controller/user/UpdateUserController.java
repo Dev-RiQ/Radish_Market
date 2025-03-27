@@ -2,6 +2,7 @@ package com.radish.controller.user;
 
 import java.io.IOException;
 
+import com.radish.dao.EmojiDAO;
 import com.radish.dao.UserDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
@@ -18,7 +19,9 @@ public class UpdateUserController implements Controller {
 			throws ServletException, IOException {
 		int log = Integer.parseInt(request.getSession().getAttribute("log").toString());
 		if(request.getParameter("user_id") == null) {
-			request.setAttribute("user", UserDAO.getInstance().getAUserByLog(log));
+			User user = UserDAO.getInstance().getAUserByLog(log);
+			request.setAttribute("user", user);
+			request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 			return "myPage/userUpdate";
 		}
 		String user_pw = request.getParameter("user_pw");
