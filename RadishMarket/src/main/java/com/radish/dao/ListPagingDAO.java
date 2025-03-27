@@ -590,8 +590,8 @@ public class ListPagingDAO {
 			sb.append("<div class=\"txtbox\">");
 			sb.append("<h3>" + meet_title + "</h3>");
 			sb.append("<span>" + meet_content + "</span>");
-			sb.append("<pre> <i class=\"fa-solid fa-location-dot\"></i> " + meet_dong
-					+ "  <i class=\"fa-solid fa-user\"></i> " + memberCount + " " + meet_category_name + "</pre>");
+			sb.append("<pre> <i class=\"fa-solid fa-location-dot\"></i> " + meet_dong + " · " 
+					+ "  <i class=\"fa-solid fa-user\"></i> " + memberCount + " · " + meet_category_name + "</pre>");
 			sb.append("</div>");
 			sb.append("</div>");
 		}
@@ -665,6 +665,7 @@ public class ListPagingDAO {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < list.size(); i++) {
 			int user_no = ((User) list.get(i)).getUser_no();
+			String user_name = ((User) list.get(i)).getUser_name();
 			String nickname = ((User) list.get(i)).getUser_nickname();
 			int age = ((User) list.get(i)).getUser_age();
 			String email = ((User) list.get(i)).getUser_email();
@@ -672,17 +673,21 @@ public class ListPagingDAO {
 			String phone = ((User) list.get(i)).getUser_phone();
 			int deg = ((User) list.get(i)).getUser_deg();
 
-			sb.append("<div>");
-			sb.append("<span>no : " + user_no + " </span>");
-			sb.append("<span> | nickname : " + nickname + " </span>");
-			sb.append("<span> | age : " + age + " </span><br>");
-			sb.append("<span>email : " + email + " </span>");
-			sb.append("<span> | address : " + address + " </span><br>");
-			sb.append("<span>phone : " + phone + " </span>");
-			sb.append("<span> | deg : " + deg + " </span>");
-			sb.append("<button> 삭제 </button>");
+			sb.append("<div class=\"user\">");
+			sb.append("<table>");
+			sb.append("<tr>");
+			sb.append("<th class=\"no\">" + user_no + " </th>");
+			sb.append("<th class=\"name\">" + user_name + " </th>");
+			sb.append("<th class=\"nickname\">" + nickname + " </th>");
+			sb.append("<th class=\"age\">" + age + "세 </th>");
+			sb.append("<th class=\"email\">" + email + " </th>");
+			sb.append("<th class=\"address\">" + address + " </th>");
+			sb.append("<th class=\"phone\">" + phone + " </th>");
+			sb.append("<th class=\"temp\">" + deg + "°C </th>");
+			sb.append("<th class=\"delete\"><button class=\"delete\"> X </button></th>");
+			sb.append("</tr>");
+			sb.append("</table>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -701,22 +706,21 @@ public class ListPagingDAO {
 			int likeCount = likeCountList.get(i);
 			int commentCount = commentCountList.get(i);
 
-			sb.append("<div>");
-			sb.append("<span>no : " + board_no + "</span>");
-			sb.append("<span> / title : " + board_title + "</span><br>");
-			sb.append("<span>content : " + board_content + "</span><br>");
-			sb.append("<div>");
-			sb.append("<span>dong : " + board_dong + "</span>");
-			sb.append("<span> | category_name : " + board_category_name + "</span>");
-			sb.append("<span> | reg_datetime : " + board_reg_datetime + "</span>");
+			sb.append("<div class=\"board\">");
+			sb.append("<table>");
+			sb.append("<tr>");
+			sb.append("<th class=\"no\">" + board_no + "</th>");
+			sb.append("<th class=\"title\"> " + board_title + "</th>");
+			sb.append("<th class=\"content\">" + board_content + "</th>");
+			sb.append("<th class=\"dong\">" + board_dong + "</th>");
+			sb.append("<th class=\"category\">" + board_category_name + "</th>");
+			sb.append("<th class=\"reg-datetime\">" + board_reg_datetime + "</th>");
+			sb.append("<th class=\"like\">" + likeCount + "</th>");
+			sb.append("<th class=\"comment\">" + commentCount + " | </th>");
+			sb.append("<th class=\"delete\" ><button  class=\"delete\" onclick=\"location.href='deleteBoard.do?board_no=" + board_no + "'\"> X </button><th>");
+			sb.append("</tr>");
+			sb.append("</table>");
 			sb.append("</div>");
-			sb.append("<div>");
-			sb.append("<span>" + "종아요 : " + likeCount + "</span>");
-			sb.append("<span>" + " | 댓글 : " + commentCount + " | </span>");
-			sb.append("<button onclick=\"location.href='deleteBoard.do?board_no=" + board_no + "'\"> 삭제 </button>");
-			sb.append("</div>");
-			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -726,20 +730,27 @@ public class ListPagingDAO {
 		for (int i = 0; i < list.size(); i++) {
 			int item_no = ((Item) list.get(i)).getItem_no();
 			String item_name = ((Item) list.get(i)).getItem_name();
+			String item_content = ((Item) list.get(i)).getItem_content();
 			int item_status = ((Item) list.get(i)).getItem_status();
 			String status = item_status == 2 ? "예약중 " : item_status == 3 ? "판매완료 " : "";
 			int item_price = ((Item) list.get(i)).getItem_price();
 			String price = getPrintPrice(item_price);
 			String item_dong = ((Item) list.get(i)).getItem_dong();
 
-			sb.append("<div>");
-			sb.append("<span>no : " + item_no + "</span>");
-			sb.append("<span> | name : " + item_name + "</span><br>");
-			sb.append("<span><span>status : " + status + " | </span> price : " + price + "</span><br>");
-			sb.append("<span>dong : " + item_dong + " | </span>");
-			sb.append("<button onclick=\"location.href='deleteItem.do?item_no=" + item_no + "'\">삭제</button>");
+			sb.append("<div class=\"item\">");
+			sb.append("<table>");
+			sb.append("<tr>");
+			sb.append("<th class=\"no\">" + item_no + "</th>");
+			sb.append("<th class=\"title\">" + item_name + "</th>");
+			sb.append("<th class=\"content\">" + item_content + "</th>");
+			sb.append("<th class=\"status\">" + status + "</th>");
+			sb.append("<th class=\"price\">" + price + "</th>");
+			sb.append("<th class=\"dong\">" + item_dong + "</th>");
+			sb.append("<th class=\"delete\"><button class=\"delete\" onclick=\"location.href='deleteItem.do?item_no=" + item_no + "'\">X</button></th>");
+			sb.append("</tr>");
+			sb.append("</table>");
 			sb.append("</div>");
-			sb.append("<hr>");
+			
 		}
 		return sb;
 	}
@@ -755,16 +766,19 @@ public class ListPagingDAO {
 			int memberCount = memberCountList.get(i);
 			String meet_category_name = meetCategoryList.get(i).getMeet_category_name();
 
-			sb.append("<div>");
-			sb.append("<span>no : " + meet_no + "</span>");
-			sb.append("<span> | title : " + meet_title + "</span><br>");
-			sb.append("<span>content : " + meet_content + "</span><br>");
-			sb.append("<span>dong : " + meet_dong + "</span>");
-			sb.append("<span> | " + "회원수 : " + memberCount + "</span>");
-			sb.append("<span> | category_name : " + meet_category_name + " | </span>");
-			sb.append("<button onclick=\"location.href='deleteMeet.do?meet_no=" + meet_no + "'\">삭제</button>");
+			sb.append("<div class=\"meet\">");
+			sb.append("<table>");
+			sb.append("<tr>");
+			sb.append("<th class=\"no\">" + meet_no + "</span>");
+			sb.append("<th class=\"title\">" + meet_title + "</span>");
+			sb.append("<th class=\"content\">" + meet_content + "</span>");
+			sb.append("<th class=\"dong\">" + meet_dong + "</span>");
+			sb.append("<th class=\"member\">" + memberCount + "명</span>");
+			sb.append("<th class=\"category\">" + meet_category_name + "</span>");
+			sb.append("<th class=\"delete\"><button  class=\"delete\" onclick=\"location.href='deleteMeet.do?meet_no=" + meet_no + "'\">X</button></th>");
+			sb.append("</tr>");
+			sb.append("</table>");
 			sb.append("</div>");
-			sb.append("<hr>");
 		}
 		return sb;
 	}
@@ -779,8 +793,8 @@ public class ListPagingDAO {
 			String alarm_date_ago = DateUtil.getInstance()
 					.getCalcDateAgo(((Alarm) list.get(i)).getAlarm_reg_datetime());
 			int alarm_check = ((Alarm) list.get(i)).getAlarm_check();
-			sb.append("<div class=\"bell\" onclick=\"location.href='"+alarm_location+"'\">");
 			sb.append("<div>");
+			sb.append("<div class=\"bell\" onclick=\"location.href='"+alarm_location+"'\">");
 			if(alarm_check == 1) {
 				sb.append("<div>");
 				sb.append("<span>"+alarm_category_content+" </span>");

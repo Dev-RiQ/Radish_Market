@@ -29,7 +29,7 @@
 	            style="font-size: 60px; margin: 5px; color: skyblue"></i>자유게시판</a>
 	        <a href="/listMeet.do"><i class="fa fa-users" style="font-size: 60px; margin: 5px; color: #5fcc29"></i>모임</a>
 	        <c:if test="${ log == -1 }">
-	          <a href="/siteInfo.do">관리자테스트</a>
+	          <a href="userManage.do">관리자 메뉴</a>
 	        </c:if>
 	      </div>
 	    </div>

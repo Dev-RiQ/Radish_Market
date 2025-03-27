@@ -1,27 +1,145 @@
-div.admin-box {
-	flex: 1;
-	padding-left: 35px;
-	margin-bottom: 12px;
-	width:170px;
-	user-select: none
+section {
+	display: flex;
+	gap: 40px;
+	padding: 20px;
+	box-sizing: border-box;
 }
 
-section>div.admin-box>h4{
+div.admin-box {
+	margin-top: 55px;
+	flex: 0 0 200px;
+}
+
+h3 {
+	margin-left: 5px
+}
+
+section>div.admin-box>h4 {
 	margin: 0;
 	font-size: 18px;
 }
-section>div.admin-box>p{
+
+section>div.admin-box>p {
 	font-size: 16px;
 	margin-top: 5px;
 	margin-bottom: 25px;
 }
 
-section>div.admin-box>h4,
-section>div.admin-box>p{
+section>div.admin-box>h4, section>div.admin-box>p {
 	margin-left: 20px;
 }
 
-div.admin-container{
-	flex: 6;
-	margin-left: 40px
+.userlist {
+	flex: 1;
+}
+
+div#cateogry-box {
+	margin-left: 50px;
+	flex: 8.5;
+}
+
+/* */
+body {
+	margin: auto;
+	height: 100vh;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.alarmCategoryList, .meetCategoryList, .boardCategoryList,
+	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
+	width: 80%;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+th, td {
+	padding: 12px;
+	border-bottom: 1px solid #ddd;
+	text-align: center;
+	word-break: break-word;
+}
+
+.age, .no, .temp {
+	width: 5%;
+}
+
+.price, .status, .comment, .member, .like, .category, .dong, .title,
+	.nickname, .name, .delete, .update {
+	width: 10%;
+}
+
+.email, .phone {
+	width: 15%;
+}
+
+.item_name, .reg-datetime, .content, .address {
+	width: 20%;
+}
+
+.update button, .delete button {
+	background-color: white;
+	border: none;
+}
+
+.update button:hover,
+.delete button:hover {
+	opacity: 0.7;
+}
+
+.update button:active,
+.delete button:active {
+	opacity: 0.5;
+}
+
+.categorys table, .meets table, .items table, .boards table, .users table
+	{
+	background-color: greenyellow;
+	border: 1px solid greenyellow;
+}
+
+.alarm-category table, .meet-category table, .board-category table,
+	.item-category table, .meet table, .item table, .board table, .user table
+	{
+	border-bottom: 1px solid #ddd;
+	color: gray;
+}
+
+#btn-more-list {
+	margin: 30px auto 0 auto;
+	display: block;
+	padding: 10px 20px;
+	font-size: 1rem;
+	background: none;
+	border: none;
+}
+
+.add-btn {
+	margin: 20px auto;
+	display: block;
+	cursor: pointer;
+	color: whiete;
+	background-color: #5FCC29;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+.add-btn:hover {
+	opacity: 0.7;
+}
+
+.add-btn:active {
+	opacity: 0.5;
 }
