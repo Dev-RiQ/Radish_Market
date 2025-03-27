@@ -55,7 +55,7 @@
 			<input type="hidden" name="board_dong" id="board_dong" value="${ user.user_dong }">
 	
 	        <div class="registrationbtn">
-	            <button onclick="history.back()">취소</button>
+	            <button type="button" onclick="history.back()">취소</button>
 				<button class="rbtn" type="button" onclick="validCheck()">등록하기</button>
 	        </div>
         </form>
@@ -66,4 +66,3 @@
 <%@ include file="../main/footer.jsp" %>
 <script src="../../js/boardInsertValidCheck.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
-<script src="../../js/board.js"></script>

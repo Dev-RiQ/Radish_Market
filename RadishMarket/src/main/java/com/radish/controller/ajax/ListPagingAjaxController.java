@@ -26,18 +26,19 @@ public class ListPagingAjaxController implements Controller {
 			throws ServletException, IOException {
 		Map<String, String[]> queryString = request.getParameterMap();
 		int queryStartIndex = Integer.parseInt(queryString.get("start")[0]);
-		
+
 		Filter filter = ListPagingDAO.getInstance().setFilter(queryStartIndex, queryString);
-		
+
 		String type = queryString.get("type")[0];
-		switch(type) {
-		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", 
-			"myBoard", "hostMeet", "myMeet", "alarm": 
-			filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString())); break;
+		switch (type) {
+		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", "myBoard", "hostMeet", "myMeet",
+				"alarm":
+			filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString()));
+			break;
 		}
-		
+
 		List<?> list = ListPagingDAO.getInstance().getListByFilter(type, filter);
-		if(list != null && list.size() != 0) {
+		if (list != null && list.size() != 0) {
 			List<User> userList = ListPagingDAO.getInstance().getUserListByList(list, type);
 			List<Item> itemList = ListPagingDAO.getInstance().getItemListByList(list, type);
 			List<BoardCategory> boardCategoryList = ListPagingDAO.getInstance().getBoardCategoryListByList(list, type);
@@ -48,20 +49,17 @@ public class ListPagingAjaxController implements Controller {
 			List<Integer> likeCountList = ListPagingDAO.getInstance().getLikeCountListByList(list, type);
 			List<Integer> commentCountList = ListPagingDAO.getInstance().getCommentCountListByList(list, type);
 			List<Integer> memberCountList = ListPagingDAO.getInstance().getMemberCountListByList(list, type);
-			
-			StringBuilder sb = ListPagingDAO.getInstance().getPrintListData(type, list, userList, itemList, 
-					boardCategoryList, itemCategoryList, meetCategoryList, itemImgList, likeCountList,
-					commentCountList, memberCountList, alarmCategoryList);
-			
+
+			StringBuilder sb = ListPagingDAO.getInstance().getPrintListData(type, list, userList, itemList,
+					boardCategoryList, itemCategoryList, meetCategoryList, itemImgList, likeCountList, commentCountList,
+					memberCountList, alarmCategoryList);
+
 			response.getWriter().print(sb.toString());
-		}else {
+		} else {
 			response.getWriter().print("noMoreList");
 		}
-        
+
 		return null;
 	}
-	
-
-
 
 }

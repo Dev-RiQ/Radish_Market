@@ -28,46 +28,47 @@ public class InsertReviewController implements Controller {
 			throws ServletException, IOException {
 		int item_no = Integer.parseInt(request.getParameter("item_no"));
 		String review_content = request.getParameter("review_content");
-		
+
 		String alarm_no_str = request.getParameter("alarm_no");
-		if(alarm_no_str != null) {
+		if (alarm_no_str != null) {
 			int alarm_no = Integer.parseInt(alarm_no_str);
 			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
 		}
-		
-		if(review_content == null) {
+
+		if (review_content == null) {
 			Item item = ItemDAO.getInstance().getAItemByItemNo(item_no);
 			request.setAttribute("item", item);
 			request.setAttribute("item_img", ItemImgDAO.getInstance().getAItemImg(item_no));
 			DecimalFormat df = new DecimalFormat("###,###");
 			String infoItemPrice = df.format(item.getItem_price());
 			request.setAttribute("infoItemPrice", infoItemPrice);
-			User user = UserDAO.getInstance().getAUserByLog(ItemDAO.getInstance().getAItemByItemNo(item_no).getUser_no());
+			User user = UserDAO.getInstance()
+					.getAUserByLog(ItemDAO.getInstance().getAItemByItemNo(item_no).getUser_no());
 			request.setAttribute("user", user);
 			request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
 			return "utils/reviewInsert";
 		}
-		
+
 		int review_deg = Integer.parseInt(request.getParameter("review_deg"));
 		int sell_user_no = Integer.parseInt(request.getParameter("sell_user_no"));
 		int buy_user_no = Integer.parseInt(request.getParameter("buy_user_no"));
-		
+
 		Review review = new Review(sell_user_no, buy_user_no, item_no, review_deg, review_content);
-		if(ReviewDAO.getInstance().insertAReview(review)) {
-			AlertUtil.getInstance().goHomeWithAlert(response, "리뷰 등록 완료");
+		if (ReviewDAO.getInstance().insertAReview(review)) {
+			AlertUtil.getInstance().goUrlWithAlert(response, "리뷰 등록 완료", "cartListUser.do");
 			Cart cart = new Cart(item_no, buy_user_no, 0);
 			CartDAO.getInstance().setCheckReviewed(cart);
 			int nowDeg = UserDAO.getInstance().getAUserByLog(sell_user_no).getUser_deg();
 			int afterDeg = nowDeg + review_deg;
-			if(afterDeg < 0)
+			if (afterDeg < 0)
 				afterDeg = 0;
-			if(afterDeg > 100)
+			if (afterDeg > 100)
 				afterDeg = 100;
 			User user = new User(sell_user_no, afterDeg);
 			UserDAO.getInstance().setReviewDegree(user);
-		}
-		else
+		} else {
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 리뷰 등록에 실패했습니다.\\n다시 시도해주세요.");
+		}
 		return null;
 	}
 
