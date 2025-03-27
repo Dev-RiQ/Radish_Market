@@ -14,46 +14,62 @@
 	align-items: center;
 }
 
-.bells button {
-	border: none;
-	background-color: white;
-	color: gray;
-	margin-top: 5px;
-	color: black;
+.bells button:hover {
+	background-color: #ddd;
+	color:#444;
+}
+.bells button:active {
+	background-color: #aaa;
+	color:#000;
 }
 
 .bell span {
 	font-size: 15px;
 	color: black;
 }
-.bell>div>div:nth-child(1) span {
+.bell>div:nth-child(1) span {
 	width:100%;
 }
-.bell>div>div:nth-child(2) span {
+.bell>div:nth-child(2) span {
 	color:#999;		
 }
-.bell>div {
-	flex:1;
-	padding: 8px 0;
+.bell:nth-child(1){
+	margin-top: 5px;
 }
-.bell {
-	width: 90%;
+.bells>div.hide{
+	display: none;
+}
+.bell>div{
+	padding: 0 10px;
+}
+.bell{
+	flex:1;
+	
+}
+.bells>div {
+	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content:space-between;
 	align-items: center;
 	border-bottom: 1px solid #f5f1f1;
 	cursor: pointer;
 }
 
-.bell button {
-	margin-left: 10px;
-	border: none;
-	background-color: white;
-	color: gray;
-	margin-bottom: 10px;
-	font-size: 14px;
+.bells>div:hover{
+  background-color: rgb(194, 232, 198);
 }
-
+.bells>div:active{
+  background-color: rgb(194, 232, 138);
+}
+.bells:nth-child(1){
+	cursor: default;
+}
+.bells:nth-child(1):hover{
+	background-color: none;
+}
+.bells:nth-child(1):active{
+	background-color: none;
+}
 .bellstxt {
 	width: 100%;
 	height: 50px;
@@ -66,4 +82,14 @@
 
 .bellstxt h3 {
 	margin-left: 10px;
+}
+
+.bells>div>button {
+	border: none;
+	color: gray;
+	background:none;
+	margin-top: 5px;
+	border-radius: 50%;
+	padding: 10px;
+	font-size: 24px;
 }

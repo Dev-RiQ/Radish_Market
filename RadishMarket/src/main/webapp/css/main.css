@@ -114,12 +114,19 @@ div.dir-history>span {
 
 header .gnb-category {
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 
 header .gnb-category>a {
   font-size: 18px;
   color: black;
+  font-weight: 700;
+  transition:0.3s;
+}
+header .gnb-category>a:hover {
+	color: #777;
+	transform: scale(1.15);
+	text-decoration: none;
 }
 
 .hide {
@@ -226,15 +233,16 @@ button {
   margin-right: 15px;
 }
 
-.header-box a:hover:active {
-  background: white;
-  color: #5fcc29;
-  border: 2px solid #5fcc29;
+.header-box #show-chang:hover{
+	opacity: 0.7;
+}
+.header-box #show-chang:active{
+	opacity: 0.5;
 }
 
 .home-box {
   width: 100%;
-  height: 1000px;
+  height: 1000px;	
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -248,7 +256,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: -400px;
+  margin-top: -500px;
 }
 
 .txtbox h1 {
@@ -290,6 +298,12 @@ button {
   border: none;
   background: black;
   color: white;
+}
+.search>#search-btn:hover {
+	opacity: 0.7;
+}
+.search>#search-btn:active {
+	opacity: 0.5;
 }
 
 .linkbtn {
@@ -374,7 +388,13 @@ footer .sns {
   background-color: white;
   font-size: 25px;
   border: none;
-  color: rgb(11, 248, 11);
+  color: #5FCC29;
+}
+#show-alarm-div:hover {
+	opacity: 0.7;
+}
+#show-alarm-div:active {
+	opacity: 0.5;
 }
 
 .insert-error {
@@ -393,7 +413,7 @@ footer .sns {
   flex-direction: column;
   align-items: left;
   border: 1px solid #ddd;
-  background-color: whith;
+  background-color: white;
 }
 
 .chang button {
@@ -405,7 +425,10 @@ footer .sns {
   background-color: white;
 }
 
-.chang button:active:hover {
+.chang button:hover {
+  background-color: rgb(194, 232, 198);
+}
+.chang button:active {
   background-color: rgb(194, 232, 138);
 }
 
@@ -422,7 +445,6 @@ footer .sns {
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;

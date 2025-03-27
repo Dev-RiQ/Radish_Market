@@ -15,6 +15,7 @@
 					<div class="lifethelooktxt">
 						<div class="besttexts">
 							<form action="/listBoard.do?filter=true" method="post">
+							<hr>
 								<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }" />
 								<input type="hidden" id="gu" name="gu" value="${ gu }" />
 								<label class="filter-label" for="user_dong">위치</label><br>
@@ -92,7 +93,7 @@
 											<div class="user-profile-text-box">
 												<a class="user-profile-nickname" href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
 												<span class="user-profile-dong">
-													<a href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
+													<a style="margin-left:0;" href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
 												</span>
 											</div>
 										</section>

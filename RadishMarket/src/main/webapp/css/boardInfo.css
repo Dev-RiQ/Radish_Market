@@ -86,12 +86,23 @@
 	height: 100%;
 }
 
+.board-info-box .propil button:active {
+	opacity: 0.5;
+}
+.board-info-box .propil button:hover {
+	opacity: 0.7;
+}
 .board-info-box .propil button {
 	color: white;
-	background-color: rgb(166, 235, 235);
+	background-color: #5FCC29;
 	border: none;
-	border-radius: 10px;
-	font-size: 13px;
+	border-radius: 20px;
+	font-size: 14px;
+	padding: 4px 10px;
+	margin-left : 4px;
+}
+.board-info-box .iconbox button {
+	background-color: skyblue;
 }
 
 #propilimg {
@@ -145,8 +156,14 @@
 	display: flex;
 	align-items: center;
 	gap: 10px;
+} 
+.board-info-box .container:hover input ~ .checkmark {
+	background-color: #ccc;
 }
 
+.board-info-box .container input:checked ~ .checkmark {
+	background-color: #2cd319;
+}
 .board-info-box .iconbox>p {
 	margin-left: 10px;
 }
@@ -178,7 +195,7 @@
 }
 
 .board-info-box .comments-txt {
-	width: 90%;
+	width: 96%;
 	margin-left: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
@@ -213,7 +230,7 @@ a {
 }
 
 .board-info-box .writingout {
-	width: 90%;
+	width: 100%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -233,13 +250,13 @@ a {
 	width: 35px;
 	height: 35px;
 	border-radius: 50%;
-	background-color: rgb(98, 212, 98);
+	background-color: #5FCC29;
 }
-
-.board-info-box .writingout button:hover:active {
-	border: 1px solid yellowgreen;
-	background-color: white;
-	color: yellowgreen;
+.board-info-box .writingout button:hover {
+	opacity: 0.7;
+}
+.board-info-box .writingout button:active {
+	opacity: 0.5;
 }
 /* The container */
 .board-info-box .container {
@@ -280,14 +297,21 @@ a {
 .board-info-box .container input:checked ~ .board-info-box .checkmark {
 	background-color: #2cd319;
 }
-
+.board-info-box .container:hover input ~ .checkmark {
+	background-color: #5FCC29;
+	opacity: 0.7;
+}
+.board-info-box .container:active input ~ .checkmark {
+	background-color: #5FCC29;
+	opacity: 0.5;
+}
 .board-info-box .checkmark:after {
 	content: '';
 	position: absolute;
 	display: none;
 }
 
-.board-info-box .container input:checked ~ .board-info-box .checkmark:after {
+.board-info-box .container input:checked ~ .checkmark:after {
 	display: block;
 }
 
@@ -301,7 +325,7 @@ a {
 }
 
 .board-info-box textarea{
-	width:90%;
+	width:100%;
 	height:60px;
 	margin: 0 10px;
 	resize: none;
@@ -316,7 +340,7 @@ a {
 
 
 .user-profile-container {
-	width: 525px;
+	width: 100%;
 	height: 90px;
 	display: flex;
 	align-items: center;
@@ -438,4 +462,7 @@ progress::-webkit-progress-value {
 }
 .board-info-box form button:active{
 	opacity: 0.5;
+}
+.besttexts hr{
+	border: 1px solid #f8f2f2;
 }

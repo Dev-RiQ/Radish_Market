@@ -1,6 +1,14 @@
 @charset "UTF-8";
 
-body {
-    background-color: black;
-    color: white;
+body,
+.chang,
+.child,
+p,
+a,
+span,
+h1~h5,
+input,
+header{
+    background-color: #000000 !important;
+    color: #F1F1F1 !important;
 }

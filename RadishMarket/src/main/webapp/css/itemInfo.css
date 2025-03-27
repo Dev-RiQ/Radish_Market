@@ -48,8 +48,14 @@
 	margin-top: 10px;
 	border-radius: 10px;
 	border: none;
-	background-color: greenyellow;
+	background-color: #5FCC29;
 	color: white;
+}
+.item-info-box .text .btn-box button:hover {
+	opacity: 0.7;
+}
+.item-info-box .text .btn-box button:active {
+	opacity: 0.5;
 }
 
 .item-info-box .salelist {
@@ -162,7 +168,13 @@
 .item-info-box .besttxt>a, .item-info-box .saletxt a {
 	font-size: 20px;
 	text-decoration: none;
-	color: greenyellow;
+	color: #5FCC29;
+}
+.item-info-box .besttxt>a:hover, .item-info-box .saletxt a:hover {
+	opacity: 0.7;
+}
+.item-info-box .besttxt>a:active, .item-info-box .saletxt a:active {
+	opacity: 0.5;
 }
 
 .item-info-box .bestitem {

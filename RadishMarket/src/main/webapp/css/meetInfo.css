@@ -2,7 +2,13 @@
 
 .joined-meet-info-box a {
 	text-decoration: none;
-	color: rgb(171, 217, 103);
+	color: #5FCC29;
+}
+.joined-meet-info-box a:hover {
+	opacity: 0.7;
+}
+.joined-meet-info-box a:active {
+	opacity: 0.5;
 }
 
 .joined-meet-info-box .meet-date-box {
@@ -39,6 +45,12 @@
 	font-size: 20px;
 	margin-top: 10px;
 	background-color: #5FCC29;
+}
+.joined-meet-info-box .meetingtext>button:hover {
+	opacity: 0.7;
+}
+.joined-meet-info-box .meetingtext>button:active {
+	opacity: 0.5;
 }
 
 .joined-meet-info-box .meetingactive {
@@ -93,7 +105,6 @@
 
 .joined-meet-info-box .pepoles {
 	width: 100%;
-	height: 260px;
 }
 
 .joined-meet-info-box .pepoles-num {
@@ -125,13 +136,33 @@
 	object-fit:cover;
 }
 .joined-meet-info-box .pepole {
-	height: 90px;
+	flex: 1;
 	margin: 1px;
-	width: calc(100%/ 2 - 10px * 2);
+	min-width: 40%;
 	display: flex;
 	align-items: center;
+	padding-top: 40px;
+	padding-left: 20px;
 }
-
+.meetingactive .members .pepole{
+	padding: 10px;
+}
+.meetingactive .members .pepole span{
+	color: #999;
+}
+.meetingactive .members .pepole .meet-date-box{
+	border: 1px solid #999;
+	width: 50px;
+	border-radius: 10px;
+	text-align: center;
+}
+.meetingactive .members .pepole .meet-date-box p:nth-child(1){
+	margin : 2px;
+}
+.meetingactive .members .pepole .meet-date-box p:nth-child(2){
+	margin : 2px;
+	font-size: 30px;
+}
 .joined-meet-info-box .mebertxt {
 	width: 100%;
 	height: 60px;
@@ -290,4 +321,69 @@ div.dir-history>a, div.dir-history>span{
 	color:#999;
 }
 
+
+.joined-meet-info-box .txtcald {
+	width: 99%;
+	height: 160px;
+	margin-top: 10px;
+	border-radius: 5px;
+	margin-left: 5px;
+	transition: 0.3;
+	display: flex;
+	align-items: center;
+}
+
+.joined-meet-info-box .txtcald:hover {
+	border: 1px solid #ddd;
+}
+
+.joined-meet-info-box .txtbox {
+	flex: 7;
+	margin-top:10px;
+}
+.joined-meet-info-box .txtbox>* {
+	width:100%;
+}
+
+.joined-meet-info-box .imgbox {
+	flex:2;
+}
+
+.joined-meet-info-box .txtbox p {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox h3 {
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox pre {
+	margin-left: 5px;
+}
+
+.joined-meet-info-box .txtbox span {
+	margin-left: 5px;
+}
+.joined-meet-info-box .txtcald .imgbox  {
+	border-radius: 10px;
+	overflow: hidden;
+}
+.joined-meet-info-box .txtcald .imgbox img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 박스를 꽉 채우도록 설정 */
+	transition: transform 0.3s ease-in-out; /* 부드러운 확대 효과 */
+}
+
+.joined-meet-info-box .txtcald:hover img {
+	transform: scale(1.2); /* 마우스를 올리면 1.2배 확대 */
+}
 /* 미가입자  */
