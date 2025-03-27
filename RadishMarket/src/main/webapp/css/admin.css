@@ -1,0 +1,27 @@
+div.admin-box {
+	flex: 1;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	width:170px;
+	user-select: none
+}
+
+section>div.admin-box>h4{
+	margin: 0;
+	font-size: 18px;
+}
+section>div.admin-box>p{
+	font-size: 16px;
+	margin-top: 5px;
+	margin-bottom: 25px;
+}
+
+section>div.admin-box>h4,
+section>div.admin-box>p{
+	margin-left: 20px;
+}
+
+div.admin-container{
+	flex: 6;
+	margin-left: 40px
+}

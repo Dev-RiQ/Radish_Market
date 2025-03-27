@@ -520,3 +520,6 @@ footer .sns {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+h4.item_price{
+	font-weight: 800 !important;
+}

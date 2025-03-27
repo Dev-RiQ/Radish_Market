@@ -90,9 +90,13 @@ public class InfoItemController implements Controller {
 		List<String> hotImgList = ItemImgDAO.getInstance().getItemImgListByItemList(hotItemNoList);
 		request.setAttribute("hotImgList", hotImgList);
 
-		List<String> hotUserNicknameList = UserDAO.getInstance().getHotItemSortUserNicknameList(hotItemList);
-		request.setAttribute("hotUserNicknameList", hotUserNicknameList);
-
+		List<Integer> hotItemUserNoList = new ArrayList<>();
+		for(Item e : hotItemList) {
+			hotItemUserNoList.add(e.getUser_no());
+		}
+		List<String> hotItemUserDongList = UserDAO.getInstance().getUserDongListByUserNoList(hotItemUserNoList);
+		request.setAttribute("hotItemUserDongList", hotItemUserDongList);
+		
 		Object log_str = request.getSession().getAttribute("log");
 		if (log_str != null) {
 			int log = Integer.parseInt(log_str.toString());

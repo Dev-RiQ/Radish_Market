@@ -117,7 +117,7 @@
 				<button>내 찜목록 (${zzimListSize})</button>
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="boardList"></p>
+          		<p class="empty-info" id="zzimList"></p>
           		<div class="item-list-box">
 					<div class="product-child" id="list-box">
 						<!-- 여기 리스트 출력 -->

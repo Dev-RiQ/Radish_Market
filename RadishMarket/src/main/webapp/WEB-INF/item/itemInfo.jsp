@@ -160,8 +160,8 @@
 										<img alt="대표 이미지" src="/images/${mainImgList.get(i)}">
 									</div>
 									<div class="saleprice">
-										<p>${itemList.get(i).item_name}</p>
-										<h5 class="item_price">${itemPriceList.get(i)}원</h5>
+										<p class="item-name" style="font-size:16px;">${itemList.get(i).item_name}</p>
+										<h4 class="item-price" style="font-size:16px;">${itemPriceList.get(i)}원</h4>
 										<span>${user.user_dong}</span> <span> <c:choose>
 												<c:when test="${itemList.get(i).item_status == 2}">
 													<span class="item-status">예약중</span>
@@ -194,9 +194,9 @@
 								<img alt="대표 이미지" src="/images/${hotImgList.get(i)}">
 							</div>
 							<div class="saleprice">
-								<p>${hotItemList.get(i).item_name}</p>
-								<h5 class="item-price">${hotItemPriceList.get(i)}원</h5>
-								<span>${hotUserNicknameList.get(i)}</span>
+								<p class="item-name" style="font-size:16px;">${hotItemList.get(i).item_name}</p>
+								<h4 class="item-price" style="font-size:16px;">${hotItemPriceList.get(i)}원</h4>
+								<span>${hotItemUserDongList.get(i)}</span>
 								<c:choose>
 									<c:when test="${hotItemList.get(i).item_status == 2}">
 										<span class="item-status">예약중</span>

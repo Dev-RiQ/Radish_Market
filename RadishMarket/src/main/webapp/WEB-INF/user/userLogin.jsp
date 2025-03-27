@@ -25,7 +25,7 @@
           <tr>
             <td>
               <input
-                type="text"
+                type="password"
                 name="user_pw"
                 id="user_pw"
                 placeholder="PW"
