@@ -82,21 +82,21 @@ function calendarInfoView(calendar_no) {
 					map.relayout();
 					map.setCenter(center);
 				}, 200)
-				document.getElementById('updateEventBtn').addEventListener('click', () => {
-					window.location.href = `/updateCalendar.do?calendar_no=${data.calendar_no}`;
-				})
-
-				document.getElementById('deleteEventBtn').addEventListener('click', () => {
-					const check = confirm('이 일정을 삭제하시겠습니까?');
-					if (check) {
-						window.location.href = `/deleteCalendar.do?calendar_no=${data.calendar_no}`;
-					}
-				})
 
 				document.querySelector(".guid-box").style.display = 'block';
 			} else {
 				document.querySelector(".guid-box").style.display = 'none';
 			}
+			document.getElementById('updateEventBtn').addEventListener('click', () => {
+				window.location.href = `/updateCalendar.do?calendar_no=${data.calendar_no}`;
+			})
+
+			document.getElementById('deleteEventBtn').addEventListener('click', () => {
+				const check = confirm('이 일정을 삭제하시겠습니까?');
+				if (check) {
+					window.location.href = `/deleteCalendar.do?calendar_no=${data.calendar_no}`;
+				}
+			})
 		})
 		.catch(error => console.log(error))
 }

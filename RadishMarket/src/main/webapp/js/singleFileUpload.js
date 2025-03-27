@@ -1,7 +1,12 @@
 let fileName = null;
+let popupWindow;
+let viewMode = document.querySelector('head')
 function openPop() {
+	if(popupWindow && !popupWindow.closed){
+		popupWindow.close()
+	}
 
-	const popupWindow = window.open('', '', 'width=400,height=400');
+	popupWindow = window.open('', '', 'width=400,height=400');
 	const popupDocument = popupWindow.document;
 	setPopupWrite(popupDocument)
 
@@ -32,6 +37,9 @@ function openPop() {
 }
 
 function setPopupWrite(popupDocument){
+	if(viewMode.innerHTML.includes('<link rel="stylesheet" href="../../css/darkMode.css">') == true){
+		popupDocument.write(`<link rel="stylesheet" href="../../css/darkMode.css">`);
+	}
 	popupDocument.write('<link rel="stylesheet" href="../../css/singleFileUpload.css">');
 	popupDocument.write('<div class="imguplode">');
 	popupDocument.write('<h1>이미지 업로드</h1>');

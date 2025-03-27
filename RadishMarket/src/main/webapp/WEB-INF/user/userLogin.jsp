@@ -44,4 +44,3 @@
     </main>
 </section>
 <%@ include file="../main/footer.jsp"%>
-<script src="../../js/user.js"></script>

@@ -39,7 +39,10 @@
       <div class="ages">
         <input type="number" name="age_min" id="age_min" placeholder="최소"> ~ 
 		<input type="number" name="age_max" id="age_max" placeholder="최대">
-		<span id="age_min_check"></span>
+      </div>
+      <br>
+      <div class="ages-span">
+		<span id="age_min_check"></span> 
 		<span id="age_max_check"></span>
       </div>
 
@@ -69,4 +72,3 @@
 <%@ include file="../main/footer.jsp" %>
 <script src="../../js/meetInsertValidCheck.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
-<script src="../../js/board.js"></script>

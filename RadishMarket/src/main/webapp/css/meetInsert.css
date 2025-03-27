@@ -142,3 +142,7 @@
 .meet-insert-box .imguplod>button:active {
 	opacity: 0.5;
 }
+.meet-insert-box .ages-span>span#age_min_check {
+	margin-left: 25px;
+	margin-right: 105px;
+}

@@ -11,4 +11,3 @@
 </form>
 <%@ include file="../main/footer.jsp" %>
 <script src="../../js/categoryInsertValidCheck.js"></script>
-<script src="../../js/meet.js"></script>

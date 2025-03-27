@@ -165,7 +165,7 @@ header {
   position: fixed;
   width: 100%;
   height: 140px;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   background-color: white;
   max-width: 1280px;
@@ -194,6 +194,7 @@ header {
 
 section {
   margin-top: 150px;
+  min-height:100vh;
 }
 
 button {
@@ -340,7 +341,12 @@ textarea {
   padding: 15px;
 }
 
-.linkbtn>a:hover:active {
+.linkbtn>a:hover {
+	background-color:#d8f4ca;
+  transform: scale(1.2);
+}
+.linkbtn>a:active {
+	background-color:#aae88c;
   transform: scale(1.3);
 }
 
@@ -348,7 +354,7 @@ footer {
   width: 100%;
   height: 180px;
   background: black;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   margin-top: 100px;
@@ -408,7 +414,7 @@ footer .sns {
 
 .chang {
   width: 200px;
-  height: 130px;
+  height: 143px;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -418,7 +424,7 @@ footer .sns {
 
 .chang button {
   width: 100%;
-  height: 40px;
+  height: 47px;
   text-align: start;
   border: none;
   padding-left: 24px;
@@ -486,14 +492,15 @@ footer .sns {
 
 .mode {
   width: 100%;
+  height:47px;
   display: flex;
   align-items: center;
   justify-content: space-around;
   font-size: 14px;
 }
 
-.mode p {
-  margin-left: 5px;
+.chang>.mode>p {
+  margin: 0 5px;
 }
 
 .chang a {
@@ -571,4 +578,14 @@ footer .sns {
 
 h4.item_price {
   font-weight: 800 !important;
+}
+
+#headerBtn{
+	display:none;
+	opacity: 0;
+	transition: 0.3s;
+}
+section .user-mypage-box form>span{
+	color:red;
+	font-size:12px;
 }

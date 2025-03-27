@@ -69,4 +69,3 @@
 <%@ include file="../main/footer.jsp" %>
 <script src="../../js/boardInsertValidCheck.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
-<script src="../../js/board.js"></script>

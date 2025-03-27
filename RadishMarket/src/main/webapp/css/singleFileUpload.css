@@ -37,6 +37,12 @@ body {
 	height: 40px;
 	margin: 5px;
 	border-radius: 10px;
-	background-color: greenyellow;
+	background-color: #5FCC29;
 	border: none;
+}
+.imgchose button:hover {
+	opacity: 0.7;
+}
+.imgchose button:active {
+	opacity: 0.5;
 }

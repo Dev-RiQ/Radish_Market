@@ -17,14 +17,15 @@ let item_img;
 let item_name;
 let item_price;
 let send_user_gu;
-
-
+const viewMode = document.querySelector('head');
 
 function openPop(type) {
-	
 	if(document.getElementById('log') === null){
 		alert('로그인 후 이용 가능합니다.');
 		return;
+	}
+	if(popupWindow && !popupWindow.closed){
+		popupWindow.close()
 	}
 	
 	letter_no = event.currentTarget.id;
@@ -32,9 +33,9 @@ function openPop(type) {
 		letter_no = letter_no.replace("show-letter","");
 	popupWindow = null;
 	if(type == 'send')
-		popupWindow = window.open('', '', 'width=400,height=400');
+		popupWindow = window.open('', '쪽지 보내기', 'width=400,height=400,location=no, scrollbars=no, toolbar=no, resizable=no, left=0, top=0');
 	else
-		popupWindow = window.open('', '', 'width=400,height=600');
+		popupWindow = window.open('', '쪽지 보기', 'width=400,height=600,location=no, scrollbars=no, toolbar=no, resizable=no, left=0, top=0');
 	popupDocument = popupWindow.document;
 	switch(type){
 		case 'send' :
@@ -43,8 +44,6 @@ function openPop(type) {
 		case 'read' : 
 			fetchReadLetter();
 			let check = document.querySelector(`#show-letter${letter_no}`);
-			console.log(check)
-			console.log(check.className)
 			if(document.querySelector("#btn-more-list").value.split("/")[0] == 'receiveLetter' && check && check.className == '0'){
 				check.className = '1'
 				check.innerHTML = check.innerHTML.replace('<strong><i class="fa-solid fa-envelope" style="color: greenyellow">'
@@ -143,11 +142,14 @@ function setPrintLetterInfo(data){
 }
 
 function setPopupWriteForSend(popupDocument){
+	if(viewMode.innerHTML.includes('<link rel="stylesheet" href="../../css/darkMode.css">') == true){
+		popupDocument.write(`<link rel="stylesheet" href="../../css/darkMode.css">`);
+	}
 	popupDocument.write(`<link rel="stylesheet" href="../../css/main.css">`);
 	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
-	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
+	popupDocument.write('<div class="letter-info-box" id="letter-info-box" style="margin-top:-20px;">');
 	popupDocument.write('<div class="lettergoings">');
-	popupDocument.write('<div class="propile">');
+	popupDocument.write('<div class="propile" style="height:50px; padding:0 10px; line-height: 50px;">');
 	popupDocument.write('<h2> 쪽지 보내기</h2>');
 	popupDocument.write(`<input type="hidden" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" />`);
 	popupDocument.write('</div>');
@@ -168,6 +170,9 @@ function setPopupWriteForSend(popupDocument){
 }
 
 function setPopupWriteForRead(popupDocument){
+	if(viewMode.innerHTML.includes('<link rel="stylesheet" href="../../css/darkMode.css">') == true){
+		popupDocument.write(`<link rel="stylesheet" href="../../css/darkMode.css">`);
+	}
 	popupDocument.write(`<link rel="stylesheet" href="../../css/main.css">`);
 	popupDocument.write(`<link rel="stylesheet" href="../../css/letterList.css">`);
 	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
@@ -178,9 +183,9 @@ function setPopupWriteForRead(popupDocument){
 									<section class="user-profile-section1">
 										<img alt="대표이미지" src="/images/${send_user_img != '' ? send_user_img : 'usersDefaultImg.png'}">
 										<div class="user-profile-text-box">
-											<a class="user-profile-nickname" href='/itemListUser.do?user_no=${send_user_no}'>${send_user_nickname}</a>
+											<a>${send_user_nickname}</a>
 											<span class="user-profile-dong">
-												<a href='/listItem.do?filter=true&gu=${send_user_gu}&dong=${send_user_dong}'>${send_user_dong}</a>
+												<a>${send_user_dong}</a>
 											</span>
 										</div>
 									</section>

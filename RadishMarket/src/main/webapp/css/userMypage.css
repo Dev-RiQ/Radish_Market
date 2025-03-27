@@ -44,10 +44,6 @@
 .user-mypage-box .user-calendar .container .btn-cal-sub:active{
 	opacity: 0.5;
 }
-body footer{
-	margin: 0;
-	display: flex;
-}
 
 .user-mypage-box .myprofil {
 	width: 100%;

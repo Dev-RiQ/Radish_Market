@@ -93,10 +93,6 @@
 	align-items: center;
 }
 
-.meet-list-box .txtcald:hover {
-	border: 1px solid black;
-}
-
 .meet-list-box .txtbox span{
 	font-size: 16px;
 	color:black;
@@ -227,7 +223,7 @@
 }
 
 .meet-list-box .locallifetxt {
-	width: 350px;
+	width: 100%;
 }
 
 .meet-list-box .lbtns {
