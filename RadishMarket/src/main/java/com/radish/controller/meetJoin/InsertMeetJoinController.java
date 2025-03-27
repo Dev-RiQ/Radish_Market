@@ -41,7 +41,7 @@ public class InsertMeetJoinController implements Controller {
 		
 		MeetJoin meetJoin = new MeetJoin(meet_no, log, meet_join_content);
 		if(MeetJoinDAO.getInstance().insertMeetJoin(meetJoin))
-			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 신청 완료", "listMeet.do");
+			AlertUtil.getInstance().goUrlWithAlert(response, "모임 가입 신청 완료", "infoMeet.do?meet_no="+meet_no);
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 모임 가입 신청에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

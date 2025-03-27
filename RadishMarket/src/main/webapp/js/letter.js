@@ -16,6 +16,7 @@ let send_user_emoji;
 let item_img;
 let item_name;
 let item_price;
+let send_user_gu;
 
 
 
@@ -30,7 +31,10 @@ function openPop(type) {
 	if(letter_no)
 		letter_no = letter_no.replace("show-letter","");
 	popupWindow = null;
-	popupWindow = window.open('', '', 'width=400,height=400');
+	if(type == 'send')
+		popupWindow = window.open('', '', 'width=400,height=400');
+	else
+		popupWindow = window.open('', '', 'width=400,height=600');
 	popupDocument = popupWindow.document;
 	switch(type){
 		case 'send' :
@@ -126,13 +130,14 @@ function setPrintLetterInfo(data){
 	letter_content = datas[4];
 	send_user_img = datas[5];
 	send_user_nickname = datas[6];
-	send_user_dong = datas[7];
-	send_user_deg = datas[8];
-	send_user_emoji = datas[9];
-	if(datas.length > 10){
-		item_img = datas[10];
-		item_name = datas[11];
-		item_price = datas[12];
+	send_user_gu = datas[7];
+	send_user_dong = datas[8];
+	send_user_deg = datas[9];
+	send_user_emoji = datas[10];
+	if(datas.length > 11){
+		item_img = datas[11];
+		item_name = datas[12];
+		item_price = datas[13];
 	}
 	setPopupWriteForRead(popupDocument);
 }
@@ -143,15 +148,15 @@ function setPopupWriteForSend(popupDocument){
 	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
 	popupDocument.write('<div class="lettergoings">');
 	popupDocument.write('<div class="propile">');
-	popupDocument.write('<h2>쪽지 보내기</h2>');
+	popupDocument.write('<h2> 쪽지 보내기</h2>');
 	popupDocument.write(`<input type="hidden" id="receive_user_no" name="receive_user_no" value="${receive_user_no}" />`);
 	popupDocument.write('</div>');
 	if(item_no && item_no != '0'){
 		popupDocument.write(`<input type="hidden" id="item_no" name="item_no" value="${item_no}" />`);
 	}
 	popupDocument.write('<div class="text">');
-	popupDocument.write(`<div class="title"><h3>제목 <br><input type="text" id="letter_title" name="letter_title" /></h3></div>`);
-	popupDocument.write(`<div class="title"><h3>내용</h3><textarea id="letter_content" name="letter_content"></textarea></div>`);
+	popupDocument.write(`<div class="title"><h3> 제목 <br><input type="text" id="letter_title" name="letter_title" /></h3></div>`);
+	popupDocument.write(`<div class="title"><h3> 내용</h3><textarea id="letter_content" name="letter_content"></textarea></div>`);
 	popupDocument.write('<div class="going">');
 	popupDocument.write('<button id="send-letter">전송</button>');
 	popupDocument.write('<button class="delect" id="close-popup">취소</button>');
@@ -168,16 +173,33 @@ function setPopupWriteForRead(popupDocument){
 	popupDocument.write('<div class="letter-info-box" id="letter-info-box">');
 	popupDocument.write('<div class="lettergoings">');
 	popupDocument.write('<div class="propile">');
-	popupDocument.write('<table style="margin-left: 5px;">');
-	popupDocument.write(`<tr><td rowspan="2"><div class="user-img-box"><img alt="대표이미지" src="/images/${send_user_img}"></div></td><td></td>`);
-	popupDocument.write(`<td rowspan="2">	<div class="friend">
-	          <div class="temperature">
-				<p>${send_user_deg}℃${send_user_emoji}</p>
-	            <progress id="file" style="width:100px;" value="${send_user_deg}" max="100"></progress>
-	          </div></td></tr>`);
-	popupDocument.write(`<tr><td><p style="text-align:left; width: 100px; font-size: 15px; margin-left: 5px">${send_user_nickname}</p>`);
-	popupDocument.write(`<p style="text-align:left;"><span style="font-size: 13px; color: #5a5656; margin-left: 5px">${send_user_dong}</span></p></td></tr></table>`);
-	popupDocument.write(`<div class="times"><p>${letter_reg_datetime}</p></div></div>`);
+	popupDocument.write(`	<div class="user-profile-container">
+								<div class="user-profile-inner-container">
+									<section class="user-profile-section1">
+										<img alt="대표이미지" src="/images/${send_user_img != '' ? send_user_img : 'usersDefaultImg.png'}">
+										<div class="user-profile-text-box">
+											<a class="user-profile-nickname" href='/itemListUser.do?user_no=${send_user_no}'>${send_user_nickname}</a>
+											<span class="user-profile-dong">
+												<a href='/listItem.do?filter=true&gu=${send_user_gu}&dong=${send_user_dong}'>${send_user_dong}</a>
+											</span>
+										</div>
+									</section>
+									<section class="user-profile-section2">
+										<div class="user-profile-inner-section">
+											<div class="user-profile-inner-box1">
+												<span class="user-profile-deg">${send_user_deg}℃</span> <span class="user-profile-emoji">${send_user_emoji}</span>
+											</div>
+											<div class="user-profile-inner-box2">
+												<progress value="${send_user_deg}" max="100"></progress>
+											</div>
+											<div class="user-profile-inner-box3">
+												<p class="ondo-label">매너온도</p>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+							</div>`);
 	if(item_no && item_no != '0'){
 	popupDocument.write(`	<div class="productletter">
 						        <div class="letterimg">
@@ -187,8 +209,9 @@ function setPopupWriteForRead(popupDocument){
 						      </div>`);
 	}
 	popupDocument.write('<div class="text">');
-	popupDocument.write(`<div class="title"><h3>제목 <br> ${letter_title}</h3></div>`);
+	popupDocument.write(`<div class="title"><h3>제목</h3> <h5>${letter_title}</h5></div>`);
 	popupDocument.write(`<div class="title"><h3>내용</h3><p>${letter_content}</p></div>`);
+	popupDocument.write(`<div class="times"><p>${letter_reg_datetime}</p></div>`);
 	popupDocument.write('<div class="going">');
 	if(item_no && item_no != '0' && log && log.value != send_user_no){
 		popupDocument.write('<button id="set-trade">약속잡기</button>');
@@ -265,4 +288,5 @@ function resetValues(){
 	 item_img = null;
 	 item_name = null;
 	 item_price = null;
+	 send_user_gu = null;
 }

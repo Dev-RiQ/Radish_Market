@@ -13,6 +13,14 @@
 * {
   font-family: 'SDGothic', serif;
 }
+div.dir-history{
+	margin-bottom: 15px;
+	margin-left: 5px;
+}
+div.dir-history>a, div.dir-history>span{
+	color:#999;
+}
+
 .loading-page{
 	position: fixed;
 	top:0;
@@ -344,7 +352,7 @@ footer .sns {
 	height: 130px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: left;
 	border: 1px solid #ddd;
 	background-color:whith;
 }
@@ -354,6 +362,7 @@ footer .sns {
 	height: 40px;
 	text-align: start;
 	border: none;
+	padding-left:24px;
 	background-color: white;
 }
 

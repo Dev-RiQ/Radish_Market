@@ -14,32 +14,32 @@
 	<div class="user-mypage-box">
     <div class="mypag">
       <div class="myprofil">
-        <table style="margin-left: 15px">
-          <tr>
-            <td rowspan="2">
-            	<div class="user-img">
-            		<img alt="대표이미지" src="/images/${ user.user_img ne '' ? user.user_img : 'usersDefaultImg.png' }">
-            	</div>
-            </td><!--프로필-->
-          </tr>
-          <tr>
-            <td>
-              <h3 style="font-size: 30px; margin-left: 5px">${user.user_nickname}</h3><!--이름-->
-              <br />
-              <span style="font-size: 13px; color: #5a5656; margin-left: 9px">${user.user_dong}</span><!--상태 메세지-->
-            </td>
-          </tr>
-        </table>
-
-        <div class="friend">
-          <div class="temperature">
-			<p>${user.user_deg}℃${emoji}</p>
-            <progress id="file" value="${user.user_deg}" max="100"></progress>
-            <p style="font-size: 40px; margin-left: 15px;">${emoji}</p><!--온도-->
-            <p>매너온도</p>
-          </div>
-
-        </div>
+        <div class="user-profile-container">
+			<div class="user-profile-inner-container">
+				<section class="user-profile-section1">
+					<img alt="대표이미지" src="/images/${user.user_img ne '' ? user.user_img : 'usersDefaultImg.png'}">
+					<div class="user-profile-text-box">
+						<a class="user-profile-nickname" href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+						<span class="user-profile-dong">
+							<a href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
+						</span>
+					</div>
+				</section>
+				<section class="user-profile-section2">
+					<div class="user-profile-inner-section">
+						<div class="user-profile-inner-box1">
+							<span class="user-profile-deg">${user.user_deg}℃</span> <span class="user-profile-emoji">${emoji}</span>
+						</div>
+						<div class="user-profile-inner-box2">
+							<progress value="${user.user_deg}" max="100"></progress>
+						</div>
+						<div class="user-profile-inner-box3">
+							<p class="ondo-label">매너온도</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
       </div>
 
 

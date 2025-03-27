@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+body {
+	margin: auto;
+	height: 100vh;
+}
+
+.imguplode {
+	width: 395px;
+	height: 395px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	border: 1px solid #ddd;
+}
+
+.img {
+	width: 398px;
+	height: 200px;
+}
+.img img {
+	width:398px;
+	height: 200px;
+	object-fit:contain;
+}
+
+.imgchose {
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgchose button {
+	width: 100px;
+	height: 40px;
+	margin: 5px;
+	border-radius: 10px;
+	background-color: greenyellow;
+	border: none;
+}

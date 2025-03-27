@@ -611,15 +611,23 @@ public class ListPagingDAO {
 			String alarm_date_ago = DateUtil.getInstance().getCalcDateAgo(((Alarm) list.get(i)).getAlarm_reg_datetime());
 			int alarm_check = ((Alarm) list.get(i)).getAlarm_check();
 			sb.append("<div class=\"bell\" onclick=\"location.href='"+alarm_location+"'\">");
-			sb.append("<p>");
+			sb.append("<div>");
 			if(alarm_check == 1) {
+				sb.append("<div>");
 				sb.append("<span>"+alarm_category_content+" </span>");
+				sb.append("</div>");
+				sb.append("<div>");
 				sb.append("<span> "+alarm_date_ago+"</span><br>");
+				sb.append("</div>");
 			}else {
+				sb.append("<div>");
 				sb.append("<span><strong>"+alarm_category_content+" </strong></span>");
+				sb.append("</div>");
+				sb.append("<div>");
 				sb.append("<span><strong> "+alarm_date_ago+"</strong></span><br>");
+				sb.append("</div>");
 			}
-			sb.append("</p>");
+			sb.append("</div>");
 			sb.append("<button id=\"btn-deleteAlarm"+alarm_no+"\"onclick=\"deleteAlarm()\">X</button>");
 			sb.append("</div>");
 		}

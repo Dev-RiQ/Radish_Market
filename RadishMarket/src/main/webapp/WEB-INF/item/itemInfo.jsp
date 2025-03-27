@@ -4,6 +4,7 @@
 <%@ include file="../main/header.jsp"%>
 <link rel="stylesheet" href="../../css/itemInfo.css">
 <link rel="stylesheet" type="text/css" href="../../css/swiper.css">
+<section>
 
 <div class="item-info-box">
 	<div class="thelook">
@@ -207,7 +208,7 @@
 		</div>
 	</div>
 </div>
-
+</section>
 <%@ include file="../main/footer.jsp"%>
 
 <script

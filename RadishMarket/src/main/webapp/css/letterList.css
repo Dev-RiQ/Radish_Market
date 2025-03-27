@@ -207,14 +207,12 @@ body{
 
 .letter-info-box .propile {
 	width: 100%;
-	height: 70px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	background-color: greenyellow;
 	border-radius: 10px 10px 0px 0px;
 }
-
+.letter-info-box textarea{
+	resize:none;
+}
 .letter-info-box .propile input {
 	width: 40px;
 	height: 40px;
@@ -222,12 +220,19 @@ body{
 }
 
 .letter-info-box .times {
-	width: 100px;
-	height: 50px;
+	width: 100%;
+	text-align:right;
+	height: 10px;
 	font-size: 13px;
 	display: flex;
 	align-items: center;
 	margin-right: 10px;
+}
+.letter-info-box .times p{
+	width: 100%;
+	text-align:right;
+	padding-right:20px;
+	font-size:16px;
 }
 
 .letter-info-box .productletter {
@@ -237,6 +242,7 @@ body{
 	margin-top: 10px;
 	margin-left: 10px;
 	border:1px solid #ddd;
+	
 }
 
 .letter-info-box .letterimg {
@@ -245,7 +251,10 @@ body{
 	display: flex;
 	align-items: center;
 }
-
+.letter-info-box .letterimg p{
+	line-height:20px;
+	padding-bottom:14px;
+}
 .letter-info-box .letterimg input {
 	width: 40px;
 	height: 40px;
@@ -271,6 +280,22 @@ body{
 
 .letter-info-box .title h3{
 	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.letter-info-box .title h5{
+	width:90%;
+	margin:0;
+	padding: 0 20px;
+	color:black;
+	font-size:18px;
+	font-weight:500;
+	word-break:break-all;
+	
+}
+.letter-info-box .title p{
+	padding:10px;
+	height: 180px;
+	overflow-y: auto;
 }
 .letter-info-box .title textarea{
 	width:90%;
@@ -278,4 +303,138 @@ body{
 	margin: -5px 10px;
 	border-radius:10px;
 	border:1px solid #ddd;
+}
+.user-profile-container {
+	width: 100%;
+	height: 90px;
+	display: flex;
+	align-items: center;
+}
+
+.user-profile-inner-container {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+}
+
+.user-profile-section1 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex: 1;
+	margin-top: 0px;
+}
+
+.user-profile-section1 img {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+
+.user-profile-text-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.user-profile-nickname {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+}
+
+.user-profile-dong {
+	font-size: 16px;
+}
+
+.user-profile-section2 {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex: 0 0 auto;
+	margin-top: 0px;
+}
+
+.user-profile-inner-section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.user-profile-inner-box1 {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin-right: 6px;
+}
+
+.user-profile-deg {
+	font-size: 20px;
+	font-weight: bold;
+	color: orange;
+}
+
+.user-profile-emoji {
+	font-size: 22px;
+}
+
+.user-profile-inner-box2 progress {
+	width: 60px;
+	height: 8px;
+	appearance: none;
+	margin: 4px 0;
+	margin-right: 12px;
+}
+
+progress::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+	background-color: orange;
+	border-radius: 4px;
+}
+
+.ondo-label {
+	font-size: 14px;
+	color: gray;
+	margin: 0;
+	margin-right: 5px;
+}
+section>div.dir-history>div:nth-child(2){
+	text-align: right;
+}
+section>div.dir-history>div{
+	flex:1;
+}
+section>div.dir-history{
+	margin:0;
+	width:100%;
+	display: flex;
+	align-items: center;
+}
+.dir-history>div>span, .dir-history>div>a{
+	color:#999;
+}
+.dir-history>div>button{
+	border:none;
+	background-color: #5FCC29;
+	color:#fff;
+	padding: 10px 20px;
+	border-radius: 10px;
+	margin-bottom:10px;
+}
+
+.dir-history>div>button:hover{
+	opacity: 0.7;
+}
+.dir-history>div>button:active{
+	opacity: 0.5;
+}
+.user-mypage-box .mypag .user-profile-container a{
+	color:black;
 }

@@ -60,4 +60,3 @@
 </section>
 <%@ include file="../main/footer.jsp"%>
 <script src="../../js/meetJoinInsertValidCheck.js"></script>
-<script src="../../js/board.js"></script>

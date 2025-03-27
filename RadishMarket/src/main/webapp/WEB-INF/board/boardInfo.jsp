@@ -7,17 +7,17 @@
 			<div class="board-info-box">
 				<div class="lifethelook">
 					<div class="titlebox">
-						<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활 > </a> <span>${board.board_title}</span>
+						<div class="dir-history">
+							<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활 > </a> <span>${board.board_title}</span>
+						</div>
 					</div>
-
-					<button onclick="location.href='/listBoard.do'">목록</button>
 
 					<div class="lifethelooktxt">
 						<div class="besttexts">
 							<form action="/listBoard.do?filter=true" method="post">
 								<input type="hidden" id="meet_no" name="meet_no" value="${ meet_no }" />
 								<input type="hidden" id="gu" name="gu" value="${ gu }" />
-								<label for="user_dong">위치</label><br>
+								<label class="filter-label" for="user_dong">위치</label><br>
 
 								<label class="container">
 									<input type="radio" name="dong" id="dong" value="전체" ${ user_dong eq '전체' ? 'checked' : '' } />
@@ -34,7 +34,7 @@
 								</c:forEach>
 								<hr>
 
-								<label for="category_no">카테고리</label>
+								<label class="filter-label" for="category_no">카테고리</label>
 								<br>
 								<label class="container">
 									<input type="radio" name="category_no" id="category_no" value="0" ${category_no eq null ||
@@ -51,7 +51,7 @@
 								</c:forEach>
 								<hr>
 
-								<label for="order_by">정렬</label>
+								<label class="filter-label" for="order_by">정렬</label>
 								<label class="container">
 									<input type="radio" name="order_by" id="order_by" value=0 ${order_by eq null || order_by==0
 										? 'checked' : '' } />최신순
@@ -83,32 +83,34 @@
 										<!--게시글 유형-->
 									</tr>
 
-									<tr>
-										<td rowspan="2">
-											<div id="propilimg">
-												<img alt="이미지" src="/images/${ user.user_img ne '' ? user.user_img : 'usersDefaultImg.png' }" />
-											</div>
-										</td>
-										<!--프로필-->
-
-										<td><a href="/itemListUser.do?user_no=${ user.user_no }">${ user.user_nickname }</a></td>
-										<!--이름-->
-										<td>${ user.user_deg }℃${emoji}</td>
-										<td><progress id="progress" value="${user.user_deg}" max="100"></progress></td>
-									</tr>
-									<!--온도-->
-									<tr>
-										<td colspan="5">
-											<span>
-												<a href="listBoard.do?filter=true&dong=${user.user_dong }">${ user.user_dong}</a>
-											</span>
-											<span>
-												${BoardUpdateDatetime}
-											</span>
-										</td>
-									</tr>
 									<!--주소,시간-->
 								</table>
+								<div class="user-profile-container">
+									<div class="user-profile-inner-container">
+										<section class="user-profile-section1">
+											<img alt="대표이미지" src="/images/${user.user_img ne '' ? user.user_img : 'usersDefaultImg.png'}">
+											<div class="user-profile-text-box">
+												<a class="user-profile-nickname" href='/itemListUser.do?user_no=${user.user_no}'>${user.user_nickname}</a>
+												<span class="user-profile-dong">
+													<a href='/listItem.do?filter=true&gu=${user.user_gu}&dong=${user.user_dong}'>${user.user_dong}</a>
+												</span>
+											</div>
+										</section>
+										<section class="user-profile-section2">
+											<div class="user-profile-inner-section">
+												<div class="user-profile-inner-box1">
+													<span class="user-profile-deg">${user.user_deg}℃</span> <span class="user-profile-emoji">${emoji}</span>
+												</div>
+												<div class="user-profile-inner-box2">
+													<progress value="${user.user_deg}" max="100"></progress>
+												</div>
+												<div class="user-profile-inner-box3">
+													<p class="ondo-label">매너온도</p>
+												</div>
+											</div>
+										</section>
+									</div>
+								</div>
 
 								<div class="propiltxt">
 									<h1>${ board.board_title }</h1>
@@ -134,7 +136,9 @@
 													likeCount }</span>
 											</button>
 											<!--좋아요-->
-											<i class="fa-solid fa-pen" style="color: greenyellow;"></i> ${ commentList.size() }
+											<div>
+												<i class="fa-solid fa-pen" style="color: greenyellow;"></i><span> ${ commentList.size() }</span>
+											</div>
 											<!--댓글-->
 										</div>
 										<div class="inquiry">
@@ -146,40 +150,36 @@
 									<div class="comments">
 										<c:if test="${commentList.size() != 0}">
 											<c:forEach var="i" begin="0" end="${commentList.size() - 1}">
-												<table>
-													<tr>
-														<td rowspan="2" style="width: 40%;">
-															<div id="propilimg">
-																<img alt="이미지" src="/images/${commentUserImgList.get(i)}" />
+												<div class="user-profile-container">
+													<div class="user-profile-inner-container">
+														<section class="user-profile-section1">
+															<img class="comment-img" alt="대표이미지" src="/images/${commentUserImgList.get(i) ne '' ? commentUserImgList.get(i) : 'usersDefaultImg.png'}">
+															<div class="user-profile-text-box">
+																<a href="/itemListUser.do?user_no=${commentList.get(i).user_no}">${ commentNickname.get(i) }</a>
+																<span class="user-profile-dong">
+																	<a></a>
+																	<span>${commentUserDongList.get(i)}</span>
+																	<span> · ${commentUpdateTime.get(i)}</span>
+																	<span>${commentList.get(i).check_update == 1 ? ' · 수정됨' : '' }</span>
+																</span>
 															</div>
-														</td>
-														<!--댓글 프로필-->
-														<td><a href="/itemListUser.do?user_no=${commentList.get(i).user_no}">${ commentNickname.get(i) }</a></td>
-														<!--이름-->
-													</tr>
-													<tr>
-														<td colspan="5">
-															<span>${commentUserDongList.get(i)}</span>
-															<span>
-																${commentUpdateTime.get(i)}
-																${commentList.get(i).check_update == 1 ? '수정됨' : '' }
-															</span>
-														</td>
-													</tr>
-													<!--온도-->
-												</table>
+														</section>
+													</div>
+												</div>
 												<div class="comments-txt" id="comment_content_box${ commentList.get(i).comment_no }">
 													<div id="comment_content${ commentList.get(i).comment_no }">${
 														commentList.get(i).comment_content }</div>
-													<c:if test="${ log == commentList.get(i).user_no }">
-														<button id="btn-comment-update${ commentList.get(i).comment_no }"
-															onclick="commentUpdate(this)">수정</button>
-													</c:if>
-													<c:if test="${ log == commentList.get(i).user_no || log == board.user_no }">
-														<button
-															onclick="location.href='/deleteComment.do?user_no=${ board.user_no }&board_no=${ board.board_no }&comment_no=${commentList.get(i).comment_no}'">삭제</button>
-													</c:if>
 												</div>
+													<div class="btn-boxs">
+												<c:if test="${ log == commentList.get(i).user_no }">
+													<button id="btn-comment-update${ commentList.get(i).comment_no }"
+														onclick="commentUpdate(this)">수정</button>
+												</c:if>
+												<c:if test="${ log == commentList.get(i).user_no || log == board.user_no }">
+													<button
+														onclick="location.href='/deleteComment.do?user_no=${ commentList.get(i).user_no }&board_no=${ board.board_no }&comment_no=${commentList.get(i).comment_no}'">삭제</button>
+												</c:if>
+													</div>
 											</c:forEach>
 										</c:if>
 
@@ -187,7 +187,7 @@
 
 									<div class="writingout">
 										<textarea name="comment_content" id="comment_content" placeholder="내용을 입력하세요."></textarea>
-										<button id="btn-comment-submit" onclick="sendAlarm()">
+										<button id="btn-comment-submit" onclick="checkValid()">
 											<i class="fa-solid fa-paper-plane"></i>
 										</button>
 									</div>

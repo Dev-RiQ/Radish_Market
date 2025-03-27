@@ -2,7 +2,6 @@
 .board-info-box .propiltxtimg {
 	width:100%;
 }
-.board-info-box span {margin:0; padding:0;}
 .board-info-box td {
 	height:20px;
 }
@@ -55,6 +54,7 @@
 	width: 80%;
 	height: 100%;
 	display: flex;
+	padding: 20px;
 	flex-direction: column;
 }
 
@@ -98,10 +98,6 @@
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-}
-
-span {
-	font-size: 12px;
 }
 
 .board-info-box .saletxx p, .board-info-box .bestitem p {
@@ -148,11 +144,11 @@ span {
 	height: 100%;
 	display: flex;
 	align-items: center;
+	gap: 10px;
 }
 
 .board-info-box .iconbox>p {
 	margin-left: 10px;
-	font-size: 15px;
 }
 
 .board-info-box .inquiry {
@@ -183,10 +179,17 @@ span {
 
 .board-info-box .comments-txt {
 	width: 90%;
-	margin-left: 50px;
+	margin-left: 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
 	border-radius: 10px;
+}
+.board-info-box .btn-boxs{
+	margin:-5px 10px;
+}
+.board-info-box .comments-txt>div {
+	width: 98%;
+	padding: 10px;
 }
 
 .board-info-box .comments-txt p {
@@ -210,7 +213,7 @@ a {
 }
 
 .board-info-box .writingout {
-	width: 100%;
+	width: 90%;
 	height: 50px;
 	display: flex;
 	justify-content: center;
@@ -301,8 +304,138 @@ a {
 	width:90%;
 	height:60px;
 	margin: 0 10px;
+	resize: none;
+	border: 1px solid #ddd;
+	border-radius: 5px;
 }
 
 #btn-like-submit{
 	cursor: pointer;
+}
+
+
+
+.user-profile-container {
+	width: 525px;
+	height: 90px;
+	display: flex;
+	align-items: center;
+}
+
+.user-profile-inner-container {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user-profile-section1 {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex: 1;
+	margin-top: 0px;
+}
+
+.user-profile-section1 img {
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	object-fit: cover;
+}
+.user-profile-section1 .comment-img {
+	border-radius: 50%;
+	width: 50px;
+	height:50px;
+	object-fit: cover;
+	margin-right:-10px;
+}
+
+.user-profile-text-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.user-profile-nickname {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 0;
+}
+
+.user-profile-dong {
+	font-size: 16px;
+}
+
+.user-profile-section2 {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex: 0 0 auto;
+	margin-top: 0px;
+}
+
+.user-profile-inner-section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.user-profile-inner-box1 {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	margin-right: 6px;
+}
+
+.user-profile-deg {
+	font-size: 20px;
+	font-weight: bold;
+	color: orange;
+}
+
+.user-profile-emoji {
+	font-size: 22px;
+}
+
+.user-profile-inner-box2 progress {
+	width: 60px;
+	height: 8px;
+	appearance: none;
+	margin: 4px 0;
+	margin-right: 12px;
+}
+
+progress::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+	background-color: orange;
+	border-radius: 4px;
+}
+
+.ondo-label {
+	font-size: 14px;
+	color: gray;
+	margin: 0;
+	margin-right: 5px;
+}
+
+.board-info-box form button{
+	border:none;
+	width:80%;
+	font-size:18px;
+	padding:10px;
+	color:white;
+	background-color:#5FCC29;
+	border-radius:10px; 
+}
+.board-info-box form button:hover{
+	opacity: 0.7;
+}
+.board-info-box form button:active{
+	opacity: 0.5;
 }
