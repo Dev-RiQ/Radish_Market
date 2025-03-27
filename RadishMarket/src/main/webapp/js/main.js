@@ -15,25 +15,30 @@ function searchInItemList() {
 	location.href = `listItem.do?search_value=${searchValue}`
 }
 let headerBtn = document.getElementById('headerBtn');
-
 // 스크롤 이벤트 리스너 추가
-window.onscroll = function() {
+window.addEventListener('scroll',function() {
 	if (
-		document.body.scrollTop > 20 ||
-		document.documentElement.scrollTop > 20
+		document.documentElement.scrollTop > 50
 	) {
-		if (headerBtn)
+		if (headerBtn && headerBtn.style.opacity == 0){
 			headerBtn.style.display = 'block'; // 스크롤 시 Top 버튼 보이기
+			setTimeout(()=>{
+				headerBtn.style.opacity = 1; // 스크롤 시 Top 버튼 보이기
+			},100)
+		}
 	} else {
-		if (headerBtn)
-			headerBtn.style.display = 'block'; // 최상단에 있을 때 숨기기
+		if (headerBtn && headerBtn.style.opacity == 1){
+			headerBtn.style.opacity = 0; // 최상단에 있을 때 숨기기
+			setTimeout(()=>{
+				headerBtn.style.display = 'none'; // 최상단에 있을 때 숨기기
+			},300)
+		}
 	}
-};
+});
 
 // Top 버튼 클릭 시 맨 위로 이동
 function topFunction() {
-	document.body.scrollTop = 0;
-	document.documentElement.scrollTop = 0;
+	window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 const chang = document.querySelector(".chang");
@@ -92,21 +97,23 @@ if (progress)
 		}
 	})
 
-const user_profile_deg = document.querySelector('span.user-profile-deg');
+const user_profile_deg = document.querySelectorAll('span.user-profile-deg');
 if (user_profile_deg) {
-	if (parseInt(user_profile_deg.innerHTML) <= 20) {
-		user_profile_deg.classList.add('deg-color1')
-	} else if (parseInt(user_profile_deg.innerHTML) <= 35) {
-		user_profile_deg.classList.add('deg-color2')
-	} else if (parseInt(user_profile_deg.innerHTML) <= 48) {
-		user_profile_deg.classList.add('deg-color3')
-	} else if (parseInt(user_profile_deg.innerHTML) <= 63) {
-		user_profile_deg.classList.add('deg-color4')
-	} else if (parseInt(user_profile_deg.innerHTML) <= 80) {
-		user_profile_deg.classList.add('deg-color5')
-	} else if (parseInt(user_profile_deg.innerHTML) <= 100) {
-		user_profile_deg.classList.add('deg-color6')
-	}
+	user_profile_deg.forEach((i)=>{
+		if (parseInt(i.innerHTML) <= 20) {
+			i.classList.add('deg-color1')
+		} else if (parseInt(i.innerHTML) <= 35) {
+			i.classList.add('deg-color2')
+		} else if (parseInt(i.innerHTML) <= 48) {
+			i.classList.add('deg-color3')
+		} else if (parseInt(i.innerHTML) <= 63) {
+			i.classList.add('deg-color4')
+		} else if (parseInt(i.innerHTML) <= 80) {
+			i.classList.add('deg-color5')
+		} else if (parseInt(i.innerHTML) <= 100) {
+			i.classList.add('deg-color6')
+		}
+	})
 }
 
 setTimeout(() => {

@@ -12,7 +12,6 @@ select,
 .loading-main,
 .meetinglocalbtns button,
 .user-mypage-box .menulist .menulistbtn button,
-.user-mypage-box .fc-view-container *,
 .modal-content,
 header{
     background-color: #000000 !important;
@@ -23,10 +22,12 @@ header{
 .imguplod button,
 .meetinglocalbtns button,
 .user-mypage-box .myprofil,
-.user-mypage-box .fc-view-container .fc-bg,
+.user-mypage-box .fc-view-container thead,
 .modal-content,
 .user-mypage-box .insert input,
-.user-mypage-box .insert select
+.user-mypage-box .insert select,
+.user-mypage-box .menu .menulistbtn .list-btn,
+input#item_price
  {
     border:1px solid #F1F1F1 !important;
 }
@@ -42,7 +43,10 @@ header{
 .user-mypage-box .cartegory .btn-inner-box span,
 .user-mypage-box .cartegory .fa-home,
 .user-mypage-box .cartegory .fa-user,
-.user-mypage-box .letter-list-box .mail *
+.user-mypage-box .letter-list-box .mail *,
+.user-mypage-box .fc-view-container *,
+.user-mypage-box .review-content tbody tr:nth-child(1) td:nth-child(2) span:nth-child(1),
+.user-mypage-box .review-content .review-content-box
 {
     color: #F1F1F1 !important;
 }
@@ -68,14 +72,22 @@ header{
 }
 
 .user-mypage-box .board-list-box .txtbox span{
-	 color: #555 !important;
+	 color: #aaa !important;
+}
+.bells>*:nth-child(1){
+	cursor:default !important;
+}
+.bells>*:nth-child(1):hover, .bells>*:nth-child(1):active{
+	background-color: #222 !important;
 }
 
 
 /* 흰색배경으로 버튼반전 */
 .search button,
 .linkbtn a,
-.user-mypage-box .cartegory .tablinks.clicked
+.user-mypage-box .cartegory .tablinks.clicked,
+.user-mypage-box .cartegory .tablinks.clicked .fa-home,
+.user-mypage-box .cartegory .tablinks.clicked .fa-user
 {
 	background-color: #F1F1F1 !important;
 	color: #000 !important;
@@ -85,13 +97,28 @@ header{
 .user-mypage-box .cartegory .tablinks.clicked span,
 .user-mypage-box .fc-view-container .fc-content,
 .user-mypage-box .fc-view-container .fc-content span,
-.user-mypage-box .letter-list-box .mail:hover *{
+.user-mypage-box .letter-list-box .mail:hover *,
+.user-mypage-box .fc-view-container .fc-state-highlight>*,
+.review-insert-box .lettertxt h2,
+.review-insert-box .user-profile-section1 a,
+.letter-info-box .user-profile-section1 a,
+.letter-info-box .propile h2
+{
     color: #000 !important;
 }
 /* 흰색배경 전환 */
 .user-mypage-box .fc-view-container .fc-content span,
-.user-mypage-box .fc-view-container .fc-content{
+.user-mypage-box .fc-view-container .fc-content,
+.user-mypage-box .menu .menulistbtn .list-btn{
 	background-color: #5FCC29 !important;
+}
+.user-mypage-box .fc-view-container .fc-content:hover,
+.user-mypage-box .menu .menulistbtn .list-btn:hover{
+	opacity: 0.7 !important;
+}
+.user-mypage-box .fc-view-container .fc-content:active,
+.user-mypage-box .menu .menulistbtn .list-btn:active{
+	opacity: 0.5 !important;
 }
 /* 흰버튼 호버 */
 .search:nth-child(3):hover,
@@ -110,3 +137,6 @@ header{
 	background-color: #222 !important;
     color: #F1F1F1 !important;
 }
+
+
+

@@ -12,9 +12,10 @@
 <link rel="icon" href="../../images/fav.ico" type="image/x-icon">
 <title>무엇이든 우리동네 무우</title>
 <!-- CSS 추가 위치 -->
-<c:if test="${ mode ne null && mode ne '' }">
+<c:if test="${ mode ne null && mode eq 'dark' }">
 	<link rel="stylesheet" href="../../css/darkMode.css">
 </c:if>
+
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
 <link rel="stylesheet" href="../../css/alarm.css">
@@ -82,7 +83,7 @@
 	      <div class="mode">
 	        <p>화면 모드</p>
 	        <label class="switch">
-	          <input type="checkbox" id="change-view-mode" ${ mode ne null && mode ne '' ? 'checked' : '' }/>
+	          <input type="checkbox" id="change-view-mode" ${ mode ne null && mode eq 'dark' ? 'checked' : '' }/>
 	          <span class="slider round"></span>
 	        </label>
 	      </div>

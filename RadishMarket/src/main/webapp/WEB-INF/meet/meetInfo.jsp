@@ -106,9 +106,13 @@
 			                              	  <p>${ calendarMonth[i] }월</p>
 			                              	  <p>${ calendarDay[i] }</p>
 			                                </div>
-		                                     <div class="mname">
-		                                     <p>${calendarList.get(i).calendar_content}   
-		                                     <br><span>시간 ${calendarTimeList[i] }</span></p>   
+		                                     <div class="date-box">
+			                                     <div>
+			                                     	<p>${calendarList.get(i).calendar_content}</p>  
+			                                     </div>
+			                                     <div>
+			                                     	<span>시간 ${calendarTimeList[i] }</span>  
+			                                     </div>
 		                                	 </div>
 		                                     <div class="mname">
 		                                	 </div>

@@ -146,4 +146,3 @@
 <script src="../../js/singleFileUpload.js"></script>
 <script src="../../js/userJusoSearch.js"></script>
 <script src="../../js/userInsertValidCheck.js"></script>
-<script src="../../js/user.js"></script>

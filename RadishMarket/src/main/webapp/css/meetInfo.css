@@ -119,7 +119,7 @@
 .joined-meet-info-box .members {
 	width: 100%;
 	display: flex;
-	flex-wrap: wrap;;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: flex-start;
 }
@@ -187,9 +187,6 @@
 	transition: 0.3;
 }
 
-.joined-meet-info-box .txtcald:hover {
-	border: 1px solid #ddd;
-}
 
 .joined-meet-info-box .txtbox {
 	margin: 0 10px;
@@ -299,6 +296,32 @@
 	font-size: 20px;
 	margin-left: 5px;
 }
+.joined-meet-info-box .date-box {
+	width:100%;
+}
+.joined-meet-info-box .date-box>div>p {
+	overflow: hidden;
+	display: -webkit-box;
+	line-clamp: 1;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	text-overflow: ellipsis;
+	word-break: break-word;
+	max-height: 3.2em;
+	margin:0;
+}
+.joined-meet-info-box .date-box>div>* {
+	padding: 0 5px;
+}
+.joined-meet-info-box .date-box>div {
+	width:calc(100% - 50px);
+	height: 31px;
+	line-height: normal;
+	font-size: 20px;
+	margin-left: 5px;
+	display: flex;
+	align-items: center;
+}
 
 .joined-meet-info-box span {
 	font-size: 15px;
@@ -331,10 +354,6 @@ div.dir-history>a, div.dir-history>span{
 	transition: 0.3;
 	display: flex;
 	align-items: center;
-}
-
-.joined-meet-info-box .txtcald:hover {
-	border: 1px solid #ddd;
 }
 
 .joined-meet-info-box .txtbox {

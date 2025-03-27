@@ -78,6 +78,9 @@ input {
 	width: 200px;
 	margin-left: 29px;
 }
+.insert-check form input:nth-child(6){
+	margin-left:100px;
+}
 
 #user_nickname {
 	width: 200px;
@@ -210,4 +213,12 @@ abbr {
 	display:flex;
 	align-items:center;
 	gap: 10px;
+}
+.insert-check form input:nth-child(24)#user_email{
+	float:right;
+	width:170px;
+	margin-right:20px;
+}
+.insert-check form input#user_nickname{
+	margin-top:60px;
 }

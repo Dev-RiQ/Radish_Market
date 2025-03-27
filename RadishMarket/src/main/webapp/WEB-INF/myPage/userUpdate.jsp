@@ -242,4 +242,3 @@
 <script src="../../js/userJusoSearch.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
 <script src="../../js/userUpdateValidCheck.js"></script>
-<script src="../../js/user.js"></script>

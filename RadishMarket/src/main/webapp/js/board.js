@@ -5,7 +5,7 @@ function commentUpdate(e) {
 										<textarea name="comment_content" id="comment_content">${document.querySelector(`#comment_content${comment_no}`).innerText}</textarea>
 										<input type="hidden" name="comment_no" id="comment_no" value="${comment_no}" />
 										<input type="hidden" name="board_no" id="board_no" value="${document.querySelector("#link_no").value}" />
-										<button onclick="validCheck()">수정완료</button>
+										<button type="button" onclick="validCheck()">수정완료</button>
 									</form>`
 }
 function validCheck(){

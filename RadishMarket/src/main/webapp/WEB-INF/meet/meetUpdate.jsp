@@ -40,10 +40,11 @@
       <div class="ages">
         <input type="number" name="age_min" id="age_min" value="${ meetInfo.age_min }"> ~ 
 		<input type="number" name="age_max" id="age_max" value="${ meetInfo.age_max }">
-		<span id="age_min_check"></span>
+      </div>
+		<div class="ages-span">
+		<span id="age_min_check"></span> 
 		<span id="age_max_check"></span>
       </div>
-
 
       <div class="txt" style="margin-bottom: 10px;">
         <h3>프로필 이미지</h3>
@@ -77,4 +78,3 @@
 <%@ include file="../main/footer.jsp" %>
 <script src="../../js/meetInsertValidCheck.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
-<script src="../../js/board.js"></script>

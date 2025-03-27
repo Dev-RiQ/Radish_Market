@@ -198,7 +198,6 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<script src="../../js/user.js"></script>
 <script src="../../js/calendar.js"></script>
 
 <%@ include file="../main/footer.jsp"%>

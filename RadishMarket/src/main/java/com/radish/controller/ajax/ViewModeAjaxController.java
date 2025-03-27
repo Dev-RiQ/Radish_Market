@@ -13,12 +13,21 @@ public class ViewModeAjaxController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String mode = request.getParameter("mode");
-		if(mode.equals("light")) {
-			request.getSession().removeAttribute("mode");
+		
+		Object browserSetMode = request.getSession().getAttribute("browserSetMode");
+		String mode = null;
+		if(browserSetMode == null) {
+			mode = request.getParameter("browserSetMode");
 		}else {
-			request.getSession().setAttribute("mode", mode);
+			mode = request.getParameter("mode");
+			if(mode.equals(request.getSession().getAttribute("mode"))) {
+				return null;
+			}
 		}
+		if(request.getSession().getAttribute("log") != null)
+			request.getSession().setAttribute("browserSetMode", mode);
+			request.getSession().setAttribute("mode", mode);
+		response.getWriter().print(mode);
 		return null;
 	}
 

@@ -18,6 +18,8 @@ public class LogoutController implements Controller {
 		request.getSession().removeAttribute("address");
 		request.getSession().removeAttribute("gu");
 		request.getSession().removeAttribute("dong");
+		request.getSession().removeAttribute("mode");
+		request.getSession().removeAttribute("browserSetMode");
 		AlertUtil.getInstance().goHomeWithAlert(response, "로그아웃 성공 !");
 		return null;
 	}

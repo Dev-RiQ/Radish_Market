@@ -120,10 +120,6 @@ pre {
 	align-items: center;
 }
 
-.board-list-box .txtcald:hover {
-	border: 1px solid #ddd;
-}
-
 .board-list-box .txtbox {
 	flex: 7;
 	margin-top:0px;
@@ -201,7 +197,7 @@ pre {
 }
 
 .locallifetxt {
-	width: 350px;
+	width: 100%;
 }
 
 .lbtns {
