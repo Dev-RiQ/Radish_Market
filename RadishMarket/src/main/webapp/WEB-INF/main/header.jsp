@@ -26,7 +26,7 @@
 </head>
 <body>
 	<div id="loading-page" class="loading-page hide">
-		<jsp:include page="/pageLoading.jsp"></jsp:include>
+		<%@ include file="../../pageLoading.jsp" %>
 	</div>
 	<c:if test="${ log ne null }">
 		<input type="hidden" id="log" value="${log}">

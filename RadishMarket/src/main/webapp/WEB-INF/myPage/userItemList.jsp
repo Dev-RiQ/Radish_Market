@@ -99,7 +99,7 @@
             </div>
             <!--  찜목록-->
           </button>
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/itemListUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/itemListUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-gift" style="font-size: 20px;  color: skyblue"></i>
               </div><span>내 상품</span>

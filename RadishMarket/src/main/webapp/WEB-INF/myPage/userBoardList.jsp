@@ -62,7 +62,7 @@
               </div><span>프로필 수정</span>
             </div>
           </button><!-- 프로필 수정-->
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/boardListUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/boardListUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-folder" style="font-size: 20px; color:  #F7D358 "></i>
               </div><span>내 게시글</span>

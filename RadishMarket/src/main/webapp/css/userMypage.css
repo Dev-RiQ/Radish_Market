@@ -79,7 +79,7 @@ body footer{
 /* Style the buttons inside the tab */
 .user-mypage-box .cartegory button {
 	display: block;
-	background-color: inherit;
+	background-color: white;
 	color: black;
 	padding: 12px 15px;
 	width: 200px;
@@ -477,4 +477,8 @@ section .dir-history a, section .dir-history span{
 }
 .letter-list-box #list-box .mail button{
 	background: none;
+}
+.user-mypage-box .cartegory .tablinks.clicked{
+	background-color: #5FCC29 ;
+	font-weight:bold;
 }
