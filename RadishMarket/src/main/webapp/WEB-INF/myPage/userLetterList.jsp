@@ -66,7 +66,7 @@
             </div>
             <!--  내 게시글-->
           </button>
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/listLetter.do'">
+          <button class="tablinks clicked" onclick="location.href='/listLetter.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-envelope" style="font-size: 20px;  color: #FF0080"></i>
               </div><span>쪽지함</span>

@@ -1,18 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="shortcut icon" href="/radish_favicon.ico" type="image/x-icon">
-<link rel="icon" href="/radish_favicon.ico" type="image/x-icon">
-<title>무엇이든 우리동네 무우</title>
+
 <style>
-      body {
+      .loading-main {
         height: 100vh;
         margin: 0;
       }
-      main {
+      .loading-inner {
         width: 100vw;
         height: 100vh;
         display: flex;
@@ -49,12 +43,10 @@
         }
       }
     </style>
-  </head>
-  <body>
-    <main>
+  <div class="loading-main">
+    <div class="loading-inner">
       <h1>Loding......</h1>
 
       <div class="loader"></div>
-    </main>
-  </body>
-</html>
+    </div>
+  </div>

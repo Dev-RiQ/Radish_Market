@@ -54,7 +54,7 @@
               </div><span>마이페이지</span>
             </div>
           </button><!-- 프로필 수정-->
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/updateUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/updateUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-user" style="font-size: 20px; color: #000"></i>
               </div><span>프로필 수정</span>

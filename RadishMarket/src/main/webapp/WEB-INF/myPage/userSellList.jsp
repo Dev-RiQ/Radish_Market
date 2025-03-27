@@ -96,7 +96,7 @@
             </div>
             <!--   구매 내역 -->
           </button>
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/sellListUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/sellListUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-piggy-bank" style="font-size: 20px; color: #5fcc29"></i>
               </div><span>판매 내역</span>

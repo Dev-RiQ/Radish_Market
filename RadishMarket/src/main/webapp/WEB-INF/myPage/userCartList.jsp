@@ -89,7 +89,7 @@
             </div>
             <!--  내 상품-->
           </button>
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/cartListUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/cartListUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-bag-shopping" style="font-size: 20px; color: pink"></i>
               </div><span>구매 내역</span>

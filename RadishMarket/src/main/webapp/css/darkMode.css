@@ -1,14 +1,112 @@
 @charset "UTF-8";
 
+/* 검은색배경으로 버튼반전 */
 body,
 .chang,
-.child,
-p,
-a,
-span,
-h1~h5,
+.chang button,
 input,
+textarea,
+select,
+.imgbtn>button,
+.rsbtn,
+.loading-main,
+.meetinglocalbtns button,
+.user-mypage-box .menulist .menulistbtn button,
+.user-mypage-box .fc-view-container *,
+.modal-content,
 header{
     background-color: #000000 !important;
+    color: #F1F1F1 !important;
+}
+/* 흰색 테두리 전환 */
+.rsbtn,
+.imguplod button,
+.meetinglocalbtns button,
+.user-mypage-box .myprofil,
+.user-mypage-box .fc-view-container .fc-bg,
+.modal-content,
+.user-mypage-box .insert input,
+.user-mypage-box .insert select
+ {
+    border:1px solid #F1F1F1 !important;
+}
+
+/* 흰색 글자 전환 */
+.bells>div *,
+.gnb-category a,
+.item-name,
+.item-price,
+.user-profile-section1 a,
+.text a,
+.meet-list-box .txtbox>span,
+.user-mypage-box .cartegory .btn-inner-box span,
+.user-mypage-box .cartegory .fa-home,
+.user-mypage-box .cartegory .fa-user,
+.user-mypage-box .letter-list-box .mail *
+{
+    color: #F1F1F1 !important;
+}
+/* 검은색배경 전환 */
+#show-alarm-div,
+.child,
+.user-mypage-box .myprofil,
+.user-mypage-box .cartegory .tablinks{
+	background-color: #000000 !important;
+}
+/* 검은버튼 호버 */
+.chang button:hover,
+.bells>*:hover,
+.user-mypage-box .cartegory .tablinks:hover{
+    background-color: #444 !important;
+}
+
+/* 검은버튼 액티브 */
+.chang button:active,
+.bells>*:active,
+.user-mypage-box .cartegory .tablinks:active{
+    background-color: #999 !important;
+}
+
+.user-mypage-box .board-list-box .txtbox span{
+	 color: #555 !important;
+}
+
+
+/* 흰색배경으로 버튼반전 */
+.search button,
+.linkbtn a,
+.user-mypage-box .cartegory .tablinks.clicked
+{
+	background-color: #F1F1F1 !important;
+	color: #000 !important;
+}
+/* 검은색 글자 전환 */
+.search button *,
+.user-mypage-box .cartegory .tablinks.clicked span,
+.user-mypage-box .fc-view-container .fc-content,
+.user-mypage-box .fc-view-container .fc-content span,
+.user-mypage-box .letter-list-box .mail:hover *{
+    color: #000 !important;
+}
+/* 흰색배경 전환 */
+.user-mypage-box .fc-view-container .fc-content span,
+.user-mypage-box .fc-view-container .fc-content{
+	background-color: #5FCC29 !important;
+}
+/* 흰버튼 호버 */
+.search:nth-child(3):hover,
+.linkbtn a:hover{
+    background-color: #ccc !important;
+}
+
+/* 흰버튼 액티브 */
+.search:nth-child(3):active,
+.linkbtn a:active{
+    background-color: #999 !important;
+}
+
+/* 모달 */
+.bells>*{
+	background-color: #222 !important;
     color: #F1F1F1 !important;
 }

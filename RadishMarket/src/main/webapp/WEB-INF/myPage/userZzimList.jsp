@@ -73,7 +73,7 @@
             </div>
             <!--  쪽지함-->
           </button>
-          <button class="tablinks" style="background-color: #5FCC29 ; opacity:0.5; font-weight:bold;" onclick="location.href='/zzimListUser.do'">
+          <button class="tablinks clicked" onclick="location.href='/zzimListUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-bookmark" style="font-size: 20px;  color: gray"></i>
               </div><span>찜목록</span>
