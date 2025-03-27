@@ -23,6 +23,7 @@ function sendAlarm () {
 			const likeCount = document.querySelector('#like-count');
 			likeCount.innerText = parseInt(likeCount.innerText) - parseInt(1);
 			isLike.value = '0'
+			document.querySelector(".fa-heart").style.color = '#ddd';
 		})
 		.catch(error => console.log(error))
 		return
@@ -82,6 +83,7 @@ function sendAlarm () {
 			const likeCount = document.querySelector('#like-count');
 			likeCount.innerText = parseInt(likeCount.innerText) + parseInt(1);
 			isLike.value = '1'
+			document.querySelector(".fa-heart").style.color = 'red';
 		})
 		.catch(error => console.log(error))
 		return;

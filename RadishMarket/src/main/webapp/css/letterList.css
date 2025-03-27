@@ -164,7 +164,7 @@ body{
 	width: 130px;
 	height: 40px;
 	border-radius: 10px;
-	background-color: greenyellow;
+	background-color: #5FCC29;
 	border: none;
 	margin: 5px;
 }
@@ -203,6 +203,12 @@ body{
 .letter-info-box .going .delect {
 	width: 60px;
 	background-color: #ddd;
+}
+.letter-info-box .going .delect:hover {
+	opacity: 0.7;
+}
+.letter-info-box .going .delect:active {
+	opacity: 0.5;
 }
 
 .letter-info-box .propile {
@@ -261,16 +267,12 @@ body{
 	border: 1px solid #ddd;
 }
 
-.letter-info-box .going button:hover:active {
-	background-color: white;
-	color: greenyellow;
-	border: 1px solid greenyellow;
+.letter-info-box .going button:hover {
+	opacity: 0.7;
 }
 
-.letter-info-box .going .delect:hover:active {
-	background-color: white;
-	color: black;
-	border: 1px solid black;
+.letter-info-box .going .delect:active {
+	opacity: 0.5;
 }
 
 .letter-info-box .title input{

@@ -66,8 +66,9 @@ input {
 	font-size: 14px;
 }
 
-.btn:hover:active {
-	background-color: white;
-	color: greenyellow;
-	border: 1px solid greenyellow;
+.btn:hover {
+	opacity: 0.7;
+}
+.btn:active {
+	opacity: 0.5;
 }

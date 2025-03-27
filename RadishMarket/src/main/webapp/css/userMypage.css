@@ -96,13 +96,12 @@ body footer{
 	background-color: #d9f0d0;
 }
 
-.user-mypage-box .cartegory button.active {
-	background-color: #d9f0d0;
+.user-mypage-box .cartegory button:active {
+	background-color: #c7f5e0;
 }
 
 .user-mypage-box .tabcontent {
 	width: 100%;
-	border: 1px solid #ddd;
 }
 
 .user-mypage-box .myprofil input {
@@ -173,7 +172,6 @@ body footer{
 .user-mypage-box .cartegorymenue {
 	width: 100%;
 	height: calc(100% - 50px);
-	border: 1px solid #ddd;
 	margin-top: -2px;
 }
 
@@ -196,11 +194,20 @@ body footer{
 }
 
 .user-mypage-box .cartegorymenue #btn-more-list{
-	width: 100%;
+	width: 90%;
+	margin-top: 30px;
+	margin-left: 5%;
 	height: 50px;
 	font-size: 35px;
-	background-color: white;
+	background-color: #5FCC29;
 	border: none;
+	border-radius: 20px;
+}
+.user-mypage-box .cartegorymenue #btn-more-list:active {
+	opacity: 0.5;
+}
+.user-mypage-box .cartegorymenue #btn-more-list:hover {
+	opacity: 0.7;
 }
 .user-mypage-box #headerBtn{
 	right: 15px;
@@ -234,6 +241,13 @@ body footer{
 	justify-content: center;
 	align-items: center;
 }
+.user-mypage-box .btn-reviewing:active{
+	opacity: 0.5;
+}
+.user-mypage-box .btn-reviewing:hover{
+	opacity: 0.7;
+}
+
 .user-mypage-box .btn-reviewing{
 	width:90%;
 	height: 50px;
@@ -243,6 +257,8 @@ body footer{
 	border: none;
 	font-size: 18px;
 	margin: 5px 0;
+	margin-top: -50px;
+	margin-bottom:60px;
 }
 .user-mypage-box .btn-reviewed{
 	margin: 5px 0;
@@ -253,6 +269,8 @@ body footer{
 	font-size: 18px;
 	border: none;
 	cursor: default;
+	margin-top: -50px;
+	margin-bottom:60px;
 }
 .user-mypage-box .bought-box>.child{
 	width:100%;
@@ -262,7 +280,6 @@ body footer{
 .user-mypage-box .bought-box{
 	flex:1;
 	min-width: 200px;
-	border: 1px solid #ddd;
 	border-radius:15px;
 }
 .user-mypage-box .review-user-img{
@@ -366,6 +383,12 @@ body footer{
 	flex-direction: column;
 	align-items: flex-end;
 }
+#headerBtn:hover{
+	opacity: 0.7;
+}
+#headerBtn:active{
+	opacity: 0.5;
+}
 
 .user-profile-inner-box1 {
 	display: flex;
@@ -444,4 +467,14 @@ section>div.dir-history{
 section .dir-history a, section .dir-history span{
 	font-size:15px;
 	padding: 10px 0;
+}
+.letter-list-box #btn-more-list>i{
+	margin: 0;
+}
+.letter-list-box #list-box .mail:hover{
+	background-color: #b8ec9f;
+	color:black;
+}
+.letter-list-box #list-box .mail button{
+	background: none;
 }

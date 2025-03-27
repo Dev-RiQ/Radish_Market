@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../../css/meetJoinList.css">
 
 <section>
-	<button onclick="location.href='/infoMeet.do?meet_no=${ meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }'">모임 홈</button>
+	<button onclick="history.back()">모임 홈</button>
 	
 	<div class="meet-join-list-box">
       <div class="meetinginsertlist">

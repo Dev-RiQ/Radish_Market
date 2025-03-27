@@ -79,6 +79,12 @@
 	align-items: center;
 }
 
+.item-insert-box .imgbtn>button:active {
+	opacity: 0.5;
+}
+.item-insert-box .imgbtn>button:hover {
+	opacity: 0.7;
+}
 .item-insert-box .imgbtn>button {
 	width: 70px;
 	height: 70px;
@@ -110,12 +116,18 @@
 	color: rgb(20, 19, 19);
 	font-size: 15px;
 }
+.item-insert-box .registrationbtn>button:hover, .item-insert-box .rsbtn:hover {
+	opacity: 0.7;
+}
+.item-insert-box .registrationbtn>button:active, .item-insert-box .rsbtn:active {
+	opacity: 0.5;
+}
 
 .item-insert-box .rsbtn {
 	margin-bottom:20px;
 }
 .item-insert-box .rbtn {
-	background-color: greenyellow;
+	background-color: #5FCC29;
 }
 
 .item-insert-box textarea {
