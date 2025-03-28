@@ -77,7 +77,7 @@
 						<div class="itemtxt">
 							<div class="text">
 								<h2>${item.item_name}</h2>
-								<span><a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a>∙${updateTime}</span>
+								<span><a href='/listItem.do?filter=true&category_no=${item.item_category_no}'>${categoryName}</a> ∙ ${updateTime}</span>
 								<input type="hidden" class="item-status-value" value="${item.item_status}">
 								<c:choose>
 									<c:when test="${item.item_status == 2}">

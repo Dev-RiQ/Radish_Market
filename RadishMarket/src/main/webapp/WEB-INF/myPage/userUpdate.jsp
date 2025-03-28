@@ -219,6 +219,13 @@
             <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
+        <div class="insert-buttons" style="margin-top:-20px;">
+          <p>회원 탈퇴</p>
+          <!--회원 가입-->
+          <button type="button" style="background-color:crimson;" id="insert-btn" onclick="deleteUserDoubleCheck()">
+            <i class="fa-solid fa-cancel"></i>
+          </button>
+        </div>
       </div>
     </main>
           </div><!-- 내용-->
@@ -242,3 +249,4 @@
 <script src="../../js/userJusoSearch.js"></script>
 <script src="../../js/singleFileUpload.js"></script>
 <script src="../../js/userUpdateValidCheck.js"></script>
+<script src="../../js/userDelete.js"></script>

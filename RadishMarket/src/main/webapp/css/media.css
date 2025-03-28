@@ -1,0 +1,134 @@
+@charset "UTF-8";
+/* flex 1차 */
+@media (max-width: 1200px) {
+	
+}
+/* 필터, 목록 버튼화 + flex 2차 */
+@media (max-width: 990px) {
+	.item-list-box .categoryandproduct form,
+	header .gnb .gnb-category,
+	.user-mypage-box .menu .cartegory,
+	header .search-box,
+	header .search-box #local-btn
+	{
+		display: none;
+	}
+	body header{
+		height: 80px;
+	}
+	header .search-box{
+		width: 90%;
+		margin-left: 5%;
+	}
+	header .search-box .search-input{
+		width: 80%;
+	}
+	header #show-search-box,
+	header .search-box #btn-search-close{
+		display: block !important;
+	}
+	header .search-box.show{
+		display:flex;
+	}
+	header.search-box-show{
+		height:120px;
+	}
+	header #show-search-box.hide{
+		opacity: 0;
+		cursor: default;
+	}
+	header #btn-search-close.show{
+		display: block;
+	}
+	.gnb>div{
+		display:flex;
+	}
+	.header-logo{
+		width:100px !important;
+		margin-left: 20px !important;
+	}
+	.navigationbtns{
+	margin-top: 5px;
+	display:block !important;
+	width:50px;
+}
+	.navigationbar {
+	
+  height: 100%;
+  width: 0;
+  position: fixed;
+  left: 0;
+  background-color :white;
+  border-right: 1px solid #ddd;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+}
+
+.navigationbar button{
+ 
+  height: 50px;
+
+  font-size: 15px;
+  color: #111010;
+
+  transition: 0.3s;
+  margin: 10px;
+  background-color: white ;
+  border: none;
+}
+
+.navigationbar .closebtn {
+  position: absolute;
+  top: 0px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  margin-top: 50px;
+
+}
+	.bar1, .bar2, .bar3 {
+	 width: 35px;
+	  height: 5px;
+	  background-color:#5fcc29 ;
+	  border-radius: 5px;
+	  margin: 6px 0;
+	  transition: 0.4s;
+	  
+	  margin-left: 20px;
+	}
+	#mySidenav{
+		margin-top: 15px;
+	}
+	#mySidenav button{
+	width:100%;
+	height:60px;
+	margin:0;
+	font-size: 18px;
+	border: none;
+	border-radius: 0;
+	}
+	#mySidenav button:hover{
+		background-color: #ddd;
+	}
+	#mySidenav button:active{
+		background-color: #aaa;
+	}
+}
+/* flex 3차 */
+@media (max-width: 768px) {
+	
+}
+@media (max-width: 800px) {
+	
+}
+@media (max-width: 800px) {
+	
+}
+@media (max-width: 800px) {
+	
+}

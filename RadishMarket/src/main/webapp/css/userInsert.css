@@ -214,7 +214,8 @@ abbr {
 	align-items:center;
 	gap: 10px;
 }
-.insert-check form input:nth-child(24)#user_email{
+.insert-check form input:nth-child(24)#user_email,
+.insert-check form input:nth-child(25)#user_email{
 	float:right;
 	width:170px;
 	margin-right:20px;

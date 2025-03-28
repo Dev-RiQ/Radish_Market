@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="../../css/darkMode.css">
 </c:if>
 
+<link rel="stylesheet" href="../../css/media.css">
 <link rel="stylesheet" href="../../css/main.css">
 <link rel="stylesheet" href="../../css/user.css">
 <link rel="stylesheet" href="../../css/alarm.css">
@@ -35,9 +36,16 @@
 
 	<header>
 		<div class="gnb">
+		<div>
+			<div class="navigationbtns" onclick="toggleNav(this)">
+		         <div class="bar1"></div>
+		         <div class="bar2"></div>
+		         <div class="bar3"></div>
+		       </div>
 			<div class="header-logo" style="cursor:pointer;" onclick="location.href='/index.jsp'">
 		          <img src="/images/logo.png" style="width: 100px; height: 50px;"></img>
 	    	</div>
+		</div>
 			<c:set var="url" value="${ pageContext.request.requestURL }" />
 			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
 		    	<div class="gnb-category">
@@ -55,6 +63,9 @@
 						<a href='/login.do'>로그인</a>
 					</c:when>
 					<c:otherwise>
+					<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+						<button id="show-search-box" onclick="showSearchBox()"><i class="fa-solid fa-search"></i></button>
+					</c:if>
 						<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()"><i class="fa-solid fa-bell"></i></button>
 						<button id="show-chang" onclick="showMyInfo()"><img alt="user" src="/images/${ my_img ne '' ? my_img : 'usersDefaultImg.png' }" /></button>
 					</c:otherwise>
@@ -64,6 +75,7 @@
 		<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
 		<div class="search-box">
 			<div class="search">
+	        <button id="btn-search-close" onclick="closeSearchBox()"><i class="fa-solid fa-close"></i></button>
 	        <button id="local-btn">
 	          <i class="fa-solid fa-location-dot" style="font-size: 17px; margin: 5px"></i>${ dong }
 	        </button>
@@ -89,3 +101,13 @@
 	      </div>
 	    </div>
 	</c:if>
+	
+	
+	<nav>
+    <div id="mySidenav" class="navigationbar" >
+      <button onclick="location.href='/listItem.do'">중고거래</button>
+      <button onclick="location.href='/listBoard.do'">동네생활</button>
+      <button onclick="location.href='/listMeet.do'">모임</button>
+    </div>
+    
+   </nav>

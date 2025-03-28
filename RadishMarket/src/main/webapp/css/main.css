@@ -194,7 +194,6 @@ header {
 
 section {
   margin-top: 150px;
-  min-height:100vh;
 }
 
 button {
@@ -348,42 +347,6 @@ textarea {
 .linkbtn>a:active {
 	background-color:#aae88c;
   transform: scale(1.3);
-}
-
-footer {
-  width: 100%;
-  height: 180px;
-  background: black;
-  display: flex !important;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 100px;
-}
-
-footer h1 {
-  width: 200px;
-  height: 60px;
-  color: white;
-  font-size: 60px;
-  margin-left: 30px;
-}
-
-footer .textbox {
-  width: 380px;
-  height: 130px;
-  font-size: 15px;
-  display: flex;
-  flex-direction: column;
-  color: #ddd;
-  white-space: pre-line;
-}
-
-footer .sns {
-  width: 300px;
-  height: 60px;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
 }
 
 #show-alarm-div {
@@ -592,4 +555,98 @@ section .user-mypage-box form>span{
 .empty-info{
 	margin-top : 30px;
 	text-align: center;
+}
+
+footer {
+  width: 100%;
+  height: 220px;
+  background: black;
+  margin-top: 100px;
+  max-width: 1280px;
+  padding: 15px 25px;
+  box-sizing: border-box;
+}
+.footertext {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.footerleft {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.footerleft img {
+  width: 124px;
+  margin-bottom: 5px;
+}
+.sns {
+  margin-top: 10px;
+}
+.sns i {
+  font-size: 30px;
+  margin: 0 5px;
+  color: white;
+}
+.footerright {
+  width: 100%;
+  max-width: 300px;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+  margin-top: 10px;
+}
+span {
+  font-size: 16px;
+  word-break: keep-all;
+}
+.termsandconditionsofuse {
+  width: 100%;
+}
+.termsandconditionsofuse-link {
+  width: 60%;
+  margin-top: 15px;
+}
+.termsandconditionsofuse-link a {
+  font-size: 12px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: #ddd;
+  word-break: keep-all;
+}
+header .search-box #local-btn{
+	width: 120px !important;
+	padding: 5px 10px; 
+}
+header #show-search-box{
+	display:none;
+	background: none;
+	color: #000;
+}
+header #show-search-box:hover{
+	background: #ddd;
+}
+	
+header #show-search-box:active{
+	background: #aaa;
+}
+header .search-box #btn-search-close{
+	display:none;
+	background: none;
+	color: #000;
+	border:none;
+	border-radius: 50%;
+	padding: 5px 10px;
+	margin-right: 5px;
+}
+header .search-box #btn-search-close:hover{
+	background: #ddd;
+}
+header .search-box #btn-search-close:active{
+	background: #aaa;
+}
+.navigationbtns{
+	display:none;
 }

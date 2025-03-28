@@ -79,7 +79,7 @@
         </div>
       </div>
 
-      <button id="myBtn" onclick="location.href='/insertBoard.do'"><i class="fa-solid fa-pen"></i></button
+      <button id="myBtn" onclick="location.href='/insertBoard.do?meet_no=${meet_no}'"><i class="fa-solid fa-pen"></i></button
       ><!--글쓰기 버튼-->
       <button onclick="topFunction()" id="headerBtn" title="Go to top">
         <i class="fa-solid fa-angle-up"></i>

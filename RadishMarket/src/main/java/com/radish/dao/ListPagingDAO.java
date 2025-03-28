@@ -562,7 +562,7 @@ public class ListPagingDAO {
 			sb.append("<span>" + " · <i class=\"fa-solid fa-comment\"></i> " + commentCount + "</span>");
 			sb.append("</pre>");
 			sb.append("</div>");
-			if (board_img != null)
+			if (board_img != null && !board_img.isBlank())
 				sb.append("<div class=\"imgbox\"><img alt=\"대표 이미지\" src=\"/images/" + board_img + "\"/></div>");
 			sb.append("</div>");
 		}
