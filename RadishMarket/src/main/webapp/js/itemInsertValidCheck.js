@@ -7,13 +7,12 @@ const contentCheck = document.querySelector("#content_check");
 const price = document.querySelector("#item_price");
 const priceCheck = document.querySelector("#price_check");
 const maxPrice = 2100000000;
+let checkSellItem = true;
 
 const sellBtn = document.querySelector('#sell-btn');
 const freeBtn = document.querySelector('#free-btn');
 const categorySelect = document.querySelector("#item_category_no");
 const form = document.querySelector("form");
-
-let checkSellItem = true;
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -35,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		price.style.backgroundColor = "#f0f0f0";
 		freeBtn.classList.add("selected");
 		sellBtn.classList.remove("selected");
+		priceCheck.innerText = '';
 	});
 	
 	if (Number(price.value) === 0 && title.value.trim()) {
@@ -89,7 +89,6 @@ function validCheck() {
 		titleCheck.innerText = '';
 		title.style.border = "1px solid black";
 	}
-
 	title.addEventListener('keyup', () => {
 		if (titleCheck.innerText && title.value.trim()) {
 			titleCheck.innerText = '';
@@ -110,7 +109,6 @@ function validCheck() {
 		contentCheck.innerText = '';
 		content.style.border = "1px solid black";
 	}
-
 	content.addEventListener('keyup', () => {
 		if (contentCheck.innerText && content.value.trim()) {
 			contentCheck.innerText = '';
@@ -183,7 +181,14 @@ function validCheck() {
 		});
 }
 
-
 function fileUpload(){
 	document.querySelector('#ofile').click();
 }
+
+const remove_item_btn = document.querySelector('.remove-item-btn');
+remove_item_btn.addEventListener('click', () => {
+	const check = confirm('해당 물품을 삭제하시겠습니끼?')
+	if(check){
+		location.href = `/deleteItem.do?item_no=${remove_item_btn.value}`;
+	}
+})

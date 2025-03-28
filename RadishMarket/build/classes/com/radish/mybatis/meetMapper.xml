@@ -36,8 +36,8 @@
 	</delete>
 	
 	<insert id="insertMeet" parameterType="Meet">
-		INSERT INTO meets(host_user_no, meet_title, meet_content, meet_category_no, age_min, age_max, meet_img)
-		VALUES (#{host_user_no}, #{meet_title}, #{meet_content}, #{meet_category_no}, #{age_min}, #{age_max}, #{meet_img})
+		INSERT INTO meets(host_user_no, meet_title, meet_content, meet_category_no, age_min, age_max, meet_img, meet_gu, meet_dong)
+		VALUES (#{host_user_no}, #{meet_title}, #{meet_content}, #{meet_category_no}, #{age_min}, #{age_max}, #{meet_img}, #{meet_gu}, #{meet_dong})
 	</insert>
 	
 	<update id="updateMeet" parameterType="Meet">

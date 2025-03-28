@@ -38,7 +38,8 @@ public class InsertMeetController implements Controller {
 		String meet_img = request.getParameter("meet_img");
 		String meet_gu = request.getParameter("meet_gu");
 		String meet_dong = request.getParameter("meet_dong");
-		
+		System.out.println("meet_gu : "+meet_gu);
+		System.out.println("meet_dong : "+meet_dong);
 		int meet_user_count = 1;
 		String meet_category_name = MeetCategoryDAO.getInstance().getAMeetCategoryName(meet_category);
 		

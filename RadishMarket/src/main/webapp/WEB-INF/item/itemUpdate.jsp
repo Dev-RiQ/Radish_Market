@@ -124,8 +124,8 @@
 				<div class="registrationbtn">
 					<button onclick="history.back()">취소</button>
 					<!--취소-->
-					<button
-						onclick="location.href='deleteItem.do?item_no=${item.item_no}'">삭제하기</button>
+					<button class="remove-item-btn" type="button" value="${item.item_no}"
+						>삭제하기</button>
 					<!--등록-->
 					<button class="rbtn">수정하기</button>
 					<!--등록-->
