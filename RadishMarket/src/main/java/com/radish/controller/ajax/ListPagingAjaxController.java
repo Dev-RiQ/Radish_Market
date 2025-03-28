@@ -28,15 +28,24 @@ public class ListPagingAjaxController implements Controller {
 		int queryStartIndex = Integer.parseInt(queryString.get("start")[0]);
 
 		Filter filter = ListPagingDAO.getInstance().setFilter(queryStartIndex, queryString);
-
+		
+		Object log_obj = request.getSession().getAttribute("log");
+		int log = 0;
+		if(log_obj != null)
+			log = Integer.parseInt(log_obj.toString());
+		Object user_no_obj = request.getParameter("user_no");
+		int user_no = 0;
+		if(user_no_obj != null)
+			user_no = Integer.parseInt(user_no_obj.toString());
+		
 		String type = queryString.get("type")[0];
+		
 		switch (type) {
 		case "receiveLetter", "sendLetter", "zzim", "cart", "myItem", "review", "myBoard", "hostMeet", "myMeet", "alarm":
-			String user_no = request.getParameter("user_no");
-			if (user_no != null && !user_no.isEmpty()) {
-				filter.setUser_no(Integer.parseInt(user_no));
+			if (user_no != 0 && (type.equals("myItem") || type.equals("review")) && log != user_no) {
+				filter.setUser_no(user_no);
 			} else {
-				filter.setUser_no(Integer.parseInt(request.getSession().getAttribute("log").toString()));
+				filter.setUser_no(log);
 			}
 			break;
 	}

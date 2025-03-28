@@ -110,8 +110,12 @@ public class InfoBoardController implements Controller {
 		if (user_dong.equals("전체")) {
 			user_dong = request.getSession().getAttribute("dong").toString();
 		}
-		List<String> dongList = DongUtil.getInstance().getDongFilterList(gu, user_dong);
-		request.setAttribute("dongList", dongList);
+		Object sessionDongList = request.getSession().getAttribute("dongList");
+		List<?> dongList = null;
+		if(sessionDongList == null) {
+			dongList = DongUtil.getInstance().getDongFilterList(gu, user_dong);
+			request.getSession().setAttribute("dongList", dongList);
+		}
 		
 		String order_by_str = request.getParameter("order_by");
 		int order_by = 0;

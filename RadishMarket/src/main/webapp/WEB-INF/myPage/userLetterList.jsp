@@ -118,7 +118,6 @@
 		<button class="list-btn" id="send-btn" onclick="openList()">보낸 쪽지 (${sendLetterListSize})</button>
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="boardList"></p>
           		<div class="letter-list-box">
           			<div class="mails">
 				      <div class="state">
@@ -136,6 +135,7 @@
 						<!-- 여기 리스트 출력 -->
 					</div>
           		</div>
+          		<p class="empty-info" id="receiveLetterList"></p>
 				<button class="addbtn" id="btn-more-list" value="receiveLetter/0" onclick="getMoreList()">더보기</button>
 				</div>
           </div><!-- 내용-->

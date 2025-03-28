@@ -9,7 +9,12 @@
         <div class="locallife">
           <div class="locallifetxt">
             <p class="t"><a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활</a></p>
-            <h2>${ address } 동네생활</h2>
+            <c:if test="${ meet_no eq '0' }">
+          	  <h2>${ address } 동네생활</h2>
+            </c:if>
+            <c:if test="${ meet_no ne '0' }">
+	            <h2>${ meetName }의 생활</h2>
+            </c:if>
           </div>
           <div class="lbtns">
           </div>
@@ -65,8 +70,8 @@
           </div>
 
           <div class="pepoletxts">
-          	<p class="empty-info" id="boardList"></p>
           	<div id="list-box"></div>
+          	<p class="empty-info" id="boardList"></p>
 	          <button class="addbtn" id="btn-more-list" value="board/0" onclick="getMoreList()">
 	            <i class="fa-solid fa-chevron-down"></i>
 	          </button>

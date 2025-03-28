@@ -138,12 +138,12 @@
 				<button class="list-btn" id="review-btn" onclick="openList()">거래 후기(${reviewListSize}))</button>
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="sellList"></p>
           		<div class="item-list-box">
 					<div class="product-child" id="list-box">
 						<!-- 여기 리스트 출력 -->
 					</div>
           		</div>
+          		<p class="empty-info" id="sellList"></p>
           		<input type="hidden" id="target_user_no" value="${user.user_no}">
 				<button class="addbtn" id="btn-more-list" value="${ alarm_no ne null ? 'review/0' : 'myItem/0' }" onclick="getMoreList()">더보기</button>
           </div><!-- 내용-->

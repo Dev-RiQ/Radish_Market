@@ -6,6 +6,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+
 public class DongUtil {
 	
 	private final String path = "https://www.code.go.kr/stdcode/regCodeL.do?";

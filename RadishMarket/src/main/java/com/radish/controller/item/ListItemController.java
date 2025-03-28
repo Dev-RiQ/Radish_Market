@@ -1,6 +1,7 @@
 package com.radish.controller.item;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.radish.dao.ItemCategoryDAO;
 import com.radish.frontController.Controller;
@@ -72,7 +73,13 @@ public class ListItemController implements Controller {
 		if(user_dong.equals("전체")) {
 			user_dong = request.getSession().getAttribute("dong").toString();
 		}
-		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(gu, user_dong));
+		
+		Object sessionDongList = request.getSession().getAttribute("dongList");
+		List<?> dongList = null;
+		if(sessionDongList == null) {
+			dongList = DongUtil.getInstance().getDongFilterList(gu, user_dong);
+			request.getSession().setAttribute("dongList", dongList);
+		}
 		
 		return "item/itemList";
 	}

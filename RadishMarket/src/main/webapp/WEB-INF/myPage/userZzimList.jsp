@@ -117,12 +117,12 @@
 				<button>내 찜목록 (${zzimListSize})</button>
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="zzimList"></p>
           		<div class="item-list-box">
 					<div class="product-child" id="list-box">
 						<!-- 여기 리스트 출력 -->
 					</div>
           		</div>
+          		<p class="empty-info" id="zzimList"></p>
 				<button class="addbtn" id="btn-more-list" value="zzim/0" onclick="getMoreList()">더보기</button>
           </div><!-- 내용-->
         </div>

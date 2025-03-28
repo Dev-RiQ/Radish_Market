@@ -121,12 +121,12 @@
 				<button class="list-btn" id="meet-btn" onclick="openList()">내 모임 (${meetListSize})</button>
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="boardList"></p>
           		<div class="meet-list-box">
 					<div id="list-box">
 						<!-- 여기 리스트 출력 -->
 					</div>
           		</div>
+          		<p class="empty-info" id="hostMeetList"></p>
 				<button class="addbtn" id="btn-more-list" value="hostMeet/0" onclick="getMoreList()">더보기</button>
           </div><!-- 내용-->
         </div>

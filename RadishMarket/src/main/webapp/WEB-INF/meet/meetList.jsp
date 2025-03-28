@@ -67,8 +67,8 @@
           </div>
           
           <div class="pepoletxts">
-          <p class="empty-info" id="meetList"></p>
 			<div id="list-box"></div>          	
+          <p class="empty-info" id="meetList"></p>
             
            <button class="addbtn" id="btn-more-list" value="meet/0" onclick="getMoreList()">
              <i class="fa-solid fa-chevron-down"></i
