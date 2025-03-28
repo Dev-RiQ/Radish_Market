@@ -5,8 +5,8 @@
 <mapper namespace="com.radish.mybatis.boardMapper">
 
 	<insert id="boardInsert" parameterType="Board">
-		INSERT INTO boards(user_no, board_category_no, meet_no, board_title, board_content, board_reg_datetime, board_update_datetime, board_img, board_hits)
-		VALUES(#{user_no}, #{board_category_no}, #{meet_no}, #{board_title}, #{board_content}, #{board_reg_datetime}, #{board_update_datetime}, #{board_img}, #{board_hits})
+		INSERT INTO boards(user_no, board_category_no, meet_no, board_title, board_content, board_reg_datetime, board_update_datetime, board_img, board_hits, board_gu, board_dong)
+		VALUES(#{user_no}, #{board_category_no}, #{meet_no}, #{board_title}, #{board_content}, #{board_reg_datetime}, #{board_update_datetime}, #{board_img}, #{board_hits}, #{board_gu}, #{board_dong})
 	</insert>
 	
 	<update id="boardHitsUp" parameterType="int">

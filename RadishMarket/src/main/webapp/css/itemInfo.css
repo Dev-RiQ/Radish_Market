@@ -392,3 +392,8 @@ h4.item-price{
 div.saleprice{
 	margin-bottom: 25px
 }
+
+.block-btn{
+	background-color: gray !important;
+	pointer-events : none !important;
+}
