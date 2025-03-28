@@ -1,8 +1,10 @@
 package com.radish.controller.board;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.radish.dao.BoardCategoryDAO;
+import com.radish.dao.MeetDAO;
 import com.radish.frontController.Controller;
 import com.radish.util.AlertUtil;
 import com.radish.util.DongUtil;
@@ -56,8 +58,16 @@ public class ListBoardController implements Controller {
 		if(user_dong.equals("전체")) {
 			user_dong = request.getSession().getAttribute("dong").toString();
 		}
-		request.setAttribute("dongList", DongUtil.getInstance().getDongFilterList(gu, user_dong));
+		Object sessionDongList = request.getSession().getAttribute("dongList");
+		List<?> dongList = null;
+		if(sessionDongList == null) {
+			dongList = DongUtil.getInstance().getDongFilterList(gu, user_dong);
+			request.getSession().setAttribute("dongList", dongList);
+		}
 		request.setAttribute("meet_no", meet_no);
+		if(meet_no != 0) {
+			request.setAttribute("meetName", MeetDAO.getInstance().getAMeetByMeetNo(meet_no).getMeet_title());
+		}
 		
 		return "board/boardList";
 	}

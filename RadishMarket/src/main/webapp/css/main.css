@@ -589,3 +589,7 @@ section .user-mypage-box form>span{
 	color:red;
 	font-size:12px;
 }
+.empty-info{
+	margin-top : 30px;
+	text-align: center;
+}

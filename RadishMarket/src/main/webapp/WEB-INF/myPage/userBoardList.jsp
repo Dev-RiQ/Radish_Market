@@ -120,12 +120,12 @@
             <button>내 게시글 (${boardListSize})</button> <!-- 보낸 쪽지함-->
           </div>
           <div class="cartegorymenue">
-          		<p class="empty-info" id="boardList"></p>
           		<div class="board-list-box">
 					<div id="list-box">
 						<!-- 여기 리스트 출력 -->
 					</div>
           		</div>
+          		<p class="empty-info" id="boardList"></p>
 				<button class="addbtn" id="btn-more-list" value="myBoard/0" onclick="getMoreList()">더보기</button>
           </div><!-- 내용-->
         </div>

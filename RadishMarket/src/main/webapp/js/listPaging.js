@@ -129,6 +129,8 @@ function printList(data) {
 		btnMoreList.classList.add('hide');
 		if (btnMoreList.value.split("/")[1] == '30') {
 			printNoData();
+		}else{
+			printDataEnd();
 		}
 		return;
 	}
@@ -152,12 +154,31 @@ function printNoData() {
 			case 'buyList': word.innerHTML = '구매한 물품이 없습니다.'; break;
 			case 'reserveList': word.innerHTML = '예약중인 물품이 없습니다.'; break;
 			case 'soldList': word.innerHTML = '거래 완료된 물품이 없습니다.'; break;
-			case 'boardList': word.innerHTML = '게시한 글이 없습니다.'; break;
+			case 'boardList': word.innerHTML = '게시글이 없습니다.'; break;
 			case 'hostMeetList': word.innerHTML = '회원님이 호스트인 모임이 없습니다.'; break;
-			case 'meetList': word.innerHTML = '참여중인 모임이 없습니다.'; break;
+			case 'meetList': word.innerHTML = '불러올 모임이 없습니다.'; break;
 			case 'receiveLetterList': word.innerHTML = '받은 쪽지가 없습니다.'; break;
 			case 'sendLetterList': word.innerHTML = '보낸 쪽지가 없습니다.'; break;
 			case 'itemList': word.innerHTML = '등록된 상품이 없습니다.'; break;
+		}
+	}
+}
+function printDataEnd() {
+	let word = document.querySelector('.empty-info')
+	if (word) {
+		switch (word.id) {
+			case 'sellList': word.innerHTML = '더 이상 불러올 물품이 없습니다.'; break;
+			case 'zzimList': word.innerHTML = '더 이상 불러올 찜한 물품이 없습니다.'; break;
+			case 'reviewList': word.innerHTML = '더 이상 불러올 후기가 없습니다.'; break;
+			case 'buyList': word.innerHTML = '더 이상 불러올 구매한 물품이 없습니다.'; break;
+			case 'reserveList': word.innerHTML = '더 이상 불러올 예약중인 물품이 없습니다.'; break;
+			case 'soldList': word.innerHTML = '더 이상 불러올 거래 완료된 물품이 없습니다.'; break;
+			case 'boardList': word.innerHTML = '더 이상 불러올 게시글이 없습니다.'; break;
+			case 'hostMeetList': word.innerHTML = '더 이상 불러올 회원님이 호스트인 모임이 없습니다.'; break;
+			case 'meetList': word.innerHTML = '더 이상 불러올 모임이 없습니다.'; break;
+			case 'receiveLetterList': word.innerHTML = '더 이상 불러올 받은 쪽지가 없습니다.'; break;
+			case 'sendLetterList': word.innerHTML = '더 이상 불러올 보낸 쪽지가 없습니다.'; break;
+			case 'itemList': word.innerHTML = '더 이상 불러올 등록된 상품이 없습니다.'; break;
 		}
 	}
 }

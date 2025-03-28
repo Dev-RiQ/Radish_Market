@@ -36,6 +36,7 @@ public class LoginController implements Controller {
 			request.getSession().setAttribute("gu", user.getUser_gu());
 			request.getSession().setAttribute("dong", user.getUser_dong());
 			request.getSession().setAttribute("my_img", UserDAO.getInstance().getAUserByLog(log).getUser_img());
+			request.getSession().removeAttribute("dongList");
 			AlertUtil.getInstance().goHomeWithAlert(response, user_id + "님 로그인 성공 !");
 		}else {
 			AlertUtil.getInstance().goBackWithAlert(response, "아이디 혹은 비밀번호를 확인해주세요.");

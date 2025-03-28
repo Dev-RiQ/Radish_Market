@@ -34,7 +34,19 @@ function setAddressData(jibunAddr) {
 	if (!document.querySelector('#address').value) {
 		fetch(`/main.do?address=${address}&gu=${gu}&dong=${dong}`)
 			.then(response => response.text())
+			.then(printDong)
 			.catch(error => console.log(error))
+	}
+}
+
+function printDong(dongData){
+	const homeTxt = document.querySelector('.home-text>h2');
+	const localBtn = document.querySelector('#local-btn');
+	if(homeTxt){
+		homeTxt.innerHTML = homeTxt.innerHTML.replace('에서',`${dongData}에서`);
+	}
+	if(localBtn){
+		localBtn.innerHTML += dongData;
 	}
 }
 
