@@ -37,14 +37,14 @@ if (btnMoreList) {
 	getMoreList();
 	setTimeout(() => {
 		isLoaded = true;
-	}, 1000)
+	}, 50)
 }
 
-function getMoreList(event) {
+function getMoreList() {
 	if (isLoaded && event) {
 		btnMoreList = event.currentTarget;
 	}
-	if (!btnMoreList || !btnMoreList.value) {
+	if (!btnMoreList || !btnMoreList.value || (document.querySelector('.chang') && document.querySelector('.chang').classList.length == 1)) {
 		btnMoreList = document.querySelector("#show-alarm-div");
 	}
 

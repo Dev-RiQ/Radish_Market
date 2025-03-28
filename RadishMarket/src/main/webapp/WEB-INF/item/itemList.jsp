@@ -17,7 +17,7 @@
 			</div>
           </div>
         </div>
-
+		<button class="btn-action-filter" onclick="openNav()"><i class="fa-solid fa-sliders"></i> 필터</button>
         <div class="categoryandproduct">
         	<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
 		
@@ -103,9 +103,8 @@
 
           <div class="product">
             <div class="product-child" id="list-box">
-          	<p class="empty-info" id="itemList"></p>
-            
             </div>
+          	<p class="empty-info" id="itemList"></p>
             <button class="addbtn" id="btn-more-list" value="item/0" onclick="getMoreList()">
               <i class="fa-solid fa-chevron-down"></i>
             </button>
@@ -120,6 +119,59 @@
       </button>
     </div>
 
+<div id="myNav" class="overlay">
+      <div class="category-header">
+        <h3>중고거래 검색 필터</h3>
+        <a class="closebtn" onclick="closeNav()"
+          ><i class="fa-solid fa-xmark"></i
+        ></a>
+      </div>
+      <div class="categorymain">
+      	<div class="filter">
+          <div class="title">
+            <h3>필터<br /></h3>
+          </div>
+        </div>
+        
+        <div class="local">
+          <div class="title">
+            <h3>
+              위치<br />
+              <p style="margin-bottom: 20px">서울 특별시 관악구</p>
+            </h3>
+          </div>
+
+          <label class="container">
+            신림동
+            <input type="radio" name="location" checked="checked" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        
+        <div class="menue">
+          <div class="title"><h3>카테고리</h3></div>
+          <label class="container">
+            전자제품
+            <input type="radio" name="category" checked="checked" />
+            <span class="checkmark"></span>
+          </label>
+        </div>
+        
+        <div class="price">
+          <div class="gakuck">
+            <div class="title"><h3>가격</h3></div>
+          </div>
+          <div class="pricewrite">
+            <input type="text" placeholder="최소" /> ~
+            <input type="text" placeholder="최대" />
+          </div>
+        </div>
+        
+      </div>
+      <div class="categoryfooter">
+        <button class="application">적용하기</button>
+      </div>
+    </div>
 	
 </section>
 	

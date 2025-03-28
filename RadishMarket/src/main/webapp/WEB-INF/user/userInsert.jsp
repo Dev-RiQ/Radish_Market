@@ -50,7 +50,6 @@
             <option value="@hanmail.net">hanmail.net</option>
             <option value="@">직접입력</option>
           </select>
-
           <input
             class="hide"
             type="text"

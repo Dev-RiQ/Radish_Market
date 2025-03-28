@@ -21,7 +21,7 @@
 			
 			<c:choose>
 				<c:when test="${ meet_no ne null }">
-					<input type="text" name="meet_no" id="meet_no" value="${ meet_no }" readonly><br>
+					<input type="hidden" name="meet_no" id="meet_no" value="${ meet_no }" readonly><br>
 				</c:when>
 				<c:otherwise>
 					<input type="hidden" name="meet_no" id="meet_no" value=0>

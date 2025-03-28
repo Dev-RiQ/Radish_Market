@@ -50,7 +50,7 @@ public class InsertBoardController implements Controller {
 		
 		Board board = new Board(user_no, board_category_no, meet_no, board_title, board_content, board_reg_datetime, board_update_datetime, board_img, board_gu, board_dong);
 		if(BoardDAO.getInstance().boardInsert(board))
-			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 추가 완료", "infoBoard.do?board_no="+BoardDAO.getInstance().getLastBoardNo());
+			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 추가 완료", "infoBoard.do?board_no="+BoardDAO.getInstance().getLastBoardNo()+"&meet_no="+meet_no);
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 게시글 추가에 실패했습니다.\\n다시 시도해주세요.");
 		return null;

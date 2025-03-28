@@ -10,6 +10,7 @@ import com.radish.dao.BoardDAO;
 import com.radish.dao.CalendarDAO;
 import com.radish.dao.CommentDAO;
 import com.radish.dao.LikeDAO;
+import com.radish.dao.MeetCategoryDAO;
 import com.radish.dao.MeetDAO;
 import com.radish.dao.MeetJoinDAO;
 import com.radish.dao.MeetUserDAO;
@@ -18,6 +19,7 @@ import com.radish.frontController.Controller;
 import com.radish.util.DateUtil;
 import com.radish.vo.Board;
 import com.radish.vo.Calendar;
+import com.radish.vo.Meet;
 import com.radish.vo.MeetJoin;
 import com.radish.vo.User;
 
@@ -41,10 +43,12 @@ public class InfoMeetController implements Controller {
 				request.setAttribute("hasMeetJoin", true);
 
 		}
-		request.setAttribute("meet", MeetDAO.getInstance().getAMeetByMeetNo(meet_no));
-		request.setAttribute("meet_dong", request.getParameter("meet_dong"));
-		request.setAttribute("meet_user_count", request.getParameter("meet_user_count"));
-		request.setAttribute("meet_category_name", request.getParameter("meet_category_name"));
+		
+		Meet meet = MeetDAO.getInstance().getAMeetByMeetNo(meet_no);
+		request.setAttribute("meet", meet);
+		request.setAttribute("meet_dong", meet.getMeet_dong());
+		request.setAttribute("meet_user_count", MeetUserDAO.getInstance().getMeetMemeberCount(meet_no));
+		request.setAttribute("meet_category_name", MeetCategoryDAO.getInstance().getAMeetCategoryName(meet.getMeet_category_no()));
 
 		String alarm_no_str = request.getParameter("alarm_no");
 		if (alarm_no_str != null) {

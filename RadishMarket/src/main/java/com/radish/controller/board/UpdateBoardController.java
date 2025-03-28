@@ -33,7 +33,7 @@ public class UpdateBoardController implements Controller {
 		
 		Board board = new Board(board_no, board_category_no, board_title, board_content, board_update_datetime, board_img);
 		if(BoardDAO.getInstance().boardUpdate(board))
-			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 수청 완료", "infoBoard.do?board_no="+board_no);
+			AlertUtil.getInstance().goUrlWithAlert(response, "게시글 수청 완료", "infoBoard.do?board_no="+board_no+"&meet_no="+BoardDAO.getInstance().getABoardByBoardNo(board_no).getMeet_no());
 		else
 			AlertUtil.getInstance().goBackWithAlert(response, "서버 오류로 인해 게시글 수정에 실패했습니다.\\n다시 시도해주세요.");
 		

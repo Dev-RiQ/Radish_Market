@@ -56,7 +56,7 @@
                     <div class="pepoles">
                         <div class="pepoles-num">
                             <h3>멤버 ${meet_user_count}</h3><!--멤버 수-->
-                            <c:if test="${meet_user_count eq '100+' || meet_user_count > 4}">
+                            <c:if test="${meet_user_count > 4}">
 								<a href="/listMeetUser.do?meet_no=${ meet.meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }">더보기 ></a>
 							</c:if>
                         </div>
@@ -124,9 +124,7 @@
                         </div>
                     <div class="mebertxt">
                         <h3>게시글 ${boardCount}</h3><!--게시글 수-->
-                        <c:if test="${boardCount eq '100+' || boardCount > 4}">
-							<a href="/listBoard.do?meet_no=${ meet.meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }">더보기 ></a>
-						</c:if>
+						<a href="/listBoard.do?meet_no=${ meet.meet_no }&meet_dong=${ meet_dong }&meet_user_count=${ meet_user_count }&meet_category_name=${ meet_category_name }">게시판 이동 ></a>
                     </div>
                     <div class="meberactivetxt">
 						<c:choose>

@@ -24,10 +24,11 @@ header{
 .user-mypage-box .myprofil,
 .user-mypage-box .fc-view-container thead,
 .modal-content,
-.user-mypage-box .insert input,
-.user-mypage-box .insert select,
+.insert input,
+.insert select,
 .user-mypage-box .menu .menulistbtn .list-btn,
-input#item_price
+input#item_price,
+.insert #post-list
  {
     border:1px solid #F1F1F1 !important;
 }
@@ -46,7 +47,8 @@ input#item_price
 .user-mypage-box .letter-list-box .mail *,
 .user-mypage-box .fc-view-container *,
 .user-mypage-box .review-content tbody tr:nth-child(1) td:nth-child(2) span:nth-child(1),
-.user-mypage-box .review-content .review-content-box
+.user-mypage-box .review-content .review-content-box,
+header .search-box #btn-search-close
 {
     color: #F1F1F1 !important;
 }
@@ -54,20 +56,25 @@ input#item_price
 #show-alarm-div,
 .child,
 .user-mypage-box .myprofil,
-.user-mypage-box .cartegory .tablinks{
+.user-mypage-box .cartegory .tablinks,
+header .search-box #btn-search-close{
 	background-color: #000000 !important;
 }
 /* 검은버튼 호버 */
 .chang button:hover,
 .bells>*:hover,
-.user-mypage-box .cartegory .tablinks:hover{
+.user-mypage-box .cartegory .tablinks:hover,
+header .search-box #btn-search-close:hover,
+header #show-search-box:hover{
     background-color: #444 !important;
 }
 
 /* 검은버튼 액티브 */
 .chang button:active,
 .bells>*:active,
-.user-mypage-box .cartegory .tablinks:active{
+.user-mypage-box .cartegory .tablinks:active,
+header .search-box #btn-search-close:active,
+header #show-search-box:acitve{
     background-color: #999 !important;
 }
 
@@ -139,4 +146,7 @@ input#item_price
 }
 
 
-
+header .search-box #btn-search-close i,
+header #show-search-box i{
+	color:#F1F1F1 !important;
+}
