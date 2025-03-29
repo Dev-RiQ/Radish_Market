@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 });
 
-let imgArr = [];
 let saveList = [];
 let deleteArr = [];
 const imageUploadInput = document.getElementById('ofile');

@@ -41,6 +41,7 @@ const item_status_value = document.querySelector('.item-status-value');
 const add_zzim_btn = document.querySelector('.add-zzim-btn');
 const remove_zzim_btn = document.querySelector('.remove-zzim-btn');
 const send_letter_btn = document.querySelector('.send-letter-btn');
+
 if(item_status_value.value === 3 || item_status_value.value === '3'){
 	if(add_zzim_btn){
 		add_zzim_btn.classList.add('block-btn');

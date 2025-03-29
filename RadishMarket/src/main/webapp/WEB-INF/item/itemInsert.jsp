@@ -95,7 +95,7 @@
 					<button type="button" onclick="history.back()">취소</button>
 					<!--취소-->
 					<button class="rbtn">등록하기</button>
-					<!--등록-->
+					<!--등록-->₩
 				</div>
 			</form>
 		</div>

@@ -3,6 +3,7 @@ section {
 	gap: 40px;
 	padding: 20px;
 	box-sizing: border-box;
+	overflow: auto;
 }
 
 div.admin-box {
@@ -91,13 +92,11 @@ th, td {
 	border: none;
 }
 
-.update button:hover,
-.delete button:hover {
+.update button:hover, .delete button:hover {
 	opacity: 0.7;
 }
 
-.update button:active,
-.delete button:active {
+.update button:active, .delete button:active {
 	opacity: 0.5;
 }
 
@@ -142,4 +141,43 @@ th, td {
 
 .add-btn:active {
 	opacity: 0.5;
+}
+
+/*  사이즈 990되면 메뉴바 디스플레이 논 */
+@media ( max-width : 990px) {
+	.admin-box {
+		display: none;
+	}
+}
+
+/* 서마터폰 통합 */
+@media ( max-width : 768px) {
+	section {
+		border: 1px solid blue;
+	}
+	th.member, th.price, th.email, th.phone, th.nickname, th.content, th.age, th.like, th.comment  {
+		display: none;
+	}
+	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
+	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
+	width: 100%;
+}
+}
+
+/* 타블렛 */
+@media ( min-width :769px) and (max-width: 989px) {
+	section {
+		border: 1px solid red;
+	}
+	th.email, th.phone, th.content {
+	display: none;
+}
+	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
+	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
+	width: 100%;
+}
+}
+
+/* max-size */
+@media ( max-width : 1200px) {
 }
