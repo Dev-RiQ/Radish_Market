@@ -201,7 +201,7 @@
 
 			</div>
 			<div id="myNav" class="overlay">
-	<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
+	<form action="/listBoard.do?filter=true&search_value=${ search_value }" method="post">
       <div class="category-header">
         <h3>자유게시판 검색 필터</h3>
         <button type="button" class="closebtn" onclick="closeNavbar()"><i class="fa-solid fa-xmark"></i></button>

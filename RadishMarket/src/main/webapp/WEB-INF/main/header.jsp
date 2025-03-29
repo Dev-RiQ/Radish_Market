@@ -8,6 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 <link rel="shortcut icon" href="../../images/fav.ico" type="image/x-icon">
 <link rel="icon" href="../../images/fav.ico" type="image/x-icon">
 <title>무엇이든 우리동네 무우</title>
@@ -27,7 +28,7 @@
 
 </head>
 <body>
-			<c:set var="url" value="${ pageContext.request.requestURL }" />
+			<c:set var="uri" value="${ pageContext.request.requestURI }" />
 	<div id="loading-page" class="loading-page hide">
 		<%@ include file="../../pageLoading.jsp" %>
 	</div>
@@ -38,7 +39,7 @@
 	<header>
 		<div class="gnb">
 		<div>
-			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+			<c:if test="${ uri ne '/index.jsp' }">
 				<div class="navigationbtns" onclick="toggleNav(this)">
 			         <div class="bar1"></div>
 			         <div class="bar2"></div>
@@ -49,7 +50,7 @@
 		          <img src="/images/logo.png" style="width: 100px; height: 50px;"></img>
 	    	</div>
 		</div>
-			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+			<c:if test="${ uri ne '/index.jsp' }">
 		    	<div class="gnb-category">
 					<a href='/listItem.do'>중고거래</a> 
 					<a href='/listBoard.do'>자유게시판</a> 
@@ -65,7 +66,7 @@
 						<a href='/login.do'>로그인</a>
 					</c:when>
 					<c:otherwise>
-					<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+					<c:if test="${ uri ne '/index.jsp' }">
 						<button id="show-search-box" onclick="showSearchBox()"><i class="fa-solid fa-search"></i></button>
 					</c:if>
 						<button id="show-alarm-div" value="alarm/0" onclick="showAlarmDiv()"><i class="fa-solid fa-bell"></i></button>
@@ -74,7 +75,7 @@
 				</c:choose>
 			</div>
 		</div>
-		<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+		<c:if test="${ uri ne '/index.jsp' }">
 		<div class="search-box">
 			<div class="search">
 	        <button id="btn-search-close" onclick="closeSearchBox()"><i class="fa-solid fa-close"></i></button>
