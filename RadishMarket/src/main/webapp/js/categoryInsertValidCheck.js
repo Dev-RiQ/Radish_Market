@@ -41,12 +41,15 @@ function validCheck(){
 	}
 	document.querySelector("form").submit()
 }
-
-title.addEventListener('input', ()=> {
-	if(title.value && title.value.length > 10){
-		title.value = title.value.substring(0, 10);
-	}
-})
+if(title){
+	title.forEach((i)=>{
+		i.addEventListener('input', ()=> {
+			if(title.value && title.value.length > 10){
+				title.value = title.value.substring(0, 10);
+			}
+		})
+	})
+}
 if(content){
 	content.addEventListener('input', ()=> {
 		if(content.value && content.value.length > 300){

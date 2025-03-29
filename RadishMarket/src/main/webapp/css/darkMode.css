@@ -18,7 +18,15 @@ header,
 #myNav,
 #myNav .category-header,
 #myNav .category-header button,
-#myNav .categoryfooter
+#myNav .categoryfooter,
+.user .delete button,
+.item .delete button,
+.board .delete button,
+.meet .delete button,
+.item-category button,
+.meet-category button,
+.board-category button,
+.alarm-category button
 {
     background-color: #000000 !important;
     color: #F1F1F1 !important;
@@ -58,7 +66,17 @@ header .search-box #btn-search-close,
 .letter-info-box .title h5,
 .meet-join-list-box td,
 #mySidenav .fa-home,
-#mySidenav .fa-user
+#mySidenav .fa-user,
+.admin-box *,
+.user th,
+.item th,
+.board th,
+.meet th,
+.item-category th,
+.meet-category th,
+.board-category th,
+.alarm-category th,
+#mySidenav span
 {
     color: #F1F1F1 !important;
 }

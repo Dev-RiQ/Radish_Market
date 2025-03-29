@@ -266,6 +266,9 @@
 		white-space: normal;
 		word-break: break-all;
 	}
+	.admin-box {
+		display: none;
+	}
 }
 
 @media (max-width: 1200px) {
@@ -304,6 +307,13 @@
 		min-width:31.5% !important;
 		max-width:31.5% !important;
 	}
+	th.email, th.phone, th.content {
+	display: none;
+}
+	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
+	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
+	width: 100%;
+}
 }
 @media  (max-width: 768px) {
 	.insert form label{
@@ -360,7 +370,13 @@
 	.insert-check form span{
 		margin-left: 10px !important;
 	}
-	
+	th.member, th.price, th.email, th.phone, th.nickname, th.content, th.age, th.like, th.comment  {
+		display: none;
+	}
+	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
+	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
+	width: 100%;
+}
 }
 @media (max-width: 768px) {
 	.letter-list-box .letter-title{

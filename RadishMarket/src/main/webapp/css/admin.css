@@ -3,7 +3,6 @@ section {
 	gap: 40px;
 	padding: 20px;
 	box-sizing: border-box;
-	overflow: auto;
 }
 
 div.admin-box {
@@ -40,17 +39,6 @@ div#cateogry-box {
 }
 
 /* */
-body {
-	margin: auto;
-	height: 100vh;
-}
-
-main {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-}
 
 .alarmCategoryList, .meetCategoryList, .boardCategoryList,
 	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
@@ -102,8 +90,8 @@ th, td {
 
 .categorys table, .meets table, .items table, .boards table, .users table
 	{
-	background-color: greenyellow;
-	border: 1px solid greenyellow;
+	background-color: #5FCC29;
+	border: 1px solid #5FCC29;
 }
 
 .alarm-category table, .meet-category table, .board-category table,
@@ -143,41 +131,6 @@ th, td {
 	opacity: 0.5;
 }
 
-/*  사이즈 990되면 메뉴바 디스플레이 논 */
-@media ( max-width : 990px) {
-	.admin-box {
-		display: none;
-	}
-}
-
-/* 서마터폰 통합 */
-@media ( max-width : 768px) {
-	section {
-		border: 1px solid blue;
-	}
-	th.member, th.price, th.email, th.phone, th.nickname, th.content, th.age, th.like, th.comment  {
-		display: none;
-	}
-	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
-	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
-	width: 100%;
-}
-}
-
-/* 타블렛 */
-@media ( min-width :769px) and (max-width: 989px) {
-	section {
-		border: 1px solid red;
-	}
-	th.email, th.phone, th.content {
-	display: none;
-}
-	.alarmCategoryList, .meetCategoryList, .boardCategoryList,
-	.itemCategoryList, .meetList, .itemList, .boardList, .userlist {
-	width: 100%;
-}
-}
-
-/* max-size */
-@media ( max-width : 1200px) {
+.user th{
+	font-weight: 500;
 }

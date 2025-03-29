@@ -636,8 +636,8 @@ h4.item-price{
   font-size: 15px;
   user-select: none;
   flex:1;
-  min-width: 210px;
-  max-width: 210px;
+  min-width: 190px;
+  max-width: 190px;
 }
 
 .container input {
