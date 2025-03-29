@@ -50,6 +50,7 @@
 					<img alt="프로필" src="/images/${ board.board_img }">
 				</c:if>
 				</div><br>
+				<input type="hidden" name="board_img" id="board_img" placeholder="이미지" readonly>
 				<button type="button" onclick="openPop()">이미지 업로드</button>
 	        </div>
 	

@@ -8,7 +8,7 @@
 		
         <div class="meetingthelooks">
 			<div class="dir-history">
-				<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 > </a> <span>${meet.meet_title}</span>
+				<a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
 			</div>
             <div class="meetingsactives">
                 <div class="meetingtext">

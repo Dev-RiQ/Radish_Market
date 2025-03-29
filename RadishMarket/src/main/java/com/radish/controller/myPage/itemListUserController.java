@@ -49,7 +49,7 @@ public class itemListUserController implements Controller {
 			request.setAttribute("alarm_no", alarm_no);
 			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
 		}
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userItemList";
 	}
 

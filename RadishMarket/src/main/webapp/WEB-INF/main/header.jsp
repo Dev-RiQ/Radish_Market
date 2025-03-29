@@ -27,6 +27,7 @@
 
 </head>
 <body>
+			<c:set var="url" value="${ pageContext.request.requestURL }" />
 	<div id="loading-page" class="loading-page hide">
 		<%@ include file="../../pageLoading.jsp" %>
 	</div>
@@ -37,16 +38,17 @@
 	<header>
 		<div class="gnb">
 		<div>
-			<div class="navigationbtns" onclick="toggleNav(this)">
-		         <div class="bar1"></div>
-		         <div class="bar2"></div>
-		         <div class="bar3"></div>
-		       </div>
+			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
+				<div class="navigationbtns" onclick="toggleNav(this)">
+			         <div class="bar1"></div>
+			         <div class="bar2"></div>
+			         <div class="bar3"></div>
+			       </div>
+	        </c:if>
 			<div class="header-logo" style="cursor:pointer;" onclick="location.href='/index.jsp'">
 		          <img src="/images/logo.png" style="width: 100px; height: 50px;"></img>
 	    	</div>
 		</div>
-			<c:set var="url" value="${ pageContext.request.requestURL }" />
 			<c:if test="${ url ne 'http://localhost:8080/index.jsp' }">
 		    	<div class="gnb-category">
 					<a href='/listItem.do'>중고거래</a> 
@@ -105,9 +107,77 @@
 	
 	<nav>
     <div id="mySidenav" class="navigationbar" >
-      <button onclick="location.href='/listItem.do'">중고거래</button>
-      <button onclick="location.href='/listBoard.do'">동네생활</button>
-      <button onclick="location.href='/listMeet.do'">모임</button>
+      <button onclick="location.href='/listItem.do'"><i class="fa fa-shopping-bag"
+	            style="font-size: 20px; margin: 5px; color: pink"></i><span>중고거래</span></button>
+      <button onclick="location.href='/listBoard.do'"><i class="fa-solid fa-chalkboard"
+	            style="font-size: 20px; margin: 5px; color: skyblue"></i><span>동네생활</span></button>
+      <button onclick="location.href='/listMeet.do'"><i class="fa fa-users" 
+      			style="font-size: 20px; margin: 5px; color: #5fcc29"></i><span>모임</span></button>
+      <c:if test="${ isMyPage ne null && isMyPage ne ''}">
+      <hr>	
+          <button class="tablinks clicked" id="defaultOpen" onclick="location.href='/mypageUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-home" style="font-size: 20px; color: #000"></i>
+              </div><span>마이페이지</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" onclick="location.href='/updateUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-user" style="font-size: 20px; color: #000"></i>
+              </div><span>프로필 수정</span>
+            </div>
+          </button><!-- 프로필 수정-->
+          <button class="tablinks" onclick="location.href='/boardListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-folder" style="font-size: 20px; color:  #F7D358 "></i>
+              </div><span>내 게시글</span>
+            </div>
+            <!--  내 게시글-->
+          </button>
+          <button class="tablinks" onclick="location.href='/listLetter.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-envelope" style="font-size: 20px;  color: #FF0080"></i>
+              </div><span>쪽지함</span>
+            </div>
+            <!--  쪽지함-->
+          </button>
+          <button class="tablinks" onclick="location.href='/zzimListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bookmark" style="font-size: 20px;  color: gray"></i>
+              </div><span>찜목록</span>
+            </div>
+            <!--  찜목록-->
+          </button>
+          <button class="tablinks" onclick="location.href='/itemListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-gift" style="font-size: 20px;  color: skyblue"></i>
+              </div><span>내 상품</span>
+            </div>
+            <!--  내 상품-->
+          </button>
+          <button class="tablinks" onclick="location.href='/cartListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-bag-shopping" style="font-size: 20px; color: pink"></i>
+              </div><span>구매 내역</span>
+            </div>
+            <!--   구매 내역 -->
+          </button>
+          <button class="tablinks" onclick="location.href='/sellListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa-solid fa-piggy-bank" style="font-size: 20px; color: #5fcc29"></i>
+              </div><span>판매 내역</span>
+            </div>
+            <!--    판매 내역-->
+          </button>
+
+          <button class="tablinks" onclick="location.href='/meetListUser.do'">
+            <div class="btn-inner-box">
+              <div class="menu-box"><i class="fa fa-users" style="font-size: 20px;color: yellowgreen"></i>
+              </div><span>내 모임</span>
+            </div>
+            <!--   내 모임<-->
+          </button>
+		</c:if>
     </div>
     
    </nav>

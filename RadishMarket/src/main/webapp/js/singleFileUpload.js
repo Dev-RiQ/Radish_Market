@@ -93,7 +93,9 @@ function displayImage() {
 }
 
 function showImageName(sFileName){
-	const user_img = document.querySelector("#user_img")
+	let user_img = document.querySelector("#user_img")
+	if(!user_img)
+		user_img = document.querySelector("#board_img")
 	fileName = sFileName.substring(1,sFileName.length - 1);
 	user_img.value = fileName;
 }

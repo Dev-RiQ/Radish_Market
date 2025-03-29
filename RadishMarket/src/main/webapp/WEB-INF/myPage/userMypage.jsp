@@ -10,7 +10,6 @@
 	<div class="dir-history">
 		<a href='/index.jsp'>홈 > </a> <a href='/mypageUser.do'>마이페이지 </a>
 	</div>
-	
 	<div class="user-mypage-box">
     <div class="mypag">
       <div class="myprofil">

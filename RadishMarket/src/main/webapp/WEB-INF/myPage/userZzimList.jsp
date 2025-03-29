@@ -47,7 +47,7 @@
 
 
         <div class="cartegory">
-          <button class="tablinks" id="defaultOpen" onclick="location.href='/userMypage.do'">
+          <button class="tablinks" id="defaultOpen" onclick="location.href='/mypageUser.do'">
             <div class="btn-inner-box">
               <div class="menu-box"><i class="fa-solid fa-home" style="font-size: 20px; color: #000"></i>
               </div><span>마이페이지</span>

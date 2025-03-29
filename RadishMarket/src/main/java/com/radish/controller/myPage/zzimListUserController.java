@@ -37,6 +37,7 @@ public class zzimListUserController implements Controller {
 			zzimListSize = zzimListSizeInt+"";
 		}
 		request.setAttribute("zzimListSize", zzimListSize);
+		request.setAttribute("isMyPage", true);
 		return "myPage/userZzimList";
 	}
 

@@ -36,7 +36,7 @@ public class cartListUserController implements Controller {
 			buyListSize = buyListSizeInt+"";
 		}
 		request.setAttribute("buyListSize", buyListSize);
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userCartList";
 	}
 

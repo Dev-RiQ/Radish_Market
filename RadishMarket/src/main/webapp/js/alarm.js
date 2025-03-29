@@ -14,7 +14,7 @@ function sendAlarm () {
 	const link_no = document.querySelector('#link_no').value;
 	const isLike = document.querySelector('#isLike');
 	const isZzim = document.querySelector('#isZzim');
-	if(event.target.id && event.target.id == 'btn-comment-submit')
+	if(event.target.id && event.target.id == 'btn-comment-submit' || event.currentTarget.id && event.currentTarget.id == 'btn-comment-submit')
 		alarm_category_no = '2'; 
 	if(alarm_category_no == '1' && isLike.value != '0'){
 		fetch(`/deleteLike.do?board_no=${ link_no }&user_no=${user_no}`)

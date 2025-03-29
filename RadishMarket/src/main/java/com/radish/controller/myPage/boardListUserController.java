@@ -36,7 +36,7 @@ public class boardListUserController implements Controller {
 			boardListSize = boardListSizeInt+"";
 		}
 		request.setAttribute("boardListSize", boardListSize);
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userBoardList";
 	}
 

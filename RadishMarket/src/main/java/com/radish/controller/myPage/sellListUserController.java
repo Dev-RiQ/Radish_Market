@@ -57,7 +57,7 @@ public class sellListUserController implements Controller {
 			soldListSize = soldListSizeInt+"";
 		}
 		request.setAttribute("soldListSize", soldListSize);
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userSellList";
 	}
 

@@ -52,7 +52,7 @@ public class ListLetterController implements Controller {
 			int alarm_no = Integer.parseInt(alarm_no_str);
 			AlarmDAO.getInstance().setAlarmCheck(alarm_no);
 		}
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userLetterList";
 	}
 

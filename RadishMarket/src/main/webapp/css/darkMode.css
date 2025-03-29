@@ -13,7 +13,13 @@ select,
 .meetinglocalbtns button,
 .user-mypage-box .menulist .menulistbtn button,
 .modal-content,
-header{
+header,
+#mySidenav button,
+#myNav,
+#myNav .category-header,
+#myNav .category-header button,
+#myNav .categoryfooter
+{
     background-color: #000000 !important;
     color: #F1F1F1 !important;
 }
@@ -48,7 +54,11 @@ input#item_price,
 .user-mypage-box .fc-view-container *,
 .user-mypage-box .review-content tbody tr:nth-child(1) td:nth-child(2) span:nth-child(1),
 .user-mypage-box .review-content .review-content-box,
-header .search-box #btn-search-close
+header .search-box #btn-search-close,
+.letter-info-box .title h5,
+.meet-join-list-box td,
+#mySidenav .fa-home,
+#mySidenav .fa-user
 {
     color: #F1F1F1 !important;
 }
@@ -57,7 +67,9 @@ header .search-box #btn-search-close
 .child,
 .user-mypage-box .myprofil,
 .user-mypage-box .cartegory .tablinks,
-header .search-box #btn-search-close{
+header .search-box #btn-search-close,
+#mySidenav
+{
 	background-color: #000000 !important;
 }
 /* 검은버튼 호버 */
@@ -65,7 +77,8 @@ header .search-box #btn-search-close{
 .bells>*:hover,
 .user-mypage-box .cartegory .tablinks:hover,
 header .search-box #btn-search-close:hover,
-header #show-search-box:hover{
+header #show-search-box:hover,
+#mySidenav button:hover{
     background-color: #444 !important;
 }
 
@@ -74,7 +87,8 @@ header #show-search-box:hover{
 .bells>*:active,
 .user-mypage-box .cartegory .tablinks:active,
 header .search-box #btn-search-close:active,
-header #show-search-box:acitve{
+header #show-search-box:acitve,
+#mySidenav button:active{
     background-color: #999 !important;
 }
 
@@ -109,7 +123,8 @@ header #show-search-box:acitve{
 .review-insert-box .lettertxt h2,
 .review-insert-box .user-profile-section1 a,
 .letter-info-box .user-profile-section1 a,
-.letter-info-box .propile h2
+.letter-info-box .propile h2,
+.meet-join-list-box .meeting:hover td
 {
     color: #000 !important;
 }

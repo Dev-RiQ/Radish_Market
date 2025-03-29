@@ -120,57 +120,111 @@
     </div>
 
 <div id="myNav" class="overlay">
+	<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
       <div class="category-header">
         <h3>중고거래 검색 필터</h3>
-        <a class="closebtn" onclick="closeNav()"
-          ><i class="fa-solid fa-xmark"></i
-        ></a>
+        <button type="button" class="closebtn" onclick="closeNavbar()"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="categorymain">
-      	<div class="filter">
+      	<div class="local">
           <div class="title">
             <h3>필터<br /></h3>
           </div>
+          <label class="container"><input type="radio" name="item_status" id="item_status" value=0
+				${ item_status eq null || item_status == 0 ? 'checked' : '' } />전체보기
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="item_status" id="item_status"
+				value=1 ${ item_status eq 1 ? 'checked' : '' } />판매 중
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="item_status" id="item_status"
+				value=2 ${ item_status eq 2 ? 'checked' : '' } />예약 중
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="item_status" id="item_status"
+				value=3 ${ item_status eq 3 ? 'checked' : '' } />판매 완료
+				<span class="checkmark"></span>
+				</label>
+			
         </div>
         
         <div class="local">
           <div class="title">
             <h3>
-              위치<br />
-              <p style="margin-bottom: 20px">서울 특별시 관악구</p>
+              위치 - ${ address }
             </h3>
           </div>
-
-          <label class="container">
-            신림동
-            <input type="radio" name="location" checked="checked" />
-            <span class="checkmark"></span>
-          </label>
+			   <label class="container"><input
+				type="radio" name="dong" id="dong" value="전체"
+				${ userDong eq '전체' ? 'checked' : '' } />전체보기
+				<span class="checkmark"></span>
+				</label>
+			<c:forEach var="category_dong" items="${ dongList }">
+				<label class="container"><input type="radio" name="dong" id="dong"
+					value="${ category_dong }"
+					${ userDong eq category_dong ? 'checked' : '' } />${ category_dong }
+					<span class="checkmark"></span>
+					</label>
+			</c:forEach>
         </div>
         
         <div class="menue">
           <div class="title"><h3>카테고리</h3></div>
-          <label class="container">
-            전자제품
-            <input type="radio" name="category" checked="checked" />
-            <span class="checkmark"></span>
-          </label>
+          <label class="container"><input
+				type="radio" name="category_no" id="category_no" value="0"
+				${ categoryNo eq null || categoryNo eq 0 ? 'checked' : '' } />전체보기
+				<span class="checkmark"></span>
+				</label>
+			<c:forEach var="category" items="${ categoryList }">
+				<label class="container"><input type="radio" name="category_no" id="category_no"
+					value="${ category.item_category_no }"
+					${ categoryNo eq category.item_category_no ? 'checked' : '' } />${ category.item_category_name }
+					<span class="checkmark"></span>
+					</label>
+			</c:forEach>
         </div>
         
         <div class="price">
-          <div class="gakuck">
-            <div class="title"><h3>가격</h3></div>
-          </div>
           <div class="pricewrite">
-            <input type="text" placeholder="최소" /> ~
-            <input type="text" placeholder="최대" />
+            <label class="filter-label" for="price_min">최소 가격</label><br>
+			<input type="number" name="price_min" id="price_min" value=${ price_min ne null ? price_min : 0 } /><br>
+			<label class="filter-label" for="price_max">최대 가격</label><br>
+			<input type="number" name="price_max" id="price_max" value=${ price_max ne null ? price_max : 0 } /><br>
+			
           </div>
         </div>
+        <div class="order-by">
+          <div class="title">
+            <h3>
+              정렬
+            </h3>
+          </div>
+          <label class="container"><input
+				type="radio" name="order_by" id="order_by" value=0
+				${ order_by eq null || order_by == 0 ? 'checked' : '' } />최신순
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="order_by" id="order_by"
+				value=1 ${ order_by eq 1 ? 'checked' : '' } />인기순
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="order_by" id="order_by"
+				value=2 ${ order_by eq 2 ? 'checked' : '' } />가격 높은 순
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="order_by" id="order_by"
+				value=3 ${ order_by eq 3 ? 'checked' : '' } />가격 낮은 순
+				<span class="checkmark"></span>
+				</label>
+         </div>
+          
         
       </div>
       <div class="categoryfooter">
         <button class="application">적용하기</button>
       </div>
+      </form>
     </div>
 	
 </section>

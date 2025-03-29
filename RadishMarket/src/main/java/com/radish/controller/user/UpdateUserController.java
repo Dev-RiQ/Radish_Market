@@ -22,6 +22,7 @@ public class UpdateUserController implements Controller {
 			User user = UserDAO.getInstance().getAUserByLog(log);
 			request.setAttribute("user", user);
 			request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
+			request.setAttribute("isMyPage", true);
 			return "myPage/userUpdate";
 		}
 		String user_pw = request.getParameter("user_pw");

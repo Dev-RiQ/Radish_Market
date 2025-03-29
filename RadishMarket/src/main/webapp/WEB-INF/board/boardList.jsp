@@ -8,18 +8,22 @@
       <div class="life">
         <div class="locallife">
           <div class="locallifetxt">
-            <p class="t"><a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활</a></p>
-            <c:if test="${ meet_no eq '0' }">
-          	  <h2>${ address } 동네생활</h2>
-            </c:if>
-            <c:if test="${ meet_no ne '0' }">
-	            <h2>${ meetName }의 생활</h2>
-            </c:if>
+          	<div class="item-list-container">
+				<div class="dir-history">
+					<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활</a>
+				</div>
+	            <c:if test="${ meet_no eq '0' }">
+	          	  <h1>${ address } 동네생활</h1>
+	            </c:if>
+	            <c:if test="${ meet_no ne '0' }">
+		            <h1>${ meetName }의 생활</h1>
+	            </c:if>
+			</div>
           </div>
           <div class="lbtns">
           </div>
         </div>
-
+		<button class="btn-action-filter" onclick="openNav()"><i class="fa-solid fa-sliders"></i> 필터</button>
         <div class="texts">
           <div class="besttexts">
             <form action="/listBoard.do?filter=true" method="post">
@@ -84,6 +88,73 @@
       <button onclick="topFunction()" id="headerBtn" title="Go to top">
         <i class="fa-solid fa-angle-up"></i>
       </button>
+    </div>
+    <div id="myNav" class="overlay">
+	<form action="/listItem.do?filter=true&search_value=${ search_value }" method="post">
+      <div class="category-header">
+        <h3>자유게시판 검색 필터</h3>
+        <button type="button" class="closebtn" onclick="closeNavbar()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="categorymain">
+        <div class="local">
+          <div class="title">
+            <h3>
+              위치 - ${ address }
+            </h3>
+          </div>
+			   <label class="container"><input
+				type="radio" name="dong" id="dong" value="전체"
+				${ userDong eq '전체' ? 'checked' : '' } />전체보기
+				<span class="checkmark"></span>
+				</label>
+			<c:forEach var="category_dong" items="${ dongList }">
+				<label class="container"><input type="radio" name="dong" id="dong"
+					value="${ category_dong }"
+					${ userDong eq category_dong ? 'checked' : '' } />${ category_dong }
+					<span class="checkmark"></span>
+					</label>
+			</c:forEach>
+        </div>
+        
+        <div class="menue">
+          <div class="title"><h3>카테고리</h3></div>
+          <label class="container"><input
+				type="radio" name="category_no" id="category_no" value="0"
+				${ categoryNo eq null || categoryNo eq 0 ? 'checked' : '' } />전체보기
+				<span class="checkmark"></span>
+				</label>
+			<c:forEach var="category" items="${ categoryList }">
+				<label class="container"><input type="radio" name="category_no" id="category_no"
+					value="${ category.board_category_no }"
+					${ categoryNo eq category.board_category_no ? 'checked' : '' } />${ category.board_category_name }
+					<span class="checkmark"></span>
+					</label>
+			</c:forEach>
+        </div>
+        
+        <div class="order-by">
+          <div class="title">
+            <h3>
+              정렬
+            </h3>
+          </div>
+          <label class="container"><input
+				type="radio" name="order_by" id="order_by" value=0
+				${ order_by eq null || order_by == 0 ? 'checked' : '' } />최신순
+				<span class="checkmark"></span>
+				</label>
+			<label class="container"><input type="radio" name="order_by" id="order_by"
+				value=1 ${ order_by eq 1 ? 'checked' : '' } />인기순
+				<span class="checkmark"></span>
+				</label>
+         </div>
+          
+        
+      </div>
+      <div class="categoryfooter">
+        <button class="application">적용하기</button>
+      </div>
+      </form>
     </div>
 </section>
 

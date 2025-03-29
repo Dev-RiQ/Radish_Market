@@ -25,6 +25,9 @@ window.addEventListener('scroll',function() {
 			setTimeout(()=>{
 				headerBtn.style.opacity = 1; // 스크롤 시 Top 버튼 보이기
 			},100)
+			setTimeout(()=>{
+				headerBtn.style.display = 'block'; // 스크롤 시 Top 버튼 보이기
+			},300)
 		}
 	} else {
 		if (headerBtn && headerBtn.style.opacity == 1){
@@ -32,6 +35,9 @@ window.addEventListener('scroll',function() {
 			setTimeout(()=>{
 				headerBtn.style.display = 'none'; // 최상단에 있을 때 숨기기
 			},300)
+			setTimeout(()=>{
+				headerBtn.style.opacity = 0; // 스크롤 시 Top 버튼 보이기
+			},100)
 		}
 	}
 });

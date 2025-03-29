@@ -7,7 +7,7 @@
 			<div class="item-info-box">
 				<div class="thelook">
 					<div class="dir-history">
-						<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래 > </a> <span>${item.item_name}</span>
+						<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래 </a>
 					</div>
 
 					<div class="itemandtxt">

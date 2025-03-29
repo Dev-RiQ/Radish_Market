@@ -47,7 +47,7 @@ public class meetListUserController implements Controller {
 			meetListSize = meetListSizeInt+"";
 		}
 		request.setAttribute("meetListSize", meetListSize);
-		
+		request.setAttribute("isMyPage", true);
 		return "myPage/userMeetList";
 	}
 

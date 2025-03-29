@@ -436,9 +436,11 @@ section>div.dir-history>div{
 }
 section>div.dir-history{
 	margin:0;
-	width:100%;
+	width:96%;
 	display: flex;
 	align-items: center;
+	margin-left:2%;
+	margin-top: -100px;
 }
 .dir-history>div>span, .dir-history>div>a{
 	color:#999;
@@ -476,6 +478,6 @@ section .dir-history a, section .dir-history span{
 	background: none;
 }
 .user-mypage-box .cartegory .tablinks.clicked{
-	background-color: #5FCC29 ;
+	background-color: rgb(204, 241, 186) ;
 	font-weight:bold;
 }

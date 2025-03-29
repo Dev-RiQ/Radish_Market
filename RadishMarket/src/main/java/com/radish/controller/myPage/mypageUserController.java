@@ -35,6 +35,7 @@ public class mypageUserController implements Controller {
 		User user = UserDAO.getInstance().getAUserByLog(log);
 		request.setAttribute("user", user);
 		request.setAttribute("emoji", EmojiDAO.getInstance().getEmoji(user.getUser_deg()));
+		request.setAttribute("isMyPage", true);
 		return "myPage/userMypage";
 	}
 
