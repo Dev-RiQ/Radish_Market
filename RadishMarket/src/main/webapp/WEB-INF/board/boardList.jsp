@@ -13,7 +13,7 @@
 					<a href='/index.jsp'>홈 > </a> <a href='/listBoard.do'>동네생활</a>
 				</div>
 	            <c:if test="${ meet_no eq '0' }">
-	          	  <h1>${ address } 동네생활</h1>
+	          	  <h1>${ gu } ${ userDong } 동네생활</h1>
 	            </c:if>
 	            <c:if test="${ meet_no ne '0' }">
 		            <h1>${ meetName }의 생활</h1>

@@ -13,7 +13,7 @@
 				<div class="dir-history">
 					<a href='/index.jsp'>홈 > </a> <a href='/listItem.do'>중고거래</a>
 				</div>
-				<h1>${address} 중고거래</h1>
+				<h1>${ gu } ${ userDong } 중고거래</h1>
 			</div>
           </div>
         </div>

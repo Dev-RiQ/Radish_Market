@@ -12,7 +12,7 @@
           	<div class="dir-history">
             <a href='/index.jsp'>홈 > </a> <a href='/listMeet.do'>모임 </a>
             </div>
-            <h2>${ address } 모임</h2>
+            <h2>${ gu } ${ userDong } 모임</h2>
           </div>
           <div class="lbtns">
           </div>

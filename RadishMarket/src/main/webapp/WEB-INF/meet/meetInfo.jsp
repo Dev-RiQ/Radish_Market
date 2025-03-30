@@ -89,7 +89,7 @@
                     </div>
                     <div class="mebertxt">
                         <h3>일정 ${calendarCount}</h3><!--게시글 수-->
-                        <c:if test="${calendarCount eq '100+' || calendarCount > 4}">
+                        <c:if test="${calendarCount > 4}">
 							<a href="/userMypage.do">더보기 ></a>
 						</c:if>
                     </div>
