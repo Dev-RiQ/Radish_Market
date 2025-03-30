@@ -124,12 +124,16 @@ function getFilter() {
 }
 
 function printList(data) {
+	if (type != 'alarm') {
+		btnMoreList.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'
+		isClicked = false;
+	}
 	if (data == 'noMoreList') {
 		if (type == 'alarm') return;
 		btnMoreList.classList.add('hide');
 		if (btnMoreList.value.split("/")[1] == '30') {
 			printNoData();
-		}else{
+		} else {
 			printDataEnd();
 		}
 		return;
@@ -137,10 +141,6 @@ function printList(data) {
 	let listBox = document.querySelector("#list-box");
 	if (type == 'alarm') listBox = document.querySelector("#alarm-list-box")
 	listBox.innerHTML += data;
-	if (type != 'alarm') {
-		btnMoreList.innerHTML = '<i class="fa-solid fa-chevron-down"></i>'
-		isClicked = false;
-	}
 	load_item_status_color();
 }
 
