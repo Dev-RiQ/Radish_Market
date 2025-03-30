@@ -40,6 +40,7 @@ public class meetListUserController implements Controller {
 		request.setAttribute("hostMeetListSize", hostMeetListSize);
 		
 		int meetListSizeInt = MeetUserDAO.getInstance().getMeetListSize(log);
+		meetListSizeInt = hostMeetListSizeInt;
 		String meetListSize = "";
 		if(meetListSizeInt > 100) {
 			meetListSize = "100+";

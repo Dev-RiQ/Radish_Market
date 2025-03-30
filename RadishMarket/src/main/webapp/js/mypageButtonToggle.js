@@ -7,6 +7,8 @@ const letterRemove = document.querySelector('#remove-letter-th')
 
 btns.forEach((btn) => {
 	btn.addEventListener('click', (e) => {
+		document.querySelector("#btn-more-list").classList.remove('hide')
+		document.querySelector('.empty-info').innerText = '';
 		document.querySelector('#list-box').innerHTML = '';
 		switch (e.target.id) {
 			case 'receive-btn': moreList.value = 'receiveLetter/0'; letterFor.innerText = '보낸 사람'; letterRemove.innerText = '지우기'; break;
