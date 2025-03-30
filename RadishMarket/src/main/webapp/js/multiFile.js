@@ -92,7 +92,6 @@ function appendNewSlide(image) {
 }
 
 function deleteImage(idx) {
-	imgArr.splice(idx, 1);
 	saveList.splice(idx, 1);
 	const wrapper = document.querySelector('.swiper-wrapper');
 	wrapper.children[idx]?.remove();
