@@ -74,7 +74,7 @@
 										<td><button class="board-info-btn"
 												onclick="location.href='/listBoard.do?filter=true&category_no=${board.board_category_no}'">${category_name}</button>
 										</td>
-										<td><button class="board-info-btn" onclick="location.href='/listBoard.do?meet_no${meet_no}'">목록</button></td>
+										<td><button class="board-info-btn" onclick="location.href='/listBoard.do?meet_no=${board.meet_no}'">목록</button></td>
 										<c:if test="${ board.user_no == log }">
 											<td><button onclick="location.href='/deleteBoard.do?board_no=${ board.board_no }'">삭제하기</button>
 											</td>
