@@ -3,7 +3,6 @@
 
 <%@ include file="../main/header.jsp"%>
 
-<link rel="stylesheet" type="text/css" href="../../css/swiper.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" type="text/css" href="../../css/itemInsert.css">
@@ -141,7 +140,6 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="../../js/multiFile.js"></script>
-<script src="../../js/itemInsert_UpdateSwiper.js"></script>
 <script src="../../js/itemInsertValidCheck.js"></script>
 
 <%@ include file="../main/footer.jsp"%>

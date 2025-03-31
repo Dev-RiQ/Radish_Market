@@ -470,7 +470,7 @@ public class ListPagingDAO {
 			sb.append(" <div class=\"itemtxt\">");
 			sb.append("<p class=\"item-name\" style=\"font-size:16px;\">" + item_name + "</p>");
 			sb.append("<h4 class=\"item-price\" style=\"font-size:16px;\"> " + price + "</h4>");
-			sb.append("<span class=\"item-dong\">" + item_dong + "</span>");
+			sb.append("<span class=\"item-dong\">" + item_dong + "</span> ");
 			sb.append("</div>");
 			sb.append("</div>");
 			sb.append("<div class=\"review-btn-box\">");

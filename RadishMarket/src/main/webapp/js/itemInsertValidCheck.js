@@ -155,16 +155,10 @@ function validatePrice() {
 }
 
 function validateImages() {
-	
 	const loadImages = document.querySelectorAll('.loadImage');
 	if (loadImages.length === 0 && saveList.length === 0) {
 		alert("사진을 한 장 이상 등록해주세요.");
 		document.querySelector("#ofile").focus();
-		return false;
-	}
-	
-	if (typeof imgArr === 'undefined' || !Array.isArray(imgArr)) {
-		alert("이미지 데이터를 불러오지 못했습니다. 다시 시도해주세요.");
 		return false;
 	}
 	return true;

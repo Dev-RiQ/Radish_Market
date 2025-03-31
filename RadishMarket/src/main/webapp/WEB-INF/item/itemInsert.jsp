@@ -3,7 +3,6 @@
 
 <%@ include file="../main/header.jsp"%>
 
-<link rel="stylesheet" type="text/css" href="../../css/swiper.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <link rel="stylesheet" type="text/css" href="../../css/itemInsert.css">
@@ -95,7 +94,7 @@
 					<button type="button" onclick="history.back()">취소</button>
 					<!--취소-->
 					<button class="rbtn">등록하기</button>
-					<!--등록-->₩
+					<!--등록-->
 				</div>
 			</form>
 		</div>
@@ -107,6 +106,5 @@
 	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="../../js/multiFile.js"></script>
 <script src="../../js/itemInsertValidCheck.js"></script>
-<script src="../../js/itemInsert_UpdateSwiper.js"></script>
 
 <%@ include file="../main/footer.jsp"%>

@@ -79,7 +79,7 @@ function getLocation() {
 				getAddressFromCoords(lat, lon); // 📌 위경도를 주소로 변환
 			},
 			function(error) {
-				alert("위치 정보를 가져올 수 없습니다. 오류 코드: " + error.code);
+				setAddressData("서울 강남구 역삼동 1")
 			}
 		);
 	} else {
